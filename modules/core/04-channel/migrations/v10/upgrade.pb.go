@@ -5,11 +5,10 @@ package v10
 
 import (
 	fmt "fmt"
+	math "math"
+
 	_ "github.com/cosmos/gogoproto/gogoproto"
 	proto "github.com/cosmos/gogoproto/proto"
-	io "io"
-	math "math"
-	math_bits "math/bits"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -34,36 +33,23 @@ type Upgrade struct {
 	NextSequenceSend uint64        `protobuf:"varint,3,opt,name=next_sequence_send,json=nextSequenceSend,proto3" json:"next_sequence_send,omitempty"`
 }
 
-func (m *Upgrade) Reset()         { *m = Upgrade{} }
-func (m *Upgrade) String() string { return proto.CompactTextString(m) }
-func (*Upgrade) ProtoMessage()    {}
-func (*Upgrade) Descriptor() ([]byte, []int) {
-	return fileDescriptor_fb1cef68588848b2, []int{0}
-}
-func (m *Upgrade) XXX_Unmarshal(b []byte) error {
-	return m.Unmarshal(b)
-}
+func (m *Upgrade) Reset()                    { _ = "STUB: not implemented"; return }
+func (m *Upgrade) String() string            { _ = "STUB: not implemented"; return "" }
+func (*Upgrade) ProtoMessage()               { _ = "STUB: not implemented"; return }
+func (*Upgrade) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
+
+func (m *Upgrade) XXX_Unmarshal(b []byte) error { _ = "STUB: not implemented"; return nil }
+
 func (m *Upgrade) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	if deterministic {
-		return xxx_messageInfo_Upgrade.Marshal(b, m, deterministic)
-	} else {
-		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
-		if err != nil {
-			return nil, err
-		}
-		return b[:n], nil
-	}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
-func (m *Upgrade) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_Upgrade.Merge(m, src)
-}
-func (m *Upgrade) XXX_Size() int {
-	return m.Size()
-}
-func (m *Upgrade) XXX_DiscardUnknown() {
-	xxx_messageInfo_Upgrade.DiscardUnknown(m)
-}
+
+func (m *Upgrade) XXX_Merge(src proto.Message) { _ = "STUB: not implemented"; return }
+
+func (m *Upgrade) XXX_Size() int { _ = "STUB: not implemented"; return 0 }
+
+func (m *Upgrade) XXX_DiscardUnknown() { _ = "STUB: not implemented"; return }
 
 var xxx_messageInfo_Upgrade proto.InternalMessageInfo
 
@@ -75,36 +61,23 @@ type UpgradeFields struct {
 	Version        string   `protobuf:"bytes,3,opt,name=version,proto3" json:"version,omitempty"`
 }
 
-func (m *UpgradeFields) Reset()         { *m = UpgradeFields{} }
-func (m *UpgradeFields) String() string { return proto.CompactTextString(m) }
-func (*UpgradeFields) ProtoMessage()    {}
-func (*UpgradeFields) Descriptor() ([]byte, []int) {
-	return fileDescriptor_fb1cef68588848b2, []int{1}
-}
-func (m *UpgradeFields) XXX_Unmarshal(b []byte) error {
-	return m.Unmarshal(b)
-}
+func (m *UpgradeFields) Reset()                    { _ = "STUB: not implemented"; return }
+func (m *UpgradeFields) String() string            { _ = "STUB: not implemented"; return "" }
+func (*UpgradeFields) ProtoMessage()               { _ = "STUB: not implemented"; return }
+func (*UpgradeFields) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
+
+func (m *UpgradeFields) XXX_Unmarshal(b []byte) error { _ = "STUB: not implemented"; return nil }
+
 func (m *UpgradeFields) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	if deterministic {
-		return xxx_messageInfo_UpgradeFields.Marshal(b, m, deterministic)
-	} else {
-		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
-		if err != nil {
-			return nil, err
-		}
-		return b[:n], nil
-	}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
-func (m *UpgradeFields) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_UpgradeFields.Merge(m, src)
-}
-func (m *UpgradeFields) XXX_Size() int {
-	return m.Size()
-}
-func (m *UpgradeFields) XXX_DiscardUnknown() {
-	xxx_messageInfo_UpgradeFields.DiscardUnknown(m)
-}
+
+func (m *UpgradeFields) XXX_Merge(src proto.Message) { _ = "STUB: not implemented"; return }
+
+func (m *UpgradeFields) XXX_Size() int { _ = "STUB: not implemented"; return 0 }
+
+func (m *UpgradeFields) XXX_DiscardUnknown() { _ = "STUB: not implemented"; return }
 
 var xxx_messageInfo_UpgradeFields proto.InternalMessageInfo
 
@@ -118,36 +91,23 @@ type ErrorReceipt struct {
 	Message string `protobuf:"bytes,2,opt,name=message,proto3" json:"message,omitempty"`
 }
 
-func (m *ErrorReceipt) Reset()         { *m = ErrorReceipt{} }
-func (m *ErrorReceipt) String() string { return proto.CompactTextString(m) }
-func (*ErrorReceipt) ProtoMessage()    {}
-func (*ErrorReceipt) Descriptor() ([]byte, []int) {
-	return fileDescriptor_fb1cef68588848b2, []int{2}
-}
-func (m *ErrorReceipt) XXX_Unmarshal(b []byte) error {
-	return m.Unmarshal(b)
-}
+func (m *ErrorReceipt) Reset()                    { _ = "STUB: not implemented"; return }
+func (m *ErrorReceipt) String() string            { _ = "STUB: not implemented"; return "" }
+func (*ErrorReceipt) ProtoMessage()               { _ = "STUB: not implemented"; return }
+func (*ErrorReceipt) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
+
+func (m *ErrorReceipt) XXX_Unmarshal(b []byte) error { _ = "STUB: not implemented"; return nil }
+
 func (m *ErrorReceipt) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	if deterministic {
-		return xxx_messageInfo_ErrorReceipt.Marshal(b, m, deterministic)
-	} else {
-		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
-		if err != nil {
-			return nil, err
-		}
-		return b[:n], nil
-	}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
-func (m *ErrorReceipt) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_ErrorReceipt.Merge(m, src)
-}
-func (m *ErrorReceipt) XXX_Size() int {
-	return m.Size()
-}
-func (m *ErrorReceipt) XXX_DiscardUnknown() {
-	xxx_messageInfo_ErrorReceipt.DiscardUnknown(m)
-}
+
+func (m *ErrorReceipt) XXX_Merge(src proto.Message) { _ = "STUB: not implemented"; return }
+
+func (m *ErrorReceipt) XXX_Size() int { _ = "STUB: not implemented"; return 0 }
+
+func (m *ErrorReceipt) XXX_DiscardUnknown() { _ = "STUB: not implemented"; return }
 
 var xxx_messageInfo_ErrorReceipt proto.InternalMessageInfo
 
@@ -189,651 +149,67 @@ var fileDescriptor_fb1cef68588848b2 = []byte{
 	0x11, 0x85, 0x24, 0x6e, 0x02, 0x00, 0x00,
 }
 
-func (m *Upgrade) Marshal() (dAtA []byte, err error) {
-	size := m.Size()
-	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
-	if err != nil {
-		return nil, err
-	}
-	return dAtA[:n], nil
-}
+func (m *Upgrade) Marshal() (dAtA []byte, err error) { _ = "STUB: not implemented"; return nil, nil }
 
-func (m *Upgrade) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
+func (m *Upgrade) MarshalTo(dAtA []byte) (int, error) { _ = "STUB: not implemented"; return 0, nil }
 
 func (m *Upgrade) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
-	_ = i
-	var l int
-	_ = l
-	if m.NextSequenceSend != 0 {
-		i = encodeVarintUpgrade(dAtA, i, uint64(m.NextSequenceSend))
-		i--
-		dAtA[i] = 0x18
-	}
-	{
-		size, err := m.Timeout.MarshalToSizedBuffer(dAtA[:i])
-		if err != nil {
-			return 0, err
-		}
-		i -= size
-		i = encodeVarintUpgrade(dAtA, i, uint64(size))
-	}
-	i--
-	dAtA[i] = 0x12
-	{
-		size, err := m.Fields.MarshalToSizedBuffer(dAtA[:i])
-		if err != nil {
-			return 0, err
-		}
-		i -= size
-		i = encodeVarintUpgrade(dAtA, i, uint64(size))
-	}
-	i--
-	dAtA[i] = 0xa
-	return len(dAtA) - i, nil
+	_ = "STUB: not implemented"
+	return 0, nil
 }
 
 func (m *UpgradeFields) Marshal() (dAtA []byte, err error) {
-	size := m.Size()
-	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
-	if err != nil {
-		return nil, err
-	}
-	return dAtA[:n], nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (m *UpgradeFields) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
+	_ = "STUB: not implemented"
+	return 0, nil
 }
 
 func (m *UpgradeFields) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
-	_ = i
-	var l int
-	_ = l
-	if len(m.Version) > 0 {
-		i -= len(m.Version)
-		copy(dAtA[i:], m.Version)
-		i = encodeVarintUpgrade(dAtA, i, uint64(len(m.Version)))
-		i--
-		dAtA[i] = 0x1a
-	}
-	if len(m.ConnectionHops) > 0 {
-		for iNdEx := len(m.ConnectionHops) - 1; iNdEx >= 0; iNdEx-- {
-			i -= len(m.ConnectionHops[iNdEx])
-			copy(dAtA[i:], m.ConnectionHops[iNdEx])
-			i = encodeVarintUpgrade(dAtA, i, uint64(len(m.ConnectionHops[iNdEx])))
-			i--
-			dAtA[i] = 0x12
-		}
-	}
-	if m.Ordering != 0 {
-		i = encodeVarintUpgrade(dAtA, i, uint64(m.Ordering))
-		i--
-		dAtA[i] = 0x8
-	}
-	return len(dAtA) - i, nil
+	_ = "STUB: not implemented"
+	return 0, nil
 }
 
 func (m *ErrorReceipt) Marshal() (dAtA []byte, err error) {
-	size := m.Size()
-	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
-	if err != nil {
-		return nil, err
-	}
-	return dAtA[:n], nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (m *ErrorReceipt) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
+	_ = "STUB: not implemented"
+	return 0, nil
 }
 
 func (m *ErrorReceipt) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
-	_ = i
-	var l int
-	_ = l
-	if len(m.Message) > 0 {
-		i -= len(m.Message)
-		copy(dAtA[i:], m.Message)
-		i = encodeVarintUpgrade(dAtA, i, uint64(len(m.Message)))
-		i--
-		dAtA[i] = 0x12
-	}
-	if m.Sequence != 0 {
-		i = encodeVarintUpgrade(dAtA, i, uint64(m.Sequence))
-		i--
-		dAtA[i] = 0x8
-	}
-	return len(dAtA) - i, nil
+	_ = "STUB: not implemented"
+	return 0, nil
 }
 
 func encodeVarintUpgrade(dAtA []byte, offset int, v uint64) int {
-	offset -= sovUpgrade(v)
-	base := offset
-	for v >= 1<<7 {
-		dAtA[offset] = uint8(v&0x7f | 0x80)
-		v >>= 7
-		offset++
-	}
-	dAtA[offset] = uint8(v)
-	return base
-}
-func (m *Upgrade) Size() (n int) {
-	if m == nil {
-		return 0
-	}
-	var l int
-	_ = l
-	l = m.Fields.Size()
-	n += 1 + l + sovUpgrade(uint64(l))
-	l = m.Timeout.Size()
-	n += 1 + l + sovUpgrade(uint64(l))
-	if m.NextSequenceSend != 0 {
-		n += 1 + sovUpgrade(uint64(m.NextSequenceSend))
-	}
-	return n
+	_ = "STUB: not implemented"
+	return 0
 }
 
-func (m *UpgradeFields) Size() (n int) {
-	if m == nil {
-		return 0
-	}
-	var l int
-	_ = l
-	if m.Ordering != 0 {
-		n += 1 + sovUpgrade(uint64(m.Ordering))
-	}
-	if len(m.ConnectionHops) > 0 {
-		for _, s := range m.ConnectionHops {
-			l = len(s)
-			n += 1 + l + sovUpgrade(uint64(l))
-		}
-	}
-	l = len(m.Version)
-	if l > 0 {
-		n += 1 + l + sovUpgrade(uint64(l))
-	}
-	return n
-}
+func (m *Upgrade) Size() (n int) { _ = "STUB: not implemented"; return 0 }
 
-func (m *ErrorReceipt) Size() (n int) {
-	if m == nil {
-		return 0
-	}
-	var l int
-	_ = l
-	if m.Sequence != 0 {
-		n += 1 + sovUpgrade(uint64(m.Sequence))
-	}
-	l = len(m.Message)
-	if l > 0 {
-		n += 1 + l + sovUpgrade(uint64(l))
-	}
-	return n
-}
+func (m *UpgradeFields) Size() (n int) { _ = "STUB: not implemented"; return 0 }
 
-func sovUpgrade(x uint64) (n int) {
-	return (math_bits.Len64(x|1) + 6) / 7
-}
-func sozUpgrade(x uint64) (n int) {
-	return sovUpgrade(uint64((x << 1) ^ uint64((int64(x) >> 63))))
-}
-func (m *Upgrade) Unmarshal(dAtA []byte) error {
-	l := len(dAtA)
-	iNdEx := 0
-	for iNdEx < l {
-		preIndex := iNdEx
-		var wire uint64
-		for shift := uint(0); ; shift += 7 {
-			if shift >= 64 {
-				return ErrIntOverflowUpgrade
-			}
-			if iNdEx >= l {
-				return io.ErrUnexpectedEOF
-			}
-			b := dAtA[iNdEx]
-			iNdEx++
-			wire |= uint64(b&0x7F) << shift
-			if b < 0x80 {
-				break
-			}
-		}
-		fieldNum := int32(wire >> 3)
-		wireType := int(wire & 0x7)
-		if wireType == 4 {
-			return fmt.Errorf("proto: Upgrade: wiretype end group for non-group")
-		}
-		if fieldNum <= 0 {
-			return fmt.Errorf("proto: Upgrade: illegal tag %d (wire type %d)", fieldNum, wire)
-		}
-		switch fieldNum {
-		case 1:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Fields", wireType)
-			}
-			var msglen int
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowUpgrade
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				msglen |= int(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			if msglen < 0 {
-				return ErrInvalidLengthUpgrade
-			}
-			postIndex := iNdEx + msglen
-			if postIndex < 0 {
-				return ErrInvalidLengthUpgrade
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			if err := m.Fields.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
-				return err
-			}
-			iNdEx = postIndex
-		case 2:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Timeout", wireType)
-			}
-			var msglen int
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowUpgrade
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				msglen |= int(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			if msglen < 0 {
-				return ErrInvalidLengthUpgrade
-			}
-			postIndex := iNdEx + msglen
-			if postIndex < 0 {
-				return ErrInvalidLengthUpgrade
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			if err := m.Timeout.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
-				return err
-			}
-			iNdEx = postIndex
-		case 3:
-			if wireType != 0 {
-				return fmt.Errorf("proto: wrong wireType = %d for field NextSequenceSend", wireType)
-			}
-			m.NextSequenceSend = 0
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowUpgrade
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				m.NextSequenceSend |= uint64(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-		default:
-			iNdEx = preIndex
-			skippy, err := skipUpgrade(dAtA[iNdEx:])
-			if err != nil {
-				return err
-			}
-			if (skippy < 0) || (iNdEx+skippy) < 0 {
-				return ErrInvalidLengthUpgrade
-			}
-			if (iNdEx + skippy) > l {
-				return io.ErrUnexpectedEOF
-			}
-			iNdEx += skippy
-		}
-	}
+func (m *ErrorReceipt) Size() (n int) { _ = "STUB: not implemented"; return 0 }
 
-	if iNdEx > l {
-		return io.ErrUnexpectedEOF
-	}
-	return nil
-}
-func (m *UpgradeFields) Unmarshal(dAtA []byte) error {
-	l := len(dAtA)
-	iNdEx := 0
-	for iNdEx < l {
-		preIndex := iNdEx
-		var wire uint64
-		for shift := uint(0); ; shift += 7 {
-			if shift >= 64 {
-				return ErrIntOverflowUpgrade
-			}
-			if iNdEx >= l {
-				return io.ErrUnexpectedEOF
-			}
-			b := dAtA[iNdEx]
-			iNdEx++
-			wire |= uint64(b&0x7F) << shift
-			if b < 0x80 {
-				break
-			}
-		}
-		fieldNum := int32(wire >> 3)
-		wireType := int(wire & 0x7)
-		if wireType == 4 {
-			return fmt.Errorf("proto: UpgradeFields: wiretype end group for non-group")
-		}
-		if fieldNum <= 0 {
-			return fmt.Errorf("proto: UpgradeFields: illegal tag %d (wire type %d)", fieldNum, wire)
-		}
-		switch fieldNum {
-		case 1:
-			if wireType != 0 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Ordering", wireType)
-			}
-			m.Ordering = 0
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowUpgrade
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				m.Ordering |= Order(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-		case 2:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field ConnectionHops", wireType)
-			}
-			var stringLen uint64
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowUpgrade
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				stringLen |= uint64(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			intStringLen := int(stringLen)
-			if intStringLen < 0 {
-				return ErrInvalidLengthUpgrade
-			}
-			postIndex := iNdEx + intStringLen
-			if postIndex < 0 {
-				return ErrInvalidLengthUpgrade
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.ConnectionHops = append(m.ConnectionHops, string(dAtA[iNdEx:postIndex]))
-			iNdEx = postIndex
-		case 3:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Version", wireType)
-			}
-			var stringLen uint64
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowUpgrade
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				stringLen |= uint64(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			intStringLen := int(stringLen)
-			if intStringLen < 0 {
-				return ErrInvalidLengthUpgrade
-			}
-			postIndex := iNdEx + intStringLen
-			if postIndex < 0 {
-				return ErrInvalidLengthUpgrade
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.Version = string(dAtA[iNdEx:postIndex])
-			iNdEx = postIndex
-		default:
-			iNdEx = preIndex
-			skippy, err := skipUpgrade(dAtA[iNdEx:])
-			if err != nil {
-				return err
-			}
-			if (skippy < 0) || (iNdEx+skippy) < 0 {
-				return ErrInvalidLengthUpgrade
-			}
-			if (iNdEx + skippy) > l {
-				return io.ErrUnexpectedEOF
-			}
-			iNdEx += skippy
-		}
-	}
+func sovUpgrade(x uint64) (n int) { _ = "STUB: not implemented"; return 0 }
 
-	if iNdEx > l {
-		return io.ErrUnexpectedEOF
-	}
-	return nil
-}
-func (m *ErrorReceipt) Unmarshal(dAtA []byte) error {
-	l := len(dAtA)
-	iNdEx := 0
-	for iNdEx < l {
-		preIndex := iNdEx
-		var wire uint64
-		for shift := uint(0); ; shift += 7 {
-			if shift >= 64 {
-				return ErrIntOverflowUpgrade
-			}
-			if iNdEx >= l {
-				return io.ErrUnexpectedEOF
-			}
-			b := dAtA[iNdEx]
-			iNdEx++
-			wire |= uint64(b&0x7F) << shift
-			if b < 0x80 {
-				break
-			}
-		}
-		fieldNum := int32(wire >> 3)
-		wireType := int(wire & 0x7)
-		if wireType == 4 {
-			return fmt.Errorf("proto: ErrorReceipt: wiretype end group for non-group")
-		}
-		if fieldNum <= 0 {
-			return fmt.Errorf("proto: ErrorReceipt: illegal tag %d (wire type %d)", fieldNum, wire)
-		}
-		switch fieldNum {
-		case 1:
-			if wireType != 0 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Sequence", wireType)
-			}
-			m.Sequence = 0
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowUpgrade
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				m.Sequence |= uint64(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-		case 2:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Message", wireType)
-			}
-			var stringLen uint64
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowUpgrade
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				stringLen |= uint64(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			intStringLen := int(stringLen)
-			if intStringLen < 0 {
-				return ErrInvalidLengthUpgrade
-			}
-			postIndex := iNdEx + intStringLen
-			if postIndex < 0 {
-				return ErrInvalidLengthUpgrade
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.Message = string(dAtA[iNdEx:postIndex])
-			iNdEx = postIndex
-		default:
-			iNdEx = preIndex
-			skippy, err := skipUpgrade(dAtA[iNdEx:])
-			if err != nil {
-				return err
-			}
-			if (skippy < 0) || (iNdEx+skippy) < 0 {
-				return ErrInvalidLengthUpgrade
-			}
-			if (iNdEx + skippy) > l {
-				return io.ErrUnexpectedEOF
-			}
-			iNdEx += skippy
-		}
-	}
+func sozUpgrade(x uint64) (n int) { _ = "STUB: not implemented"; return 0 }
 
-	if iNdEx > l {
-		return io.ErrUnexpectedEOF
-	}
-	return nil
-}
-func skipUpgrade(dAtA []byte) (n int, err error) {
-	l := len(dAtA)
-	iNdEx := 0
-	depth := 0
-	for iNdEx < l {
-		var wire uint64
-		for shift := uint(0); ; shift += 7 {
-			if shift >= 64 {
-				return 0, ErrIntOverflowUpgrade
-			}
-			if iNdEx >= l {
-				return 0, io.ErrUnexpectedEOF
-			}
-			b := dAtA[iNdEx]
-			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
-			if b < 0x80 {
-				break
-			}
-		}
-		wireType := int(wire & 0x7)
-		switch wireType {
-		case 0:
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return 0, ErrIntOverflowUpgrade
-				}
-				if iNdEx >= l {
-					return 0, io.ErrUnexpectedEOF
-				}
-				iNdEx++
-				if dAtA[iNdEx-1] < 0x80 {
-					break
-				}
-			}
-		case 1:
-			iNdEx += 8
-		case 2:
-			var length int
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return 0, ErrIntOverflowUpgrade
-				}
-				if iNdEx >= l {
-					return 0, io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				length |= (int(b) & 0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			if length < 0 {
-				return 0, ErrInvalidLengthUpgrade
-			}
-			iNdEx += length
-		case 3:
-			depth++
-		case 4:
-			if depth == 0 {
-				return 0, ErrUnexpectedEndOfGroupUpgrade
-			}
-			depth--
-		case 5:
-			iNdEx += 4
-		default:
-			return 0, fmt.Errorf("proto: illegal wireType %d", wireType)
-		}
-		if iNdEx < 0 {
-			return 0, ErrInvalidLengthUpgrade
-		}
-		if depth == 0 {
-			return iNdEx, nil
-		}
-	}
-	return 0, io.ErrUnexpectedEOF
-}
+func (m *Upgrade) Unmarshal(dAtA []byte) error { _ = "STUB: not implemented"; return nil }
+
+func (m *UpgradeFields) Unmarshal(dAtA []byte) error { _ = "STUB: not implemented"; return nil }
+
+func (m *ErrorReceipt) Unmarshal(dAtA []byte) error { _ = "STUB: not implemented"; return nil }
+
+func skipUpgrade(dAtA []byte) (n int, err error) { _ = "STUB: not implemented"; return 0, nil }
 
 var (
 	ErrInvalidLengthUpgrade        = fmt.Errorf("proto: negative length found during unmarshaling")

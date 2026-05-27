@@ -8,13 +8,16 @@ import (
 )
 
 func (k *Keeper) SendPacket(ctx sdk.Context, sourcePort string, sourceChannel string, timeoutHeight clienttypes.Height, timeoutTimestamp uint64, data []byte) (uint64, error) {
-	return k.ics4Wrapper.SendPacket(ctx, sourcePort, sourceChannel, timeoutHeight, timeoutTimestamp, data)
+	_ = "STUB: not implemented"
+	return 0, nil
 }
 
 func (k *Keeper) WriteAcknowledgement(ctx sdk.Context, packet exported.PacketI, ack exported.Acknowledgement) error {
-	return k.ics4Wrapper.WriteAcknowledgement(ctx, packet, ack)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 func (k *Keeper) GetAppVersion(ctx sdk.Context, portID, channelID string) (string, bool) {
-	return k.ics4Wrapper.GetAppVersion(ctx, portID, channelID)
+	_ = "STUB: not implemented"
+	return "", false
 }

@@ -1,17 +1,10 @@
 package tendermint
 
 import (
-	"bytes"
-	"encoding/binary"
-	"fmt"
-
 	"github.com/cosmos/cosmos-sdk/codec"
-	"github.com/cosmos/cosmos-sdk/store/v2/prefix"
 	storetypes "github.com/cosmos/cosmos-sdk/store/v2/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	clienttypes "github.com/cosmos/ibc-go/v11/modules/core/02-client/types"
-	host "github.com/cosmos/ibc-go/v11/modules/core/24-host"
 	"github.com/cosmos/ibc-go/v11/modules/core/exported"
 )
 
@@ -45,175 +38,118 @@ var (
 
 // setClientState stores the client state
 func setClientState(clientStore storetypes.KVStore, cdc codec.BinaryCodec, clientState *ClientState) {
-	key := host.ClientStateKey()
-	val := clienttypes.MustMarshalClientState(cdc, clientState)
-	clientStore.Set(key, val)
+	_ = "STUB: not implemented"
+	return
 }
 
 // getClientState retrieves the client state from the store using the provided KVStore and codec.
 // It returns the unmarshaled ClientState and a boolean indicating if the state was found.
 func getClientState(store storetypes.KVStore, cdc codec.BinaryCodec) (*ClientState, bool) {
-	bz := store.Get(host.ClientStateKey())
-	if len(bz) == 0 {
-		return nil, false
-	}
-
-	clientStateI := clienttypes.MustUnmarshalClientState(cdc, bz)
-	var clientState *ClientState
-	clientState, ok := clientStateI.(*ClientState)
-	if !ok {
-		panic(fmt.Errorf("cannot convert %T into %T", clientStateI, clientState))
-	}
-	return clientState, true
+	_ = "STUB: not implemented"
+	return nil, false
 }
 
 // setConsensusState stores the consensus state at the given height.
 func setConsensusState(clientStore storetypes.KVStore, cdc codec.BinaryCodec, consensusState *ConsensusState, height exported.Height) {
-	key := host.ConsensusStateKey(height)
-	val := clienttypes.MustMarshalConsensusState(cdc, consensusState)
-	clientStore.Set(key, val)
+	_ = "STUB: not implemented"
+	return
 }
 
 // GetConsensusState retrieves the consensus state from the client prefixed store.
 // If the ConsensusState does not exist in state for the provided height a nil value and false boolean flag is returned
 func GetConsensusState(store storetypes.KVStore, cdc codec.BinaryCodec, height exported.Height) (*ConsensusState, bool) {
-	bz := store.Get(host.ConsensusStateKey(height))
-	if len(bz) == 0 {
-		return nil, false
-	}
-
-	consensusStateI := clienttypes.MustUnmarshalConsensusState(cdc, bz)
-	var consensusState *ConsensusState
-	consensusState, ok := consensusStateI.(*ConsensusState)
-	if !ok {
-		panic(fmt.Errorf("cannot convert %T into %T", consensusStateI, consensusState))
-	}
-
-	return consensusState, true
+	_ = "STUB: not implemented"
+	return nil, false
 }
 
 // deleteConsensusState deletes the consensus state at the given height
 func deleteConsensusState(clientStore storetypes.KVStore, height exported.Height) {
-	key := host.ConsensusStateKey(height)
-	clientStore.Delete(key)
+	_ = "STUB: not implemented"
+	return
 }
 
 // ProcessedTimeKey returns the key under which the processed time will be stored in the client store.
-func ProcessedTimeKey(height exported.Height) []byte {
-	return append(host.ConsensusStateKey(height), KeyProcessedTime...)
-}
+func ProcessedTimeKey(height exported.Height) []byte { _ = "STUB: not implemented"; return nil }
 
 // SetProcessedTime stores the time at which a header was processed and the corresponding consensus state was created.
 // This is useful when validating whether a packet has reached the time specified delay period in the tendermint client's
 // verification functions
 func SetProcessedTime(clientStore storetypes.KVStore, height exported.Height, timeNs uint64) {
-	key := ProcessedTimeKey(height)
-	val := sdk.Uint64ToBigEndian(timeNs)
-	clientStore.Set(key, val)
+	_ = "STUB: not implemented"
+	return
 }
 
 // GetProcessedTime gets the time (in nanoseconds) at which this chain received and processed a tendermint header.
 // This is used to validate that a received packet has passed the time delay period.
 func GetProcessedTime(clientStore storetypes.KVStore, height exported.Height) (uint64, bool) {
-	key := ProcessedTimeKey(height)
-	bz := clientStore.Get(key)
-	if len(bz) == 0 {
-		return 0, false
-	}
-	return sdk.BigEndianToUint64(bz), true
+	_ = "STUB: not implemented"
+	return 0, false
 }
 
 // deleteProcessedTime deletes the processedTime for a given height
 func deleteProcessedTime(clientStore storetypes.KVStore, height exported.Height) {
-	key := ProcessedTimeKey(height)
-	clientStore.Delete(key)
+	_ = "STUB: not implemented"
+	return
 }
 
 // ProcessedHeightKey returns the key under which the processed height will be stored in the client store.
-func ProcessedHeightKey(height exported.Height) []byte {
-	return append(host.ConsensusStateKey(height), KeyProcessedHeight...)
-}
+func ProcessedHeightKey(height exported.Height) []byte { _ = "STUB: not implemented"; return nil }
 
 // SetProcessedHeight stores the height at which a header was processed and the corresponding consensus state was created.
 // This is useful when validating whether a packet has reached the specified block delay period in the tendermint client's
 // verification functions
 func SetProcessedHeight(clientStore storetypes.KVStore, consHeight, processedHeight exported.Height) {
-	key := ProcessedHeightKey(consHeight)
-	val := []byte(processedHeight.String())
-	clientStore.Set(key, val)
+	_ = "STUB: not implemented"
+	return
 }
 
 // GetProcessedHeight gets the height at which this chain received and processed a tendermint header.
 // This is used to validate that a received packet has passed the block delay period.
 func GetProcessedHeight(clientStore storetypes.KVStore, height exported.Height) (exported.Height, bool) {
-	key := ProcessedHeightKey(height)
-	bz := clientStore.Get(key)
-	if len(bz) == 0 {
-		return nil, false
-	}
-	processedHeight, err := clienttypes.ParseHeight(string(bz))
-	if err != nil {
-		return nil, false
-	}
-	return processedHeight, true
+	_ = "STUB: not implemented"
+	return *new(exported.Height), false
 }
 
 // deleteProcessedHeight deletes the processedHeight for a given height
 func deleteProcessedHeight(clientStore storetypes.KVStore, height exported.Height) {
-	key := ProcessedHeightKey(height)
-	clientStore.Delete(key)
+	_ = "STUB: not implemented"
+	return
 }
 
 // IterationKey returns the key under which the consensus state key will be stored.
 // The iteration key is a BigEndian representation of the consensus state key to support efficient iteration.
-func IterationKey(height exported.Height) []byte {
-	heightBytes := bigEndianHeightBytes(height)
-	return append([]byte(KeyIterateConsensusStatePrefix), heightBytes...)
-}
+func IterationKey(height exported.Height) []byte { _ = "STUB: not implemented"; return nil }
 
 // SetIterationKey stores the consensus state key under a key that is more efficient for ordered iteration
 func SetIterationKey(clientStore storetypes.KVStore, height exported.Height) {
-	key := IterationKey(height)
-	val := host.ConsensusStateKey(height)
-	clientStore.Set(key, val)
+	_ = "STUB: not implemented"
+	return
 }
 
 // GetIterationKey returns the consensus state key stored under the efficient iteration key.
 // NOTE: This function is currently only used for testing purposes
 func GetIterationKey(clientStore storetypes.KVStore, height exported.Height) []byte {
-	key := IterationKey(height)
-	return clientStore.Get(key)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // deleteIterationKey deletes the iteration key for a given height
 func deleteIterationKey(clientStore storetypes.KVStore, height exported.Height) {
-	key := IterationKey(height)
-	clientStore.Delete(key)
+	_ = "STUB: not implemented"
+	return
 }
 
 // GetHeightFromIterationKey takes an iteration key and returns the height that it references
 func GetHeightFromIterationKey(iterKey []byte) exported.Height {
-	bigEndianBytes := iterKey[len([]byte(KeyIterateConsensusStatePrefix)):]
-	revisionBytes := bigEndianBytes[0:8]
-	heightBytes := bigEndianBytes[8:]
-	revision := binary.BigEndian.Uint64(revisionBytes)
-	height := binary.BigEndian.Uint64(heightBytes)
-	return clienttypes.NewHeight(revision, height)
+	_ = "STUB: not implemented"
+	return *new(exported.Height)
 }
 
 // IterateConsensusStateAscending iterates through the consensus states in ascending order. It calls the provided
 // callback on each height, until stop=true is returned.
 func IterateConsensusStateAscending(clientStore storetypes.KVStore, cb func(height exported.Height) (stop bool)) {
-	iterator := storetypes.KVStorePrefixIterator(clientStore, []byte(KeyIterateConsensusStatePrefix))
-	defer iterator.Close()
-
-	for ; iterator.Valid(); iterator.Next() {
-		iterKey := iterator.Key()
-		height := GetHeightFromIterationKey(iterKey)
-		if cb(height) {
-			break
-		}
-	}
+	_ = "STUB: not implemented"
+	return
 }
 
 // GetNextConsensusState returns the lowest consensus state that is larger than the given height.
@@ -221,42 +157,19 @@ func IterateConsensusStateAscending(clientStore storetypes.KVStore, cb func(heig
 // If the starting height exists in store, we need to call iterator.Next() to get the next consensus state.
 // Otherwise, the iterator is already at the next consensus state so we can call iterator.Value() immediately.
 func GetNextConsensusState(clientStore storetypes.KVStore, cdc codec.BinaryCodec, height exported.Height) (*ConsensusState, bool) {
-	iterateStore := prefix.NewStore(clientStore, []byte(KeyIterateConsensusStatePrefix))
-	iterator := iterateStore.Iterator(bigEndianHeightBytes(height), nil)
-	defer iterator.Close()
-	if !iterator.Valid() {
-		return nil, false
-	}
-
-	// if iterator is at current height, ignore the consensus state at current height and get next height
-	// if iterator value is not at current height, it is already at next height.
-	if bytes.Equal(iterator.Value(), host.ConsensusStateKey(height)) {
-		iterator.Next()
-		if !iterator.Valid() {
-			return nil, false
-		}
-	}
-
-	csKey := iterator.Value()
-
-	return getTmConsensusState(clientStore, cdc, csKey)
+	_ = "STUB: not implemented"
+	return nil, false
 }
+
+// if iterator is at current height, ignore the consensus state at current height and get next height
+// if iterator value is not at current height, it is already at next height.
 
 // GetPreviousConsensusState returns the highest consensus state that is lower than the given height.
 // The Iterator returns a storetypes.Iterator which iterates from the end (exclusive) to start (inclusive).
 // Thus to get previous consensus state we call iterator.Value() immediately.
 func GetPreviousConsensusState(clientStore storetypes.KVStore, cdc codec.BinaryCodec, height exported.Height) (*ConsensusState, bool) {
-	iterateStore := prefix.NewStore(clientStore, []byte(KeyIterateConsensusStatePrefix))
-	iterator := iterateStore.ReverseIterator(nil, bigEndianHeightBytes(height))
-	defer iterator.Close()
-
-	if !iterator.Valid() {
-		return nil, false
-	}
-
-	csKey := iterator.Value()
-
-	return getTmConsensusState(clientStore, cdc, csKey)
+	_ = "STUB: not implemented"
+	return nil, false
 }
 
 // PruneAllExpiredConsensusStates iterates over all consensus states for a given
@@ -266,62 +179,27 @@ func PruneAllExpiredConsensusStates(
 	ctx sdk.Context, clientStore storetypes.KVStore,
 	cdc codec.BinaryCodec, clientState *ClientState,
 ) int {
-	var heights []exported.Height
-
-	pruneCb := func(height exported.Height) bool {
-		consState, found := GetConsensusState(clientStore, cdc, height)
-		if !found { // consensus state should always be found
-			return true
-		}
-		if clientState.IsExpired(consState.Timestamp, ctx.BlockTime()) {
-			heights = append(heights, height)
-		}
-
-		return false
-	}
-
-	IterateConsensusStateAscending(clientStore, pruneCb)
-
-	for _, height := range heights {
-		deleteConsensusState(clientStore, height)
-		deleteConsensusMetadata(clientStore, height)
-	}
-
-	return len(heights)
+	_ = "STUB: not implemented"
+	return 0
 }
+
+// consensus state should always be found
 
 // Helper function for GetNextConsensusState and GetPreviousConsensusState
 func getTmConsensusState(clientStore storetypes.KVStore, cdc codec.BinaryCodec, key []byte) (*ConsensusState, bool) {
-	bz := clientStore.Get(key)
-	if len(bz) == 0 {
-		return nil, false
-	}
-
-	consensusStateI, err := clienttypes.UnmarshalConsensusState(cdc, bz)
-	if err != nil {
-		return nil, false
-	}
-
-	consensusState, ok := consensusStateI.(*ConsensusState)
-	if !ok {
-		return nil, false
-	}
-	return consensusState, true
+	_ = "STUB: not implemented"
+	return nil, false
 }
 
-func bigEndianHeightBytes(height exported.Height) []byte {
-	heightBytes := make([]byte, 16)
-	binary.BigEndian.PutUint64(heightBytes, height.GetRevisionNumber())
-	binary.BigEndian.PutUint64(heightBytes[8:], height.GetRevisionHeight())
-	return heightBytes
-}
+func bigEndianHeightBytes(height exported.Height) []byte { _ = "STUB: not implemented"; return nil }
 
 // setConsensusMetadata sets context time as processed time and set context height as processed height
 // as this is internal tendermint light client logic.
 // client state and consensus state will be set by client keeper
 // set iteration key to provide ability for efficient ordered iteration of consensus states.
 func setConsensusMetadata(ctx sdk.Context, clientStore storetypes.KVStore, height exported.Height) {
-	setConsensusMetadataWithValues(clientStore, height, clienttypes.GetSelfHeight(ctx), uint64(ctx.BlockTime().UnixNano()))
+	_ = "STUB: not implemented"
+	return
 }
 
 // setConsensusMetadataWithValues sets the consensus metadata with the provided values
@@ -330,14 +208,12 @@ func setConsensusMetadataWithValues(
 	processedHeight exported.Height,
 	processedTime uint64,
 ) {
-	SetProcessedTime(clientStore, height, processedTime)
-	SetProcessedHeight(clientStore, height, processedHeight)
-	SetIterationKey(clientStore, height)
+	_ = "STUB: not implemented"
+	return
 }
 
 // deleteConsensusMetadata deletes the metadata stored for a particular consensus state.
 func deleteConsensusMetadata(clientStore storetypes.KVStore, height exported.Height) {
-	deleteProcessedTime(clientStore, height)
-	deleteProcessedHeight(clientStore, height)
-	deleteIterationKey(clientStore, height)
+	_ = "STUB: not implemented"
+	return
 }

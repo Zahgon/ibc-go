@@ -5,10 +5,9 @@ package v2
 
 import (
 	fmt "fmt"
-	proto "github.com/cosmos/gogoproto/proto"
-	io "io"
 	math "math"
-	math_bits "math/bits"
+
+	proto "github.com/cosmos/gogoproto/proto"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -57,45 +56,27 @@ type MerklePath struct {
 	KeyPath [][]byte `protobuf:"bytes,1,rep,name=key_path,json=keyPath,proto3" json:"key_path,omitempty"`
 }
 
-func (m *MerklePath) Reset()         { *m = MerklePath{} }
-func (m *MerklePath) String() string { return proto.CompactTextString(m) }
-func (*MerklePath) ProtoMessage()    {}
-func (*MerklePath) Descriptor() ([]byte, []int) {
-	return fileDescriptor_8f65a9eb5e4ee5fc, []int{0}
-}
-func (m *MerklePath) XXX_Unmarshal(b []byte) error {
-	return m.Unmarshal(b)
-}
+func (m *MerklePath) Reset()                    { _ = "STUB: not implemented"; return }
+func (m *MerklePath) String() string            { _ = "STUB: not implemented"; return "" }
+func (*MerklePath) ProtoMessage()               { _ = "STUB: not implemented"; return }
+func (*MerklePath) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
+
+func (m *MerklePath) XXX_Unmarshal(b []byte) error { _ = "STUB: not implemented"; return nil }
+
 func (m *MerklePath) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	if deterministic {
-		return xxx_messageInfo_MerklePath.Marshal(b, m, deterministic)
-	} else {
-		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
-		if err != nil {
-			return nil, err
-		}
-		return b[:n], nil
-	}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
-func (m *MerklePath) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_MerklePath.Merge(m, src)
-}
-func (m *MerklePath) XXX_Size() int {
-	return m.Size()
-}
-func (m *MerklePath) XXX_DiscardUnknown() {
-	xxx_messageInfo_MerklePath.DiscardUnknown(m)
-}
+
+func (m *MerklePath) XXX_Merge(src proto.Message) { _ = "STUB: not implemented"; return }
+
+func (m *MerklePath) XXX_Size() int { _ = "STUB: not implemented"; return 0 }
+
+func (m *MerklePath) XXX_DiscardUnknown() { _ = "STUB: not implemented"; return }
 
 var xxx_messageInfo_MerklePath proto.InternalMessageInfo
 
-func (m *MerklePath) GetKeyPath() [][]byte {
-	if m != nil {
-		return m.KeyPath
-	}
-	return nil
-}
+func (m *MerklePath) GetKeyPath() [][]byte { _ = "STUB: not implemented"; return nil }
 
 func init() {
 	proto.RegisterType((*MerklePath)(nil), "ibc.core.commitment.v2.MerklePath")
@@ -121,230 +102,29 @@ var fileDescriptor_8f65a9eb5e4ee5fc = []byte{
 	0xbb, 0xd1, 0x18, 0x10, 0x00, 0x00, 0xff, 0xff, 0x4d, 0x50, 0x5b, 0x1c, 0xce, 0x00, 0x00, 0x00,
 }
 
-func (m *MerklePath) Marshal() (dAtA []byte, err error) {
-	size := m.Size()
-	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
-	if err != nil {
-		return nil, err
-	}
-	return dAtA[:n], nil
-}
+func (m *MerklePath) Marshal() (dAtA []byte, err error) { _ = "STUB: not implemented"; return nil, nil }
 
-func (m *MerklePath) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
+func (m *MerklePath) MarshalTo(dAtA []byte) (int, error) { _ = "STUB: not implemented"; return 0, nil }
 
 func (m *MerklePath) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
-	_ = i
-	var l int
-	_ = l
-	if len(m.KeyPath) > 0 {
-		for iNdEx := len(m.KeyPath) - 1; iNdEx >= 0; iNdEx-- {
-			i -= len(m.KeyPath[iNdEx])
-			copy(dAtA[i:], m.KeyPath[iNdEx])
-			i = encodeVarintCommitment(dAtA, i, uint64(len(m.KeyPath[iNdEx])))
-			i--
-			dAtA[i] = 0xa
-		}
-	}
-	return len(dAtA) - i, nil
+	_ = "STUB: not implemented"
+	return 0, nil
 }
 
 func encodeVarintCommitment(dAtA []byte, offset int, v uint64) int {
-	offset -= sovCommitment(v)
-	base := offset
-	for v >= 1<<7 {
-		dAtA[offset] = uint8(v&0x7f | 0x80)
-		v >>= 7
-		offset++
-	}
-	dAtA[offset] = uint8(v)
-	return base
-}
-func (m *MerklePath) Size() (n int) {
-	if m == nil {
-		return 0
-	}
-	var l int
-	_ = l
-	if len(m.KeyPath) > 0 {
-		for _, b := range m.KeyPath {
-			l = len(b)
-			n += 1 + l + sovCommitment(uint64(l))
-		}
-	}
-	return n
+	_ = "STUB: not implemented"
+	return 0
 }
 
-func sovCommitment(x uint64) (n int) {
-	return (math_bits.Len64(x|1) + 6) / 7
-}
-func sozCommitment(x uint64) (n int) {
-	return sovCommitment(uint64((x << 1) ^ uint64((int64(x) >> 63))))
-}
-func (m *MerklePath) Unmarshal(dAtA []byte) error {
-	l := len(dAtA)
-	iNdEx := 0
-	for iNdEx < l {
-		preIndex := iNdEx
-		var wire uint64
-		for shift := uint(0); ; shift += 7 {
-			if shift >= 64 {
-				return ErrIntOverflowCommitment
-			}
-			if iNdEx >= l {
-				return io.ErrUnexpectedEOF
-			}
-			b := dAtA[iNdEx]
-			iNdEx++
-			wire |= uint64(b&0x7F) << shift
-			if b < 0x80 {
-				break
-			}
-		}
-		fieldNum := int32(wire >> 3)
-		wireType := int(wire & 0x7)
-		if wireType == 4 {
-			return fmt.Errorf("proto: MerklePath: wiretype end group for non-group")
-		}
-		if fieldNum <= 0 {
-			return fmt.Errorf("proto: MerklePath: illegal tag %d (wire type %d)", fieldNum, wire)
-		}
-		switch fieldNum {
-		case 1:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field KeyPath", wireType)
-			}
-			var byteLen int
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowCommitment
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				byteLen |= int(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			if byteLen < 0 {
-				return ErrInvalidLengthCommitment
-			}
-			postIndex := iNdEx + byteLen
-			if postIndex < 0 {
-				return ErrInvalidLengthCommitment
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.KeyPath = append(m.KeyPath, make([]byte, postIndex-iNdEx))
-			copy(m.KeyPath[len(m.KeyPath)-1], dAtA[iNdEx:postIndex])
-			iNdEx = postIndex
-		default:
-			iNdEx = preIndex
-			skippy, err := skipCommitment(dAtA[iNdEx:])
-			if err != nil {
-				return err
-			}
-			if (skippy < 0) || (iNdEx+skippy) < 0 {
-				return ErrInvalidLengthCommitment
-			}
-			if (iNdEx + skippy) > l {
-				return io.ErrUnexpectedEOF
-			}
-			iNdEx += skippy
-		}
-	}
+func (m *MerklePath) Size() (n int) { _ = "STUB: not implemented"; return 0 }
 
-	if iNdEx > l {
-		return io.ErrUnexpectedEOF
-	}
-	return nil
-}
-func skipCommitment(dAtA []byte) (n int, err error) {
-	l := len(dAtA)
-	iNdEx := 0
-	depth := 0
-	for iNdEx < l {
-		var wire uint64
-		for shift := uint(0); ; shift += 7 {
-			if shift >= 64 {
-				return 0, ErrIntOverflowCommitment
-			}
-			if iNdEx >= l {
-				return 0, io.ErrUnexpectedEOF
-			}
-			b := dAtA[iNdEx]
-			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
-			if b < 0x80 {
-				break
-			}
-		}
-		wireType := int(wire & 0x7)
-		switch wireType {
-		case 0:
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return 0, ErrIntOverflowCommitment
-				}
-				if iNdEx >= l {
-					return 0, io.ErrUnexpectedEOF
-				}
-				iNdEx++
-				if dAtA[iNdEx-1] < 0x80 {
-					break
-				}
-			}
-		case 1:
-			iNdEx += 8
-		case 2:
-			var length int
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return 0, ErrIntOverflowCommitment
-				}
-				if iNdEx >= l {
-					return 0, io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				length |= (int(b) & 0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			if length < 0 {
-				return 0, ErrInvalidLengthCommitment
-			}
-			iNdEx += length
-		case 3:
-			depth++
-		case 4:
-			if depth == 0 {
-				return 0, ErrUnexpectedEndOfGroupCommitment
-			}
-			depth--
-		case 5:
-			iNdEx += 4
-		default:
-			return 0, fmt.Errorf("proto: illegal wireType %d", wireType)
-		}
-		if iNdEx < 0 {
-			return 0, ErrInvalidLengthCommitment
-		}
-		if depth == 0 {
-			return iNdEx, nil
-		}
-	}
-	return 0, io.ErrUnexpectedEOF
-}
+func sovCommitment(x uint64) (n int) { _ = "STUB: not implemented"; return 0 }
+
+func sozCommitment(x uint64) (n int) { _ = "STUB: not implemented"; return 0 }
+
+func (m *MerklePath) Unmarshal(dAtA []byte) error { _ = "STUB: not implemented"; return nil }
+
+func skipCommitment(dAtA []byte) (n int, err error) { _ = "STUB: not implemented"; return 0, nil }
 
 var (
 	ErrInvalidLengthCommitment        = fmt.Errorf("proto: negative length found during unmarshaling")

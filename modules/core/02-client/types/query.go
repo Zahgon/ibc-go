@@ -2,8 +2,6 @@ package types
 
 import (
 	codectypes "github.com/cosmos/cosmos-sdk/codec/types"
-
-	"github.com/cosmos/ibc-go/v11/modules/core/exported"
 )
 
 var (
@@ -15,11 +13,7 @@ var (
 
 // UnpackInterfaces implements UnpackInterfacesMessage.UnpackInterfaces
 func (qcsr QueryClientStatesResponse) UnpackInterfaces(unpacker codectypes.AnyUnpacker) error {
-	for _, cs := range qcsr.ClientStates {
-		if err := cs.UnpackInterfaces(unpacker); err != nil {
-			return err
-		}
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -27,25 +21,19 @@ func (qcsr QueryClientStatesResponse) UnpackInterfaces(unpacker codectypes.AnyUn
 func NewQueryClientStateResponse(
 	clientStateAny *codectypes.Any, proof []byte, height Height,
 ) *QueryClientStateResponse {
-	return &QueryClientStateResponse{
-		ClientState: clientStateAny,
-		Proof:       proof,
-		ProofHeight: height,
-	}
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // UnpackInterfaces implements UnpackInterfacesMessage.UnpackInterfaces
 func (qcsr QueryClientStateResponse) UnpackInterfaces(unpacker codectypes.AnyUnpacker) error {
-	return unpacker.UnpackAny(qcsr.ClientState, new(exported.ClientState))
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // UnpackInterfaces implements UnpackInterfacesMessage.UnpackInterfaces
 func (qcsr QueryConsensusStatesResponse) UnpackInterfaces(unpacker codectypes.AnyUnpacker) error {
-	for _, cs := range qcsr.ConsensusStates {
-		if err := cs.UnpackInterfaces(unpacker); err != nil {
-			return err
-		}
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -53,14 +41,12 @@ func (qcsr QueryConsensusStatesResponse) UnpackInterfaces(unpacker codectypes.An
 func NewQueryConsensusStateResponse(
 	consensusStateAny *codectypes.Any, proof []byte, height Height,
 ) *QueryConsensusStateResponse {
-	return &QueryConsensusStateResponse{
-		ConsensusState: consensusStateAny,
-		Proof:          proof,
-		ProofHeight:    height,
-	}
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // UnpackInterfaces implements UnpackInterfacesMessage.UnpackInterfaces
 func (qcsr QueryConsensusStateResponse) UnpackInterfaces(unpacker codectypes.AnyUnpacker) error {
-	return unpacker.UnpackAny(qcsr.ConsensusState, new(exported.ConsensusState))
+	_ = "STUB: not implemented"
+	return nil
 }

@@ -4,17 +4,15 @@
 package types
 
 import (
-	cosmossdk_io_math "cosmossdk.io/math"
 	fmt "fmt"
+	math "math"
+	time "time"
+
+	cosmossdk_io_math "cosmossdk.io/math"
 	_ "github.com/cosmos/gogoproto/gogoproto"
 	proto "github.com/cosmos/gogoproto/proto"
-	github_com_cosmos_gogoproto_types "github.com/cosmos/gogoproto/types"
 	_ "google.golang.org/protobuf/types/known/durationpb"
 	_ "google.golang.org/protobuf/types/known/timestamppb"
-	io "io"
-	math "math"
-	math_bits "math/bits"
-	time "time"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -48,13 +46,9 @@ var PacketDirection_value = map[string]int32{
 	"PACKET_RECV": 1,
 }
 
-func (x PacketDirection) String() string {
-	return proto.EnumName(PacketDirection_name, int32(x))
-}
+func (x PacketDirection) String() string { _ = "STUB: not implemented"; return "" }
 
-func (PacketDirection) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_bf22d2adece00654, []int{0}
-}
+func (PacketDirection) EnumDescriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
 
 // Path holds the denom and channelID that define the rate limited route
 type Path struct {
@@ -62,52 +56,29 @@ type Path struct {
 	ChannelOrClientId string `protobuf:"bytes,2,opt,name=channel_or_client_id,json=channelOrClientId,proto3" json:"channel_or_client_id,omitempty"`
 }
 
-func (m *Path) Reset()         { *m = Path{} }
-func (m *Path) String() string { return proto.CompactTextString(m) }
-func (*Path) ProtoMessage()    {}
-func (*Path) Descriptor() ([]byte, []int) {
-	return fileDescriptor_bf22d2adece00654, []int{0}
-}
-func (m *Path) XXX_Unmarshal(b []byte) error {
-	return m.Unmarshal(b)
-}
+func (m *Path) Reset()                    { _ = "STUB: not implemented"; return }
+func (m *Path) String() string            { _ = "STUB: not implemented"; return "" }
+func (*Path) ProtoMessage()               { _ = "STUB: not implemented"; return }
+func (*Path) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
+
+func (m *Path) XXX_Unmarshal(b []byte) error { _ = "STUB: not implemented"; return nil }
+
 func (m *Path) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	if deterministic {
-		return xxx_messageInfo_Path.Marshal(b, m, deterministic)
-	} else {
-		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
-		if err != nil {
-			return nil, err
-		}
-		return b[:n], nil
-	}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
-func (m *Path) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_Path.Merge(m, src)
-}
-func (m *Path) XXX_Size() int {
-	return m.Size()
-}
-func (m *Path) XXX_DiscardUnknown() {
-	xxx_messageInfo_Path.DiscardUnknown(m)
-}
+
+func (m *Path) XXX_Merge(src proto.Message) { _ = "STUB: not implemented"; return }
+
+func (m *Path) XXX_Size() int { _ = "STUB: not implemented"; return 0 }
+
+func (m *Path) XXX_DiscardUnknown() { _ = "STUB: not implemented"; return }
 
 var xxx_messageInfo_Path proto.InternalMessageInfo
 
-func (m *Path) GetDenom() string {
-	if m != nil {
-		return m.Denom
-	}
-	return ""
-}
+func (m *Path) GetDenom() string { _ = "STUB: not implemented"; return "" }
 
-func (m *Path) GetChannelOrClientId() string {
-	if m != nil {
-		return m.ChannelOrClientId
-	}
-	return ""
-}
+func (m *Path) GetChannelOrClientId() string { _ = "STUB: not implemented"; return "" }
 
 // Quota defines the rate limit thresholds for transfer packets
 type Quota struct {
@@ -122,45 +93,27 @@ type Quota struct {
 	DurationHours uint64 `protobuf:"varint,3,opt,name=duration_hours,json=durationHours,proto3" json:"duration_hours,omitempty"`
 }
 
-func (m *Quota) Reset()         { *m = Quota{} }
-func (m *Quota) String() string { return proto.CompactTextString(m) }
-func (*Quota) ProtoMessage()    {}
-func (*Quota) Descriptor() ([]byte, []int) {
-	return fileDescriptor_bf22d2adece00654, []int{1}
-}
-func (m *Quota) XXX_Unmarshal(b []byte) error {
-	return m.Unmarshal(b)
-}
+func (m *Quota) Reset()                    { _ = "STUB: not implemented"; return }
+func (m *Quota) String() string            { _ = "STUB: not implemented"; return "" }
+func (*Quota) ProtoMessage()               { _ = "STUB: not implemented"; return }
+func (*Quota) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
+
+func (m *Quota) XXX_Unmarshal(b []byte) error { _ = "STUB: not implemented"; return nil }
+
 func (m *Quota) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	if deterministic {
-		return xxx_messageInfo_Quota.Marshal(b, m, deterministic)
-	} else {
-		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
-		if err != nil {
-			return nil, err
-		}
-		return b[:n], nil
-	}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
-func (m *Quota) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_Quota.Merge(m, src)
-}
-func (m *Quota) XXX_Size() int {
-	return m.Size()
-}
-func (m *Quota) XXX_DiscardUnknown() {
-	xxx_messageInfo_Quota.DiscardUnknown(m)
-}
+
+func (m *Quota) XXX_Merge(src proto.Message) { _ = "STUB: not implemented"; return }
+
+func (m *Quota) XXX_Size() int { _ = "STUB: not implemented"; return 0 }
+
+func (m *Quota) XXX_DiscardUnknown() { _ = "STUB: not implemented"; return }
 
 var xxx_messageInfo_Quota proto.InternalMessageInfo
 
-func (m *Quota) GetDurationHours() uint64 {
-	if m != nil {
-		return m.DurationHours
-	}
-	return 0
-}
+func (m *Quota) GetDurationHours() uint64 { _ = "STUB: not implemented"; return 0 }
 
 // Flow tracks all the inflows and outflows of a channel.
 type Flow struct {
@@ -177,36 +130,23 @@ type Flow struct {
 	ChannelValue cosmossdk_io_math.Int `protobuf:"bytes,3,opt,name=channel_value,json=channelValue,proto3,customtype=cosmossdk.io/math.Int" json:"channel_value"`
 }
 
-func (m *Flow) Reset()         { *m = Flow{} }
-func (m *Flow) String() string { return proto.CompactTextString(m) }
-func (*Flow) ProtoMessage()    {}
-func (*Flow) Descriptor() ([]byte, []int) {
-	return fileDescriptor_bf22d2adece00654, []int{2}
-}
-func (m *Flow) XXX_Unmarshal(b []byte) error {
-	return m.Unmarshal(b)
-}
+func (m *Flow) Reset()                    { _ = "STUB: not implemented"; return }
+func (m *Flow) String() string            { _ = "STUB: not implemented"; return "" }
+func (*Flow) ProtoMessage()               { _ = "STUB: not implemented"; return }
+func (*Flow) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
+
+func (m *Flow) XXX_Unmarshal(b []byte) error { _ = "STUB: not implemented"; return nil }
+
 func (m *Flow) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	if deterministic {
-		return xxx_messageInfo_Flow.Marshal(b, m, deterministic)
-	} else {
-		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
-		if err != nil {
-			return nil, err
-		}
-		return b[:n], nil
-	}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
-func (m *Flow) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_Flow.Merge(m, src)
-}
-func (m *Flow) XXX_Size() int {
-	return m.Size()
-}
-func (m *Flow) XXX_DiscardUnknown() {
-	xxx_messageInfo_Flow.DiscardUnknown(m)
-}
+
+func (m *Flow) XXX_Merge(src proto.Message) { _ = "STUB: not implemented"; return }
+
+func (m *Flow) XXX_Size() int { _ = "STUB: not implemented"; return 0 }
+
+func (m *Flow) XXX_DiscardUnknown() { _ = "STUB: not implemented"; return }
 
 var xxx_messageInfo_Flow proto.InternalMessageInfo
 
@@ -219,59 +159,31 @@ type RateLimit struct {
 	Flow  *Flow  `protobuf:"bytes,3,opt,name=flow,proto3" json:"flow,omitempty"`
 }
 
-func (m *RateLimit) Reset()         { *m = RateLimit{} }
-func (m *RateLimit) String() string { return proto.CompactTextString(m) }
-func (*RateLimit) ProtoMessage()    {}
-func (*RateLimit) Descriptor() ([]byte, []int) {
-	return fileDescriptor_bf22d2adece00654, []int{3}
-}
-func (m *RateLimit) XXX_Unmarshal(b []byte) error {
-	return m.Unmarshal(b)
-}
+func (m *RateLimit) Reset()                    { _ = "STUB: not implemented"; return }
+func (m *RateLimit) String() string            { _ = "STUB: not implemented"; return "" }
+func (*RateLimit) ProtoMessage()               { _ = "STUB: not implemented"; return }
+func (*RateLimit) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
+
+func (m *RateLimit) XXX_Unmarshal(b []byte) error { _ = "STUB: not implemented"; return nil }
+
 func (m *RateLimit) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	if deterministic {
-		return xxx_messageInfo_RateLimit.Marshal(b, m, deterministic)
-	} else {
-		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
-		if err != nil {
-			return nil, err
-		}
-		return b[:n], nil
-	}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
-func (m *RateLimit) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_RateLimit.Merge(m, src)
-}
-func (m *RateLimit) XXX_Size() int {
-	return m.Size()
-}
-func (m *RateLimit) XXX_DiscardUnknown() {
-	xxx_messageInfo_RateLimit.DiscardUnknown(m)
-}
+
+func (m *RateLimit) XXX_Merge(src proto.Message) { _ = "STUB: not implemented"; return }
+
+func (m *RateLimit) XXX_Size() int { _ = "STUB: not implemented"; return 0 }
+
+func (m *RateLimit) XXX_DiscardUnknown() { _ = "STUB: not implemented"; return }
 
 var xxx_messageInfo_RateLimit proto.InternalMessageInfo
 
-func (m *RateLimit) GetPath() *Path {
-	if m != nil {
-		return m.Path
-	}
-	return nil
-}
+func (m *RateLimit) GetPath() *Path { _ = "STUB: not implemented"; return nil }
 
-func (m *RateLimit) GetQuota() *Quota {
-	if m != nil {
-		return m.Quota
-	}
-	return nil
-}
+func (m *RateLimit) GetQuota() *Quota { _ = "STUB: not implemented"; return nil }
 
-func (m *RateLimit) GetFlow() *Flow {
-	if m != nil {
-		return m.Flow
-	}
-	return nil
-}
+func (m *RateLimit) GetFlow() *Flow { _ = "STUB: not implemented"; return nil }
 
 // WhitelistedAddressPair represents a sender-receiver combo that is
 // not subject to rate limit restrictions
@@ -280,52 +192,35 @@ type WhitelistedAddressPair struct {
 	Receiver string `protobuf:"bytes,2,opt,name=receiver,proto3" json:"receiver,omitempty"`
 }
 
-func (m *WhitelistedAddressPair) Reset()         { *m = WhitelistedAddressPair{} }
-func (m *WhitelistedAddressPair) String() string { return proto.CompactTextString(m) }
-func (*WhitelistedAddressPair) ProtoMessage()    {}
+func (m *WhitelistedAddressPair) Reset()         { _ = "STUB: not implemented"; return }
+func (m *WhitelistedAddressPair) String() string { _ = "STUB: not implemented"; return "" }
+func (*WhitelistedAddressPair) ProtoMessage()    { _ = "STUB: not implemented"; return }
 func (*WhitelistedAddressPair) Descriptor() ([]byte, []int) {
-	return fileDescriptor_bf22d2adece00654, []int{4}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (m *WhitelistedAddressPair) XXX_Unmarshal(b []byte) error {
-	return m.Unmarshal(b)
+	_ = "STUB: not implemented"
+	return nil
 }
+
 func (m *WhitelistedAddressPair) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	if deterministic {
-		return xxx_messageInfo_WhitelistedAddressPair.Marshal(b, m, deterministic)
-	} else {
-		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
-		if err != nil {
-			return nil, err
-		}
-		return b[:n], nil
-	}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
-func (m *WhitelistedAddressPair) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_WhitelistedAddressPair.Merge(m, src)
-}
-func (m *WhitelistedAddressPair) XXX_Size() int {
-	return m.Size()
-}
-func (m *WhitelistedAddressPair) XXX_DiscardUnknown() {
-	xxx_messageInfo_WhitelistedAddressPair.DiscardUnknown(m)
-}
+
+func (m *WhitelistedAddressPair) XXX_Merge(src proto.Message) { _ = "STUB: not implemented"; return }
+
+func (m *WhitelistedAddressPair) XXX_Size() int { _ = "STUB: not implemented"; return 0 }
+
+func (m *WhitelistedAddressPair) XXX_DiscardUnknown() { _ = "STUB: not implemented"; return }
 
 var xxx_messageInfo_WhitelistedAddressPair proto.InternalMessageInfo
 
-func (m *WhitelistedAddressPair) GetSender() string {
-	if m != nil {
-		return m.Sender
-	}
-	return ""
-}
+func (m *WhitelistedAddressPair) GetSender() string { _ = "STUB: not implemented"; return "" }
 
-func (m *WhitelistedAddressPair) GetReceiver() string {
-	if m != nil {
-		return m.Receiver
-	}
-	return ""
-}
+func (m *WhitelistedAddressPair) GetReceiver() string { _ = "STUB: not implemented"; return "" }
 
 // HourEpoch is the epoch type.
 type HourEpoch struct {
@@ -335,66 +230,39 @@ type HourEpoch struct {
 	EpochStartHeight int64         `protobuf:"varint,4,opt,name=epoch_start_height,json=epochStartHeight,proto3" json:"epoch_start_height,omitempty"`
 }
 
-func (m *HourEpoch) Reset()         { *m = HourEpoch{} }
-func (m *HourEpoch) String() string { return proto.CompactTextString(m) }
-func (*HourEpoch) ProtoMessage()    {}
-func (*HourEpoch) Descriptor() ([]byte, []int) {
-	return fileDescriptor_bf22d2adece00654, []int{5}
-}
-func (m *HourEpoch) XXX_Unmarshal(b []byte) error {
-	return m.Unmarshal(b)
-}
+func (m *HourEpoch) Reset()                    { _ = "STUB: not implemented"; return }
+func (m *HourEpoch) String() string            { _ = "STUB: not implemented"; return "" }
+func (*HourEpoch) ProtoMessage()               { _ = "STUB: not implemented"; return }
+func (*HourEpoch) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
+
+func (m *HourEpoch) XXX_Unmarshal(b []byte) error { _ = "STUB: not implemented"; return nil }
+
 func (m *HourEpoch) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	if deterministic {
-		return xxx_messageInfo_HourEpoch.Marshal(b, m, deterministic)
-	} else {
-		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
-		if err != nil {
-			return nil, err
-		}
-		return b[:n], nil
-	}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
-func (m *HourEpoch) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_HourEpoch.Merge(m, src)
-}
-func (m *HourEpoch) XXX_Size() int {
-	return m.Size()
-}
-func (m *HourEpoch) XXX_DiscardUnknown() {
-	xxx_messageInfo_HourEpoch.DiscardUnknown(m)
-}
+
+func (m *HourEpoch) XXX_Merge(src proto.Message) { _ = "STUB: not implemented"; return }
+
+func (m *HourEpoch) XXX_Size() int { _ = "STUB: not implemented"; return 0 }
+
+func (m *HourEpoch) XXX_DiscardUnknown() { _ = "STUB: not implemented"; return }
 
 var xxx_messageInfo_HourEpoch proto.InternalMessageInfo
 
-func (m *HourEpoch) GetEpochNumber() uint64 {
-	if m != nil {
-		return m.EpochNumber
-	}
-	return 0
-}
+func (m *HourEpoch) GetEpochNumber() uint64 { _ = "STUB: not implemented"; return 0 }
 
 func (m *HourEpoch) GetDuration() time.Duration {
-	if m != nil {
-		return m.Duration
-	}
-	return 0
+	_ = "STUB: not implemented"
+	return *new(time.Duration)
 }
 
 func (m *HourEpoch) GetEpochStartTime() time.Time {
-	if m != nil {
-		return m.EpochStartTime
-	}
-	return time.Time{}
+	_ = "STUB: not implemented"
+	return *new(time.Time)
 }
 
-func (m *HourEpoch) GetEpochStartHeight() int64 {
-	if m != nil {
-		return m.EpochStartHeight
-	}
-	return 0
-}
+func (m *HourEpoch) GetEpochStartHeight() int64 { _ = "STUB: not implemented"; return 0 }
 
 func init() {
 	proto.RegisterEnum("ibc.applications.rate_limiting.v1.PacketDirection", PacketDirection_name, PacketDirection_value)
@@ -459,1318 +327,103 @@ var fileDescriptor_bf22d2adece00654 = []byte{
 	0x36, 0xb9, 0x38, 0x05, 0x00, 0x00,
 }
 
-func (m *Path) Marshal() (dAtA []byte, err error) {
-	size := m.Size()
-	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
-	if err != nil {
-		return nil, err
-	}
-	return dAtA[:n], nil
-}
+func (m *Path) Marshal() (dAtA []byte, err error) { _ = "STUB: not implemented"; return nil, nil }
 
-func (m *Path) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
+func (m *Path) MarshalTo(dAtA []byte) (int, error) { _ = "STUB: not implemented"; return 0, nil }
 
 func (m *Path) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
-	_ = i
-	var l int
-	_ = l
-	if len(m.ChannelOrClientId) > 0 {
-		i -= len(m.ChannelOrClientId)
-		copy(dAtA[i:], m.ChannelOrClientId)
-		i = encodeVarintRateLimiting(dAtA, i, uint64(len(m.ChannelOrClientId)))
-		i--
-		dAtA[i] = 0x12
-	}
-	if len(m.Denom) > 0 {
-		i -= len(m.Denom)
-		copy(dAtA[i:], m.Denom)
-		i = encodeVarintRateLimiting(dAtA, i, uint64(len(m.Denom)))
-		i--
-		dAtA[i] = 0xa
-	}
-	return len(dAtA) - i, nil
+	_ = "STUB: not implemented"
+	return 0, nil
 }
 
-func (m *Quota) Marshal() (dAtA []byte, err error) {
-	size := m.Size()
-	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
-	if err != nil {
-		return nil, err
-	}
-	return dAtA[:n], nil
-}
+func (m *Quota) Marshal() (dAtA []byte, err error) { _ = "STUB: not implemented"; return nil, nil }
 
-func (m *Quota) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
+func (m *Quota) MarshalTo(dAtA []byte) (int, error) { _ = "STUB: not implemented"; return 0, nil }
 
 func (m *Quota) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
-	_ = i
-	var l int
-	_ = l
-	if m.DurationHours != 0 {
-		i = encodeVarintRateLimiting(dAtA, i, uint64(m.DurationHours))
-		i--
-		dAtA[i] = 0x18
-	}
-	{
-		size := m.MaxPercentRecv.Size()
-		i -= size
-		if _, err := m.MaxPercentRecv.MarshalTo(dAtA[i:]); err != nil {
-			return 0, err
-		}
-		i = encodeVarintRateLimiting(dAtA, i, uint64(size))
-	}
-	i--
-	dAtA[i] = 0x12
-	{
-		size := m.MaxPercentSend.Size()
-		i -= size
-		if _, err := m.MaxPercentSend.MarshalTo(dAtA[i:]); err != nil {
-			return 0, err
-		}
-		i = encodeVarintRateLimiting(dAtA, i, uint64(size))
-	}
-	i--
-	dAtA[i] = 0xa
-	return len(dAtA) - i, nil
+	_ = "STUB: not implemented"
+	return 0, nil
 }
 
-func (m *Flow) Marshal() (dAtA []byte, err error) {
-	size := m.Size()
-	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
-	if err != nil {
-		return nil, err
-	}
-	return dAtA[:n], nil
-}
+func (m *Flow) Marshal() (dAtA []byte, err error) { _ = "STUB: not implemented"; return nil, nil }
 
-func (m *Flow) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
+func (m *Flow) MarshalTo(dAtA []byte) (int, error) { _ = "STUB: not implemented"; return 0, nil }
 
 func (m *Flow) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
-	_ = i
-	var l int
-	_ = l
-	{
-		size := m.ChannelValue.Size()
-		i -= size
-		if _, err := m.ChannelValue.MarshalTo(dAtA[i:]); err != nil {
-			return 0, err
-		}
-		i = encodeVarintRateLimiting(dAtA, i, uint64(size))
-	}
-	i--
-	dAtA[i] = 0x1a
-	{
-		size := m.Outflow.Size()
-		i -= size
-		if _, err := m.Outflow.MarshalTo(dAtA[i:]); err != nil {
-			return 0, err
-		}
-		i = encodeVarintRateLimiting(dAtA, i, uint64(size))
-	}
-	i--
-	dAtA[i] = 0x12
-	{
-		size := m.Inflow.Size()
-		i -= size
-		if _, err := m.Inflow.MarshalTo(dAtA[i:]); err != nil {
-			return 0, err
-		}
-		i = encodeVarintRateLimiting(dAtA, i, uint64(size))
-	}
-	i--
-	dAtA[i] = 0xa
-	return len(dAtA) - i, nil
+	_ = "STUB: not implemented"
+	return 0, nil
 }
 
-func (m *RateLimit) Marshal() (dAtA []byte, err error) {
-	size := m.Size()
-	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
-	if err != nil {
-		return nil, err
-	}
-	return dAtA[:n], nil
-}
+func (m *RateLimit) Marshal() (dAtA []byte, err error) { _ = "STUB: not implemented"; return nil, nil }
 
-func (m *RateLimit) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
+func (m *RateLimit) MarshalTo(dAtA []byte) (int, error) { _ = "STUB: not implemented"; return 0, nil }
 
 func (m *RateLimit) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
-	_ = i
-	var l int
-	_ = l
-	if m.Flow != nil {
-		{
-			size, err := m.Flow.MarshalToSizedBuffer(dAtA[:i])
-			if err != nil {
-				return 0, err
-			}
-			i -= size
-			i = encodeVarintRateLimiting(dAtA, i, uint64(size))
-		}
-		i--
-		dAtA[i] = 0x1a
-	}
-	if m.Quota != nil {
-		{
-			size, err := m.Quota.MarshalToSizedBuffer(dAtA[:i])
-			if err != nil {
-				return 0, err
-			}
-			i -= size
-			i = encodeVarintRateLimiting(dAtA, i, uint64(size))
-		}
-		i--
-		dAtA[i] = 0x12
-	}
-	if m.Path != nil {
-		{
-			size, err := m.Path.MarshalToSizedBuffer(dAtA[:i])
-			if err != nil {
-				return 0, err
-			}
-			i -= size
-			i = encodeVarintRateLimiting(dAtA, i, uint64(size))
-		}
-		i--
-		dAtA[i] = 0xa
-	}
-	return len(dAtA) - i, nil
+	_ = "STUB: not implemented"
+	return 0, nil
 }
 
 func (m *WhitelistedAddressPair) Marshal() (dAtA []byte, err error) {
-	size := m.Size()
-	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
-	if err != nil {
-		return nil, err
-	}
-	return dAtA[:n], nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (m *WhitelistedAddressPair) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
+	_ = "STUB: not implemented"
+	return 0, nil
 }
 
 func (m *WhitelistedAddressPair) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
-	_ = i
-	var l int
-	_ = l
-	if len(m.Receiver) > 0 {
-		i -= len(m.Receiver)
-		copy(dAtA[i:], m.Receiver)
-		i = encodeVarintRateLimiting(dAtA, i, uint64(len(m.Receiver)))
-		i--
-		dAtA[i] = 0x12
-	}
-	if len(m.Sender) > 0 {
-		i -= len(m.Sender)
-		copy(dAtA[i:], m.Sender)
-		i = encodeVarintRateLimiting(dAtA, i, uint64(len(m.Sender)))
-		i--
-		dAtA[i] = 0xa
-	}
-	return len(dAtA) - i, nil
+	_ = "STUB: not implemented"
+	return 0, nil
 }
 
-func (m *HourEpoch) Marshal() (dAtA []byte, err error) {
-	size := m.Size()
-	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
-	if err != nil {
-		return nil, err
-	}
-	return dAtA[:n], nil
-}
+func (m *HourEpoch) Marshal() (dAtA []byte, err error) { _ = "STUB: not implemented"; return nil, nil }
 
-func (m *HourEpoch) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
+func (m *HourEpoch) MarshalTo(dAtA []byte) (int, error) { _ = "STUB: not implemented"; return 0, nil }
 
 func (m *HourEpoch) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
-	_ = i
-	var l int
-	_ = l
-	if m.EpochStartHeight != 0 {
-		i = encodeVarintRateLimiting(dAtA, i, uint64(m.EpochStartHeight))
-		i--
-		dAtA[i] = 0x20
-	}
-	n4, err4 := github_com_cosmos_gogoproto_types.StdTimeMarshalTo(m.EpochStartTime, dAtA[i-github_com_cosmos_gogoproto_types.SizeOfStdTime(m.EpochStartTime):])
-	if err4 != nil {
-		return 0, err4
-	}
-	i -= n4
-	i = encodeVarintRateLimiting(dAtA, i, uint64(n4))
-	i--
-	dAtA[i] = 0x1a
-	n5, err5 := github_com_cosmos_gogoproto_types.StdDurationMarshalTo(m.Duration, dAtA[i-github_com_cosmos_gogoproto_types.SizeOfStdDuration(m.Duration):])
-	if err5 != nil {
-		return 0, err5
-	}
-	i -= n5
-	i = encodeVarintRateLimiting(dAtA, i, uint64(n5))
-	i--
-	dAtA[i] = 0x12
-	if m.EpochNumber != 0 {
-		i = encodeVarintRateLimiting(dAtA, i, uint64(m.EpochNumber))
-		i--
-		dAtA[i] = 0x8
-	}
-	return len(dAtA) - i, nil
+	_ = "STUB: not implemented"
+	return 0, nil
 }
 
 func encodeVarintRateLimiting(dAtA []byte, offset int, v uint64) int {
-	offset -= sovRateLimiting(v)
-	base := offset
-	for v >= 1<<7 {
-		dAtA[offset] = uint8(v&0x7f | 0x80)
-		v >>= 7
-		offset++
-	}
-	dAtA[offset] = uint8(v)
-	return base
-}
-func (m *Path) Size() (n int) {
-	if m == nil {
-		return 0
-	}
-	var l int
-	_ = l
-	l = len(m.Denom)
-	if l > 0 {
-		n += 1 + l + sovRateLimiting(uint64(l))
-	}
-	l = len(m.ChannelOrClientId)
-	if l > 0 {
-		n += 1 + l + sovRateLimiting(uint64(l))
-	}
-	return n
+	_ = "STUB: not implemented"
+	return 0
 }
 
-func (m *Quota) Size() (n int) {
-	if m == nil {
-		return 0
-	}
-	var l int
-	_ = l
-	l = m.MaxPercentSend.Size()
-	n += 1 + l + sovRateLimiting(uint64(l))
-	l = m.MaxPercentRecv.Size()
-	n += 1 + l + sovRateLimiting(uint64(l))
-	if m.DurationHours != 0 {
-		n += 1 + sovRateLimiting(uint64(m.DurationHours))
-	}
-	return n
-}
+func (m *Path) Size() (n int) { _ = "STUB: not implemented"; return 0 }
 
-func (m *Flow) Size() (n int) {
-	if m == nil {
-		return 0
-	}
-	var l int
-	_ = l
-	l = m.Inflow.Size()
-	n += 1 + l + sovRateLimiting(uint64(l))
-	l = m.Outflow.Size()
-	n += 1 + l + sovRateLimiting(uint64(l))
-	l = m.ChannelValue.Size()
-	n += 1 + l + sovRateLimiting(uint64(l))
-	return n
-}
+func (m *Quota) Size() (n int) { _ = "STUB: not implemented"; return 0 }
 
-func (m *RateLimit) Size() (n int) {
-	if m == nil {
-		return 0
-	}
-	var l int
-	_ = l
-	if m.Path != nil {
-		l = m.Path.Size()
-		n += 1 + l + sovRateLimiting(uint64(l))
-	}
-	if m.Quota != nil {
-		l = m.Quota.Size()
-		n += 1 + l + sovRateLimiting(uint64(l))
-	}
-	if m.Flow != nil {
-		l = m.Flow.Size()
-		n += 1 + l + sovRateLimiting(uint64(l))
-	}
-	return n
-}
+func (m *Flow) Size() (n int) { _ = "STUB: not implemented"; return 0 }
 
-func (m *WhitelistedAddressPair) Size() (n int) {
-	if m == nil {
-		return 0
-	}
-	var l int
-	_ = l
-	l = len(m.Sender)
-	if l > 0 {
-		n += 1 + l + sovRateLimiting(uint64(l))
-	}
-	l = len(m.Receiver)
-	if l > 0 {
-		n += 1 + l + sovRateLimiting(uint64(l))
-	}
-	return n
-}
+func (m *RateLimit) Size() (n int) { _ = "STUB: not implemented"; return 0 }
 
-func (m *HourEpoch) Size() (n int) {
-	if m == nil {
-		return 0
-	}
-	var l int
-	_ = l
-	if m.EpochNumber != 0 {
-		n += 1 + sovRateLimiting(uint64(m.EpochNumber))
-	}
-	l = github_com_cosmos_gogoproto_types.SizeOfStdDuration(m.Duration)
-	n += 1 + l + sovRateLimiting(uint64(l))
-	l = github_com_cosmos_gogoproto_types.SizeOfStdTime(m.EpochStartTime)
-	n += 1 + l + sovRateLimiting(uint64(l))
-	if m.EpochStartHeight != 0 {
-		n += 1 + sovRateLimiting(uint64(m.EpochStartHeight))
-	}
-	return n
-}
+func (m *WhitelistedAddressPair) Size() (n int) { _ = "STUB: not implemented"; return 0 }
 
-func sovRateLimiting(x uint64) (n int) {
-	return (math_bits.Len64(x|1) + 6) / 7
-}
-func sozRateLimiting(x uint64) (n int) {
-	return sovRateLimiting(uint64((x << 1) ^ uint64((int64(x) >> 63))))
-}
-func (m *Path) Unmarshal(dAtA []byte) error {
-	l := len(dAtA)
-	iNdEx := 0
-	for iNdEx < l {
-		preIndex := iNdEx
-		var wire uint64
-		for shift := uint(0); ; shift += 7 {
-			if shift >= 64 {
-				return ErrIntOverflowRateLimiting
-			}
-			if iNdEx >= l {
-				return io.ErrUnexpectedEOF
-			}
-			b := dAtA[iNdEx]
-			iNdEx++
-			wire |= uint64(b&0x7F) << shift
-			if b < 0x80 {
-				break
-			}
-		}
-		fieldNum := int32(wire >> 3)
-		wireType := int(wire & 0x7)
-		if wireType == 4 {
-			return fmt.Errorf("proto: Path: wiretype end group for non-group")
-		}
-		if fieldNum <= 0 {
-			return fmt.Errorf("proto: Path: illegal tag %d (wire type %d)", fieldNum, wire)
-		}
-		switch fieldNum {
-		case 1:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Denom", wireType)
-			}
-			var stringLen uint64
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowRateLimiting
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				stringLen |= uint64(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			intStringLen := int(stringLen)
-			if intStringLen < 0 {
-				return ErrInvalidLengthRateLimiting
-			}
-			postIndex := iNdEx + intStringLen
-			if postIndex < 0 {
-				return ErrInvalidLengthRateLimiting
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.Denom = string(dAtA[iNdEx:postIndex])
-			iNdEx = postIndex
-		case 2:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field ChannelOrClientId", wireType)
-			}
-			var stringLen uint64
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowRateLimiting
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				stringLen |= uint64(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			intStringLen := int(stringLen)
-			if intStringLen < 0 {
-				return ErrInvalidLengthRateLimiting
-			}
-			postIndex := iNdEx + intStringLen
-			if postIndex < 0 {
-				return ErrInvalidLengthRateLimiting
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.ChannelOrClientId = string(dAtA[iNdEx:postIndex])
-			iNdEx = postIndex
-		default:
-			iNdEx = preIndex
-			skippy, err := skipRateLimiting(dAtA[iNdEx:])
-			if err != nil {
-				return err
-			}
-			if (skippy < 0) || (iNdEx+skippy) < 0 {
-				return ErrInvalidLengthRateLimiting
-			}
-			if (iNdEx + skippy) > l {
-				return io.ErrUnexpectedEOF
-			}
-			iNdEx += skippy
-		}
-	}
+func (m *HourEpoch) Size() (n int) { _ = "STUB: not implemented"; return 0 }
 
-	if iNdEx > l {
-		return io.ErrUnexpectedEOF
-	}
-	return nil
-}
-func (m *Quota) Unmarshal(dAtA []byte) error {
-	l := len(dAtA)
-	iNdEx := 0
-	for iNdEx < l {
-		preIndex := iNdEx
-		var wire uint64
-		for shift := uint(0); ; shift += 7 {
-			if shift >= 64 {
-				return ErrIntOverflowRateLimiting
-			}
-			if iNdEx >= l {
-				return io.ErrUnexpectedEOF
-			}
-			b := dAtA[iNdEx]
-			iNdEx++
-			wire |= uint64(b&0x7F) << shift
-			if b < 0x80 {
-				break
-			}
-		}
-		fieldNum := int32(wire >> 3)
-		wireType := int(wire & 0x7)
-		if wireType == 4 {
-			return fmt.Errorf("proto: Quota: wiretype end group for non-group")
-		}
-		if fieldNum <= 0 {
-			return fmt.Errorf("proto: Quota: illegal tag %d (wire type %d)", fieldNum, wire)
-		}
-		switch fieldNum {
-		case 1:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field MaxPercentSend", wireType)
-			}
-			var stringLen uint64
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowRateLimiting
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				stringLen |= uint64(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			intStringLen := int(stringLen)
-			if intStringLen < 0 {
-				return ErrInvalidLengthRateLimiting
-			}
-			postIndex := iNdEx + intStringLen
-			if postIndex < 0 {
-				return ErrInvalidLengthRateLimiting
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			if err := m.MaxPercentSend.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
-				return err
-			}
-			iNdEx = postIndex
-		case 2:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field MaxPercentRecv", wireType)
-			}
-			var stringLen uint64
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowRateLimiting
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				stringLen |= uint64(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			intStringLen := int(stringLen)
-			if intStringLen < 0 {
-				return ErrInvalidLengthRateLimiting
-			}
-			postIndex := iNdEx + intStringLen
-			if postIndex < 0 {
-				return ErrInvalidLengthRateLimiting
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			if err := m.MaxPercentRecv.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
-				return err
-			}
-			iNdEx = postIndex
-		case 3:
-			if wireType != 0 {
-				return fmt.Errorf("proto: wrong wireType = %d for field DurationHours", wireType)
-			}
-			m.DurationHours = 0
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowRateLimiting
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				m.DurationHours |= uint64(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-		default:
-			iNdEx = preIndex
-			skippy, err := skipRateLimiting(dAtA[iNdEx:])
-			if err != nil {
-				return err
-			}
-			if (skippy < 0) || (iNdEx+skippy) < 0 {
-				return ErrInvalidLengthRateLimiting
-			}
-			if (iNdEx + skippy) > l {
-				return io.ErrUnexpectedEOF
-			}
-			iNdEx += skippy
-		}
-	}
+func sovRateLimiting(x uint64) (n int) { _ = "STUB: not implemented"; return 0 }
 
-	if iNdEx > l {
-		return io.ErrUnexpectedEOF
-	}
-	return nil
-}
-func (m *Flow) Unmarshal(dAtA []byte) error {
-	l := len(dAtA)
-	iNdEx := 0
-	for iNdEx < l {
-		preIndex := iNdEx
-		var wire uint64
-		for shift := uint(0); ; shift += 7 {
-			if shift >= 64 {
-				return ErrIntOverflowRateLimiting
-			}
-			if iNdEx >= l {
-				return io.ErrUnexpectedEOF
-			}
-			b := dAtA[iNdEx]
-			iNdEx++
-			wire |= uint64(b&0x7F) << shift
-			if b < 0x80 {
-				break
-			}
-		}
-		fieldNum := int32(wire >> 3)
-		wireType := int(wire & 0x7)
-		if wireType == 4 {
-			return fmt.Errorf("proto: Flow: wiretype end group for non-group")
-		}
-		if fieldNum <= 0 {
-			return fmt.Errorf("proto: Flow: illegal tag %d (wire type %d)", fieldNum, wire)
-		}
-		switch fieldNum {
-		case 1:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Inflow", wireType)
-			}
-			var stringLen uint64
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowRateLimiting
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				stringLen |= uint64(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			intStringLen := int(stringLen)
-			if intStringLen < 0 {
-				return ErrInvalidLengthRateLimiting
-			}
-			postIndex := iNdEx + intStringLen
-			if postIndex < 0 {
-				return ErrInvalidLengthRateLimiting
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			if err := m.Inflow.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
-				return err
-			}
-			iNdEx = postIndex
-		case 2:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Outflow", wireType)
-			}
-			var stringLen uint64
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowRateLimiting
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				stringLen |= uint64(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			intStringLen := int(stringLen)
-			if intStringLen < 0 {
-				return ErrInvalidLengthRateLimiting
-			}
-			postIndex := iNdEx + intStringLen
-			if postIndex < 0 {
-				return ErrInvalidLengthRateLimiting
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			if err := m.Outflow.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
-				return err
-			}
-			iNdEx = postIndex
-		case 3:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field ChannelValue", wireType)
-			}
-			var stringLen uint64
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowRateLimiting
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				stringLen |= uint64(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			intStringLen := int(stringLen)
-			if intStringLen < 0 {
-				return ErrInvalidLengthRateLimiting
-			}
-			postIndex := iNdEx + intStringLen
-			if postIndex < 0 {
-				return ErrInvalidLengthRateLimiting
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			if err := m.ChannelValue.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
-				return err
-			}
-			iNdEx = postIndex
-		default:
-			iNdEx = preIndex
-			skippy, err := skipRateLimiting(dAtA[iNdEx:])
-			if err != nil {
-				return err
-			}
-			if (skippy < 0) || (iNdEx+skippy) < 0 {
-				return ErrInvalidLengthRateLimiting
-			}
-			if (iNdEx + skippy) > l {
-				return io.ErrUnexpectedEOF
-			}
-			iNdEx += skippy
-		}
-	}
+func sozRateLimiting(x uint64) (n int) { _ = "STUB: not implemented"; return 0 }
 
-	if iNdEx > l {
-		return io.ErrUnexpectedEOF
-	}
-	return nil
-}
-func (m *RateLimit) Unmarshal(dAtA []byte) error {
-	l := len(dAtA)
-	iNdEx := 0
-	for iNdEx < l {
-		preIndex := iNdEx
-		var wire uint64
-		for shift := uint(0); ; shift += 7 {
-			if shift >= 64 {
-				return ErrIntOverflowRateLimiting
-			}
-			if iNdEx >= l {
-				return io.ErrUnexpectedEOF
-			}
-			b := dAtA[iNdEx]
-			iNdEx++
-			wire |= uint64(b&0x7F) << shift
-			if b < 0x80 {
-				break
-			}
-		}
-		fieldNum := int32(wire >> 3)
-		wireType := int(wire & 0x7)
-		if wireType == 4 {
-			return fmt.Errorf("proto: RateLimit: wiretype end group for non-group")
-		}
-		if fieldNum <= 0 {
-			return fmt.Errorf("proto: RateLimit: illegal tag %d (wire type %d)", fieldNum, wire)
-		}
-		switch fieldNum {
-		case 1:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Path", wireType)
-			}
-			var msglen int
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowRateLimiting
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				msglen |= int(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			if msglen < 0 {
-				return ErrInvalidLengthRateLimiting
-			}
-			postIndex := iNdEx + msglen
-			if postIndex < 0 {
-				return ErrInvalidLengthRateLimiting
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			if m.Path == nil {
-				m.Path = &Path{}
-			}
-			if err := m.Path.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
-				return err
-			}
-			iNdEx = postIndex
-		case 2:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Quota", wireType)
-			}
-			var msglen int
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowRateLimiting
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				msglen |= int(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			if msglen < 0 {
-				return ErrInvalidLengthRateLimiting
-			}
-			postIndex := iNdEx + msglen
-			if postIndex < 0 {
-				return ErrInvalidLengthRateLimiting
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			if m.Quota == nil {
-				m.Quota = &Quota{}
-			}
-			if err := m.Quota.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
-				return err
-			}
-			iNdEx = postIndex
-		case 3:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Flow", wireType)
-			}
-			var msglen int
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowRateLimiting
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				msglen |= int(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			if msglen < 0 {
-				return ErrInvalidLengthRateLimiting
-			}
-			postIndex := iNdEx + msglen
-			if postIndex < 0 {
-				return ErrInvalidLengthRateLimiting
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			if m.Flow == nil {
-				m.Flow = &Flow{}
-			}
-			if err := m.Flow.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
-				return err
-			}
-			iNdEx = postIndex
-		default:
-			iNdEx = preIndex
-			skippy, err := skipRateLimiting(dAtA[iNdEx:])
-			if err != nil {
-				return err
-			}
-			if (skippy < 0) || (iNdEx+skippy) < 0 {
-				return ErrInvalidLengthRateLimiting
-			}
-			if (iNdEx + skippy) > l {
-				return io.ErrUnexpectedEOF
-			}
-			iNdEx += skippy
-		}
-	}
+func (m *Path) Unmarshal(dAtA []byte) error { _ = "STUB: not implemented"; return nil }
 
-	if iNdEx > l {
-		return io.ErrUnexpectedEOF
-	}
-	return nil
-}
+func (m *Quota) Unmarshal(dAtA []byte) error { _ = "STUB: not implemented"; return nil }
+
+func (m *Flow) Unmarshal(dAtA []byte) error { _ = "STUB: not implemented"; return nil }
+
+func (m *RateLimit) Unmarshal(dAtA []byte) error { _ = "STUB: not implemented"; return nil }
+
 func (m *WhitelistedAddressPair) Unmarshal(dAtA []byte) error {
-	l := len(dAtA)
-	iNdEx := 0
-	for iNdEx < l {
-		preIndex := iNdEx
-		var wire uint64
-		for shift := uint(0); ; shift += 7 {
-			if shift >= 64 {
-				return ErrIntOverflowRateLimiting
-			}
-			if iNdEx >= l {
-				return io.ErrUnexpectedEOF
-			}
-			b := dAtA[iNdEx]
-			iNdEx++
-			wire |= uint64(b&0x7F) << shift
-			if b < 0x80 {
-				break
-			}
-		}
-		fieldNum := int32(wire >> 3)
-		wireType := int(wire & 0x7)
-		if wireType == 4 {
-			return fmt.Errorf("proto: WhitelistedAddressPair: wiretype end group for non-group")
-		}
-		if fieldNum <= 0 {
-			return fmt.Errorf("proto: WhitelistedAddressPair: illegal tag %d (wire type %d)", fieldNum, wire)
-		}
-		switch fieldNum {
-		case 1:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Sender", wireType)
-			}
-			var stringLen uint64
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowRateLimiting
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				stringLen |= uint64(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			intStringLen := int(stringLen)
-			if intStringLen < 0 {
-				return ErrInvalidLengthRateLimiting
-			}
-			postIndex := iNdEx + intStringLen
-			if postIndex < 0 {
-				return ErrInvalidLengthRateLimiting
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.Sender = string(dAtA[iNdEx:postIndex])
-			iNdEx = postIndex
-		case 2:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Receiver", wireType)
-			}
-			var stringLen uint64
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowRateLimiting
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				stringLen |= uint64(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			intStringLen := int(stringLen)
-			if intStringLen < 0 {
-				return ErrInvalidLengthRateLimiting
-			}
-			postIndex := iNdEx + intStringLen
-			if postIndex < 0 {
-				return ErrInvalidLengthRateLimiting
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.Receiver = string(dAtA[iNdEx:postIndex])
-			iNdEx = postIndex
-		default:
-			iNdEx = preIndex
-			skippy, err := skipRateLimiting(dAtA[iNdEx:])
-			if err != nil {
-				return err
-			}
-			if (skippy < 0) || (iNdEx+skippy) < 0 {
-				return ErrInvalidLengthRateLimiting
-			}
-			if (iNdEx + skippy) > l {
-				return io.ErrUnexpectedEOF
-			}
-			iNdEx += skippy
-		}
-	}
-
-	if iNdEx > l {
-		return io.ErrUnexpectedEOF
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
-func (m *HourEpoch) Unmarshal(dAtA []byte) error {
-	l := len(dAtA)
-	iNdEx := 0
-	for iNdEx < l {
-		preIndex := iNdEx
-		var wire uint64
-		for shift := uint(0); ; shift += 7 {
-			if shift >= 64 {
-				return ErrIntOverflowRateLimiting
-			}
-			if iNdEx >= l {
-				return io.ErrUnexpectedEOF
-			}
-			b := dAtA[iNdEx]
-			iNdEx++
-			wire |= uint64(b&0x7F) << shift
-			if b < 0x80 {
-				break
-			}
-		}
-		fieldNum := int32(wire >> 3)
-		wireType := int(wire & 0x7)
-		if wireType == 4 {
-			return fmt.Errorf("proto: HourEpoch: wiretype end group for non-group")
-		}
-		if fieldNum <= 0 {
-			return fmt.Errorf("proto: HourEpoch: illegal tag %d (wire type %d)", fieldNum, wire)
-		}
-		switch fieldNum {
-		case 1:
-			if wireType != 0 {
-				return fmt.Errorf("proto: wrong wireType = %d for field EpochNumber", wireType)
-			}
-			m.EpochNumber = 0
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowRateLimiting
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				m.EpochNumber |= uint64(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-		case 2:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Duration", wireType)
-			}
-			var msglen int
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowRateLimiting
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				msglen |= int(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			if msglen < 0 {
-				return ErrInvalidLengthRateLimiting
-			}
-			postIndex := iNdEx + msglen
-			if postIndex < 0 {
-				return ErrInvalidLengthRateLimiting
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			if err := github_com_cosmos_gogoproto_types.StdDurationUnmarshal(&m.Duration, dAtA[iNdEx:postIndex]); err != nil {
-				return err
-			}
-			iNdEx = postIndex
-		case 3:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field EpochStartTime", wireType)
-			}
-			var msglen int
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowRateLimiting
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				msglen |= int(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			if msglen < 0 {
-				return ErrInvalidLengthRateLimiting
-			}
-			postIndex := iNdEx + msglen
-			if postIndex < 0 {
-				return ErrInvalidLengthRateLimiting
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			if err := github_com_cosmos_gogoproto_types.StdTimeUnmarshal(&m.EpochStartTime, dAtA[iNdEx:postIndex]); err != nil {
-				return err
-			}
-			iNdEx = postIndex
-		case 4:
-			if wireType != 0 {
-				return fmt.Errorf("proto: wrong wireType = %d for field EpochStartHeight", wireType)
-			}
-			m.EpochStartHeight = 0
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowRateLimiting
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				m.EpochStartHeight |= int64(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-		default:
-			iNdEx = preIndex
-			skippy, err := skipRateLimiting(dAtA[iNdEx:])
-			if err != nil {
-				return err
-			}
-			if (skippy < 0) || (iNdEx+skippy) < 0 {
-				return ErrInvalidLengthRateLimiting
-			}
-			if (iNdEx + skippy) > l {
-				return io.ErrUnexpectedEOF
-			}
-			iNdEx += skippy
-		}
-	}
 
-	if iNdEx > l {
-		return io.ErrUnexpectedEOF
-	}
-	return nil
-}
-func skipRateLimiting(dAtA []byte) (n int, err error) {
-	l := len(dAtA)
-	iNdEx := 0
-	depth := 0
-	for iNdEx < l {
-		var wire uint64
-		for shift := uint(0); ; shift += 7 {
-			if shift >= 64 {
-				return 0, ErrIntOverflowRateLimiting
-			}
-			if iNdEx >= l {
-				return 0, io.ErrUnexpectedEOF
-			}
-			b := dAtA[iNdEx]
-			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
-			if b < 0x80 {
-				break
-			}
-		}
-		wireType := int(wire & 0x7)
-		switch wireType {
-		case 0:
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return 0, ErrIntOverflowRateLimiting
-				}
-				if iNdEx >= l {
-					return 0, io.ErrUnexpectedEOF
-				}
-				iNdEx++
-				if dAtA[iNdEx-1] < 0x80 {
-					break
-				}
-			}
-		case 1:
-			iNdEx += 8
-		case 2:
-			var length int
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return 0, ErrIntOverflowRateLimiting
-				}
-				if iNdEx >= l {
-					return 0, io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				length |= (int(b) & 0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			if length < 0 {
-				return 0, ErrInvalidLengthRateLimiting
-			}
-			iNdEx += length
-		case 3:
-			depth++
-		case 4:
-			if depth == 0 {
-				return 0, ErrUnexpectedEndOfGroupRateLimiting
-			}
-			depth--
-		case 5:
-			iNdEx += 4
-		default:
-			return 0, fmt.Errorf("proto: illegal wireType %d", wireType)
-		}
-		if iNdEx < 0 {
-			return 0, ErrInvalidLengthRateLimiting
-		}
-		if depth == 0 {
-			return iNdEx, nil
-		}
-	}
-	return 0, io.ErrUnexpectedEOF
-}
+func (m *HourEpoch) Unmarshal(dAtA []byte) error { _ = "STUB: not implemented"; return nil }
+
+func skipRateLimiting(dAtA []byte) (n int, err error) { _ = "STUB: not implemented"; return 0, nil }
 
 var (
 	ErrInvalidLengthRateLimiting        = fmt.Errorf("proto: negative length found during unmarshaling")

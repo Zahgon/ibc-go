@@ -8,16 +8,11 @@ type Option interface {
 type optsFn func(*Keeper)
 
 func (f optsFn) apply(keeper *Keeper) {
-	f(keeper)
+	_ = "STUB: not implemented"
+
+	// WithQueryPlugins is an optional constructor parameter to pass custom query plugins for wasmVM requests.
+	// Missing fields will be filled with default queriers.
+	return
 }
 
-// WithQueryPlugins is an optional constructor parameter to pass custom query plugins for wasmVM requests.
-// Missing fields will be filled with default queriers.
-func WithQueryPlugins(plugins *QueryPlugins) Option {
-	return optsFn(func(k *Keeper) {
-		currentPlugins := k.getQueryPlugins()
-		newPlugins := currentPlugins.Merge(plugins)
-
-		k.setQueryPlugins(newPlugins)
-	})
-}
+func WithQueryPlugins(plugins *QueryPlugins) Option { _ = "STUB: not implemented"; return *new(Option) }

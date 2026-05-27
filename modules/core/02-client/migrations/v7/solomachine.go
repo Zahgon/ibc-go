@@ -1,11 +1,8 @@
 package v7
 
 import (
-	"errors"
-
 	"github.com/cosmos/cosmos-sdk/codec"
 	codectypes "github.com/cosmos/cosmos-sdk/codec/types"
-	cryptotypes "github.com/cosmos/cosmos-sdk/crypto/types"
 	storetypes "github.com/cosmos/cosmos-sdk/store/v2/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
@@ -30,88 +27,86 @@ var (
 )
 
 // RegisterInterfaces registers the solomachine v2 ClientState and ConsensusState types in the interface registry.
-func RegisterInterfaces(registry codectypes.InterfaceRegistry) {
-	registry.RegisterImplementations(
-		(*exported.ClientState)(nil),
-		&ClientState{},
-	)
-	registry.RegisterImplementations(
-		(*exported.ConsensusState)(nil),
-		&ConsensusState{},
-	)
-}
+func RegisterInterfaces(registry codectypes.InterfaceRegistry) { _ = "STUB: not implemented"; return }
 
 // UnpackInterfaces implements the UnpackInterfaceMessages.UnpackInterfaces method
 func (cs ClientState) UnpackInterfaces(unpacker codectypes.AnyUnpacker) error {
-	return cs.ConsensusState.UnpackInterfaces(unpacker)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // UnpackInterfaces implements the UnpackInterfaceMessages.UnpackInterfaces method
 func (cs ConsensusState) UnpackInterfaces(unpacker codectypes.AnyUnpacker) error {
-	return unpacker.UnpackAny(cs.PublicKey, new(cryptotypes.PubKey))
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // ClientType panics!
-func (ClientState) ClientType() string {
-	panic(errors.New("legacy solo machine is deprecated"))
-}
+func (ClientState) ClientType() string { _ = "STUB: not implemented"; return "" }
 
 // GetLatestHeight panics!
 func (ClientState) GetLatestHeight() exported.Height {
-	panic(errors.New("legacy solo machine is deprecated"))
+	_ = "STUB: not implemented"
+	return *new(exported.Height)
 }
 
 // Status panics!
 func (ClientState) Status(_ sdk.Context, _ storetypes.KVStore, _ codec.BinaryCodec) exported.Status {
-	panic(errors.New("legacy solo machine is deprecated"))
+	_ = "STUB: not implemented"
+	return *new(exported.Status)
 }
 
 // Validate panics!
-func (ClientState) Validate() error {
-	panic(errors.New("legacy solo machine is deprecated"))
-}
+func (ClientState) Validate() error { _ = "STUB: not implemented"; return nil }
 
 // Initialize panics!
 func (ClientState) Initialize(_ sdk.Context, _ codec.BinaryCodec, _ storetypes.KVStore, _ exported.ConsensusState) error {
-	panic(errors.New("legacy solo machine is deprecated"))
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // CheckForMisbehaviour panics!
 func (ClientState) CheckForMisbehaviour(_ sdk.Context, _ codec.BinaryCodec, _ storetypes.KVStore, _ exported.ClientMessage) bool {
-	panic(errors.New("legacy solo machine is deprecated"))
+	_ = "STUB: not implemented"
+	return false
 }
 
 // UpdateStateOnMisbehaviour panics!
 func (*ClientState) UpdateStateOnMisbehaviour(
 	_ sdk.Context, _ codec.BinaryCodec, _ storetypes.KVStore, _ exported.ClientMessage,
 ) {
-	panic(errors.New("legacy solo machine is deprecated"))
+	_ = "STUB: not implemented"
+	return
 }
 
 // VerifyClientMessage panics!
 func (*ClientState) VerifyClientMessage(
 	_ sdk.Context, _ codec.BinaryCodec, _ storetypes.KVStore, _ exported.ClientMessage,
 ) error {
-	panic(errors.New("legacy solo machine is deprecated"))
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // UpdateState panis!
 func (*ClientState) UpdateState(_ sdk.Context, _ codec.BinaryCodec, _ storetypes.KVStore, _ exported.ClientMessage) []exported.Height {
-	panic(errors.New("legacy solo machine is deprecated"))
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // CheckHeaderAndUpdateState panics!
 func (*ClientState) CheckHeaderAndUpdateState(
 	_ sdk.Context, _ codec.BinaryCodec, _ storetypes.KVStore, _ exported.ClientMessage,
 ) (exported.ClientState, exported.ConsensusState, error) {
-	panic(errors.New("legacy solo machine is deprecated"))
+	_ = "STUB: not implemented"
+	return *new(exported.ClientState), *new(exported.ConsensusState), nil
 }
 
 // CheckMisbehaviourAndUpdateState panics!
 func (ClientState) CheckMisbehaviourAndUpdateState(
 	_ sdk.Context, _ codec.BinaryCodec, _ storetypes.KVStore, _ exported.ClientMessage,
 ) (exported.ClientState, error) {
-	panic(errors.New("legacy solo machine is deprecated"))
+	_ = "STUB: not implemented"
+	return *new(exported.ClientState), nil
 }
 
 // CheckSubstituteAndUpdateState panics!
@@ -119,7 +114,8 @@ func (ClientState) CheckSubstituteAndUpdateState(
 	ctx sdk.Context, _ codec.BinaryCodec, _, _ storetypes.KVStore,
 	_ exported.ClientState,
 ) error {
-	panic(errors.New("legacy solo machine is deprecated"))
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // VerifyUpgradeAndUpdateState panics!
@@ -127,7 +123,8 @@ func (ClientState) VerifyUpgradeAndUpdateState(
 	_ sdk.Context, _ codec.BinaryCodec, _ storetypes.KVStore,
 	_ exported.ClientState, _ exported.ConsensusState, _, _ []byte,
 ) error {
-	panic(errors.New("legacy solo machine is deprecated"))
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // VerifyClientState panics!
@@ -135,7 +132,8 @@ func (ClientState) VerifyClientState(
 	store storetypes.KVStore, cdc codec.BinaryCodec,
 	_ exported.Height, _ exported.Prefix, _ string, _ []byte, clientState exported.ClientState,
 ) error {
-	panic(errors.New("legacy solo machine is deprecated"))
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // VerifyClientConsensusState panics!
@@ -144,7 +142,8 @@ func (ClientState) VerifyClientConsensusState(
 	exported.Height, string, exported.Height, exported.Prefix,
 	[]byte, exported.ConsensusState,
 ) error {
-	panic(errors.New("legacy solo machine is deprecated"))
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // VerifyPacketCommitment panics!
@@ -153,7 +152,8 @@ func (ClientState) VerifyPacketCommitment(
 	uint64, uint64, exported.Prefix, []byte,
 	string, string, uint64, []byte,
 ) error {
-	panic(errors.New("legacy solo machine is deprecated"))
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // VerifyPacketAcknowledgement panics!
@@ -162,7 +162,8 @@ func (ClientState) VerifyPacketAcknowledgement(
 	uint64, uint64, exported.Prefix, []byte,
 	string, string, uint64, []byte,
 ) error {
-	panic(errors.New("legacy solo machine is deprecated"))
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // VerifyPacketReceiptAbsence panics!
@@ -171,7 +172,8 @@ func (ClientState) VerifyPacketReceiptAbsence(
 	uint64, uint64, exported.Prefix, []byte,
 	string, string, uint64,
 ) error {
-	panic(errors.New("legacy solo machine is deprecated"))
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // VerifyNextSequenceRecv panics!
@@ -180,14 +182,16 @@ func (ClientState) VerifyNextSequenceRecv(
 	uint64, uint64, exported.Prefix, []byte,
 	string, string, uint64,
 ) error {
-	panic(errors.New("legacy solo machine is deprecated"))
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // GetTimestampAtHeight panics!
 func (ClientState) GetTimestampAtHeight(
 	sdk.Context, storetypes.KVStore, codec.BinaryCodec, exported.Height,
 ) (uint64, error) {
-	panic(errors.New("legacy solo machine is deprecated"))
+	_ = "STUB: not implemented"
+	return 0, nil
 }
 
 // VerifyMembership panics!
@@ -202,7 +206,8 @@ func (*ClientState) VerifyMembership(
 	path exported.Path,
 	value []byte,
 ) error {
-	panic(errors.New("legacy solo machine is deprecated"))
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // VerifyNonMembership panics!
@@ -216,20 +221,15 @@ func (*ClientState) VerifyNonMembership(
 	proof []byte,
 	path exported.Path,
 ) error {
-	panic(errors.New("legacy solo machine is deprecated"))
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // ClientType panics!
-func (ConsensusState) ClientType() string {
-	panic(errors.New("legacy solo machine is deprecated"))
-}
+func (ConsensusState) ClientType() string { _ = "STUB: not implemented"; return "" }
 
 // GetTimestamp panics!
-func (ConsensusState) GetTimestamp() uint64 {
-	panic(errors.New("legacy solo machine is deprecated"))
-}
+func (ConsensusState) GetTimestamp() uint64 { _ = "STUB: not implemented"; return 0 }
 
 // ValidateBasic panics!
-func (ConsensusState) ValidateBasic() error {
-	panic(errors.New("legacy solo machine is deprecated"))
-}
+func (ConsensusState) ValidateBasic() error { _ = "STUB: not implemented"; return nil }

@@ -1,18 +1,11 @@
 package host
 
 import (
-	"fmt"
-
-	errorsmod "cosmossdk.io/errors"
-
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
 	"github.com/cosmos/ibc-go/v11/modules/apps/27-interchain-accounts/host/keeper"
-	"github.com/cosmos/ibc-go/v11/modules/apps/27-interchain-accounts/host/types"
-	icatypes "github.com/cosmos/ibc-go/v11/modules/apps/27-interchain-accounts/types"
 	channeltypes "github.com/cosmos/ibc-go/v11/modules/core/04-channel/types"
 	porttypes "github.com/cosmos/ibc-go/v11/modules/core/05-port/types"
-	ibcerrors "github.com/cosmos/ibc-go/v11/modules/core/errors"
 	ibcexported "github.com/cosmos/ibc-go/v11/modules/core/exported"
 )
 
@@ -27,11 +20,7 @@ type IBCModule struct {
 }
 
 // NewIBCModule creates a new IBCModule given the associated keeper
-func NewIBCModule(k *keeper.Keeper) *IBCModule {
-	return &IBCModule{
-		keeper: k,
-	}
-}
+func NewIBCModule(k *keeper.Keeper) *IBCModule { _ = "STUB: not implemented"; return nil }
 
 // OnChanOpenInit implements the IBCModule interface
 func (*IBCModule) OnChanOpenInit(
@@ -43,7 +32,8 @@ func (*IBCModule) OnChanOpenInit(
 	_ channeltypes.Counterparty,
 	_ string,
 ) (string, error) {
-	return "", errorsmod.Wrap(icatypes.ErrInvalidChannelFlow, "channel handshake must be initiated by controller chain")
+	_ = "STUB: not implemented"
+	return "", nil
 }
 
 // OnChanOpenTry implements the IBCModule interface
@@ -56,11 +46,8 @@ func (im *IBCModule) OnChanOpenTry(
 	counterparty channeltypes.Counterparty,
 	counterpartyVersion string,
 ) (string, error) {
-	if !im.keeper.GetParams(ctx).HostEnabled {
-		return "", types.ErrHostSubModuleDisabled
-	}
-
-	return im.keeper.OnChanOpenTry(ctx, order, connectionHops, portID, channelID, counterparty, counterpartyVersion)
+	_ = "STUB: not implemented"
+	return "", nil
 }
 
 // OnChanOpenAck implements the IBCModule interface
@@ -71,7 +58,8 @@ func (*IBCModule) OnChanOpenAck(
 	_ string,
 	_ string,
 ) error {
-	return errorsmod.Wrap(icatypes.ErrInvalidChannelFlow, "channel handshake must be initiated by controller chain")
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // OnChanOpenConfirm implements the IBCModule interface
@@ -80,11 +68,8 @@ func (im *IBCModule) OnChanOpenConfirm(
 	portID,
 	channelID string,
 ) error {
-	if !im.keeper.GetParams(ctx).HostEnabled {
-		return types.ErrHostSubModuleDisabled
-	}
-
-	return im.keeper.OnChanOpenConfirm(ctx, portID, channelID)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // OnChanCloseInit implements the IBCModule interface
@@ -93,8 +78,9 @@ func (*IBCModule) OnChanCloseInit(
 	_ string,
 	_ string,
 ) error {
+	_ = "STUB: not implemented"
 	// Disallow user-initiated channel closing for interchain account channels
-	return errorsmod.Wrap(ibcerrors.ErrInvalidRequest, "user cannot close channel")
+	return nil
 }
 
 // OnChanCloseConfirm implements the IBCModule interface
@@ -103,7 +89,8 @@ func (im *IBCModule) OnChanCloseConfirm(
 	portID,
 	channelID string,
 ) error {
-	return im.keeper.OnChanCloseConfirm(ctx, portID, channelID)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // OnRecvPacket implements the IBCModule interface
@@ -113,27 +100,13 @@ func (im *IBCModule) OnRecvPacket(
 	packet channeltypes.Packet,
 	_ sdk.AccAddress,
 ) ibcexported.Acknowledgement {
-	if !im.keeper.GetParams(ctx).HostEnabled {
-		im.keeper.Logger(ctx).Info("host submodule is disabled")
-		keeper.EmitHostDisabledEvent(ctx, packet)
-		return channeltypes.NewErrorAcknowledgement(types.ErrHostSubModuleDisabled)
-	}
-
-	txResponse, err := im.keeper.OnRecvPacket(ctx, packet)
-	ack := channeltypes.NewResultAcknowledgement(txResponse)
-	if err != nil {
-		ack = channeltypes.NewErrorAcknowledgement(err)
-		im.keeper.Logger(ctx).Error(fmt.Sprintf("%s sequence %d", err.Error(), packet.Sequence))
-	} else {
-		im.keeper.Logger(ctx).Info("successfully handled packet", "sequence", packet.Sequence)
-	}
-
-	// Emit an event indicating a successful or failed acknowledgement.
-	keeper.EmitAcknowledgementEvent(ctx, packet, ack, err)
-
-	// NOTE: acknowledgement will be written synchronously during IBC handler execution.
-	return ack
+	_ = "STUB: not implemented"
+	return *new(ibcexported.Acknowledgement)
 }
+
+// Emit an event indicating a successful or failed acknowledgement.
+
+// NOTE: acknowledgement will be written synchronously during IBC handler execution.
 
 // OnAcknowledgementPacket implements the IBCModule interface
 func (*IBCModule) OnAcknowledgementPacket(
@@ -143,7 +116,8 @@ func (*IBCModule) OnAcknowledgementPacket(
 	_ []byte,
 	_ sdk.AccAddress,
 ) error {
-	return errorsmod.Wrap(icatypes.ErrInvalidChannelFlow, "cannot receive acknowledgement on a host channel end, a host chain does not send a packet over the channel")
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // OnTimeoutPacket implements the IBCModule interface
@@ -153,31 +127,20 @@ func (*IBCModule) OnTimeoutPacket(
 	_ channeltypes.Packet,
 	_ sdk.AccAddress,
 ) error {
-	return errorsmod.Wrap(icatypes.ErrInvalidChannelFlow, "cannot cause a packet timeout on a host channel end, a host chain does not send a packet over the channel")
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // UnmarshalPacketData attempts to unmarshal the provided packet data bytes
 // into an InterchainAccountPacketData. This function implements the optional
 // PacketDataUnmarshaler interface required for ADR 008 support.
 func (im *IBCModule) UnmarshalPacketData(ctx sdk.Context, portID string, channelID string, bz []byte) (any, string, error) {
-	var data icatypes.InterchainAccountPacketData
-	err := data.UnmarshalJSON(bz)
-	if err != nil {
-		return nil, "", err
-	}
-
-	version, ok := im.keeper.GetAppVersion(ctx, portID, channelID)
-	if !ok {
-		return nil, "", errorsmod.Wrapf(ibcerrors.ErrNotFound, "app version not found for port %s and channel %s", portID, channelID)
-	}
-
-	return data, version, nil
+	_ = "STUB: not implemented"
+	return *new(any), "", nil
 }
 
 // SetICS4Wrapper sets the ICS4Wrapper for the IBCModule.
 func (im *IBCModule) SetICS4Wrapper(wrapper porttypes.ICS4Wrapper) {
-	if wrapper == nil {
-		panic("ICS4Wrapper cannot be nil")
-	}
-	im.keeper.WithICS4Wrapper(wrapper)
+	_ = "STUB: not implemented"
+	return
 }

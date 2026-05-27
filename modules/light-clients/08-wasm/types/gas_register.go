@@ -3,11 +3,7 @@ package types
 import (
 	wasmvmtypes "github.com/CosmWasm/wasmvm/v3/types"
 
-	errorsmod "cosmossdk.io/errors"
-	sdkmath "cosmossdk.io/math"
-
 	storetypes "github.com/cosmos/cosmos-sdk/store/v2/types"
-	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
 )
 
 const (
@@ -74,7 +70,8 @@ var (
 
 // DefaultPerByteUncompressCost is how much SDK gas we charge per source byte to unpack
 func DefaultPerByteUncompressCost() wasmvmtypes.UFraction {
-	return defaultPerByteUncompressCost
+	_ = "STUB: not implemented"
+	return *new(wasmvmtypes.UFraction)
 }
 
 // GasRegister abstract source for gas costs
@@ -134,18 +131,8 @@ type WasmGasRegisterConfig struct {
 
 // DefaultGasRegisterConfig default values
 func DefaultGasRegisterConfig() WasmGasRegisterConfig {
-	return WasmGasRegisterConfig{
-		InstanceCost:               DefaultInstanceCost,
-		InstanceCostDiscount:       DefaultInstanceCostDiscount,
-		CompileCost:                DefaultCompileCost,
-		GasMultiplier:              DefaultGasMultiplier,
-		EventPerAttributeCost:      DefaultPerAttributeCost,
-		CustomEventCost:            DefaultPerCustomEventCost,
-		EventAttributeDataCost:     DefaultEventAttributeDataCost,
-		EventAttributeDataFreeTier: DefaultEventAttributeDataFreeTier,
-		ContractMessageDataCost:    DefaultContractMessageDataCost,
-		UncompressCost:             DefaultPerByteUncompressCost(),
-	}
+	_ = "STUB: not implemented"
+	return *new(WasmGasRegisterConfig)
 }
 
 // WasmGasRegister implements GasRegister interface
@@ -155,114 +142,73 @@ type WasmGasRegister struct {
 
 // NewDefaultWasmGasRegister creates instance with default values
 func NewDefaultWasmGasRegister() WasmGasRegister {
-	return NewWasmGasRegister(DefaultGasRegisterConfig())
+	_ = "STUB: not implemented"
+	return *new(WasmGasRegister)
 }
 
 // NewWasmGasRegister constructor
 func NewWasmGasRegister(c WasmGasRegisterConfig) WasmGasRegister {
-	if c.GasMultiplier == 0 {
-		panic(errorsmod.Wrap(sdkerrors.ErrLogic, "GasMultiplier can not be 0"))
-	}
-	return WasmGasRegister{
-		c: c,
-	}
+	_ = "STUB: not implemented"
+	return *new(WasmGasRegister)
 }
 
 // UncompressCosts costs to unpack a new wasm contract
 func (g WasmGasRegister) UncompressCosts(byteLength int) storetypes.Gas {
-	if byteLength < 0 {
-		panic(errorsmod.Wrap(ErrInvalid, "negative length"))
-	}
-	return g.c.UncompressCost.Mul(uint64(byteLength)).Floor()
+	_ = "STUB: not implemented"
+	return *new(storetypes.Gas)
 }
 
 // SetupContractCost costs when interacting with a wasm contract.
 // Set discount to true in cases where you can reasonably assume the contract
 // is loaded from an in-memory cache (e.g. pinned contracts or replies).
 func (g WasmGasRegister) SetupContractCost(discount bool, msgLen int) storetypes.Gas {
-	if msgLen < 0 {
-		panic(errorsmod.Wrap(ErrInvalid, "negative length"))
-	}
-	dataCost := storetypes.Gas(msgLen) * g.c.ContractMessageDataCost
-	if discount {
-		return g.c.InstanceCostDiscount + dataCost
-	}
-	return g.c.InstanceCost + dataCost
+	_ = "STUB: not implemented"
+	return *new(storetypes.Gas)
 }
 
 // ReplyCosts costs to handle a message reply.
 // Set discount to true in cases where you can reasonably assume the contract
 // is loaded from an in-memory cache (e.g. pinned contracts or replies).
 func (g WasmGasRegister) ReplyCosts(discount bool, reply wasmvmtypes.Reply) storetypes.Gas {
-	var eventGas storetypes.Gas
-	msgLen := len(reply.Result.Err)
-	if reply.Result.Ok != nil {
-		msgLen += len(reply.Result.Ok.Data)
-		var attrs []wasmvmtypes.EventAttribute
-		for _, e := range reply.Result.Ok.Events {
-			eventGas += storetypes.Gas(len(e.Type)) * g.c.EventAttributeDataCost
-			attrs = append(attrs, e.Attributes...)
-		}
-		// apply free tier on the whole set not per event
-		eventGas += g.EventCosts(attrs, nil)
-	}
-	return eventGas + g.SetupContractCost(discount, msgLen)
+	_ = "STUB: not implemented"
+	return *new(storetypes.Gas)
 }
+
+// apply free tier on the whole set not per event
 
 // EventCosts costs to persist an event
 func (g WasmGasRegister) EventCosts(attrs []wasmvmtypes.EventAttribute, events wasmvmtypes.Array[wasmvmtypes.Event]) storetypes.Gas {
-	gas, remainingFreeTier := g.eventAttributeCosts(attrs, g.c.EventAttributeDataFreeTier)
-	for _, e := range events {
-		gas += g.c.CustomEventCost
-		gas += storetypes.Gas(len(e.Type)) * g.c.EventAttributeDataCost // no free tier with event type
-		var attrCost storetypes.Gas
-		attrCost, remainingFreeTier = g.eventAttributeCosts(e.Attributes, remainingFreeTier)
-		gas += attrCost
-	}
-	return gas
+	_ = "STUB: not implemented"
+	return *new(storetypes.Gas)
 }
 
+// no free tier with event type
+
 func (g WasmGasRegister) eventAttributeCosts(attrs []wasmvmtypes.EventAttribute, freeTier uint64) (storetypes.Gas, uint64) {
-	if len(attrs) == 0 {
-		return 0, freeTier
-	}
-	var storedBytes uint64
-	for _, l := range attrs {
-		storedBytes += uint64(len(l.Key)) + uint64(len(l.Value))
-	}
-	storedBytes, freeTier = calcWithFreeTier(storedBytes, freeTier)
-	// total Length * costs + attribute count * costs
-	r := sdkmath.NewIntFromUint64(g.c.EventAttributeDataCost).Mul(sdkmath.NewIntFromUint64(storedBytes)).
-		Add(sdkmath.NewIntFromUint64(g.c.EventPerAttributeCost).Mul(sdkmath.NewIntFromUint64(uint64(len(attrs)))))
-	if !r.IsUint64() {
-		panic(storetypes.ErrorOutOfGas{Descriptor: "overflow"})
-	}
-	return r.Uint64(), freeTier
+	_ = "STUB: not implemented"
+	return *new(storetypes.Gas), 0
 }
+
+// total Length * costs + attribute count * costs
 
 // apply free tier
 func calcWithFreeTier(storedBytes, freeTier uint64) (uint64, uint64) {
-	if storedBytes <= freeTier {
-		return 0, freeTier - storedBytes
-	}
-	storedBytes -= freeTier
-	return storedBytes, 0
+	_ = "STUB: not implemented"
+	return 0, 0
 }
 
 // ToWasmVMGas converts from Cosmos SDK gas units to [CosmWasm gas] (aka. wasmvm gas)
 //
 // [CosmWasm gas]: https://github.com/CosmWasm/cosmwasm/blob/v1.3.1/docs/GAS.md
 func (g WasmGasRegister) ToWasmVMGas(source storetypes.Gas) uint64 {
-	x := source * g.c.GasMultiplier
-	if x < source {
-		panic(storetypes.ErrorOutOfGas{Descriptor: "overflow"})
-	}
-	return x
+	_ = "STUB: not implemented"
+	return 0
 }
 
 // FromWasmVMGas converts from [CosmWasm gas] (aka. wasmvm gas) to Cosmos SDK gas units
 //
 // [CosmWasm gas]: https://github.com/CosmWasm/cosmwasm/blob/v1.3.1/docs/GAS.md
 func (g WasmGasRegister) FromWasmVMGas(source uint64) storetypes.Gas {
-	return source / g.c.GasMultiplier
+	_ = "STUB: not implemented"
+	return *new(storetypes.Gas)
 }

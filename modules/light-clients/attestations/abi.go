@@ -2,8 +2,6 @@ package attestations
 
 import (
 	"github.com/ethereum/go-ethereum/accounts/abi"
-
-	errorsmod "cosmossdk.io/errors"
 )
 
 const (
@@ -63,10 +61,7 @@ type PacketCompact struct {
 	Commitment []byte
 }
 
-func (sa *StateAttestation) ABIEncode() ([]byte, error) {
-	timestampSeconds := sa.Timestamp / nanosPerSecond
-	return stateAttestationArgs.Pack(sa.Height, timestampSeconds)
-}
+func (sa *StateAttestation) ABIEncode() ([]byte, error) { _ = "STUB: not implemented"; return nil, nil }
 
 // ABIPacketAttestation is the ABI-compatible representation for tuple-wrapped encoding.
 type ABIPacketAttestation struct {
@@ -75,90 +70,26 @@ type ABIPacketAttestation struct {
 }
 
 func (pa *PacketAttestation) ABIEncode() ([]byte, error) {
-	packets := make([]ABIPacketCompact, len(pa.Packets))
-	for i, p := range pa.Packets {
-		packets[i] = ABIPacketCompact{
-			Path:       bytesToBytes32(p.Path),
-			Commitment: bytesToBytes32(p.Commitment),
-		}
-	}
-	// Pack as tuple-wrapped struct to match Solidity's abi.encode(PacketAttestation)
-	abiAttestation := ABIPacketAttestation{
-		Height:  pa.Height,
-		Packets: packets,
-	}
-	return packetAttestationArgs.Pack(abiAttestation)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
+// Pack as tuple-wrapped struct to match Solidity's abi.encode(PacketAttestation)
 
 func ABIDecodePacketAttestation(data []byte) (*PacketAttestation, error) {
-	unpacked, err := packetAttestationArgs.Unpack(data)
-	if err != nil {
-		return nil, errorsmod.Wrapf(ErrInvalidAttestationData, "failed to ABI decode packet attestation: %v", err)
-	}
-
-	// Tuple-wrapped format: single element containing the struct
-	if len(unpacked) != 1 {
-		return nil, errorsmod.Wrap(ErrInvalidAttestationData, "invalid packet attestation: expected 1 tuple element")
-	}
-
-	//nolint:revive // go-ethereum returns anonymous struct, cannot use named type
-	abiAttestation, ok := unpacked[0].(struct {
-		Height  uint64 `json:"height"`
-		Packets []struct {
-			Path       [32]byte `json:"path"`
-			Commitment [32]byte `json:"commitment"`
-		} `json:"packets"`
-	})
-	if !ok {
-		return nil, errorsmod.Wrapf(ErrInvalidAttestationData, "invalid packet attestation type, got %T", unpacked[0])
-	}
-
-	packets := make([]PacketCompact, len(abiAttestation.Packets))
-	for i, p := range abiAttestation.Packets {
-		packets[i] = PacketCompact{
-			Path:       p.Path[:],
-			Commitment: p.Commitment[:],
-		}
-	}
-
-	return &PacketAttestation{
-		Height:  abiAttestation.Height,
-		Packets: packets,
-	}, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func (pc *PacketCompact) ABIEncode() ([]byte, error) {
-	return tupleArrayType.Pack(bytesToBytes32(pc.Path), bytesToBytes32(pc.Commitment))
-}
+// Tuple-wrapped format: single element containing the struct
+
+//nolint:revive // go-ethereum returns anonymous struct, cannot use named type
+
+func (pc *PacketCompact) ABIEncode() ([]byte, error) { _ = "STUB: not implemented"; return nil, nil }
 
 func ABIDecodeStateAttestation(data []byte) (*StateAttestation, error) {
-	unpacked, err := stateAttestationArgs.Unpack(data)
-	if err != nil {
-		return nil, errorsmod.Wrapf(ErrInvalidAttestationData, "failed to ABI decode state attestation: %v", err)
-	}
-
-	if len(unpacked) != 2 {
-		return nil, errorsmod.Wrap(ErrInvalidAttestationData, "invalid state attestation: expected 2 fields")
-	}
-
-	height, ok := unpacked[0].(uint64)
-	if !ok {
-		return nil, errorsmod.Wrap(ErrInvalidAttestationData, "invalid height type")
-	}
-
-	timestampSeconds, ok := unpacked[1].(uint64)
-	if !ok {
-		return nil, errorsmod.Wrap(ErrInvalidAttestationData, "invalid timestamp type")
-	}
-
-	return &StateAttestation{
-		Height:    height,
-		Timestamp: timestampSeconds * nanosPerSecond,
-	}, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func bytesToBytes32(b []byte) [32]byte {
-	var result [32]byte
-	copy(result[:], b)
-	return result
-}
+func bytesToBytes32(b []byte) [32]byte { _ = "STUB: not implemented"; return nil }

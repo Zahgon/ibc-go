@@ -2,9 +2,6 @@ package host
 
 import (
 	"regexp"
-	"strings"
-
-	errorsmod "cosmossdk.io/errors"
 )
 
 // DefaultMaxCharacterLength defines the default maximum character length used
@@ -37,82 +34,45 @@ var IsValidID = regexp.MustCompile(`^[a-zA-Z0-9\.\_\+\-\#\[\]\<\>]+$`).MatchStri
 type ValidateFn func(string) error
 
 func defaultIdentifierValidator(id string, minLength, maxLength int) error {
-	if strings.TrimSpace(id) == "" {
-		return errorsmod.Wrap(ErrInvalidID, "identifier cannot be blank")
-	}
-	// valid id MUST NOT contain "/" separator
-	if strings.Contains(id, "/") {
-		return errorsmod.Wrapf(ErrInvalidID, "identifier %s cannot contain separator '/'", id)
-	}
-	// valid id must fit the length requirements
-	if len(id) < minLength || len(id) > maxLength {
-		return errorsmod.Wrapf(ErrInvalidID, "identifier %s has invalid length: %d, must be between %d-%d characters", id, len(id), minLength, maxLength)
-	}
-	// valid id must contain only alphanumeric characters and some allowed symbols.
-	if !IsValidID(id) {
-		return errorsmod.Wrapf(
-			ErrInvalidID,
-			"identifier %s must contain only alphanumeric or the following characters: '.', '_', '+', '-', '#', '[', ']', '<', '>'",
-			id,
-		)
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
+
+// valid id MUST NOT contain "/" separator
+
+// valid id must fit the length requirements
+
+// valid id must contain only alphanumeric characters and some allowed symbols.
 
 // ClientIdentifierValidator is the default validator function for Client identifiers.
 // A valid Identifier must be between 4-64 characters and only contain alphanumeric and some allowed
 // special characters (see IsValidID).
-func ClientIdentifierValidator(id string) error {
-	return defaultIdentifierValidator(id, 4, DefaultMaxCharacterLength)
-}
+func ClientIdentifierValidator(id string) error { _ = "STUB: not implemented"; return nil }
 
 // ConnectionIdentifierValidator is the default validator function for Connection identifiers.
 // A valid Identifier must be between 10-64 characters and only contain alphanumeric and some allowed
 // special characters (see IsValidID).
-func ConnectionIdentifierValidator(id string) error {
-	return defaultIdentifierValidator(id, 10, DefaultMaxCharacterLength)
-}
+func ConnectionIdentifierValidator(id string) error { _ = "STUB: not implemented"; return nil }
 
 // ChannelIdentifierValidator is the default validator function for Channel identifiers.
 // A valid Identifier must be between 8-64 characters and only contain alphanumeric and some allowed
 // special characters (see IsValidID).
-func ChannelIdentifierValidator(id string) error {
-	return defaultIdentifierValidator(id, 8, DefaultMaxCharacterLength)
-}
+func ChannelIdentifierValidator(id string) error { _ = "STUB: not implemented"; return nil }
 
 // PortIdentifierValidator is the default validator function for Port identifiers.
 // A valid Identifier must be between 2-64 characters and only contain alphanumeric and some allowed
 // special characters (see IsValidID).
-func PortIdentifierValidator(id string) error {
-	return defaultIdentifierValidator(id, 2, DefaultMaxPortCharacterLength)
-}
+func PortIdentifierValidator(id string) error { _ = "STUB: not implemented"; return nil }
 
 // NewPathValidator takes in an Identifier Validator function and returns
 // a Path Validator function which requires path to consist of `/`-separated valid identifiers,
 // where a valid identifier is between 1-64 characters, contains only alphanumeric and some allowed
 // special characters (see IsValidID), and satisfies the custom `idValidator` function.
 func NewPathValidator(idValidator ValidateFn) ValidateFn {
-	return func(path string) error {
-		pathArr := strings.Split(path, "/")
-		if len(pathArr) > 0 && pathArr[0] == path {
-			return errorsmod.Wrapf(ErrInvalidPath, "path %s doesn't contain any separator '/'", path)
-		}
-
-		for _, p := range pathArr {
-			// a path beginning or ending in a separator returns empty string elements.
-			if p == "" {
-				return errorsmod.Wrapf(ErrInvalidPath, "path %s cannot begin or end with '/'", path)
-			}
-
-			if err := idValidator(p); err != nil {
-				return err
-			}
-			// Each path element must either be a valid identifier or constant number
-			if err := defaultIdentifierValidator(p, 1, DefaultMaxCharacterLength); err != nil {
-				return errorsmod.Wrapf(err, "path %s contains an invalid identifier: '%s'", path, p)
-			}
-		}
-
-		return nil
-	}
+	_ = "STUB: not implemented"
+	return *new(ValidateFn)
 }
+
+// a path beginning or ending in a separator returns empty string elements.
+
+// Each path element must either be a valid identifier or constant number

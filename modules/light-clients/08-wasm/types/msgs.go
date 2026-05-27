@@ -1,11 +1,7 @@
 package types
 
 import (
-	errorsmod "cosmossdk.io/errors"
-
 	sdk "github.com/cosmos/cosmos-sdk/types"
-
-	ibcerrors "github.com/cosmos/ibc-go/v11/modules/core/errors"
 )
 
 var (
@@ -19,72 +15,27 @@ var (
 
 // NewMsgStoreCode creates a new MsgStoreCode instance
 func NewMsgStoreCode(signer string, code []byte) *MsgStoreCode {
-	return &MsgStoreCode{
-		Signer:       signer,
-		WasmByteCode: code,
-	}
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // ValidateBasic implements sdk.HasValidateBasic
-func (m MsgStoreCode) ValidateBasic() error {
-	if err := ValidateWasmCode(m.WasmByteCode); err != nil {
-		return err
-	}
-
-	_, err := sdk.AccAddressFromBech32(m.Signer)
-	if err != nil {
-		return errorsmod.Wrapf(ibcerrors.ErrInvalidAddress, "string could not be parsed as address: %v", err)
-	}
-
-	return nil
-}
+func (m MsgStoreCode) ValidateBasic() error { _ = "STUB: not implemented"; return nil }
 
 // NewMsgRemoveChecksum creates a new MsgRemoveChecksum instance
 func NewMsgRemoveChecksum(signer string, checksum []byte) *MsgRemoveChecksum {
-	return &MsgRemoveChecksum{
-		Signer:   signer,
-		Checksum: checksum,
-	}
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // ValidateBasic implements sdk.HasValidateBasic
-func (m MsgRemoveChecksum) ValidateBasic() error {
-	_, err := sdk.AccAddressFromBech32(m.Signer)
-	if err != nil {
-		return errorsmod.Wrapf(ibcerrors.ErrInvalidAddress, "string could not be parsed as address: %v", err)
-	}
-
-	return ValidateWasmChecksum(m.Checksum)
-}
+func (m MsgRemoveChecksum) ValidateBasic() error { _ = "STUB: not implemented"; return nil }
 
 // MsgMigrateContract creates a new MsgMigrateContract instance
 func NewMsgMigrateContract(signer, clientID string, checksum, migrateMsg []byte) *MsgMigrateContract {
-	return &MsgMigrateContract{
-		Signer:   signer,
-		ClientId: clientID,
-		Checksum: checksum,
-		Msg:      migrateMsg,
-	}
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // ValidateBasic implements sdk.HasValidateBasic
-func (m MsgMigrateContract) ValidateBasic() error {
-	_, err := sdk.AccAddressFromBech32(m.Signer)
-	if err != nil {
-		return errorsmod.Wrapf(ibcerrors.ErrInvalidAddress, "string could not be parsed as address: %v", err)
-	}
-
-	if err := ValidateWasmChecksum(m.Checksum); err != nil {
-		return err
-	}
-
-	if err := ValidateClientID(m.ClientId); err != nil {
-		return err
-	}
-
-	if len(m.Msg) == 0 {
-		return errorsmod.Wrap(ibcerrors.ErrInvalidRequest, "migrate message cannot be empty")
-	}
-
-	return nil
-}
+func (m MsgMigrateContract) ValidateBasic() error { _ = "STUB: not implemented"; return nil }

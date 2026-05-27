@@ -1,15 +1,10 @@
 package solomachine
 
 import (
-	"reflect"
-
-	errorsmod "cosmossdk.io/errors"
-
 	"github.com/cosmos/cosmos-sdk/codec"
 	storetypes "github.com/cosmos/cosmos-sdk/store/v2/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	clienttypes "github.com/cosmos/ibc-go/v11/modules/core/02-client/types"
 	"github.com/cosmos/ibc-go/v11/modules/core/exported"
 )
 
@@ -24,31 +19,8 @@ func (cs *ClientState) CheckSubstituteAndUpdateState(
 	ctx sdk.Context, cdc codec.BinaryCodec, subjectClientStore,
 	_ storetypes.KVStore, substituteClient exported.ClientState,
 ) error {
-	substituteClientState, ok := substituteClient.(*ClientState)
-	if !ok {
-		return errorsmod.Wrapf(clienttypes.ErrInvalidClientType, "substitute client state type %T, expected  %T", substituteClient, &ClientState{})
-	}
-
-	subjectPublicKey, err := cs.ConsensusState.GetPubKey()
-	if err != nil {
-		return errorsmod.Wrap(err, "failed to get consensus public key")
-	}
-
-	substitutePublicKey, err := substituteClientState.ConsensusState.GetPubKey()
-	if err != nil {
-		return errorsmod.Wrap(err, "failed to get substitute client public key")
-	}
-
-	if reflect.DeepEqual(subjectPublicKey, substitutePublicKey) {
-		return errorsmod.Wrapf(clienttypes.ErrInvalidHeader, "subject and substitute have the same public key")
-	}
-
-	// update to substitute parameters
-	cs.Sequence = substituteClientState.Sequence
-	cs.ConsensusState = substituteClientState.ConsensusState
-	cs.IsFrozen = false
-
-	setClientState(subjectClientStore, cdc, cs)
-
+	_ = "STUB: not implemented"
 	return nil
 }
+
+// update to substitute parameters

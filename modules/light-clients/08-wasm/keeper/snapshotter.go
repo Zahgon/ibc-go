@@ -1,19 +1,9 @@
 package keeper
 
 import (
-	"encoding/hex"
-	"errors"
-	"io"
-
-	errorsmod "cosmossdk.io/errors"
-
 	snapshot "github.com/cosmos/cosmos-sdk/store/v2/snapshots/types"
 	storetypes "github.com/cosmos/cosmos-sdk/store/v2/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
-
-	cmtproto "github.com/cometbft/cometbft/proto/tendermint/types"
-
-	"github.com/cosmos/ibc-go/modules/light-clients/08-wasm/v11/types"
 )
 
 var _ snapshot.ExtensionSnapshotter = &WasmSnapshotter{}
@@ -33,61 +23,26 @@ type WasmSnapshotter struct {
 
 // NewWasmSnapshotter creates and returns a new snapshot.ExtensionSnapshotter implementation for the 08-wasm module.
 func NewWasmSnapshotter(cms storetypes.MultiStore, keeper *Keeper) snapshot.ExtensionSnapshotter {
-	return &WasmSnapshotter{
-		cms:    cms,
-		keeper: keeper,
-	}
+	_ = "STUB: not implemented"
+	return *new(snapshot.ExtensionSnapshotter)
 }
 
 // SnapshotName implements the snapshot.ExtensionSnapshotter interface.
 // A unique name should be provided such that the implementation can be identified by the manager.
-func (*WasmSnapshotter) SnapshotName() string {
-	return types.ModuleName
-}
+func (*WasmSnapshotter) SnapshotName() string { _ = "STUB: not implemented"; return "" }
 
 // SnapshotFormat implements the snapshot.ExtensionSnapshotter interface.
 // This is the default format used for encoding payloads when taking a snapshot.
-func (*WasmSnapshotter) SnapshotFormat() uint32 {
-	return SnapshotFormat
-}
+func (*WasmSnapshotter) SnapshotFormat() uint32 { _ = "STUB: not implemented"; return 0 }
 
 // SupportedFormats implements the snapshot.ExtensionSnapshotter interface.
 // This defines a list of supported formats the snapshotter extension can restore from.
-func (*WasmSnapshotter) SupportedFormats() []uint32 {
-	return []uint32{SnapshotFormat}
-}
+func (*WasmSnapshotter) SupportedFormats() []uint32 { _ = "STUB: not implemented"; return nil }
 
 // SnapshotExtension implements the snapshot.ExntensionSnapshotter interface.
 // SnapshotExtension is used to write data payloads into the underlying protobuf stream from the 08-wasm module.
 func (ws *WasmSnapshotter) SnapshotExtension(height uint64, payloadWriter snapshot.ExtensionPayloadWriter) error {
-	cacheMS, err := ws.cms.CacheMultiStoreWithVersion(int64(height))
-	if err != nil {
-		return err
-	}
-
-	ctx := sdk.NewContext(cacheMS, cmtproto.Header{}, false, nil)
-
-	checksums, err := ws.keeper.GetAllChecksums(ctx)
-	if err != nil {
-		return err
-	}
-
-	for _, checksum := range checksums {
-		wasmCode, err := ws.keeper.GetVM().GetCode(checksum)
-		if err != nil {
-			return err
-		}
-
-		compressedWasm, err := types.GzipIt(wasmCode)
-		if err != nil {
-			return err
-		}
-
-		if err = payloadWriter(compressedWasm); err != nil {
-			return err
-		}
-	}
-
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -95,32 +50,12 @@ func (ws *WasmSnapshotter) SnapshotExtension(height uint64, payloadWriter snapsh
 // RestoreExtension is used to read data from an existing extension state snapshot into the 08-wasm module.
 // The payload reader returns io.EOF when it has reached the end of the extension state snapshot.
 func (ws *WasmSnapshotter) RestoreExtension(height uint64, format uint32, payloadReader snapshot.ExtensionPayloadReader) error {
-	if format == ws.SnapshotFormat() {
-		return ws.processAllItems(height, payloadReader, restoreV1)
-	}
-
-	return errorsmod.Wrapf(snapshot.ErrUnknownFormat, "expected %d, got %d", ws.SnapshotFormat(), format)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 func restoreV1(ctx sdk.Context, k *Keeper, compressedCode []byte) error {
-	if !types.IsGzip(compressedCode) {
-		return errorsmod.Wrap(types.ErrInvalidData, "expected wasm code is not gzip format")
-	}
-
-	wasmCode, err := types.Uncompress(compressedCode, types.MaxWasmSize)
-	if err != nil {
-		return errorsmod.Wrap(err, "failed to uncompress wasm code")
-	}
-
-	checksum, err := k.GetVM().StoreCodeUnchecked(wasmCode)
-	if err != nil {
-		return errorsmod.Wrap(err, "failed to store wasm code")
-	}
-
-	if err := k.GetVM().Pin(checksum); err != nil {
-		return errorsmod.Wrapf(err, "failed to pin checksum: %s to in-memory cache", hex.EncodeToString(checksum))
-	}
-
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -129,19 +64,6 @@ func (ws *WasmSnapshotter) processAllItems(
 	payloadReader snapshot.ExtensionPayloadReader,
 	cb func(sdk.Context, *Keeper, []byte) error,
 ) error {
-	ctx := sdk.NewContext(ws.cms, cmtproto.Header{Height: int64(height)}, false, nil)
-	for {
-		payload, err := payloadReader()
-		if errors.Is(err, io.EOF) {
-			break
-		} else if err != nil {
-			return err
-		}
-
-		if err := cb(ctx, ws.keeper, payload); err != nil {
-			return errorsmod.Wrap(err, "failure processing snapshot item")
-		}
-	}
-
+	_ = "STUB: not implemented"
 	return nil
 }

@@ -1,7 +1,5 @@
 package host
 
-import "fmt"
-
 const (
 	KeySequencePrefix         = "sequences"
 	KeyNextSeqSendPrefix      = "nextSequenceSend"
@@ -21,49 +19,46 @@ const (
 
 // NextSequenceRecvKey returns the store key for the receive sequence of a particular
 // channel binded to a specific port
-func NextSequenceRecvKey(portID, channelID string) []byte {
-	return fmt.Appendf(nil, "%s/%s", KeyNextSeqRecvPrefix, ChannelPath(portID, channelID))
-}
+func NextSequenceRecvKey(portID, channelID string) []byte { _ = "STUB: not implemented"; return nil }
 
 // NextSequenceAckKey returns the store key for the acknowledgement sequence of
 // a particular channel binded to a specific port.
-func NextSequenceAckKey(portID, channelID string) []byte {
-	return fmt.Appendf(nil, "%s/%s", KeyNextSeqAckPrefix, ChannelPath(portID, channelID))
-}
+func NextSequenceAckKey(portID, channelID string) []byte { _ = "STUB: not implemented"; return nil }
 
 // PacketCommitmentKey returns the store key of under which a packet commitment
 // is stored
 func PacketCommitmentKey(portID, channelID string, sequence uint64) []byte {
-	return fmt.Appendf(nil, "%s/%d", PacketCommitmentPrefixKey(portID, channelID), sequence)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // PacketCommitmentPrefixKey defines the prefix for commitments to packet data fields store path.
 func PacketCommitmentPrefixKey(portID, channelID string) []byte {
-	return fmt.Appendf(nil, "%s/%s/%s", KeyPacketCommitmentPrefix, ChannelPath(portID, channelID), KeySequencePrefix)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // PacketAcknowledgementKey returns the store key of under which a packet
 // acknowledgement is stored
 func PacketAcknowledgementKey(portID, channelID string, sequence uint64) []byte {
-	return fmt.Appendf(nil, "%s/%d", PacketAcknowledgementPrefixKey(portID, channelID), sequence)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // PacketAcknowledgementPrefixKey defines the prefix for commitments to packet data fields store path.
 func PacketAcknowledgementPrefixKey(portID, channelID string) []byte {
-	return fmt.Appendf(nil, "%s/%s/%s", KeyPacketAckPrefix, ChannelPath(portID, channelID), KeySequencePrefix)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // PacketReceiptKey returns the store key of under which a packet
 // receipt is stored
 func PacketReceiptKey(portID, channelID string, sequence uint64) []byte {
-	return fmt.Appendf(nil, "%s/%s/%s", KeyPacketReceiptPrefix, ChannelPath(portID, channelID), sequencePath(sequence))
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // RecvStartSequenceKey returns the store key for the recv start sequence of a particular channel
-func RecvStartSequenceKey(portID, channelID string) []byte {
-	return fmt.Appendf(nil, "%s/%s", KeyRecvStartSequence, ChannelPath(portID, channelID))
-}
+func RecvStartSequenceKey(portID, channelID string) []byte { _ = "STUB: not implemented"; return nil }
 
-func sequencePath(sequence uint64) string {
-	return fmt.Sprintf("%s/%d", KeySequencePrefix, sequence)
-}
+func sequencePath(sequence uint64) string { _ = "STUB: not implemented"; return "" }

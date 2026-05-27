@@ -1,8 +1,6 @@
 package host
 
 import (
-	"fmt"
-
 	"github.com/cosmos/ibc-go/v11/modules/core/exported"
 )
 
@@ -16,37 +14,28 @@ const (
 
 // FullClientKey returns the full path of specific client path in the format:
 // "clients/{clientID}/{path}" as a byte array.
-func FullClientKey(clientID string, path []byte) []byte {
-	return fmt.Appendf(nil, "%s/%s/%s", KeyClientStorePrefix, clientID, path)
-}
+func FullClientKey(clientID string, path []byte) []byte { _ = "STUB: not implemented"; return nil }
 
 // PrefixedClientStoreKey returns a key which can be used for prefixed
 // key store iteration. The prefix may be a clientType, clientID, or any
 // valid key prefix which may be concatenated with the client store constant.
-func PrefixedClientStoreKey(prefix []byte) []byte {
-	return fmt.Appendf(nil, "%s/%s", KeyClientStorePrefix, prefix)
-}
+func PrefixedClientStoreKey(prefix []byte) []byte { _ = "STUB: not implemented"; return nil }
 
 // FullClientStateKey takes a client identifier and returns a Key under which to store a
 // particular client state.
-func FullClientStateKey(clientID string) []byte {
-	return FullClientKey(clientID, []byte(KeyClientState))
-}
+func FullClientStateKey(clientID string) []byte { _ = "STUB: not implemented"; return nil }
 
 // ClientStateKey returns a store key under which a particular client state is stored
 // in a client prefixed store
-func ClientStateKey() []byte {
-	return []byte(KeyClientState)
-}
+func ClientStateKey() []byte { _ = "STUB: not implemented"; return nil }
 
 // FullConsensusStateKey returns the store key for the consensus state of a particular
 // client.
 func FullConsensusStateKey(clientID string, height exported.Height) []byte {
-	return FullClientKey(clientID, ConsensusStateKey(height))
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // ConsensusStateKey returns the store key for a the consensus state of a particular
 // client stored in a client prefixed store.
-func ConsensusStateKey(height exported.Height) []byte {
-	return fmt.Appendf(nil, "%s/%s", KeyConsensusStatePrefix, height)
-}
+func ConsensusStateKey(height exported.Height) []byte { _ = "STUB: not implemented"; return nil }

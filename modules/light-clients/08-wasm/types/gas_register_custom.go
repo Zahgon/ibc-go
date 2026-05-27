@@ -1,8 +1,6 @@
 package types
 
 import (
-	"math"
-
 	wasmvm "github.com/CosmWasm/wasmvm/v3"
 	wasmvmtypes "github.com/CosmWasm/wasmvm/v3/types"
 
@@ -24,25 +22,18 @@ var CostJSONDeserialization = wasmvmtypes.UFraction{
 }
 
 func (g WasmGasRegister) RuntimeGasForContract(ctx sdk.Context) uint64 {
-	meter := ctx.GasMeter()
-	if meter.IsOutOfGas() {
-		return 0
-	}
-	// infinite gas meter with limit=0 or MaxUint64
-	if meter.Limit() == 0 || meter.Limit() == math.MaxUint64 {
-		return math.MaxUint64
-	}
-	return g.ToWasmVMGas(meter.Limit() - meter.GasConsumedToLimit())
+	_ = "STUB: not implemented"
+	return 0
 }
 
+// infinite gas meter with limit=0 or MaxUint64
+
 func (g WasmGasRegister) ConsumeRuntimeGas(ctx sdk.Context, gas uint64) {
-	consumed := g.FromWasmVMGas(gas)
-	ctx.GasMeter().ConsumeGas(consumed, "wasm contract")
-	// throw OutOfGas error if we ran out (got exactly to zero due to better limit enforcing)
-	if ctx.GasMeter().IsOutOfGas() {
-		panic(storetypes.ErrorOutOfGas{Descriptor: "Wasmer function execution"})
-	}
+	_ = "STUB: not implemented"
+	return
 }
+
+// throw OutOfGas error if we ran out (got exactly to zero due to better limit enforcing)
 
 // MultipliedGasMeter wraps the GasMeter from context and multiplies all reads by out defined multiplier
 type MultipliedGasMeter struct {
@@ -51,11 +42,13 @@ type MultipliedGasMeter struct {
 }
 
 func NewMultipliedGasMeter(originalMeter storetypes.GasMeter, gr GasRegister) MultipliedGasMeter {
-	return MultipliedGasMeter{originalMeter: originalMeter, GasRegister: gr}
+	_ = "STUB: not implemented"
+	return *new(MultipliedGasMeter)
 }
 
 var _ wasmvm.GasMeter = MultipliedGasMeter{}
 
 func (m MultipliedGasMeter) GasConsumed() storetypes.Gas {
-	return m.GasRegister.ToWasmVMGas(m.originalMeter.GasConsumed())
+	_ = "STUB: not implemented"
+	return *new(storetypes.Gas)
 }

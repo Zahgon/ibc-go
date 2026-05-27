@@ -16,25 +16,13 @@ const (
 )
 
 // NewMockRecvPacketEvent returns a mock receive packet event
-func NewMockRecvPacketEvent() sdk.Event {
-	return newMockEvent(MockEventTypeRecvPacket)
-}
+func NewMockRecvPacketEvent() sdk.Event { _ = "STUB: not implemented"; return *new(sdk.Event) }
 
 // NewMockAckPacketEvent returns a mock acknowledgement packet event
-func NewMockAckPacketEvent() sdk.Event {
-	return newMockEvent(MockEventTypeAckPacket)
-}
+func NewMockAckPacketEvent() sdk.Event { _ = "STUB: not implemented"; return *new(sdk.Event) }
 
 // NewMockTimeoutPacketEvent emits a mock timeout packet event
-func NewMockTimeoutPacketEvent() sdk.Event {
-	return newMockEvent(MockEventTypeTimeoutPacket)
-}
+func NewMockTimeoutPacketEvent() sdk.Event { _ = "STUB: not implemented"; return *new(sdk.Event) }
 
 // emitMockEvent returns a mock event with the given event type
-func newMockEvent(eventType string) sdk.Event {
-	return sdk.NewEvent(
-		eventType,
-		sdk.NewAttribute(MockAttributeKey1, MockAttributeValue1),
-		sdk.NewAttribute(MockAttributeKey2, MockAttributeValue2),
-	)
-}
+func newMockEvent(eventType string) sdk.Event { _ = "STUB: not implemented"; return *new(sdk.Event) }

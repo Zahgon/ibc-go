@@ -1,12 +1,9 @@
 package testvalues
 
 import (
-	"fmt"
 	"time"
 
 	"github.com/cosmos/interchaintest/v11/ibc"
-
-	sdkmath "cosmossdk.io/math"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
@@ -24,27 +21,18 @@ const (
 var VotingPeriod = time.Second * 30
 
 // ImmediatelyTimeout returns an ibc.IBCTimeout which will cause an IBC transfer to timeout immediately.
-func ImmediatelyTimeout() *ibc.IBCTimeout {
-	return &ibc.IBCTimeout{
-		NanoSeconds: 1,
-	}
-}
+func ImmediatelyTimeout() *ibc.IBCTimeout { _ = "STUB: not implemented"; return nil }
 
-func DefaultTransferAmount(denom string) sdk.Coin {
-	return sdk.Coin{Denom: denom, Amount: sdkmath.NewInt(IBCTransferAmount)}
-}
+func DefaultTransferAmount(denom string) sdk.Coin { _ = "STUB: not implemented"; return *new(sdk.Coin) }
 
 func TransferAmount(amount int64, denom string) sdk.Coin {
-	return sdk.Coin{Denom: denom, Amount: sdkmath.NewInt(amount)}
+	_ = "STUB: not implemented"
+	return *new(sdk.Coin)
 }
 
-func TendermintClientID(id int) string {
-	return fmt.Sprintf("07-tendermint-%d", id)
-}
+func TendermintClientID(id int) string { _ = "STUB: not implemented"; return "" }
 
-func SolomachineClientID(id int) string {
-	return fmt.Sprintf("06-solomachine-%d", id)
-}
+func SolomachineClientID(id int) string { _ = "STUB: not implemented"; return "" }
 
 var ReflectionServiceFeatureReleases = semverutil.FeatureReleases{
 	MajorVersion: "v7",

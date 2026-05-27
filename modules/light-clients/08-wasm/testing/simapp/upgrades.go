@@ -1,9 +1,6 @@
 package simapp
 
 import (
-	"context"
-
-	storetypes "github.com/cosmos/cosmos-sdk/store/v2/types"
 	"github.com/cosmos/cosmos-sdk/types/module"
 	upgradetypes "github.com/cosmos/cosmos-sdk/x/upgrade/types"
 )
@@ -13,29 +10,12 @@ const (
 )
 
 // registerUpgradeHandlers registers all supported upgrade handlers
-func (app *SimApp) registerUpgradeHandlers() {
-	app.UpgradeKeeper.SetUpgradeHandler(
-		IBCWasmUpgrade,
-		createWasmStoreUpgradeHandler(app.ModuleManager, app.configurator),
-	)
+func (app *SimApp) registerUpgradeHandlers() { _ = "STUB: not implemented"; return }
 
-	upgradeInfo, err := app.UpgradeKeeper.ReadUpgradeInfoFromDisk()
-	if err != nil {
-		panic(err)
-	}
-
-	if upgradeInfo.Name == IBCWasmUpgrade && !app.UpgradeKeeper.IsSkipHeight(upgradeInfo.Height) {
-		storeUpgrades := storetypes.StoreUpgrades{
-			Added: []string{},
-		}
-		// configure store loader that checks if version == upgradeHeight and applies store upgrades
-		app.SetStoreLoader(upgradetypes.UpgradeStoreLoader(upgradeInfo.Height, &storeUpgrades))
-	}
-}
+// configure store loader that checks if version == upgradeHeight and applies store upgrades
 
 // createWasmStoreUpgradeHandler creates an upgrade handler for the 08-wasm ibc-go/v8 SimApp upgrade.
 func createWasmStoreUpgradeHandler(mm *module.Manager, configurator module.Configurator) upgradetypes.UpgradeHandler {
-	return func(ctx context.Context, _ upgradetypes.Plan, vm module.VersionMap) (module.VersionMap, error) {
-		return mm.RunMigrations(ctx, configurator, vm)
-	}
+	_ = "STUB: not implemented"
+	return *new(upgradetypes.UpgradeHandler)
 }

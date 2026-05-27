@@ -2,8 +2,6 @@ package keeper
 
 import (
 	"context"
-	"errors"
-	"strings"
 
 	"cosmossdk.io/collections"
 	storetypes "cosmossdk.io/core/store"
@@ -13,7 +11,6 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
 	"github.com/cosmos/ibc-go/v11/modules/apps/27-gmp/types"
-	"github.com/cosmos/ibc-go/v11/modules/core/exported"
 )
 
 // Keeper defines the IBC fungible transfer keeper
@@ -42,36 +39,19 @@ func NewKeeper(
 	accountKeeper types.AccountKeeper, msgRouter types.MessageRouter,
 	authority string,
 ) *Keeper {
-	if strings.TrimSpace(authority) == "" {
-		panic(errors.New("authority must be non-empty"))
-	}
-
-	sb := collections.NewSchemaBuilder(storeService)
-	k := Keeper{
-		cdc:               cdc,
-		msgRouter:         msgRouter,
-		accountKeeper:     accountKeeper,
-		authority:         authority,
-		Accounts:          collections.NewMap(sb, types.AccountsKey, "accounts", collections.TripleKeyCodec(collections.StringKey, collections.StringKey, collections.BytesKey), codec.CollValue[types.ICS27Account](cdc)),
-		AccountsByAddress: collections.NewMap(sb, types.AccountsByAddressKey, "accounts_by_address", sdk.AccAddressKey, codec.CollValue[types.ICS27Account](cdc)),
-	}
-
-	schema, err := sb.Build()
-	if err != nil {
-		panic(err)
-	}
-
-	k.Schema = schema
-
-	return &k
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // GetAuthority returns the module's authority.
 func (k *Keeper) GetAuthority() string {
-	return k.authority
+	_ = "STUB: not implemented"
+
+	// Logger returns a module-specific logger.
+	return ""
 }
 
-// Logger returns a module-specific logger.
 func (*Keeper) Logger(goCtx context.Context) log.Logger {
-	return sdk.UnwrapSDKContext(goCtx).Logger().With("module", "x/"+exported.ModuleName+"-"+types.ModuleName)
+	_ = "STUB: not implemented"
+	return *new(log.Logger)
 }

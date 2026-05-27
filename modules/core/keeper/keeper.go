@@ -1,10 +1,6 @@
 package keeper
 
 import (
-	"errors"
-	"reflect"
-	"strings"
-
 	corestore "cosmossdk.io/core/store"
 
 	"github.com/cosmos/cosmos-sdk/codec"
@@ -39,72 +35,32 @@ func NewKeeper(
 	cdc codec.BinaryCodec, storeService corestore.KVStoreService,
 	upgradeKeeper clienttypes.UpgradeKeeper, authority string,
 ) *Keeper {
+	_ = "STUB: not implemented"
 	// panic if any of the keepers passed in is empty
-	if isEmpty(upgradeKeeper) {
-		panic(errors.New("cannot initialize IBC keeper: empty upgrade keeper"))
-	}
-
-	if strings.TrimSpace(authority) == "" {
-		panic(errors.New("authority must be non-empty"))
-	}
-
-	clientKeeper := clientkeeper.NewKeeper(cdc, storeService, upgradeKeeper)
-	clientV2Keeper := clientv2keeper.NewKeeper(cdc, clientKeeper)
-	connectionKeeper := connectionkeeper.NewKeeper(cdc, storeService, clientKeeper)
-	portKeeper := portkeeper.NewKeeper()
-	channelKeeperV2 := channelkeeperv2.NewKeeper(cdc, storeService, clientKeeper, clientV2Keeper, connectionKeeper)
-	channelKeeper := channelkeeper.NewKeeper(cdc, storeService, clientKeeper, connectionKeeper, clientV2Keeper, channelKeeperV2)
-
-	return &Keeper{
-		cdc:              cdc,
-		ClientKeeper:     clientKeeper,
-		ClientV2Keeper:   clientV2Keeper,
-		ConnectionKeeper: connectionKeeper,
-		ChannelKeeper:    channelKeeper,
-		ChannelKeeperV2:  channelKeeperV2,
-		PortKeeper:       portKeeper,
-		authority:        authority,
-	}
+	return nil
 }
 
 // Codec returns the IBC module codec.
 func (k *Keeper) Codec() codec.BinaryCodec {
-	return k.cdc
+	_ = "STUB: not implemented"
+
+	// SetRouter sets the Router in IBC Keeper and seals it. The method panics if
+	// there is an existing router that's already sealed.
+	return *new(codec.BinaryCodec)
 }
 
-// SetRouter sets the Router in IBC Keeper and seals it. The method panics if
-// there is an existing router that's already sealed.
-func (k *Keeper) SetRouter(rtr *porttypes.Router) {
-	if k.PortKeeper.Router != nil && k.PortKeeper.Router.Sealed() {
-		panic(errors.New("cannot reset a sealed router"))
-	}
-
-	k.PortKeeper.Router = rtr
-	k.PortKeeper.Router.Seal()
-}
+func (k *Keeper) SetRouter(rtr *porttypes.Router) { _ = "STUB: not implemented"; return }
 
 // SetRouterV2 sets the v2 router for the IBC Keeper.
-func (k *Keeper) SetRouterV2(rtr *api.Router) {
-	k.ChannelKeeperV2.Router = rtr
-}
+func (k *Keeper) SetRouterV2(rtr *api.Router) { _ = "STUB: not implemented"; return }
 
 // GetAuthority returns the ibc module's authority.
 func (k *Keeper) GetAuthority() string {
-	return k.authority
+	_ = "STUB: not implemented"
+
+	// isEmpty checks if the interface is an empty struct or a pointer pointing
+	// to an empty struct
+	return ""
 }
 
-// isEmpty checks if the interface is an empty struct or a pointer pointing
-// to an empty struct
-func isEmpty(keeper any) bool {
-	switch reflect.TypeOf(keeper).Kind() {
-	case reflect.Ptr:
-		if reflect.ValueOf(keeper).Elem().IsZero() {
-			return true
-		}
-	default:
-		if reflect.ValueOf(keeper).IsZero() {
-			return true
-		}
-	}
-	return false
-}
+func isEmpty(keeper any) bool { _ = "STUB: not implemented"; return false }

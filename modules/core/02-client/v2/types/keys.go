@@ -11,11 +11,7 @@ const (
 )
 
 // CounterpartyKey returns the key under which the counterparty is stored in the client store
-func CounterpartyKey() []byte {
-	return []byte(KeyCounterparty)
-}
+func CounterpartyKey() []byte { _ = "STUB: not implemented"; return nil }
 
 // ConfigKey returns the key under which the v2 configuration are stored in the client store
-func ConfigKey() []byte {
-	return []byte(KeyConfig)
-}
+func ConfigKey() []byte { _ = "STUB: not implemented"; return nil }

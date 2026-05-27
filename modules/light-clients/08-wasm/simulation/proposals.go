@@ -4,11 +4,7 @@ import (
 	"math/rand"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/cosmos/cosmos-sdk/types/address"
 	simtypes "github.com/cosmos/cosmos-sdk/types/simulation"
-	"github.com/cosmos/cosmos-sdk/x/simulation"
-
-	"github.com/cosmos/ibc-go/modules/light-clients/08-wasm/v11/types"
 )
 
 // Simulation operation weights constants
@@ -19,22 +15,10 @@ const (
 )
 
 // ProposalMsgs defines the module weighted proposals' contents
-func ProposalMsgs() []simtypes.WeightedProposalMsg {
-	return []simtypes.WeightedProposalMsg{
-		simulation.NewWeightedProposalMsg(
-			OpWeightMsgStoreCode,
-			DefaultWeightMsgStoreCode,
-			SimulateMsgStoreCode,
-		),
-	}
-}
+func ProposalMsgs() []simtypes.WeightedProposalMsg { _ = "STUB: not implemented"; return nil }
 
 // SimulateMsgStoreCode returns a random MsgStoreCode for the 08-wasm module
 func SimulateMsgStoreCode(r *rand.Rand, _ sdk.Context, _ []simtypes.Account) sdk.Msg {
-	var signer sdk.AccAddress = address.Module("gov")
-
-	return &types.MsgStoreCode{
-		Signer:       signer.String(),
-		WasmByteCode: []byte{0x01},
-	}
+	_ = "STUB: not implemented"
+	return *new(sdk.Msg)
 }

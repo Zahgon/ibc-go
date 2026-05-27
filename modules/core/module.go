@@ -3,7 +3,6 @@ package ibc
 import (
 	"context"
 	"encoding/json"
-	"fmt"
 
 	"github.com/grpc-ecosystem/grpc-gateway/runtime"
 	"github.com/spf13/cobra"
@@ -17,22 +16,7 @@ import (
 	"github.com/cosmos/cosmos-sdk/types/module"
 	simtypes "github.com/cosmos/cosmos-sdk/types/simulation"
 
-	ibcclient "github.com/cosmos/ibc-go/v11/modules/core/02-client"
-	clientkeeper "github.com/cosmos/ibc-go/v11/modules/core/02-client/keeper"
-	clienttypes "github.com/cosmos/ibc-go/v11/modules/core/02-client/types"
-	clientv2keeper "github.com/cosmos/ibc-go/v11/modules/core/02-client/v2/keeper"
-	clientv2types "github.com/cosmos/ibc-go/v11/modules/core/02-client/v2/types"
-	connectionkeeper "github.com/cosmos/ibc-go/v11/modules/core/03-connection/keeper"
-	connectiontypes "github.com/cosmos/ibc-go/v11/modules/core/03-connection/types"
-	channelkeeper "github.com/cosmos/ibc-go/v11/modules/core/04-channel/keeper"
-	channeltypes "github.com/cosmos/ibc-go/v11/modules/core/04-channel/types"
-	channelkeeperv2 "github.com/cosmos/ibc-go/v11/modules/core/04-channel/v2/keeper"
-	channeltypesv2 "github.com/cosmos/ibc-go/v11/modules/core/04-channel/v2/types"
-	"github.com/cosmos/ibc-go/v11/modules/core/client/cli"
-	"github.com/cosmos/ibc-go/v11/modules/core/exported"
 	"github.com/cosmos/ibc-go/v11/modules/core/keeper"
-	"github.com/cosmos/ibc-go/v11/modules/core/simulation"
-	"github.com/cosmos/ibc-go/v11/modules/core/types"
 )
 
 var (
@@ -52,70 +36,57 @@ var (
 type AppModuleBasic struct{}
 
 // Name returns the ibc module's name.
-func (AppModuleBasic) Name() string {
-	return exported.ModuleName
-}
+func (AppModuleBasic) Name() string { _ = "STUB: not implemented"; return "" }
 
 // IsOnePerModuleType implements the depinject.OnePerModuleType interface.
-func (AppModule) IsOnePerModuleType() {}
+func (AppModule) IsOnePerModuleType() {
+	_ = "STUB: not implemented"
 
-// IsAppModule implements the appmodule.AppModule interface.
-func (AppModule) IsAppModule() {}
+	// IsAppModule implements the appmodule.AppModule interface.
+	return
+}
 
-// RegisterLegacyAminoCodec implements AppModuleBasic interface.
+func (AppModule) IsAppModule() {
+	_ = "STUB: not implemented"
+
+	// RegisterLegacyAminoCodec implements AppModuleBasic interface.
+	return
+}
+
 func (AppModuleBasic) RegisterLegacyAminoCodec(cdc *codec.LegacyAmino) {
-	clienttypes.RegisterLegacyAminoCodec(cdc)
+	_ = "STUB: not implemented"
+	return
 }
 
 // DefaultGenesis returns default genesis state as raw bytes for the ibc
 // module.
 func (AppModuleBasic) DefaultGenesis(cdc codec.JSONCodec) json.RawMessage {
-	return cdc.MustMarshalJSON(types.DefaultGenesisState())
+	_ = "STUB: not implemented"
+	return *new(json.RawMessage)
 }
 
 // ValidateGenesis performs genesis state validation for the ibc module.
 func (AppModuleBasic) ValidateGenesis(cdc codec.JSONCodec, config client.TxEncodingConfig, bz json.RawMessage) error {
-	var gs types.GenesisState
-	if err := cdc.UnmarshalJSON(bz, &gs); err != nil {
-		return fmt.Errorf("failed to unmarshal %s genesis state: %w", exported.ModuleName, err)
-	}
-
-	return gs.Validate()
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // RegisterGRPCGatewayRoutes registers the gRPC Gateway routes for the ibc module.
 func (AppModuleBasic) RegisterGRPCGatewayRoutes(clientCtx client.Context, mux *runtime.ServeMux) {
-	err := clienttypes.RegisterQueryHandlerClient(context.Background(), mux, clienttypes.NewQueryClient(clientCtx))
-	if err != nil {
-		panic(err)
-	}
-	err = connectiontypes.RegisterQueryHandlerClient(context.Background(), mux, connectiontypes.NewQueryClient(clientCtx))
-	if err != nil {
-		panic(err)
-	}
-	err = channeltypes.RegisterQueryHandlerClient(context.Background(), mux, channeltypes.NewQueryClient(clientCtx))
-	if err != nil {
-		panic(err)
-	}
-	err = channeltypesv2.RegisterQueryHandlerClient(context.Background(), mux, channeltypesv2.NewQueryClient(clientCtx))
-	if err != nil {
-		panic(err)
-	}
+	_ = "STUB: not implemented"
+	return
 }
 
 // GetTxCmd returns the root tx command for the ibc module.
-func (AppModuleBasic) GetTxCmd() *cobra.Command {
-	return cli.GetTxCmd()
-}
+func (AppModuleBasic) GetTxCmd() *cobra.Command { _ = "STUB: not implemented"; return nil }
 
 // GetQueryCmd returns no root query command for the ibc module.
-func (AppModuleBasic) GetQueryCmd() *cobra.Command {
-	return cli.GetQueryCmd()
-}
+func (AppModuleBasic) GetQueryCmd() *cobra.Command { _ = "STUB: not implemented"; return nil }
 
 // RegisterInterfaces registers module concrete types into protobuf Any.
 func (AppModuleBasic) RegisterInterfaces(registry codectypes.InterfaceRegistry) {
-	types.RegisterInterfaces(registry)
+	_ = "STUB: not implemented"
+	return
 }
 
 // AppModule implements an application module for the ibc module.
@@ -125,94 +96,63 @@ type AppModule struct {
 }
 
 // NewAppModule creates a new AppModule object
-func NewAppModule(k *keeper.Keeper) AppModule {
-	return AppModule{
-		keeper: k,
-	}
-}
+func NewAppModule(k *keeper.Keeper) AppModule { _ = "STUB: not implemented"; return *new(AppModule) }
 
 // Name returns the ibc module's name.
-func (AppModule) Name() string {
-	return exported.ModuleName
-}
+func (AppModule) Name() string { _ = "STUB: not implemented"; return "" }
 
 // RegisterServices registers module services.
-func (am AppModule) RegisterServices(cfg module.Configurator) {
-	clienttypes.RegisterMsgServer(cfg.MsgServer(), am.keeper)
-	clientv2types.RegisterMsgServer(cfg.MsgServer(), am.keeper)
-	connectiontypes.RegisterMsgServer(cfg.MsgServer(), am.keeper)
-	channeltypes.RegisterMsgServer(cfg.MsgServer(), am.keeper)
-	channeltypesv2.RegisterMsgServer(cfg.MsgServer(), am.keeper.ChannelKeeperV2)
+func (am AppModule) RegisterServices(cfg module.Configurator) { _ = "STUB: not implemented"; return }
 
-	clienttypes.RegisterQueryServer(cfg.QueryServer(), clientkeeper.NewQueryServer(am.keeper.ClientKeeper))
-	clientv2types.RegisterQueryServer(cfg.QueryServer(), clientv2keeper.NewQueryServer(am.keeper.ClientV2Keeper))
-	connectiontypes.RegisterQueryServer(cfg.QueryServer(), connectionkeeper.NewQueryServer(am.keeper.ConnectionKeeper))
-	channeltypes.RegisterQueryServer(cfg.QueryServer(), channelkeeper.NewQueryServer(am.keeper.ChannelKeeper))
-	channeltypesv2.RegisterQueryServer(cfg.QueryServer(), channelkeeperv2.NewQueryServer(am.keeper.ChannelKeeperV2))
-
-	// This upgrade used to just add default params, since we have deleted it (in consensus version 8 - ibc-go v10),
-	// we just return directly to increment the ConsensusVersion as expected
-	if err := cfg.RegisterMigration(exported.ModuleName, 5, func(_ sdk.Context) error {
-		return nil
-	}); err != nil {
-		panic(err)
-	}
-
-	clientMigrator := clientkeeper.NewMigrator(am.keeper.ClientKeeper)
-	if err := cfg.RegisterMigration(exported.ModuleName, 6, clientMigrator.MigrateToStatelessLocalhost); err != nil {
-		panic(err)
-	}
-
-	channelMigrator := channelkeeper.NewMigrator(am.keeper.ChannelKeeper)
-	if err := cfg.RegisterMigration(exported.ModuleName, 7, channelMigrator.Migrate7To8); err != nil {
-		panic(err)
-	}
-}
+// This upgrade used to just add default params, since we have deleted it (in consensus version 8 - ibc-go v10),
+// we just return directly to increment the ConsensusVersion as expected
 
 // InitGenesis performs genesis initialization for the ibc module. It returns
 // no validator updates.
 func (am AppModule) InitGenesis(ctx sdk.Context, cdc codec.JSONCodec, bz json.RawMessage) {
-	var gs types.GenesisState
-	err := cdc.UnmarshalJSON(bz, &gs)
-	if err != nil {
-		panic(fmt.Errorf("failed to unmarshal %s genesis state: %w", exported.ModuleName, err))
-	}
-	InitGenesis(ctx, *am.keeper, &gs)
+	_ = "STUB: not implemented"
+	return
 }
 
 // ExportGenesis returns the exported genesis state as raw bytes for the ibc
 // module.
 func (am AppModule) ExportGenesis(ctx sdk.Context, cdc codec.JSONCodec) json.RawMessage {
-	return cdc.MustMarshalJSON(ExportGenesis(ctx, *am.keeper))
+	_ = "STUB: not implemented"
+	return *new(json.RawMessage)
 }
 
 // ConsensusVersion implements AppModule/ConsensusVersion.
-func (AppModule) ConsensusVersion() uint64 { return 8 }
+func (AppModule) ConsensusVersion() uint64 {
+	_ = "STUB: not implemented"
 
-// BeginBlock returns the begin blocker for the ibc module.
-func (am AppModule) BeginBlock(goCtx context.Context) error {
-	ibcclient.BeginBlocker(sdk.UnwrapSDKContext(goCtx), am.keeper.ClientKeeper)
-	return nil
+	// BeginBlock returns the begin blocker for the ibc module.
+	return 0
 }
+
+func (am AppModule) BeginBlock(goCtx context.Context) error { _ = "STUB: not implemented"; return nil }
 
 // AppModuleSimulation functions
 
 // GenerateGenesisState creates a randomized GenState of the ibc module.
 func (AppModule) GenerateGenesisState(simState *module.SimulationState) {
-	simulation.RandomizedGenState(simState)
+	_ = "STUB: not implemented"
+	return
 }
 
 // ProposalMsgs returns msgs used for governance proposals for simulations.
 func (AppModule) ProposalMsgs(simState module.SimulationState) []simtypes.WeightedProposalMsg {
-	return simulation.ProposalMsgs()
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // RegisterStoreDecoder registers a decoder for ibc module's types
 func (am AppModule) RegisterStoreDecoder(sdr simtypes.StoreDecoderRegistry) {
-	sdr[exported.StoreKey] = simulation.NewDecodeStore(*am.keeper)
+	_ = "STUB: not implemented"
+	return
 }
 
 // WeightedOperations returns the all the ibc module operations with their respective weights.
 func (AppModule) WeightedOperations(_ module.SimulationState) []simtypes.WeightedOperation {
+	_ = "STUB: not implemented"
 	return nil
 }

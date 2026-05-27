@@ -1,8 +1,6 @@
 package types
 
 import (
-	"fmt"
-
 	"github.com/cosmos/ibc-go/v11/modules/core/exported"
 )
 
@@ -12,11 +10,7 @@ type Router struct {
 }
 
 // NewRouter returns an instance of the Router.
-func NewRouter() *Router {
-	return &Router{
-		routes: make(map[string]exported.LightClientModule),
-	}
-}
+func NewRouter() *Router { _ = "STUB: not implemented"; return nil }
 
 // AddRoute adds LightClientModule for a given module name. It returns the Router
 // so AddRoute calls can be linked. This function will panic if:
@@ -24,28 +18,15 @@ func NewRouter() *Router {
 // - or a module is already registered for the provided client type,
 // - or the client type is invalid.
 func (rtr *Router) AddRoute(clientType string, module exported.LightClientModule) *Router {
-	if rtr.HasRoute(clientType) {
-		panic(fmt.Errorf("route %s has already been registered", module))
-	}
-
-	if err := ValidateClientType(clientType); err != nil {
-		panic(fmt.Errorf("failed to add route: %w", err))
-	}
-
-	rtr.routes[clientType] = module
-	return rtr
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // HasRoute returns true if the Router has a module registered or false otherwise.
-func (rtr *Router) HasRoute(clientType string) bool {
-	_, ok := rtr.routes[clientType]
-	return ok
-}
+func (rtr *Router) HasRoute(clientType string) bool { _ = "STUB: not implemented"; return false }
 
 // GetRoute returns the LightClientModule registered for the provided client type or false otherwise.
 func (rtr *Router) GetRoute(clientType string) (exported.LightClientModule, bool) {
-	if !rtr.HasRoute(clientType) {
-		return nil, false
-	}
-	return rtr.routes[clientType], true
+	_ = "STUB: not implemented"
+	return *new(exported.LightClientModule), false
 }

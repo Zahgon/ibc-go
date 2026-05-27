@@ -1,17 +1,10 @@
 package types
 
 import (
-	"encoding/hex"
-	"strconv"
-	"strings"
-
-	errorsmod "cosmossdk.io/errors"
-
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
 	channeltypes "github.com/cosmos/ibc-go/v11/modules/core/04-channel/types"
 	porttypes "github.com/cosmos/ibc-go/v11/modules/core/05-port/types"
-	ibcexported "github.com/cosmos/ibc-go/v11/modules/core/exported"
 )
 
 /*
@@ -74,12 +67,8 @@ func GetSourceCallbackData(
 	packet channeltypes.Packet,
 	maxGas uint64,
 ) (CallbackData, bool, error) {
-	packetData, version, err := packetDataUnmarshaler.UnmarshalPacketData(ctx, packet.GetSourcePort(), packet.GetSourceChannel(), packet.GetData())
-	if err != nil {
-		return CallbackData{}, false, nil
-	}
-
-	return GetCallbackData(packetData, version, packet.GetSourcePort(), ctx.GasMeter().GasRemaining(), maxGas, SourceCallbackKey)
+	_ = "STUB: not implemented"
+	return *new(CallbackData), false, nil
 }
 
 // GetDestCallbackData parses the packet data and returns the destination callback data.
@@ -88,12 +77,8 @@ func GetDestCallbackData(
 	packetDataUnmarshaler porttypes.PacketDataUnmarshaler,
 	packet channeltypes.Packet, maxGas uint64,
 ) (CallbackData, bool, error) {
-	packetData, version, err := packetDataUnmarshaler.UnmarshalPacketData(ctx, packet.GetDestPort(), packet.GetDestChannel(), packet.GetData())
-	if err != nil {
-		return CallbackData{}, false, nil
-	}
-
-	return GetCallbackData(packetData, version, packet.GetSourcePort(), ctx.GasMeter().GasRemaining(), maxGas, DestinationCallbackKey)
+	_ = "STUB: not implemented"
+	return *new(CallbackData), false, nil
 }
 
 // GetCallbackData parses the packet data and returns the callback data.
@@ -109,70 +94,26 @@ func GetCallbackData(
 	remainingGas, maxGas uint64,
 	callbackKey string,
 ) (CallbackData, bool, error) {
-	packetDataProvider, ok := packetData.(ibcexported.PacketDataProvider)
-	if !ok {
-		return CallbackData{}, false, ErrNotPacketDataProvider
-	}
-
-	callbackData, ok := packetDataProvider.GetCustomPacketData(callbackKey).(map[string]any)
-	if callbackData == nil || !ok {
-		return CallbackData{}, false, ErrCallbackKeyNotFound
-	}
-
-	// get the callback address from the callback data
-	callbackAddress, err := getCallbackAddress(callbackData)
-	if err != nil || strings.TrimSpace(callbackAddress) == "" {
-		return CallbackData{}, true, ErrInvalidCallbackData
-	}
-
-	// retrieve packet sender from packet data if possible and if needed
-	var packetSender string
-	if callbackKey == SourceCallbackKey {
-		packetData, ok := packetData.(ibcexported.PacketData)
-		if ok {
-			packetSender = packetData.GetPacketSender(srcPortID)
-		}
-	}
-
-	// get the gas limit from the callback data
-	executionGasLimit, commitGasLimit, err := computeExecAndCommitGasLimit(callbackData, remainingGas, maxGas)
-	if err != nil {
-		return CallbackData{}, true, err
-	}
-
-	callData, err := getCalldata(callbackData)
-	if err != nil {
-		return CallbackData{}, true, err
-	}
-
-	return CallbackData{
-		CallbackAddress:    callbackAddress,
-		ExecutionGasLimit:  executionGasLimit,
-		SenderAddress:      packetSender,
-		CommitGasLimit:     commitGasLimit,
-		ApplicationVersion: version,
-		Calldata:           callData,
-	}, true, nil
+	_ = "STUB: not implemented"
+	return *new(CallbackData), false, nil
 }
+
+// get the callback address from the callback data
+
+// retrieve packet sender from packet data if possible and if needed
+
+// get the gas limit from the callback data
 
 func computeExecAndCommitGasLimit(callbackData map[string]any, remainingGas, maxGas uint64) (uint64, uint64, error) {
+	_ = "STUB: not implemented"
 	// get the gas limit from the callback data
-	commitGasLimit, err := getUserDefinedGasLimit(callbackData)
-	if err != nil {
-		return 0, 0, err
-	}
-
-	// ensure user defined gas limit does not exceed the max gas limit
-	if commitGasLimit == 0 || commitGasLimit > maxGas {
-		commitGasLimit = maxGas
-	}
-
-	// account for the remaining gas in the context being less than the desired gas limit for the callback execution
-	// in this case, the callback execution may be retried upon failure
-	executionGasLimit := min(remainingGas, commitGasLimit)
-
-	return executionGasLimit, commitGasLimit, nil
+	return 0, 0, nil
 }
+
+// ensure user defined gas limit does not exceed the max gas limit
+
+// account for the remaining gas in the context being less than the desired gas limit for the callback execution
+// in this case, the callback execution may be retried upon failure
 
 // getUserDefinedGasLimit returns the custom gas limit provided for callbacks if it is
 // in the callback data. It is assumed that callback data is not nil.
@@ -183,25 +124,9 @@ func computeExecAndCommitGasLimit(callbackData map[string]any, remainingGas, max
 //
 // Note: the user defined gas limit must be set as a string and not a json number.
 func getUserDefinedGasLimit(callbackData map[string]any) (uint64, error) {
+	_ = "STUB: not implemented"
 	// the gas limit must be specified as a string and not a json number
-	gasLimit, ok := callbackData[UserDefinedGasLimitKey]
-	if !ok {
-		return 0, nil
-	}
-	gasLimitStr, ok := gasLimit.(string)
-	if !ok {
-		return 0, errorsmod.Wrapf(ErrInvalidCallbackData, "gas limit [%v] must be a string", gasLimit)
-	}
-	if gasLimitStr == "" {
-		return 0, nil
-	}
-
-	userGas, err := strconv.ParseUint(gasLimitStr, 10, 64)
-	if err != nil {
-		return 0, errorsmod.Wrapf(ErrInvalidCallbackData, "gas limit must be a valid uint64: %s", err)
-	}
-
-	return userGas, nil
+	return 0, nil
 }
 
 // getCallbackAddress returns the callback address if it is specified in the callback data.
@@ -214,36 +139,15 @@ func getUserDefinedGasLimit(callbackData map[string]any) (uint64, error) {
 // ADR-8 middleware should callback on the returned address if it is a PacketActor
 // (i.e. smart contract that accepts IBC callbacks).
 func getCallbackAddress(callbackData map[string]any) (string, error) {
-	callbackAddress, ok := callbackData[CallbackAddressKey].(string)
-	if !ok {
-		return "", errorsmod.Wrapf(ErrInvalidCallbackData, "callback address must be a string")
-	}
-
-	return callbackAddress, nil
+	_ = "STUB: not implemented"
+	return "", nil
 }
 
 // getCalldata returns the calldata if it is specified in the callback data.
 func getCalldata(callbackData map[string]any) ([]byte, error) {
-	calldataAny, ok := callbackData[CalldataKey]
-	if !ok {
-		return nil, nil
-	}
-	calldataStr, ok := calldataAny.(string)
-	if !ok {
-		return nil, errorsmod.Wrapf(ErrInvalidCallbackData, "calldata must be a string")
-	}
-	if calldataStr == "" {
-		return nil, nil
-	}
-
-	calldata, err := hex.DecodeString(calldataStr)
-	if err != nil {
-		return nil, errorsmod.Wrapf(ErrInvalidCallbackData, "calldata must be a valid hex string: %s", err)
-	}
-	return calldata, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // AllowRetry returns true if the callback execution gas limit is less than the commit gas limit.
-func (c CallbackData) AllowRetry() bool {
-	return c.ExecutionGasLimit < c.CommitGasLimit
-}
+func (c CallbackData) AllowRetry() bool { _ = "STUB: not implemented"; return false }

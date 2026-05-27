@@ -10,7 +10,6 @@ import (
 	clienttypes "github.com/cosmos/ibc-go/v11/modules/core/02-client/types"
 	commitmenttypes "github.com/cosmos/ibc-go/v11/modules/core/23-commitment/types"
 	ibctm "github.com/cosmos/ibc-go/v11/modules/light-clients/07-tendermint"
-	ibctesting "github.com/cosmos/ibc-go/v11/testing"
 )
 
 var (
@@ -34,26 +33,15 @@ var (
 
 // CreateMockTendermintClientState returns a valid Tendermint client state for use in tests.
 func CreateMockTendermintClientState(height clienttypes.Height) *ibctm.ClientState {
-	return ibctm.NewClientState(
-		"chain-id",
-		ibctm.DefaultTrustLevel,
-		ibctesting.TrustingPeriod,
-		ibctesting.UnbondingPeriod,
-		ibctesting.MaxClockDrift,
-		height,
-		commitmenttypes.GetSDKSpecs(),
-		ibctesting.UpgradePath,
-	)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // CreateMockClientStateBz returns valid client state bytes for use in tests.
 func CreateMockClientStateBz(cdc codec.BinaryCodec, checksum types.Checksum) []byte {
-	wrappedClientStateBz := clienttypes.MustMarshalClientState(cdc, MockTendermitClientState)
-	mockClientSate := types.NewClientState(wrappedClientStateBz, checksum, MockTendermitClientState.LatestHeight)
-	return clienttypes.MustMarshalClientState(cdc, mockClientSate)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // CreateMockContract returns a well formed (magic number prefixed) wasm contract the given code.
-func CreateMockContract(code []byte) []byte {
-	return append(WasmMagicNumber, code...)
-}
+func CreateMockContract(code []byte) []byte { _ = "STUB: not implemented"; return nil }

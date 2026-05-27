@@ -1,23 +1,11 @@
 package transfer
 
 import (
-	"bytes"
-	"fmt"
-	"math"
-	"slices"
-	"strings"
-
-	errorsmod "cosmossdk.io/errors"
-
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/cosmos/ibc-go/v11/modules/apps/transfer/internal/events"
-	"github.com/cosmos/ibc-go/v11/modules/apps/transfer/internal/telemetry"
 	"github.com/cosmos/ibc-go/v11/modules/apps/transfer/keeper"
-	"github.com/cosmos/ibc-go/v11/modules/apps/transfer/types"
 	channeltypes "github.com/cosmos/ibc-go/v11/modules/core/04-channel/types"
 	porttypes "github.com/cosmos/ibc-go/v11/modules/core/05-port/types"
-	ibcerrors "github.com/cosmos/ibc-go/v11/modules/core/errors"
 	ibcexported "github.com/cosmos/ibc-go/v11/modules/core/exported"
 )
 
@@ -32,11 +20,7 @@ type IBCModule struct {
 }
 
 // NewIBCModule creates a new IBCModule given the keeper
-func NewIBCModule(k *keeper.Keeper) *IBCModule {
-	return &IBCModule{
-		keeper: k,
-	}
-}
+func NewIBCModule(k *keeper.Keeper) *IBCModule { _ = "STUB: not implemented"; return nil }
 
 // ValidateTransferChannelParams does validation of a newly created transfer channel. A transfer
 // channel must be UNORDERED, use the correct port (by default 'transfer'), and use the current
@@ -48,27 +32,13 @@ func ValidateTransferChannelParams(
 	portID string,
 	channelID string,
 ) error {
+	_ = "STUB: not implemented"
 	// NOTE: for escrow address security only 2^32 channels are allowed to be created
 	// Issue: https://github.com/cosmos/cosmos-sdk/issues/7737
-	channelSequence, err := channeltypes.ParseChannelSequence(channelID)
-	if err != nil {
-		return err
-	}
-	if channelSequence > uint64(math.MaxUint32) {
-		return errorsmod.Wrapf(types.ErrMaxTransferChannels, "channel sequence %d is greater than max allowed transfer channels %d", channelSequence, uint64(math.MaxUint32))
-	}
-	if order != channeltypes.UNORDERED {
-		return errorsmod.Wrapf(channeltypes.ErrInvalidChannelOrdering, "expected %s channel, got %s ", channeltypes.UNORDERED, order)
-	}
-
-	// Require portID is the portID transfer module is bound to
-	boundPort := transferkeeper.GetPort(ctx)
-	if boundPort != portID {
-		return errorsmod.Wrapf(porttypes.ErrInvalidPort, "invalid port: %s, expected %s", portID, boundPort)
-	}
-
 	return nil
 }
+
+// Require portID is the portID transfer module is bound to
 
 // OnChanOpenInit implements the IBCModule interface
 func (im IBCModule) OnChanOpenInit(
@@ -80,21 +50,11 @@ func (im IBCModule) OnChanOpenInit(
 	counterparty channeltypes.Counterparty,
 	version string,
 ) (string, error) {
-	if err := ValidateTransferChannelParams(ctx, *im.keeper, order, portID, channelID); err != nil {
-		return "", err
-	}
-
-	// default to latest supported version
-	if strings.TrimSpace(version) == "" {
-		version = types.V1
-	}
-
-	if !slices.Contains(types.SupportedVersions, version) {
-		return "", errorsmod.Wrapf(types.ErrInvalidVersion, "expected one of %s, got %s", types.SupportedVersions, version)
-	}
-
-	return version, nil
+	_ = "STUB: not implemented"
+	return "", nil
 }
+
+// default to latest supported version
 
 // OnChanOpenTry implements the IBCModule interface.
 func (im IBCModule) OnChanOpenTry(
@@ -106,16 +66,8 @@ func (im IBCModule) OnChanOpenTry(
 	counterparty channeltypes.Counterparty,
 	counterpartyVersion string,
 ) (string, error) {
-	if err := ValidateTransferChannelParams(ctx, *im.keeper, order, portID, channelID); err != nil {
-		return "", err
-	}
-
-	if !slices.Contains(types.SupportedVersions, counterpartyVersion) {
-		im.keeper.Logger(ctx).Debug("invalid counterparty version, proposing latest app version", "counterpartyVersion", counterpartyVersion, "version", types.V1)
-		return types.V1, nil
-	}
-
-	return counterpartyVersion, nil
+	_ = "STUB: not implemented"
+	return "", nil
 }
 
 // OnChanOpenAck implements the IBCModule interface
@@ -126,10 +78,7 @@ func (IBCModule) OnChanOpenAck(
 	_ string,
 	counterpartyVersion string,
 ) error {
-	if !slices.Contains(types.SupportedVersions, counterpartyVersion) {
-		return errorsmod.Wrapf(types.ErrInvalidVersion, "invalid counterparty version: expected one of %s, got %s", types.SupportedVersions, counterpartyVersion)
-	}
-
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -139,17 +88,20 @@ func (IBCModule) OnChanOpenConfirm(
 	portID,
 	channelID string,
 ) error {
+	_ = "STUB: not implemented"
+
+	// OnChanCloseInit implements the IBCModule interface
 	return nil
 }
 
-// OnChanCloseInit implements the IBCModule interface
 func (IBCModule) OnChanCloseInit(
 	ctx sdk.Context,
 	portID,
 	channelID string,
 ) error {
+	_ = "STUB: not implemented"
 	// Disallow user-initiated channel closing for transfer channels
-	return errorsmod.Wrap(ibcerrors.ErrInvalidRequest, "user cannot close channel")
+	return nil
 }
 
 // OnChanCloseConfirm implements the IBCModule interface
@@ -158,61 +110,30 @@ func (IBCModule) OnChanCloseConfirm(
 	portID,
 	channelID string,
 ) error {
+	_ = "STUB: not implemented"
+
+	// OnRecvPacket implements the IBCModule interface. A successful acknowledgement
+	// is returned if the packet data is successfully decoded and the receive application
+	// logic returns without error.
 	return nil
 }
 
-// OnRecvPacket implements the IBCModule interface. A successful acknowledgement
-// is returned if the packet data is successfully decoded and the receive application
-// logic returns without error.
 func (im IBCModule) OnRecvPacket(
 	ctx sdk.Context,
 	channelVersion string,
 	packet channeltypes.Packet,
 	relayer sdk.AccAddress,
 ) ibcexported.Acknowledgement {
-	var (
-		ack    ibcexported.Acknowledgement
-		ackErr error
-		data   types.InternalTransferRepresentation
-	)
-
-	// we are explicitly wrapping this emit event call in an anonymous function so that
-	// the packet data is evaluated after it has been assigned a value.
-	defer func() {
-		events.EmitOnRecvPacketEvent(ctx, data, ack, ackErr)
-	}()
-
-	data, ackErr = types.UnmarshalPacketData(packet.GetData(), channelVersion, "")
-	if ackErr != nil {
-		ack = channeltypes.NewErrorAcknowledgement(ackErr)
-		im.keeper.Logger(ctx).Error(fmt.Sprintf("%s sequence %d", ackErr.Error(), packet.Sequence))
-		return ack
-	}
-
-	// NOTE: this needs to set the ackErr variable and not do if ackErr := ... because the ackErr variable is used in the defer function
-	ackErr = im.keeper.OnRecvPacket(
-		ctx,
-		data,
-		packet.SourcePort,
-		packet.SourceChannel,
-		packet.DestinationPort,
-		packet.DestinationChannel,
-	)
-	if ackErr != nil {
-		ack = channeltypes.NewErrorAcknowledgement(ackErr)
-		im.keeper.Logger(ctx).Error(fmt.Sprintf("%s sequence %d", ackErr.Error(), packet.Sequence))
-		return ack
-	}
-
-	ack = channeltypes.NewResultAcknowledgement([]byte{byte(1)})
-
-	telemetry.ReportOnRecvPacket(packet.SourcePort, packet.SourceChannel, packet.DestinationPort, packet.DestinationChannel, data.Token)
-
-	im.keeper.Logger(ctx).Info("successfully handled ICS-20 packet", "sequence", packet.Sequence)
-
-	// NOTE: acknowledgement will be written synchronously during IBC handler execution.
-	return ack
+	_ = "STUB: not implemented"
+	return *new(ibcexported.Acknowledgement)
 }
+
+// we are explicitly wrapping this emit event call in an anonymous function so that
+// the packet data is evaluated after it has been assigned a value.
+
+// NOTE: this needs to set the ackErr variable and not do if ackErr := ... because the ackErr variable is used in the defer function
+
+// NOTE: acknowledgement will be written synchronously during IBC handler execution.
 
 // OnAcknowledgementPacket implements the IBCModule interface
 func (im IBCModule) OnAcknowledgementPacket(
@@ -222,27 +143,7 @@ func (im IBCModule) OnAcknowledgementPacket(
 	acknowledgement []byte,
 	relayer sdk.AccAddress,
 ) error {
-	var ack channeltypes.Acknowledgement
-	if err := types.ModuleCdc.UnmarshalJSON(acknowledgement, &ack); err != nil {
-		return errorsmod.Wrapf(ibcerrors.ErrUnknownRequest, "cannot unmarshal ICS-20 transfer packet acknowledgement: %v", err)
-	}
-
-	data, err := types.UnmarshalPacketData(packet.GetData(), channelVersion, "")
-	if err != nil {
-		return err
-	}
-
-	bz := types.ModuleCdc.MustMarshalJSON(&ack)
-	if !bytes.Equal(bz, acknowledgement) {
-		return errorsmod.Wrapf(ibcerrors.ErrInvalidType, "acknowledgement did not marshal to expected bytes: %X ≠ %X", bz, acknowledgement)
-	}
-
-	if err := im.keeper.OnAcknowledgementPacket(ctx, packet.SourcePort, packet.SourceChannel, data, ack); err != nil {
-		return err
-	}
-
-	events.EmitOnAcknowledgementPacketEvent(ctx, data, ack)
-
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -253,41 +154,24 @@ func (im IBCModule) OnTimeoutPacket(
 	packet channeltypes.Packet,
 	relayer sdk.AccAddress,
 ) error {
-	data, err := types.UnmarshalPacketData(packet.GetData(), channelVersion, "")
-	if err != nil {
-		return err
-	}
-
-	// refund tokens
-	if err := im.keeper.OnTimeoutPacket(ctx, packet.SourcePort, packet.SourceChannel, data); err != nil {
-		return err
-	}
-
-	events.EmitOnTimeoutEvent(ctx, data)
-
+	_ = "STUB: not implemented"
 	return nil
 }
+
+// refund tokens
 
 // UnmarshalPacketData attempts to unmarshal the provided packet data bytes
 // into a FungibleTokenPacketData. This function implements the optional
 // PacketDataUnmarshaler interface required for ADR 008 support.
 func (im IBCModule) UnmarshalPacketData(ctx sdk.Context, portID string, channelID string, bz []byte) (any, string, error) {
-	ics20Version, found := im.keeper.GetICS4Wrapper().GetAppVersion(ctx, portID, channelID)
-	if !found {
-		return types.InternalTransferRepresentation{}, "", errorsmod.Wrapf(ibcerrors.ErrNotFound, "app version not found for port %s and channel %s", portID, channelID)
-	}
-
-	ftpd, err := types.UnmarshalPacketData(bz, ics20Version, "")
-	return ftpd, ics20Version, err
+	_ = "STUB: not implemented"
+	return *new(any), "", nil
 }
 
 // SetICS4Wrapper sets the ICS4Wrapper. This function may be used after
 // the module's initialization to set the middleware which is above this
 // module in the IBC application stack.
 func (im IBCModule) SetICS4Wrapper(wrapper porttypes.ICS4Wrapper) {
-	if wrapper == nil {
-		panic("ICS4Wrapper cannot be nil")
-	}
-
-	im.keeper.WithICS4Wrapper(wrapper)
+	_ = "STUB: not implemented"
+	return
 }

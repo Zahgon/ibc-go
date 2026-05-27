@@ -118,8 +118,4 @@ type IBCApp struct {
 }
 
 // NewIBCApp returns a IBCApp. An empty PortID indicates the mock app doesn't bind/claim ports.
-func NewIBCApp(portID string) *IBCApp {
-	return &IBCApp{
-		PortID: portID,
-	}
-}
+func NewIBCApp(portID string) *IBCApp { _ = "STUB: not implemented"; return nil }

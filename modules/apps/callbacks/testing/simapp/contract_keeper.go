@@ -1,8 +1,6 @@
 package simapp
 
 import (
-	"fmt"
-
 	storetypes "github.com/cosmos/cosmos-sdk/store/v2/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
@@ -10,7 +8,6 @@ import (
 	clienttypes "github.com/cosmos/ibc-go/v11/modules/core/02-client/types"
 	channeltypes "github.com/cosmos/ibc-go/v11/modules/core/04-channel/types"
 	ibcexported "github.com/cosmos/ibc-go/v11/modules/core/exported"
-	ibcmock "github.com/cosmos/ibc-go/v11/testing/mock"
 )
 
 // MockKeeper implements callbacktypes.ContractKeeper
@@ -89,50 +86,26 @@ type ContractKeeper struct {
 // SetStateEntryCounter sets state entry counter. The number of stateful
 // entries is tracked as a uint8. This function is used to test state reversals.
 func (k ContractKeeper) SetStateEntryCounter(ctx sdk.Context, count uint8) {
-	store := ctx.KVStore(k.key)
-	store.Set([]byte(StatefulCounterKey), []byte{count})
+	_ = "STUB: not implemented"
+	return
 }
 
 // GetStateEntryCounter returns the state entry counter stored in state.
 func (k ContractKeeper) GetStateEntryCounter(ctx sdk.Context) uint8 {
-	store := ctx.KVStore(k.key)
-	bz := store.Get([]byte(StatefulCounterKey))
-	if bz == nil {
-		return 0
-	}
-	return bz[0]
+	_ = "STUB: not implemented"
+	return 0
 }
 
 // IncrementStateEntryCounter increments the stateful callback counter in state.
 func (k ContractKeeper) IncrementStateEntryCounter(ctx sdk.Context) {
-	count := k.GetStateEntryCounter(ctx)
-	k.SetStateEntryCounter(ctx, count+1)
+	_ = "STUB: not implemented"
+	return
 }
 
 // NewContractKeeper creates a new mock ContractKeeper.
 func NewContractKeeper(key storetypes.StoreKey) *ContractKeeper {
-	k := &ContractKeeper{
-		key:      key,
-		Counters: make(map[callbacktypes.CallbackType]int),
-	}
-
-	k.IBCSendPacketCallbackFn = func(ctx sdk.Context, _, _ string, _ clienttypes.Height, _ uint64, _ []byte, contractAddress, _, _ string) error {
-		return k.ProcessMockCallback(ctx, callbacktypes.CallbackTypeSendPacket, contractAddress)
-	}
-
-	k.IBCOnAcknowledgementPacketCallbackFn = func(ctx sdk.Context, _ channeltypes.Packet, _ []byte, _ sdk.AccAddress, contractAddress, _, _ string) error {
-		return k.ProcessMockCallback(ctx, callbacktypes.CallbackTypeAcknowledgementPacket, contractAddress)
-	}
-
-	k.IBCOnTimeoutPacketCallbackFn = func(ctx sdk.Context, _ channeltypes.Packet, _ sdk.AccAddress, contractAddress, _, _ string) error {
-		return k.ProcessMockCallback(ctx, callbacktypes.CallbackTypeTimeoutPacket, contractAddress)
-	}
-
-	k.IBCReceivePacketCallbackFn = func(ctx sdk.Context, _ ibcexported.PacketI, _ ibcexported.Acknowledgement, contractAddress, _ string) error {
-		return k.ProcessMockCallback(ctx, callbacktypes.CallbackTypeReceivePacket, contractAddress)
-	}
-
-	return k
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // IBCSendPacketCallback increments the stateful entry counter and the send_packet callback counter.
@@ -153,7 +126,8 @@ func (k ContractKeeper) IBCSendPacketCallback(
 	packetSenderAddress,
 	version string,
 ) error {
-	return k.IBCSendPacketCallbackFn(ctx, sourcePort, sourceChannel, timeoutHeight, timeoutTimestamp, packetData, contractAddress, packetSenderAddress, version)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // IBCOnAcknowledgementPacketCallback increments the stateful entry counter and the acknowledgement_packet callback counter.
@@ -172,7 +146,8 @@ func (k ContractKeeper) IBCOnAcknowledgementPacketCallback(
 	packetSenderAddress,
 	version string,
 ) error {
-	return k.IBCOnAcknowledgementPacketCallbackFn(ctx, packet, acknowledgement, relayer, contractAddress, packetSenderAddress, version)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // IBCOnTimeoutPacketCallback increments the stateful entry counter and the timeout_packet callback counter.
@@ -190,7 +165,8 @@ func (k ContractKeeper) IBCOnTimeoutPacketCallback(
 	packetSenderAddress,
 	version string,
 ) error {
-	return k.IBCOnTimeoutPacketCallbackFn(ctx, packet, relayer, contractAddress, packetSenderAddress, version)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // IBCReceivePacketCallback increments the stateful entry counter and the receive_packet callback counter.
@@ -207,7 +183,8 @@ func (k ContractKeeper) IBCReceivePacketCallback(
 	contractAddress,
 	version string,
 ) error {
-	return k.IBCReceivePacketCallbackFn(ctx, packet, ack, contractAddress, version)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // ProcessMockCallback processes a mock callback.
@@ -223,38 +200,24 @@ func (k ContractKeeper) ProcessMockCallback(
 	callbackType callbacktypes.CallbackType,
 	contractAddress string,
 ) (err error) {
-	gasRemaining := ctx.GasMeter().GasRemaining()
-
-	// increment stateful entries, if the callbacks module handler
-	// reverts state, we can check by querying for the counter
-	// currently stored.
-	k.IncrementStateEntryCounter(ctx)
-
-	// increment callback execution attempts
-	k.Counters[callbackType]++
-
-	switch contractAddress {
-	case ErrorContract:
-		// consume half of the remaining gas so that ConsumeGas cannot oog panic
-		ctx.GasMeter().ConsumeGas(gasRemaining/2, fmt.Sprintf("mock %s callback unauthorized", callbackType))
-		return ibcmock.MockApplicationCallbackError
-	case OogPanicContract:
-		ctx.GasMeter().ConsumeGas(gasRemaining+1, fmt.Sprintf("mock %s callback oog panic", callbackType))
-		return nil // unreachable
-	case OogErrorContract:
-		defer func() {
-			_ = recover()
-			err = ibcmock.MockApplicationCallbackError
-		}()
-		ctx.GasMeter().ConsumeGas(gasRemaining+1, fmt.Sprintf("mock %s callback oog error", callbackType))
-		return nil // unreachable
-	case PanicContract:
-		// consume half of the remaining gas so that ConsumeGas cannot oog panic
-		ctx.GasMeter().ConsumeGas(gasRemaining/2, fmt.Sprintf("mock %s callback panic", callbackType))
-		panic(ibcmock.MockApplicationCallbackError)
-	default:
-		// consume half of the remaining gas so that ConsumeGas cannot oog panic
-		ctx.GasMeter().ConsumeGas(gasRemaining/2, fmt.Sprintf("mock %s callback success", callbackType))
-		return nil // success
-	}
+	_ = "STUB: not implemented"
+	return nil
 }
+
+// increment stateful entries, if the callbacks module handler
+// reverts state, we can check by querying for the counter
+// currently stored.
+
+// increment callback execution attempts
+
+// consume half of the remaining gas so that ConsumeGas cannot oog panic
+
+// unreachable
+
+// unreachable
+
+// consume half of the remaining gas so that ConsumeGas cannot oog panic
+
+// consume half of the remaining gas so that ConsumeGas cannot oog panic
+
+// success

@@ -1,8 +1,6 @@
 package types
 
 import (
-	"fmt"
-
 	sdk "github.com/cosmos/cosmos-sdk/types"
 )
 
@@ -60,45 +58,6 @@ func EmitCallbackEvent(
 	callbackData CallbackData,
 	err error,
 ) {
-	attributes := []sdk.Attribute{
-		sdk.NewAttribute(sdk.AttributeKeyModule, ModuleName),
-		sdk.NewAttribute(AttributeKeyCallbackType, string(callbackType)),
-		sdk.NewAttribute(AttributeKeyCallbackAddress, callbackData.CallbackAddress),
-		sdk.NewAttribute(AttributeKeyCallbackGasLimit, fmt.Sprintf("%d", callbackData.ExecutionGasLimit)),
-		sdk.NewAttribute(AttributeKeyCallbackCommitGasLimit, fmt.Sprintf("%d", callbackData.CommitGasLimit)),
-		sdk.NewAttribute(AttributeKeyCallbackSequence, fmt.Sprintf("%d", sequence)),
-		sdk.NewAttribute(AttributeKeyCallbackBaseApplicationVersion, callbackData.ApplicationVersion),
-	}
-	if err == nil {
-		attributes = append(attributes, sdk.NewAttribute(AttributeKeyCallbackResult, AttributeValueCallbackSuccess))
-	} else {
-		attributes = append(
-			attributes,
-			sdk.NewAttribute(AttributeKeyCallbackError, err.Error()),
-			sdk.NewAttribute(AttributeKeyCallbackResult, AttributeValueCallbackFailure),
-		)
-	}
-
-	var eventType string
-	switch callbackType {
-	case CallbackTypeReceivePacket:
-		eventType = EventTypeDestinationCallback
-		attributes = append(
-			attributes, sdk.NewAttribute(AttributeKeyCallbackDestPortID, portID),
-			sdk.NewAttribute(AttributeKeyCallbackDestChannelID, channelID),
-		)
-	default:
-		eventType = EventTypeSourceCallback
-		attributes = append(
-			attributes, sdk.NewAttribute(AttributeKeyCallbackSourcePortID, portID),
-			sdk.NewAttribute(AttributeKeyCallbackSourceChannelID, channelID),
-		)
-	}
-
-	ctx.EventManager().EmitEvent(
-		sdk.NewEvent(
-			eventType,
-			attributes...,
-		),
-	)
+	_ = "STUB: not implemented"
+	return
 }

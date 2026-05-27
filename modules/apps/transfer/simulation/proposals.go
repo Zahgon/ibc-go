@@ -4,11 +4,7 @@ import (
 	"math/rand"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/cosmos/cosmos-sdk/types/address"
 	simtypes "github.com/cosmos/cosmos-sdk/types/simulation"
-	"github.com/cosmos/cosmos-sdk/x/simulation"
-
-	"github.com/cosmos/ibc-go/v11/modules/apps/transfer/types"
 )
 
 // Simulation operation weights constants
@@ -19,24 +15,10 @@ const (
 )
 
 // ProposalMsgs defines the module weighted proposals' contents
-func ProposalMsgs() []simtypes.WeightedProposalMsg {
-	return []simtypes.WeightedProposalMsg{
-		simulation.NewWeightedProposalMsg(
-			OpWeightMsgUpdateParams,
-			DefaultWeightMsgUpdateParams,
-			SimulateMsgUpdateParams,
-		),
-	}
-}
+func ProposalMsgs() []simtypes.WeightedProposalMsg { _ = "STUB: not implemented"; return nil }
 
 // SimulateMsgUpdateParams returns a MsgUpdateParams
 func SimulateMsgUpdateParams(_ *rand.Rand, _ sdk.Context, _ []simtypes.Account) sdk.Msg {
-	var gov sdk.AccAddress = address.Module("gov")
-	params := types.DefaultParams()
-	params.SendEnabled = false
-
-	return &types.MsgUpdateParams{
-		Signer: gov.String(),
-		Params: params,
-	}
+	_ = "STUB: not implemented"
+	return *new(sdk.Msg)
 }

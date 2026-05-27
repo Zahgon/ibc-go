@@ -1,7 +1,6 @@
 package types
 
 import (
-	"errors"
 	"time"
 )
 
@@ -9,21 +8,10 @@ import (
 const DefaultTimePerBlock = 30 * time.Second
 
 // NewParams creates a new parameter configuration for the ibc connection module
-func NewParams(timePerBlock uint64) Params {
-	return Params{
-		MaxExpectedTimePerBlock: timePerBlock,
-	}
-}
+func NewParams(timePerBlock uint64) Params { _ = "STUB: not implemented"; return *new(Params) }
 
 // DefaultParams is the default parameter configuration for the ibc connection module
-func DefaultParams() Params {
-	return NewParams(uint64(DefaultTimePerBlock))
-}
+func DefaultParams() Params { _ = "STUB: not implemented"; return *new(Params) }
 
 // Validate ensures MaxExpectedTimePerBlock is non-zero
-func (p Params) Validate() error {
-	if p.MaxExpectedTimePerBlock == 0 {
-		return errors.New("MaxExpectedTimePerBlock cannot be zero")
-	}
-	return nil
-}
+func (p Params) Validate() error { _ = "STUB: not implemented"; return nil }

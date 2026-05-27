@@ -1,16 +1,10 @@
 package tendermint
 
 import (
-	"reflect"
-	"time"
-
-	errorsmod "cosmossdk.io/errors"
-
 	"github.com/cosmos/cosmos-sdk/codec"
 	storetypes "github.com/cosmos/cosmos-sdk/store/v2/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	clienttypes "github.com/cosmos/ibc-go/v11/modules/core/02-client/types"
 	"github.com/cosmos/ibc-go/v11/modules/core/exported"
 )
 
@@ -30,74 +24,28 @@ func (cs *ClientState) CheckSubstituteAndUpdateState(
 	ctx sdk.Context, cdc codec.BinaryCodec, subjectClientStore,
 	substituteClientStore storetypes.KVStore, substituteClient exported.ClientState,
 ) error {
-	substituteClientState, ok := substituteClient.(*ClientState)
-	if !ok {
-		return errorsmod.Wrapf(clienttypes.ErrInvalidClient, "expected type %T, got %T", &ClientState{}, substituteClient)
-	}
-
-	if !IsMatchingClientState(*cs, *substituteClientState) {
-		return errorsmod.Wrap(clienttypes.ErrInvalidSubstitute, "subject client state does not match substitute client state")
-	}
-
-	if cs.status(ctx, subjectClientStore, cdc) == exported.Frozen {
-		// unfreeze the client
-		cs.FrozenHeight = clienttypes.ZeroHeight()
-	}
-
-	// copy consensus states and processed time from substitute to subject
-	// starting from initial height and ending on the latest height (inclusive)
-	height := substituteClientState.LatestHeight
-
-	consensusState, found := GetConsensusState(substituteClientStore, cdc, height)
-	if !found {
-		return errorsmod.Wrap(clienttypes.ErrConsensusStateNotFound, "unable to retrieve latest consensus state for substitute client")
-	}
-
-	setConsensusState(subjectClientStore, cdc, consensusState, height)
-
-	// set metadata stored for the substitute consensus state
-	processedHeight, found := GetProcessedHeight(substituteClientStore, height)
-	if !found {
-		return errorsmod.Wrap(clienttypes.ErrUpdateClientFailed, "unable to retrieve processed height for substitute client latest height")
-	}
-
-	processedTime, found := GetProcessedTime(substituteClientStore, height)
-	if !found {
-		return errorsmod.Wrap(clienttypes.ErrUpdateClientFailed, "unable to retrieve processed time for substitute client latest height")
-	}
-
-	setConsensusMetadataWithValues(subjectClientStore, height, processedHeight, processedTime)
-
-	cs.LatestHeight = substituteClientState.LatestHeight
-	cs.ChainId = substituteClientState.ChainId
-
-	// set new trusting period based on the substitute client state
-	cs.TrustingPeriod = substituteClientState.TrustingPeriod
-
-	// no validation is necessary since the substitute is verified to be Active
-	// in 02-client.
-	setClientState(subjectClientStore, cdc, cs)
-
+	_ = "STUB: not implemented"
 	return nil
 }
+
+// unfreeze the client
+
+// copy consensus states and processed time from substitute to subject
+// starting from initial height and ending on the latest height (inclusive)
+
+// set metadata stored for the substitute consensus state
+
+// set new trusting period based on the substitute client state
+
+// no validation is necessary since the substitute is verified to be Active
+// in 02-client.
 
 // IsMatchingClientState returns true if all the client state parameters match
 // except for frozen height, latest height, trusting period, chain-id.
 func IsMatchingClientState(subject, substitute ClientState) bool {
+	_ = "STUB: not implemented"
 	// zero out parameters which do not need to match
-	subject.LatestHeight = clienttypes.ZeroHeight()
-	subject.FrozenHeight = clienttypes.ZeroHeight()
-	subject.TrustingPeriod = time.Duration(0)
-	substitute.LatestHeight = clienttypes.ZeroHeight()
-	substitute.FrozenHeight = clienttypes.ZeroHeight()
-	substitute.TrustingPeriod = time.Duration(0)
-	subject.ChainId = ""
-	substitute.ChainId = ""
-	// sets both sets of flags to true as these flags have been DEPRECATED, see ADR-026 for more information
-	subject.AllowUpdateAfterExpiry = true
-	substitute.AllowUpdateAfterExpiry = true
-	subject.AllowUpdateAfterMisbehaviour = true
-	substitute.AllowUpdateAfterMisbehaviour = true
-
-	return reflect.DeepEqual(subject, substitute)
+	return false
 }
+
+// sets both sets of flags to true as these flags have been DEPRECATED, see ADR-026 for more information

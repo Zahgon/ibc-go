@@ -1,9 +1,7 @@
 package ica
 
 import (
-	"context"
 	"encoding/json"
-	"fmt"
 
 	"github.com/grpc-ecosystem/grpc-gateway/runtime"
 	"github.com/spf13/cobra"
@@ -17,15 +15,9 @@ import (
 	"github.com/cosmos/cosmos-sdk/types/module"
 	simtypes "github.com/cosmos/cosmos-sdk/types/simulation"
 
-	"github.com/cosmos/ibc-go/v11/modules/apps/27-interchain-accounts/client/cli"
 	controllerkeeper "github.com/cosmos/ibc-go/v11/modules/apps/27-interchain-accounts/controller/keeper"
-	controllertypes "github.com/cosmos/ibc-go/v11/modules/apps/27-interchain-accounts/controller/types"
-	genesistypes "github.com/cosmos/ibc-go/v11/modules/apps/27-interchain-accounts/genesis/types"
 	"github.com/cosmos/ibc-go/v11/modules/apps/27-interchain-accounts/host"
 	hostkeeper "github.com/cosmos/ibc-go/v11/modules/apps/27-interchain-accounts/host/keeper"
-	hosttypes "github.com/cosmos/ibc-go/v11/modules/apps/27-interchain-accounts/host/types"
-	"github.com/cosmos/ibc-go/v11/modules/apps/27-interchain-accounts/simulation"
-	"github.com/cosmos/ibc-go/v11/modules/apps/27-interchain-accounts/types"
 	porttypes "github.com/cosmos/ibc-go/v11/modules/core/05-port/types"
 )
 
@@ -47,64 +39,59 @@ var (
 type AppModuleBasic struct{}
 
 // Name implements AppModuleBasic interface
-func (AppModuleBasic) Name() string {
-	return types.ModuleName
-}
+func (AppModuleBasic) Name() string { _ = "STUB: not implemented"; return "" }
 
 // IsOnePerModuleType implements the depinject.OnePerModuleType interface.
-func (AppModule) IsOnePerModuleType() {}
+func (AppModule) IsOnePerModuleType() {
+	_ = "STUB: not implemented"
 
-// IsAppModule implements the appmodule.AppModule interface.
-func (AppModule) IsAppModule() {}
+	// IsAppModule implements the appmodule.AppModule interface.
+	return
+}
 
-// RegisterLegacyAminoCodec implements AppModuleBasic.
-func (AppModuleBasic) RegisterLegacyAminoCodec(cdc *codec.LegacyAmino) {}
+func (AppModule) IsAppModule() {
+	_ = "STUB: not implemented"
 
-// RegisterInterfaces registers module concrete types into protobuf Any
+	// RegisterLegacyAminoCodec implements AppModuleBasic.
+	return
+}
+
+func (AppModuleBasic) RegisterLegacyAminoCodec(cdc *codec.LegacyAmino) {
+	_ = "STUB: not implemented"
+
+	// RegisterInterfaces registers module concrete types into protobuf Any
+	return
+}
+
 func (AppModuleBasic) RegisterInterfaces(registry codectypes.InterfaceRegistry) {
-	controllertypes.RegisterInterfaces(registry)
-	hosttypes.RegisterInterfaces(registry)
-	types.RegisterInterfaces(registry)
+	_ = "STUB: not implemented"
+	return
 }
 
 // DefaultGenesis returns default genesis state as raw bytes for the IBC
 // interchain accounts module
 func (AppModuleBasic) DefaultGenesis(cdc codec.JSONCodec) json.RawMessage {
-	return cdc.MustMarshalJSON(genesistypes.DefaultGenesis())
+	_ = "STUB: not implemented"
+	return *new(json.RawMessage)
 }
 
 // ValidateGenesis performs genesis state validation for the IBC interchain accounts module
 func (AppModuleBasic) ValidateGenesis(cdc codec.JSONCodec, config client.TxEncodingConfig, bz json.RawMessage) error {
-	var gs genesistypes.GenesisState
-	if err := cdc.UnmarshalJSON(bz, &gs); err != nil {
-		return fmt.Errorf("failed to unmarshal %s genesis state: %w", types.ModuleName, err)
-	}
-
-	return gs.Validate()
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // RegisterGRPCGatewayRoutes registers the gRPC Gateway routes for the interchain accounts module.
 func (AppModuleBasic) RegisterGRPCGatewayRoutes(clientCtx client.Context, mux *runtime.ServeMux) {
-	err := controllertypes.RegisterQueryHandlerClient(context.Background(), mux, controllertypes.NewQueryClient(clientCtx))
-	if err != nil {
-		panic(err)
-	}
-
-	err = hosttypes.RegisterQueryHandlerClient(context.Background(), mux, hosttypes.NewQueryClient(clientCtx))
-	if err != nil {
-		panic(err)
-	}
+	_ = "STUB: not implemented"
+	return
 }
 
 // GetTxCmd implements AppModuleBasic interface
-func (AppModuleBasic) GetTxCmd() *cobra.Command {
-	return cli.NewTxCmd()
-}
+func (AppModuleBasic) GetTxCmd() *cobra.Command { _ = "STUB: not implemented"; return nil }
 
 // GetQueryCmd implements AppModuleBasic interface
-func (AppModuleBasic) GetQueryCmd() *cobra.Command {
-	return cli.GetQueryCmd()
-}
+func (AppModuleBasic) GetQueryCmd() *cobra.Command { _ = "STUB: not implemented"; return nil }
 
 // AppModule is the application module for the IBC interchain accounts module
 type AppModule struct {
@@ -115,82 +102,55 @@ type AppModule struct {
 
 // NewAppModule creates a new IBC interchain accounts module
 func NewAppModule(controllerKeeper *controllerkeeper.Keeper, hostKeeper *hostkeeper.Keeper) AppModule {
-	return AppModule{
-		controllerKeeper: controllerKeeper,
-		hostKeeper:       hostKeeper,
-	}
+	_ = "STUB: not implemented"
+	return *new(AppModule)
 }
 
 // RegisterServices registers module services
-func (am AppModule) RegisterServices(cfg module.Configurator) {
-	if am.controllerKeeper != nil {
-		controllertypes.RegisterMsgServer(cfg.MsgServer(), controllerkeeper.NewMsgServerImpl(am.controllerKeeper))
-		controllertypes.RegisterQueryServer(cfg.QueryServer(), am.controllerKeeper)
-	}
-
-	if am.hostKeeper != nil {
-		hosttypes.RegisterMsgServer(cfg.MsgServer(), hostkeeper.NewMsgServerImpl(am.hostKeeper))
-		hosttypes.RegisterQueryServer(cfg.QueryServer(), am.hostKeeper)
-	}
-}
+func (am AppModule) RegisterServices(cfg module.Configurator) { _ = "STUB: not implemented"; return }
 
 // InitGenesis performs genesis initialization for the interchain accounts module.
 // It returns no validator updates.
 func (am AppModule) InitGenesis(ctx sdk.Context, cdc codec.JSONCodec, data json.RawMessage) {
-	var genesisState genesistypes.GenesisState
-	cdc.MustUnmarshalJSON(data, &genesisState)
-
-	if am.controllerKeeper != nil {
-		controllerkeeper.InitGenesis(ctx, *am.controllerKeeper, genesisState.ControllerGenesisState)
-	}
-
-	if am.hostKeeper != nil {
-		hostkeeper.InitGenesis(ctx, *am.hostKeeper, genesisState.HostGenesisState)
-	}
+	_ = "STUB: not implemented"
+	return
 }
 
 // ExportGenesis returns the exported genesis state as raw bytes for the interchain accounts module
 func (am AppModule) ExportGenesis(ctx sdk.Context, cdc codec.JSONCodec) json.RawMessage {
-	var (
-		controllerGenesisState = genesistypes.DefaultControllerGenesis()
-		hostGenesisState       = genesistypes.DefaultHostGenesis()
-	)
-
-	if am.controllerKeeper != nil {
-		controllerGenesisState = controllerkeeper.ExportGenesis(ctx, *am.controllerKeeper)
-	}
-
-	if am.hostKeeper != nil {
-		hostGenesisState = hostkeeper.ExportGenesis(ctx, *am.hostKeeper)
-	}
-
-	gs := genesistypes.NewGenesisState(controllerGenesisState, hostGenesisState)
-
-	return cdc.MustMarshalJSON(gs)
+	_ = "STUB: not implemented"
+	return *new(json.RawMessage)
 }
 
 // ConsensusVersion implements AppModule/ConsensusVersion.
-func (AppModule) ConsensusVersion() uint64 { return 3 }
+func (AppModule) ConsensusVersion() uint64 {
+	_ = "STUB: not implemented"
 
-// AppModuleSimulation functions
+	// AppModuleSimulation functions
+	return 0
+}
 
 // GenerateGenesisState creates a randomized GenState of the ics27 module.
 func (AppModule) GenerateGenesisState(simState *module.SimulationState) {
-	simulation.RandomizedGenState(simState)
+	_ = "STUB: not implemented"
+	return
 }
 
 // ProposalMsgs returns msgs used for governance proposals for simulations.
 func (am AppModule) ProposalMsgs(simState module.SimulationState) []simtypes.WeightedProposalMsg {
-	return simulation.ProposalMsgs(am.controllerKeeper, am.hostKeeper)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // WeightedOperations is unimplemented.
 func (AppModule) WeightedOperations(simState module.SimulationState) []simtypes.WeightedOperation {
+	_ = "STUB: not implemented"
+
+	// RegisterStoreDecoder registers a decoder for interchain accounts module's types
 	return nil
 }
 
-// RegisterStoreDecoder registers a decoder for interchain accounts module's types
 func (AppModule) RegisterStoreDecoder(sdr simtypes.StoreDecoderRegistry) {
-	sdr[controllertypes.StoreKey] = simulation.NewDecodeStore()
-	sdr[hosttypes.StoreKey] = simulation.NewDecodeStore()
+	_ = "STUB: not implemented"
+	return
 }

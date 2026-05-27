@@ -6,16 +6,13 @@ package types
 import (
 	context "context"
 	fmt "fmt"
+	math "math"
+
 	_ "github.com/cosmos/gogoproto/gogoproto"
 	grpc1 "github.com/cosmos/gogoproto/grpc"
 	proto "github.com/cosmos/gogoproto/proto"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
-	codes "google.golang.org/grpc/codes"
-	status "google.golang.org/grpc/status"
-	io "io"
-	math "math"
-	math_bits "math/bits"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -33,36 +30,29 @@ const _ = proto.GoGoProtoPackageIsVersion3 // please upgrade the proto package
 type QueryAllRateLimitsRequest struct {
 }
 
-func (m *QueryAllRateLimitsRequest) Reset()         { *m = QueryAllRateLimitsRequest{} }
-func (m *QueryAllRateLimitsRequest) String() string { return proto.CompactTextString(m) }
-func (*QueryAllRateLimitsRequest) ProtoMessage()    {}
+func (m *QueryAllRateLimitsRequest) Reset()         { _ = "STUB: not implemented"; return }
+func (m *QueryAllRateLimitsRequest) String() string { _ = "STUB: not implemented"; return "" }
+func (*QueryAllRateLimitsRequest) ProtoMessage()    { _ = "STUB: not implemented"; return }
 func (*QueryAllRateLimitsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_f55a91bf266ae0f7, []int{0}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (m *QueryAllRateLimitsRequest) XXX_Unmarshal(b []byte) error {
-	return m.Unmarshal(b)
+	_ = "STUB: not implemented"
+	return nil
 }
+
 func (m *QueryAllRateLimitsRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	if deterministic {
-		return xxx_messageInfo_QueryAllRateLimitsRequest.Marshal(b, m, deterministic)
-	} else {
-		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
-		if err != nil {
-			return nil, err
-		}
-		return b[:n], nil
-	}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
-func (m *QueryAllRateLimitsRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_QueryAllRateLimitsRequest.Merge(m, src)
-}
-func (m *QueryAllRateLimitsRequest) XXX_Size() int {
-	return m.Size()
-}
-func (m *QueryAllRateLimitsRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_QueryAllRateLimitsRequest.DiscardUnknown(m)
-}
+
+func (m *QueryAllRateLimitsRequest) XXX_Merge(src proto.Message) { _ = "STUB: not implemented"; return }
+
+func (m *QueryAllRateLimitsRequest) XXX_Size() int { _ = "STUB: not implemented"; return 0 }
+
+func (m *QueryAllRateLimitsRequest) XXX_DiscardUnknown() { _ = "STUB: not implemented"; return }
 
 var xxx_messageInfo_QueryAllRateLimitsRequest proto.InternalMessageInfo
 
@@ -71,43 +61,37 @@ type QueryAllRateLimitsResponse struct {
 	RateLimits []RateLimit `protobuf:"bytes,1,rep,name=rate_limits,json=rateLimits,proto3" json:"rate_limits"`
 }
 
-func (m *QueryAllRateLimitsResponse) Reset()         { *m = QueryAllRateLimitsResponse{} }
-func (m *QueryAllRateLimitsResponse) String() string { return proto.CompactTextString(m) }
-func (*QueryAllRateLimitsResponse) ProtoMessage()    {}
+func (m *QueryAllRateLimitsResponse) Reset()         { _ = "STUB: not implemented"; return }
+func (m *QueryAllRateLimitsResponse) String() string { _ = "STUB: not implemented"; return "" }
+func (*QueryAllRateLimitsResponse) ProtoMessage()    { _ = "STUB: not implemented"; return }
 func (*QueryAllRateLimitsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_f55a91bf266ae0f7, []int{1}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (m *QueryAllRateLimitsResponse) XXX_Unmarshal(b []byte) error {
-	return m.Unmarshal(b)
+	_ = "STUB: not implemented"
+	return nil
 }
+
 func (m *QueryAllRateLimitsResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	if deterministic {
-		return xxx_messageInfo_QueryAllRateLimitsResponse.Marshal(b, m, deterministic)
-	} else {
-		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
-		if err != nil {
-			return nil, err
-		}
-		return b[:n], nil
-	}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (m *QueryAllRateLimitsResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_QueryAllRateLimitsResponse.Merge(m, src)
+	_ = "STUB: not implemented"
+	return
 }
-func (m *QueryAllRateLimitsResponse) XXX_Size() int {
-	return m.Size()
-}
-func (m *QueryAllRateLimitsResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_QueryAllRateLimitsResponse.DiscardUnknown(m)
-}
+
+func (m *QueryAllRateLimitsResponse) XXX_Size() int { _ = "STUB: not implemented"; return 0 }
+
+func (m *QueryAllRateLimitsResponse) XXX_DiscardUnknown() { _ = "STUB: not implemented"; return }
 
 var xxx_messageInfo_QueryAllRateLimitsResponse proto.InternalMessageInfo
 
 func (m *QueryAllRateLimitsResponse) GetRateLimits() []RateLimit {
-	if m != nil {
-		return m.RateLimits
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -117,185 +101,141 @@ type QueryRateLimitRequest struct {
 	ChannelOrClientId string `protobuf:"bytes,2,opt,name=channel_or_client_id,json=channelOrClientId,proto3" json:"channel_or_client_id,omitempty"`
 }
 
-func (m *QueryRateLimitRequest) Reset()         { *m = QueryRateLimitRequest{} }
-func (m *QueryRateLimitRequest) String() string { return proto.CompactTextString(m) }
-func (*QueryRateLimitRequest) ProtoMessage()    {}
+func (m *QueryRateLimitRequest) Reset()         { _ = "STUB: not implemented"; return }
+func (m *QueryRateLimitRequest) String() string { _ = "STUB: not implemented"; return "" }
+func (*QueryRateLimitRequest) ProtoMessage()    { _ = "STUB: not implemented"; return }
 func (*QueryRateLimitRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_f55a91bf266ae0f7, []int{2}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (m *QueryRateLimitRequest) XXX_Unmarshal(b []byte) error {
-	return m.Unmarshal(b)
+	_ = "STUB: not implemented"
+	return nil
 }
+
 func (m *QueryRateLimitRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	if deterministic {
-		return xxx_messageInfo_QueryRateLimitRequest.Marshal(b, m, deterministic)
-	} else {
-		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
-		if err != nil {
-			return nil, err
-		}
-		return b[:n], nil
-	}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
-func (m *QueryRateLimitRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_QueryRateLimitRequest.Merge(m, src)
-}
-func (m *QueryRateLimitRequest) XXX_Size() int {
-	return m.Size()
-}
-func (m *QueryRateLimitRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_QueryRateLimitRequest.DiscardUnknown(m)
-}
+
+func (m *QueryRateLimitRequest) XXX_Merge(src proto.Message) { _ = "STUB: not implemented"; return }
+
+func (m *QueryRateLimitRequest) XXX_Size() int { _ = "STUB: not implemented"; return 0 }
+
+func (m *QueryRateLimitRequest) XXX_DiscardUnknown() { _ = "STUB: not implemented"; return }
 
 var xxx_messageInfo_QueryRateLimitRequest proto.InternalMessageInfo
 
-func (m *QueryRateLimitRequest) GetDenom() string {
-	if m != nil {
-		return m.Denom
-	}
-	return ""
-}
+func (m *QueryRateLimitRequest) GetDenom() string { _ = "STUB: not implemented"; return "" }
 
-func (m *QueryRateLimitRequest) GetChannelOrClientId() string {
-	if m != nil {
-		return m.ChannelOrClientId
-	}
-	return ""
-}
+func (m *QueryRateLimitRequest) GetChannelOrClientId() string { _ = "STUB: not implemented"; return "" }
 
 // QueryRateLimitResponse returns a rate limit by denom and channel_or_client_id combination.
 type QueryRateLimitResponse struct {
 	RateLimit *RateLimit `protobuf:"bytes,1,opt,name=rate_limit,json=rateLimit,proto3" json:"rate_limit,omitempty"`
 }
 
-func (m *QueryRateLimitResponse) Reset()         { *m = QueryRateLimitResponse{} }
-func (m *QueryRateLimitResponse) String() string { return proto.CompactTextString(m) }
-func (*QueryRateLimitResponse) ProtoMessage()    {}
+func (m *QueryRateLimitResponse) Reset()         { _ = "STUB: not implemented"; return }
+func (m *QueryRateLimitResponse) String() string { _ = "STUB: not implemented"; return "" }
+func (*QueryRateLimitResponse) ProtoMessage()    { _ = "STUB: not implemented"; return }
 func (*QueryRateLimitResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_f55a91bf266ae0f7, []int{3}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (m *QueryRateLimitResponse) XXX_Unmarshal(b []byte) error {
-	return m.Unmarshal(b)
+	_ = "STUB: not implemented"
+	return nil
 }
+
 func (m *QueryRateLimitResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	if deterministic {
-		return xxx_messageInfo_QueryRateLimitResponse.Marshal(b, m, deterministic)
-	} else {
-		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
-		if err != nil {
-			return nil, err
-		}
-		return b[:n], nil
-	}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
-func (m *QueryRateLimitResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_QueryRateLimitResponse.Merge(m, src)
-}
-func (m *QueryRateLimitResponse) XXX_Size() int {
-	return m.Size()
-}
-func (m *QueryRateLimitResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_QueryRateLimitResponse.DiscardUnknown(m)
-}
+
+func (m *QueryRateLimitResponse) XXX_Merge(src proto.Message) { _ = "STUB: not implemented"; return }
+
+func (m *QueryRateLimitResponse) XXX_Size() int { _ = "STUB: not implemented"; return 0 }
+
+func (m *QueryRateLimitResponse) XXX_DiscardUnknown() { _ = "STUB: not implemented"; return }
 
 var xxx_messageInfo_QueryRateLimitResponse proto.InternalMessageInfo
 
-func (m *QueryRateLimitResponse) GetRateLimit() *RateLimit {
-	if m != nil {
-		return m.RateLimit
-	}
-	return nil
-}
+func (m *QueryRateLimitResponse) GetRateLimit() *RateLimit { _ = "STUB: not implemented"; return nil }
 
 // Queries all the rate limits for a given chain
 type QueryRateLimitsByChainIDRequest struct {
 	ChainId string `protobuf:"bytes,1,opt,name=chain_id,json=chainId,proto3" json:"chain_id,omitempty"`
 }
 
-func (m *QueryRateLimitsByChainIDRequest) Reset()         { *m = QueryRateLimitsByChainIDRequest{} }
-func (m *QueryRateLimitsByChainIDRequest) String() string { return proto.CompactTextString(m) }
-func (*QueryRateLimitsByChainIDRequest) ProtoMessage()    {}
+func (m *QueryRateLimitsByChainIDRequest) Reset()         { _ = "STUB: not implemented"; return }
+func (m *QueryRateLimitsByChainIDRequest) String() string { _ = "STUB: not implemented"; return "" }
+func (*QueryRateLimitsByChainIDRequest) ProtoMessage()    { _ = "STUB: not implemented"; return }
 func (*QueryRateLimitsByChainIDRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_f55a91bf266ae0f7, []int{4}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (m *QueryRateLimitsByChainIDRequest) XXX_Unmarshal(b []byte) error {
-	return m.Unmarshal(b)
+	_ = "STUB: not implemented"
+	return nil
 }
+
 func (m *QueryRateLimitsByChainIDRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	if deterministic {
-		return xxx_messageInfo_QueryRateLimitsByChainIDRequest.Marshal(b, m, deterministic)
-	} else {
-		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
-		if err != nil {
-			return nil, err
-		}
-		return b[:n], nil
-	}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (m *QueryRateLimitsByChainIDRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_QueryRateLimitsByChainIDRequest.Merge(m, src)
+	_ = "STUB: not implemented"
+	return
 }
-func (m *QueryRateLimitsByChainIDRequest) XXX_Size() int {
-	return m.Size()
-}
-func (m *QueryRateLimitsByChainIDRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_QueryRateLimitsByChainIDRequest.DiscardUnknown(m)
-}
+
+func (m *QueryRateLimitsByChainIDRequest) XXX_Size() int { _ = "STUB: not implemented"; return 0 }
+
+func (m *QueryRateLimitsByChainIDRequest) XXX_DiscardUnknown() { _ = "STUB: not implemented"; return }
 
 var xxx_messageInfo_QueryRateLimitsByChainIDRequest proto.InternalMessageInfo
 
-func (m *QueryRateLimitsByChainIDRequest) GetChainId() string {
-	if m != nil {
-		return m.ChainId
-	}
-	return ""
-}
+func (m *QueryRateLimitsByChainIDRequest) GetChainId() string { _ = "STUB: not implemented"; return "" }
 
 // QueryRateLimitsByChainIDResponse returns all rate-limits by a chain.
 type QueryRateLimitsByChainIDResponse struct {
 	RateLimits []RateLimit `protobuf:"bytes,1,rep,name=rate_limits,json=rateLimits,proto3" json:"rate_limits"`
 }
 
-func (m *QueryRateLimitsByChainIDResponse) Reset()         { *m = QueryRateLimitsByChainIDResponse{} }
-func (m *QueryRateLimitsByChainIDResponse) String() string { return proto.CompactTextString(m) }
-func (*QueryRateLimitsByChainIDResponse) ProtoMessage()    {}
+func (m *QueryRateLimitsByChainIDResponse) Reset()         { _ = "STUB: not implemented"; return }
+func (m *QueryRateLimitsByChainIDResponse) String() string { _ = "STUB: not implemented"; return "" }
+func (*QueryRateLimitsByChainIDResponse) ProtoMessage()    { _ = "STUB: not implemented"; return }
 func (*QueryRateLimitsByChainIDResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_f55a91bf266ae0f7, []int{5}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (m *QueryRateLimitsByChainIDResponse) XXX_Unmarshal(b []byte) error {
-	return m.Unmarshal(b)
+	_ = "STUB: not implemented"
+	return nil
 }
+
 func (m *QueryRateLimitsByChainIDResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	if deterministic {
-		return xxx_messageInfo_QueryRateLimitsByChainIDResponse.Marshal(b, m, deterministic)
-	} else {
-		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
-		if err != nil {
-			return nil, err
-		}
-		return b[:n], nil
-	}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (m *QueryRateLimitsByChainIDResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_QueryRateLimitsByChainIDResponse.Merge(m, src)
+	_ = "STUB: not implemented"
+	return
 }
-func (m *QueryRateLimitsByChainIDResponse) XXX_Size() int {
-	return m.Size()
-}
-func (m *QueryRateLimitsByChainIDResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_QueryRateLimitsByChainIDResponse.DiscardUnknown(m)
-}
+
+func (m *QueryRateLimitsByChainIDResponse) XXX_Size() int { _ = "STUB: not implemented"; return 0 }
+
+func (m *QueryRateLimitsByChainIDResponse) XXX_DiscardUnknown() { _ = "STUB: not implemented"; return }
 
 var xxx_messageInfo_QueryRateLimitsByChainIDResponse proto.InternalMessageInfo
 
 func (m *QueryRateLimitsByChainIDResponse) GetRateLimits() []RateLimit {
-	if m != nil {
-		return m.RateLimits
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -304,47 +244,48 @@ type QueryRateLimitsByChannelOrClientIDRequest struct {
 	ChannelOrClientId string `protobuf:"bytes,1,opt,name=channel_or_client_id,json=channelOrClientId,proto3" json:"channel_or_client_id,omitempty"`
 }
 
-func (m *QueryRateLimitsByChannelOrClientIDRequest) Reset() {
-	*m = QueryRateLimitsByChannelOrClientIDRequest{}
-}
+func (m *QueryRateLimitsByChannelOrClientIDRequest) Reset() { _ = "STUB: not implemented"; return }
+
 func (m *QueryRateLimitsByChannelOrClientIDRequest) String() string {
-	return proto.CompactTextString(m)
+	_ = "STUB: not implemented"
+	return ""
 }
-func (*QueryRateLimitsByChannelOrClientIDRequest) ProtoMessage() {}
+
+func (*QueryRateLimitsByChannelOrClientIDRequest) ProtoMessage() { _ = "STUB: not implemented"; return }
 func (*QueryRateLimitsByChannelOrClientIDRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_f55a91bf266ae0f7, []int{6}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (m *QueryRateLimitsByChannelOrClientIDRequest) XXX_Unmarshal(b []byte) error {
-	return m.Unmarshal(b)
+	_ = "STUB: not implemented"
+	return nil
 }
+
 func (m *QueryRateLimitsByChannelOrClientIDRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	if deterministic {
-		return xxx_messageInfo_QueryRateLimitsByChannelOrClientIDRequest.Marshal(b, m, deterministic)
-	} else {
-		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
-		if err != nil {
-			return nil, err
-		}
-		return b[:n], nil
-	}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (m *QueryRateLimitsByChannelOrClientIDRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_QueryRateLimitsByChannelOrClientIDRequest.Merge(m, src)
+	_ = "STUB: not implemented"
+	return
 }
+
 func (m *QueryRateLimitsByChannelOrClientIDRequest) XXX_Size() int {
-	return m.Size()
+	_ = "STUB: not implemented"
+	return 0
 }
+
 func (m *QueryRateLimitsByChannelOrClientIDRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_QueryRateLimitsByChannelOrClientIDRequest.DiscardUnknown(m)
+	_ = "STUB: not implemented"
+	return
 }
 
 var xxx_messageInfo_QueryRateLimitsByChannelOrClientIDRequest proto.InternalMessageInfo
 
 func (m *QueryRateLimitsByChannelOrClientIDRequest) GetChannelOrClientId() string {
-	if m != nil {
-		return m.ChannelOrClientId
-	}
+	_ = "STUB: not implemented"
 	return ""
 }
 
@@ -353,47 +294,51 @@ type QueryRateLimitsByChannelOrClientIDResponse struct {
 	RateLimits []RateLimit `protobuf:"bytes,1,rep,name=rate_limits,json=rateLimits,proto3" json:"rate_limits"`
 }
 
-func (m *QueryRateLimitsByChannelOrClientIDResponse) Reset() {
-	*m = QueryRateLimitsByChannelOrClientIDResponse{}
-}
+func (m *QueryRateLimitsByChannelOrClientIDResponse) Reset() { _ = "STUB: not implemented"; return }
+
 func (m *QueryRateLimitsByChannelOrClientIDResponse) String() string {
-	return proto.CompactTextString(m)
+	_ = "STUB: not implemented"
+	return ""
 }
-func (*QueryRateLimitsByChannelOrClientIDResponse) ProtoMessage() {}
+
+func (*QueryRateLimitsByChannelOrClientIDResponse) ProtoMessage() {
+	_ = "STUB: not implemented"
+	return
+}
 func (*QueryRateLimitsByChannelOrClientIDResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_f55a91bf266ae0f7, []int{7}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (m *QueryRateLimitsByChannelOrClientIDResponse) XXX_Unmarshal(b []byte) error {
-	return m.Unmarshal(b)
+	_ = "STUB: not implemented"
+	return nil
 }
+
 func (m *QueryRateLimitsByChannelOrClientIDResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	if deterministic {
-		return xxx_messageInfo_QueryRateLimitsByChannelOrClientIDResponse.Marshal(b, m, deterministic)
-	} else {
-		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
-		if err != nil {
-			return nil, err
-		}
-		return b[:n], nil
-	}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (m *QueryRateLimitsByChannelOrClientIDResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_QueryRateLimitsByChannelOrClientIDResponse.Merge(m, src)
+	_ = "STUB: not implemented"
+	return
 }
+
 func (m *QueryRateLimitsByChannelOrClientIDResponse) XXX_Size() int {
-	return m.Size()
+	_ = "STUB: not implemented"
+	return 0
 }
+
 func (m *QueryRateLimitsByChannelOrClientIDResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_QueryRateLimitsByChannelOrClientIDResponse.DiscardUnknown(m)
+	_ = "STUB: not implemented"
+	return
 }
 
 var xxx_messageInfo_QueryRateLimitsByChannelOrClientIDResponse proto.InternalMessageInfo
 
 func (m *QueryRateLimitsByChannelOrClientIDResponse) GetRateLimits() []RateLimit {
-	if m != nil {
-		return m.RateLimits
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -401,36 +346,32 @@ func (m *QueryRateLimitsByChannelOrClientIDResponse) GetRateLimits() []RateLimit
 type QueryAllBlacklistedDenomsRequest struct {
 }
 
-func (m *QueryAllBlacklistedDenomsRequest) Reset()         { *m = QueryAllBlacklistedDenomsRequest{} }
-func (m *QueryAllBlacklistedDenomsRequest) String() string { return proto.CompactTextString(m) }
-func (*QueryAllBlacklistedDenomsRequest) ProtoMessage()    {}
+func (m *QueryAllBlacklistedDenomsRequest) Reset()         { _ = "STUB: not implemented"; return }
+func (m *QueryAllBlacklistedDenomsRequest) String() string { _ = "STUB: not implemented"; return "" }
+func (*QueryAllBlacklistedDenomsRequest) ProtoMessage()    { _ = "STUB: not implemented"; return }
 func (*QueryAllBlacklistedDenomsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_f55a91bf266ae0f7, []int{8}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (m *QueryAllBlacklistedDenomsRequest) XXX_Unmarshal(b []byte) error {
-	return m.Unmarshal(b)
+	_ = "STUB: not implemented"
+	return nil
 }
+
 func (m *QueryAllBlacklistedDenomsRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	if deterministic {
-		return xxx_messageInfo_QueryAllBlacklistedDenomsRequest.Marshal(b, m, deterministic)
-	} else {
-		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
-		if err != nil {
-			return nil, err
-		}
-		return b[:n], nil
-	}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (m *QueryAllBlacklistedDenomsRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_QueryAllBlacklistedDenomsRequest.Merge(m, src)
+	_ = "STUB: not implemented"
+	return
 }
-func (m *QueryAllBlacklistedDenomsRequest) XXX_Size() int {
-	return m.Size()
-}
-func (m *QueryAllBlacklistedDenomsRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_QueryAllBlacklistedDenomsRequest.DiscardUnknown(m)
-}
+
+func (m *QueryAllBlacklistedDenomsRequest) XXX_Size() int { _ = "STUB: not implemented"; return 0 }
+
+func (m *QueryAllBlacklistedDenomsRequest) XXX_DiscardUnknown() { _ = "STUB: not implemented"; return }
 
 var xxx_messageInfo_QueryAllBlacklistedDenomsRequest proto.InternalMessageInfo
 
@@ -439,43 +380,37 @@ type QueryAllBlacklistedDenomsResponse struct {
 	Denoms []string `protobuf:"bytes,1,rep,name=denoms,proto3" json:"denoms,omitempty"`
 }
 
-func (m *QueryAllBlacklistedDenomsResponse) Reset()         { *m = QueryAllBlacklistedDenomsResponse{} }
-func (m *QueryAllBlacklistedDenomsResponse) String() string { return proto.CompactTextString(m) }
-func (*QueryAllBlacklistedDenomsResponse) ProtoMessage()    {}
+func (m *QueryAllBlacklistedDenomsResponse) Reset()         { _ = "STUB: not implemented"; return }
+func (m *QueryAllBlacklistedDenomsResponse) String() string { _ = "STUB: not implemented"; return "" }
+func (*QueryAllBlacklistedDenomsResponse) ProtoMessage()    { _ = "STUB: not implemented"; return }
 func (*QueryAllBlacklistedDenomsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_f55a91bf266ae0f7, []int{9}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (m *QueryAllBlacklistedDenomsResponse) XXX_Unmarshal(b []byte) error {
-	return m.Unmarshal(b)
+	_ = "STUB: not implemented"
+	return nil
 }
+
 func (m *QueryAllBlacklistedDenomsResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	if deterministic {
-		return xxx_messageInfo_QueryAllBlacklistedDenomsResponse.Marshal(b, m, deterministic)
-	} else {
-		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
-		if err != nil {
-			return nil, err
-		}
-		return b[:n], nil
-	}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (m *QueryAllBlacklistedDenomsResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_QueryAllBlacklistedDenomsResponse.Merge(m, src)
+	_ = "STUB: not implemented"
+	return
 }
-func (m *QueryAllBlacklistedDenomsResponse) XXX_Size() int {
-	return m.Size()
-}
-func (m *QueryAllBlacklistedDenomsResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_QueryAllBlacklistedDenomsResponse.DiscardUnknown(m)
-}
+
+func (m *QueryAllBlacklistedDenomsResponse) XXX_Size() int { _ = "STUB: not implemented"; return 0 }
+
+func (m *QueryAllBlacklistedDenomsResponse) XXX_DiscardUnknown() { _ = "STUB: not implemented"; return }
 
 var xxx_messageInfo_QueryAllBlacklistedDenomsResponse proto.InternalMessageInfo
 
 func (m *QueryAllBlacklistedDenomsResponse) GetDenoms() []string {
-	if m != nil {
-		return m.Denoms
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -483,35 +418,34 @@ func (m *QueryAllBlacklistedDenomsResponse) GetDenoms() []string {
 type QueryAllWhitelistedAddressesRequest struct {
 }
 
-func (m *QueryAllWhitelistedAddressesRequest) Reset()         { *m = QueryAllWhitelistedAddressesRequest{} }
-func (m *QueryAllWhitelistedAddressesRequest) String() string { return proto.CompactTextString(m) }
-func (*QueryAllWhitelistedAddressesRequest) ProtoMessage()    {}
+func (m *QueryAllWhitelistedAddressesRequest) Reset()         { _ = "STUB: not implemented"; return }
+func (m *QueryAllWhitelistedAddressesRequest) String() string { _ = "STUB: not implemented"; return "" }
+func (*QueryAllWhitelistedAddressesRequest) ProtoMessage()    { _ = "STUB: not implemented"; return }
 func (*QueryAllWhitelistedAddressesRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_f55a91bf266ae0f7, []int{10}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (m *QueryAllWhitelistedAddressesRequest) XXX_Unmarshal(b []byte) error {
-	return m.Unmarshal(b)
+	_ = "STUB: not implemented"
+	return nil
 }
+
 func (m *QueryAllWhitelistedAddressesRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	if deterministic {
-		return xxx_messageInfo_QueryAllWhitelistedAddressesRequest.Marshal(b, m, deterministic)
-	} else {
-		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
-		if err != nil {
-			return nil, err
-		}
-		return b[:n], nil
-	}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (m *QueryAllWhitelistedAddressesRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_QueryAllWhitelistedAddressesRequest.Merge(m, src)
+	_ = "STUB: not implemented"
+	return
 }
-func (m *QueryAllWhitelistedAddressesRequest) XXX_Size() int {
-	return m.Size()
-}
+
+func (m *QueryAllWhitelistedAddressesRequest) XXX_Size() int { _ = "STUB: not implemented"; return 0 }
+
 func (m *QueryAllWhitelistedAddressesRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_QueryAllWhitelistedAddressesRequest.DiscardUnknown(m)
+	_ = "STUB: not implemented"
+	return
 }
 
 var xxx_messageInfo_QueryAllWhitelistedAddressesRequest proto.InternalMessageInfo
@@ -521,43 +455,43 @@ type QueryAllWhitelistedAddressesResponse struct {
 	AddressPairs []WhitelistedAddressPair `protobuf:"bytes,1,rep,name=address_pairs,json=addressPairs,proto3" json:"address_pairs"`
 }
 
-func (m *QueryAllWhitelistedAddressesResponse) Reset()         { *m = QueryAllWhitelistedAddressesResponse{} }
-func (m *QueryAllWhitelistedAddressesResponse) String() string { return proto.CompactTextString(m) }
-func (*QueryAllWhitelistedAddressesResponse) ProtoMessage()    {}
+func (m *QueryAllWhitelistedAddressesResponse) Reset() { _ = "STUB: not implemented"; return }
+func (m *QueryAllWhitelistedAddressesResponse) String() string {
+	_ = "STUB: not implemented"
+	return ""
+}
+func (*QueryAllWhitelistedAddressesResponse) ProtoMessage() { _ = "STUB: not implemented"; return }
 func (*QueryAllWhitelistedAddressesResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_f55a91bf266ae0f7, []int{11}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (m *QueryAllWhitelistedAddressesResponse) XXX_Unmarshal(b []byte) error {
-	return m.Unmarshal(b)
+	_ = "STUB: not implemented"
+	return nil
 }
+
 func (m *QueryAllWhitelistedAddressesResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	if deterministic {
-		return xxx_messageInfo_QueryAllWhitelistedAddressesResponse.Marshal(b, m, deterministic)
-	} else {
-		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
-		if err != nil {
-			return nil, err
-		}
-		return b[:n], nil
-	}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (m *QueryAllWhitelistedAddressesResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_QueryAllWhitelistedAddressesResponse.Merge(m, src)
+	_ = "STUB: not implemented"
+	return
 }
-func (m *QueryAllWhitelistedAddressesResponse) XXX_Size() int {
-	return m.Size()
-}
+
+func (m *QueryAllWhitelistedAddressesResponse) XXX_Size() int { _ = "STUB: not implemented"; return 0 }
+
 func (m *QueryAllWhitelistedAddressesResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_QueryAllWhitelistedAddressesResponse.DiscardUnknown(m)
+	_ = "STUB: not implemented"
+	return
 }
 
 var xxx_messageInfo_QueryAllWhitelistedAddressesResponse proto.InternalMessageInfo
 
 func (m *QueryAllWhitelistedAddressesResponse) GetAddressPairs() []WhitelistedAddressPair {
-	if m != nil {
-		return m.AddressPairs
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -664,61 +598,38 @@ type queryClient struct {
 }
 
 func NewQueryClient(cc grpc1.ClientConn) QueryClient {
-	return &queryClient{cc}
+	_ = "STUB: not implemented"
+	return *new(QueryClient)
 }
 
 func (c *queryClient) AllRateLimits(ctx context.Context, in *QueryAllRateLimitsRequest, opts ...grpc.CallOption) (*QueryAllRateLimitsResponse, error) {
-	out := new(QueryAllRateLimitsResponse)
-	err := c.cc.Invoke(ctx, "/ibc.applications.rate_limiting.v1.Query/AllRateLimits", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *queryClient) RateLimit(ctx context.Context, in *QueryRateLimitRequest, opts ...grpc.CallOption) (*QueryRateLimitResponse, error) {
-	out := new(QueryRateLimitResponse)
-	err := c.cc.Invoke(ctx, "/ibc.applications.rate_limiting.v1.Query/RateLimit", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *queryClient) RateLimitsByChainID(ctx context.Context, in *QueryRateLimitsByChainIDRequest, opts ...grpc.CallOption) (*QueryRateLimitsByChainIDResponse, error) {
-	out := new(QueryRateLimitsByChainIDResponse)
-	err := c.cc.Invoke(ctx, "/ibc.applications.rate_limiting.v1.Query/RateLimitsByChainID", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *queryClient) RateLimitsByChannelOrClientID(ctx context.Context, in *QueryRateLimitsByChannelOrClientIDRequest, opts ...grpc.CallOption) (*QueryRateLimitsByChannelOrClientIDResponse, error) {
-	out := new(QueryRateLimitsByChannelOrClientIDResponse)
-	err := c.cc.Invoke(ctx, "/ibc.applications.rate_limiting.v1.Query/RateLimitsByChannelOrClientID", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *queryClient) AllBlacklistedDenoms(ctx context.Context, in *QueryAllBlacklistedDenomsRequest, opts ...grpc.CallOption) (*QueryAllBlacklistedDenomsResponse, error) {
-	out := new(QueryAllBlacklistedDenomsResponse)
-	err := c.cc.Invoke(ctx, "/ibc.applications.rate_limiting.v1.Query/AllBlacklistedDenoms", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *queryClient) AllWhitelistedAddresses(ctx context.Context, in *QueryAllWhitelistedAddressesRequest, opts ...grpc.CallOption) (*QueryAllWhitelistedAddressesResponse, error) {
-	out := new(QueryAllWhitelistedAddressesResponse)
-	err := c.cc.Invoke(ctx, "/ibc.applications.rate_limiting.v1.Query/AllWhitelistedAddresses", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // QueryServer is the server API for Query service.
@@ -744,134 +655,65 @@ type UnimplementedQueryServer struct {
 }
 
 func (*UnimplementedQueryServer) AllRateLimits(ctx context.Context, req *QueryAllRateLimitsRequest) (*QueryAllRateLimitsResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method AllRateLimits not implemented")
-}
-func (*UnimplementedQueryServer) RateLimit(ctx context.Context, req *QueryRateLimitRequest) (*QueryRateLimitResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method RateLimit not implemented")
-}
-func (*UnimplementedQueryServer) RateLimitsByChainID(ctx context.Context, req *QueryRateLimitsByChainIDRequest) (*QueryRateLimitsByChainIDResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method RateLimitsByChainID not implemented")
-}
-func (*UnimplementedQueryServer) RateLimitsByChannelOrClientID(ctx context.Context, req *QueryRateLimitsByChannelOrClientIDRequest) (*QueryRateLimitsByChannelOrClientIDResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method RateLimitsByChannelOrClientID not implemented")
-}
-func (*UnimplementedQueryServer) AllBlacklistedDenoms(ctx context.Context, req *QueryAllBlacklistedDenomsRequest) (*QueryAllBlacklistedDenomsResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method AllBlacklistedDenoms not implemented")
-}
-func (*UnimplementedQueryServer) AllWhitelistedAddresses(ctx context.Context, req *QueryAllWhitelistedAddressesRequest) (*QueryAllWhitelistedAddressesResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method AllWhitelistedAddresses not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func RegisterQueryServer(s grpc1.Server, srv QueryServer) {
-	s.RegisterService(&_Query_serviceDesc, srv)
+func (*UnimplementedQueryServer) RateLimit(ctx context.Context, req *QueryRateLimitRequest) (*QueryRateLimitResponse, error) {
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
+func (*UnimplementedQueryServer) RateLimitsByChainID(ctx context.Context, req *QueryRateLimitsByChainIDRequest) (*QueryRateLimitsByChainIDResponse, error) {
+	_ = "STUB: not implemented"
+	return nil, nil
+}
+
+func (*UnimplementedQueryServer) RateLimitsByChannelOrClientID(ctx context.Context, req *QueryRateLimitsByChannelOrClientIDRequest) (*QueryRateLimitsByChannelOrClientIDResponse, error) {
+	_ = "STUB: not implemented"
+	return nil, nil
+}
+
+func (*UnimplementedQueryServer) AllBlacklistedDenoms(ctx context.Context, req *QueryAllBlacklistedDenomsRequest) (*QueryAllBlacklistedDenomsResponse, error) {
+	_ = "STUB: not implemented"
+	return nil, nil
+}
+
+func (*UnimplementedQueryServer) AllWhitelistedAddresses(ctx context.Context, req *QueryAllWhitelistedAddressesRequest) (*QueryAllWhitelistedAddressesResponse, error) {
+	_ = "STUB: not implemented"
+	return nil, nil
+}
+
+func RegisterQueryServer(s grpc1.Server, srv QueryServer) { _ = "STUB: not implemented"; return }
 
 func _Query_AllRateLimits_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(QueryAllRateLimitsRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(QueryServer).AllRateLimits(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/ibc.applications.rate_limiting.v1.Query/AllRateLimits",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(QueryServer).AllRateLimits(ctx, req.(*QueryAllRateLimitsRequest))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func _Query_RateLimit_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(QueryRateLimitRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(QueryServer).RateLimit(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/ibc.applications.rate_limiting.v1.Query/RateLimit",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(QueryServer).RateLimit(ctx, req.(*QueryRateLimitRequest))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func _Query_RateLimitsByChainID_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(QueryRateLimitsByChainIDRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(QueryServer).RateLimitsByChainID(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/ibc.applications.rate_limiting.v1.Query/RateLimitsByChainID",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(QueryServer).RateLimitsByChainID(ctx, req.(*QueryRateLimitsByChainIDRequest))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func _Query_RateLimitsByChannelOrClientID_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(QueryRateLimitsByChannelOrClientIDRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(QueryServer).RateLimitsByChannelOrClientID(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/ibc.applications.rate_limiting.v1.Query/RateLimitsByChannelOrClientID",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(QueryServer).RateLimitsByChannelOrClientID(ctx, req.(*QueryRateLimitsByChannelOrClientIDRequest))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func _Query_AllBlacklistedDenoms_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(QueryAllBlacklistedDenomsRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(QueryServer).AllBlacklistedDenoms(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/ibc.applications.rate_limiting.v1.Query/AllBlacklistedDenoms",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(QueryServer).AllBlacklistedDenoms(ctx, req.(*QueryAllBlacklistedDenomsRequest))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func _Query_AllWhitelistedAddresses_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(QueryAllWhitelistedAddressesRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(QueryServer).AllWhitelistedAddresses(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/ibc.applications.rate_limiting.v1.Query/AllWhitelistedAddresses",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(QueryServer).AllWhitelistedAddresses(ctx, req.(*QueryAllWhitelistedAddressesRequest))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 var Query_serviceDesc = _Query_serviceDesc
@@ -909,1571 +751,279 @@ var _Query_serviceDesc = grpc.ServiceDesc{
 }
 
 func (m *QueryAllRateLimitsRequest) Marshal() (dAtA []byte, err error) {
-	size := m.Size()
-	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
-	if err != nil {
-		return nil, err
-	}
-	return dAtA[:n], nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (m *QueryAllRateLimitsRequest) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
+	_ = "STUB: not implemented"
+	return 0, nil
 }
 
 func (m *QueryAllRateLimitsRequest) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
-	_ = i
-	var l int
-	_ = l
-	return len(dAtA) - i, nil
+	_ = "STUB: not implemented"
+	return 0, nil
 }
 
 func (m *QueryAllRateLimitsResponse) Marshal() (dAtA []byte, err error) {
-	size := m.Size()
-	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
-	if err != nil {
-		return nil, err
-	}
-	return dAtA[:n], nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (m *QueryAllRateLimitsResponse) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
+	_ = "STUB: not implemented"
+	return 0, nil
 }
 
 func (m *QueryAllRateLimitsResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
-	_ = i
-	var l int
-	_ = l
-	if len(m.RateLimits) > 0 {
-		for iNdEx := len(m.RateLimits) - 1; iNdEx >= 0; iNdEx-- {
-			{
-				size, err := m.RateLimits[iNdEx].MarshalToSizedBuffer(dAtA[:i])
-				if err != nil {
-					return 0, err
-				}
-				i -= size
-				i = encodeVarintQuery(dAtA, i, uint64(size))
-			}
-			i--
-			dAtA[i] = 0xa
-		}
-	}
-	return len(dAtA) - i, nil
+	_ = "STUB: not implemented"
+	return 0, nil
 }
 
 func (m *QueryRateLimitRequest) Marshal() (dAtA []byte, err error) {
-	size := m.Size()
-	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
-	if err != nil {
-		return nil, err
-	}
-	return dAtA[:n], nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (m *QueryRateLimitRequest) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
+	_ = "STUB: not implemented"
+	return 0, nil
 }
 
 func (m *QueryRateLimitRequest) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
-	_ = i
-	var l int
-	_ = l
-	if len(m.ChannelOrClientId) > 0 {
-		i -= len(m.ChannelOrClientId)
-		copy(dAtA[i:], m.ChannelOrClientId)
-		i = encodeVarintQuery(dAtA, i, uint64(len(m.ChannelOrClientId)))
-		i--
-		dAtA[i] = 0x12
-	}
-	if len(m.Denom) > 0 {
-		i -= len(m.Denom)
-		copy(dAtA[i:], m.Denom)
-		i = encodeVarintQuery(dAtA, i, uint64(len(m.Denom)))
-		i--
-		dAtA[i] = 0xa
-	}
-	return len(dAtA) - i, nil
+	_ = "STUB: not implemented"
+	return 0, nil
 }
 
 func (m *QueryRateLimitResponse) Marshal() (dAtA []byte, err error) {
-	size := m.Size()
-	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
-	if err != nil {
-		return nil, err
-	}
-	return dAtA[:n], nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (m *QueryRateLimitResponse) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
+	_ = "STUB: not implemented"
+	return 0, nil
 }
 
 func (m *QueryRateLimitResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
-	_ = i
-	var l int
-	_ = l
-	if m.RateLimit != nil {
-		{
-			size, err := m.RateLimit.MarshalToSizedBuffer(dAtA[:i])
-			if err != nil {
-				return 0, err
-			}
-			i -= size
-			i = encodeVarintQuery(dAtA, i, uint64(size))
-		}
-		i--
-		dAtA[i] = 0xa
-	}
-	return len(dAtA) - i, nil
+	_ = "STUB: not implemented"
+	return 0, nil
 }
 
 func (m *QueryRateLimitsByChainIDRequest) Marshal() (dAtA []byte, err error) {
-	size := m.Size()
-	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
-	if err != nil {
-		return nil, err
-	}
-	return dAtA[:n], nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (m *QueryRateLimitsByChainIDRequest) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
+	_ = "STUB: not implemented"
+	return 0, nil
 }
 
 func (m *QueryRateLimitsByChainIDRequest) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
-	_ = i
-	var l int
-	_ = l
-	if len(m.ChainId) > 0 {
-		i -= len(m.ChainId)
-		copy(dAtA[i:], m.ChainId)
-		i = encodeVarintQuery(dAtA, i, uint64(len(m.ChainId)))
-		i--
-		dAtA[i] = 0xa
-	}
-	return len(dAtA) - i, nil
+	_ = "STUB: not implemented"
+	return 0, nil
 }
 
 func (m *QueryRateLimitsByChainIDResponse) Marshal() (dAtA []byte, err error) {
-	size := m.Size()
-	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
-	if err != nil {
-		return nil, err
-	}
-	return dAtA[:n], nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (m *QueryRateLimitsByChainIDResponse) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
+	_ = "STUB: not implemented"
+	return 0, nil
 }
 
 func (m *QueryRateLimitsByChainIDResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
-	_ = i
-	var l int
-	_ = l
-	if len(m.RateLimits) > 0 {
-		for iNdEx := len(m.RateLimits) - 1; iNdEx >= 0; iNdEx-- {
-			{
-				size, err := m.RateLimits[iNdEx].MarshalToSizedBuffer(dAtA[:i])
-				if err != nil {
-					return 0, err
-				}
-				i -= size
-				i = encodeVarintQuery(dAtA, i, uint64(size))
-			}
-			i--
-			dAtA[i] = 0xa
-		}
-	}
-	return len(dAtA) - i, nil
+	_ = "STUB: not implemented"
+	return 0, nil
 }
 
 func (m *QueryRateLimitsByChannelOrClientIDRequest) Marshal() (dAtA []byte, err error) {
-	size := m.Size()
-	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
-	if err != nil {
-		return nil, err
-	}
-	return dAtA[:n], nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (m *QueryRateLimitsByChannelOrClientIDRequest) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
+	_ = "STUB: not implemented"
+	return 0, nil
 }
 
 func (m *QueryRateLimitsByChannelOrClientIDRequest) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
-	_ = i
-	var l int
-	_ = l
-	if len(m.ChannelOrClientId) > 0 {
-		i -= len(m.ChannelOrClientId)
-		copy(dAtA[i:], m.ChannelOrClientId)
-		i = encodeVarintQuery(dAtA, i, uint64(len(m.ChannelOrClientId)))
-		i--
-		dAtA[i] = 0xa
-	}
-	return len(dAtA) - i, nil
+	_ = "STUB: not implemented"
+	return 0, nil
 }
 
 func (m *QueryRateLimitsByChannelOrClientIDResponse) Marshal() (dAtA []byte, err error) {
-	size := m.Size()
-	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
-	if err != nil {
-		return nil, err
-	}
-	return dAtA[:n], nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (m *QueryRateLimitsByChannelOrClientIDResponse) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
+	_ = "STUB: not implemented"
+	return 0, nil
 }
 
 func (m *QueryRateLimitsByChannelOrClientIDResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
-	_ = i
-	var l int
-	_ = l
-	if len(m.RateLimits) > 0 {
-		for iNdEx := len(m.RateLimits) - 1; iNdEx >= 0; iNdEx-- {
-			{
-				size, err := m.RateLimits[iNdEx].MarshalToSizedBuffer(dAtA[:i])
-				if err != nil {
-					return 0, err
-				}
-				i -= size
-				i = encodeVarintQuery(dAtA, i, uint64(size))
-			}
-			i--
-			dAtA[i] = 0xa
-		}
-	}
-	return len(dAtA) - i, nil
+	_ = "STUB: not implemented"
+	return 0, nil
 }
 
 func (m *QueryAllBlacklistedDenomsRequest) Marshal() (dAtA []byte, err error) {
-	size := m.Size()
-	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
-	if err != nil {
-		return nil, err
-	}
-	return dAtA[:n], nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (m *QueryAllBlacklistedDenomsRequest) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
+	_ = "STUB: not implemented"
+	return 0, nil
 }
 
 func (m *QueryAllBlacklistedDenomsRequest) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
-	_ = i
-	var l int
-	_ = l
-	return len(dAtA) - i, nil
+	_ = "STUB: not implemented"
+	return 0, nil
 }
 
 func (m *QueryAllBlacklistedDenomsResponse) Marshal() (dAtA []byte, err error) {
-	size := m.Size()
-	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
-	if err != nil {
-		return nil, err
-	}
-	return dAtA[:n], nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (m *QueryAllBlacklistedDenomsResponse) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
+	_ = "STUB: not implemented"
+	return 0, nil
 }
 
 func (m *QueryAllBlacklistedDenomsResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
-	_ = i
-	var l int
-	_ = l
-	if len(m.Denoms) > 0 {
-		for iNdEx := len(m.Denoms) - 1; iNdEx >= 0; iNdEx-- {
-			i -= len(m.Denoms[iNdEx])
-			copy(dAtA[i:], m.Denoms[iNdEx])
-			i = encodeVarintQuery(dAtA, i, uint64(len(m.Denoms[iNdEx])))
-			i--
-			dAtA[i] = 0xa
-		}
-	}
-	return len(dAtA) - i, nil
+	_ = "STUB: not implemented"
+	return 0, nil
 }
 
 func (m *QueryAllWhitelistedAddressesRequest) Marshal() (dAtA []byte, err error) {
-	size := m.Size()
-	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
-	if err != nil {
-		return nil, err
-	}
-	return dAtA[:n], nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (m *QueryAllWhitelistedAddressesRequest) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
+	_ = "STUB: not implemented"
+	return 0, nil
 }
 
 func (m *QueryAllWhitelistedAddressesRequest) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
-	_ = i
-	var l int
-	_ = l
-	return len(dAtA) - i, nil
+	_ = "STUB: not implemented"
+	return 0, nil
 }
 
 func (m *QueryAllWhitelistedAddressesResponse) Marshal() (dAtA []byte, err error) {
-	size := m.Size()
-	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
-	if err != nil {
-		return nil, err
-	}
-	return dAtA[:n], nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (m *QueryAllWhitelistedAddressesResponse) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
+	_ = "STUB: not implemented"
+	return 0, nil
 }
 
 func (m *QueryAllWhitelistedAddressesResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
-	_ = i
-	var l int
-	_ = l
-	if len(m.AddressPairs) > 0 {
-		for iNdEx := len(m.AddressPairs) - 1; iNdEx >= 0; iNdEx-- {
-			{
-				size, err := m.AddressPairs[iNdEx].MarshalToSizedBuffer(dAtA[:i])
-				if err != nil {
-					return 0, err
-				}
-				i -= size
-				i = encodeVarintQuery(dAtA, i, uint64(size))
-			}
-			i--
-			dAtA[i] = 0xa
-		}
-	}
-	return len(dAtA) - i, nil
+	_ = "STUB: not implemented"
+	return 0, nil
 }
 
-func encodeVarintQuery(dAtA []byte, offset int, v uint64) int {
-	offset -= sovQuery(v)
-	base := offset
-	for v >= 1<<7 {
-		dAtA[offset] = uint8(v&0x7f | 0x80)
-		v >>= 7
-		offset++
-	}
-	dAtA[offset] = uint8(v)
-	return base
-}
-func (m *QueryAllRateLimitsRequest) Size() (n int) {
-	if m == nil {
-		return 0
-	}
-	var l int
-	_ = l
-	return n
-}
+func encodeVarintQuery(dAtA []byte, offset int, v uint64) int { _ = "STUB: not implemented"; return 0 }
 
-func (m *QueryAllRateLimitsResponse) Size() (n int) {
-	if m == nil {
-		return 0
-	}
-	var l int
-	_ = l
-	if len(m.RateLimits) > 0 {
-		for _, e := range m.RateLimits {
-			l = e.Size()
-			n += 1 + l + sovQuery(uint64(l))
-		}
-	}
-	return n
-}
+func (m *QueryAllRateLimitsRequest) Size() (n int) { _ = "STUB: not implemented"; return 0 }
 
-func (m *QueryRateLimitRequest) Size() (n int) {
-	if m == nil {
-		return 0
-	}
-	var l int
-	_ = l
-	l = len(m.Denom)
-	if l > 0 {
-		n += 1 + l + sovQuery(uint64(l))
-	}
-	l = len(m.ChannelOrClientId)
-	if l > 0 {
-		n += 1 + l + sovQuery(uint64(l))
-	}
-	return n
-}
+func (m *QueryAllRateLimitsResponse) Size() (n int) { _ = "STUB: not implemented"; return 0 }
 
-func (m *QueryRateLimitResponse) Size() (n int) {
-	if m == nil {
-		return 0
-	}
-	var l int
-	_ = l
-	if m.RateLimit != nil {
-		l = m.RateLimit.Size()
-		n += 1 + l + sovQuery(uint64(l))
-	}
-	return n
-}
+func (m *QueryRateLimitRequest) Size() (n int) { _ = "STUB: not implemented"; return 0 }
 
-func (m *QueryRateLimitsByChainIDRequest) Size() (n int) {
-	if m == nil {
-		return 0
-	}
-	var l int
-	_ = l
-	l = len(m.ChainId)
-	if l > 0 {
-		n += 1 + l + sovQuery(uint64(l))
-	}
-	return n
-}
+func (m *QueryRateLimitResponse) Size() (n int) { _ = "STUB: not implemented"; return 0 }
 
-func (m *QueryRateLimitsByChainIDResponse) Size() (n int) {
-	if m == nil {
-		return 0
-	}
-	var l int
-	_ = l
-	if len(m.RateLimits) > 0 {
-		for _, e := range m.RateLimits {
-			l = e.Size()
-			n += 1 + l + sovQuery(uint64(l))
-		}
-	}
-	return n
-}
+func (m *QueryRateLimitsByChainIDRequest) Size() (n int) { _ = "STUB: not implemented"; return 0 }
+
+func (m *QueryRateLimitsByChainIDResponse) Size() (n int) { _ = "STUB: not implemented"; return 0 }
 
 func (m *QueryRateLimitsByChannelOrClientIDRequest) Size() (n int) {
-	if m == nil {
-		return 0
-	}
-	var l int
-	_ = l
-	l = len(m.ChannelOrClientId)
-	if l > 0 {
-		n += 1 + l + sovQuery(uint64(l))
-	}
-	return n
+	_ = "STUB: not implemented"
+	return 0
 }
 
 func (m *QueryRateLimitsByChannelOrClientIDResponse) Size() (n int) {
-	if m == nil {
-		return 0
-	}
-	var l int
-	_ = l
-	if len(m.RateLimits) > 0 {
-		for _, e := range m.RateLimits {
-			l = e.Size()
-			n += 1 + l + sovQuery(uint64(l))
-		}
-	}
-	return n
+	_ = "STUB: not implemented"
+	return 0
 }
 
-func (m *QueryAllBlacklistedDenomsRequest) Size() (n int) {
-	if m == nil {
-		return 0
-	}
-	var l int
-	_ = l
-	return n
-}
+func (m *QueryAllBlacklistedDenomsRequest) Size() (n int) { _ = "STUB: not implemented"; return 0 }
 
-func (m *QueryAllBlacklistedDenomsResponse) Size() (n int) {
-	if m == nil {
-		return 0
-	}
-	var l int
-	_ = l
-	if len(m.Denoms) > 0 {
-		for _, s := range m.Denoms {
-			l = len(s)
-			n += 1 + l + sovQuery(uint64(l))
-		}
-	}
-	return n
-}
+func (m *QueryAllBlacklistedDenomsResponse) Size() (n int) { _ = "STUB: not implemented"; return 0 }
 
-func (m *QueryAllWhitelistedAddressesRequest) Size() (n int) {
-	if m == nil {
-		return 0
-	}
-	var l int
-	_ = l
-	return n
-}
+func (m *QueryAllWhitelistedAddressesRequest) Size() (n int) { _ = "STUB: not implemented"; return 0 }
 
-func (m *QueryAllWhitelistedAddressesResponse) Size() (n int) {
-	if m == nil {
-		return 0
-	}
-	var l int
-	_ = l
-	if len(m.AddressPairs) > 0 {
-		for _, e := range m.AddressPairs {
-			l = e.Size()
-			n += 1 + l + sovQuery(uint64(l))
-		}
-	}
-	return n
-}
+func (m *QueryAllWhitelistedAddressesResponse) Size() (n int) { _ = "STUB: not implemented"; return 0 }
 
-func sovQuery(x uint64) (n int) {
-	return (math_bits.Len64(x|1) + 6) / 7
-}
-func sozQuery(x uint64) (n int) {
-	return sovQuery(uint64((x << 1) ^ uint64((int64(x) >> 63))))
-}
+func sovQuery(x uint64) (n int) { _ = "STUB: not implemented"; return 0 }
+
+func sozQuery(x uint64) (n int) { _ = "STUB: not implemented"; return 0 }
+
 func (m *QueryAllRateLimitsRequest) Unmarshal(dAtA []byte) error {
-	l := len(dAtA)
-	iNdEx := 0
-	for iNdEx < l {
-		preIndex := iNdEx
-		var wire uint64
-		for shift := uint(0); ; shift += 7 {
-			if shift >= 64 {
-				return ErrIntOverflowQuery
-			}
-			if iNdEx >= l {
-				return io.ErrUnexpectedEOF
-			}
-			b := dAtA[iNdEx]
-			iNdEx++
-			wire |= uint64(b&0x7F) << shift
-			if b < 0x80 {
-				break
-			}
-		}
-		fieldNum := int32(wire >> 3)
-		wireType := int(wire & 0x7)
-		if wireType == 4 {
-			return fmt.Errorf("proto: QueryAllRateLimitsRequest: wiretype end group for non-group")
-		}
-		if fieldNum <= 0 {
-			return fmt.Errorf("proto: QueryAllRateLimitsRequest: illegal tag %d (wire type %d)", fieldNum, wire)
-		}
-		switch fieldNum {
-		default:
-			iNdEx = preIndex
-			skippy, err := skipQuery(dAtA[iNdEx:])
-			if err != nil {
-				return err
-			}
-			if (skippy < 0) || (iNdEx+skippy) < 0 {
-				return ErrInvalidLengthQuery
-			}
-			if (iNdEx + skippy) > l {
-				return io.ErrUnexpectedEOF
-			}
-			iNdEx += skippy
-		}
-	}
-
-	if iNdEx > l {
-		return io.ErrUnexpectedEOF
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
+
 func (m *QueryAllRateLimitsResponse) Unmarshal(dAtA []byte) error {
-	l := len(dAtA)
-	iNdEx := 0
-	for iNdEx < l {
-		preIndex := iNdEx
-		var wire uint64
-		for shift := uint(0); ; shift += 7 {
-			if shift >= 64 {
-				return ErrIntOverflowQuery
-			}
-			if iNdEx >= l {
-				return io.ErrUnexpectedEOF
-			}
-			b := dAtA[iNdEx]
-			iNdEx++
-			wire |= uint64(b&0x7F) << shift
-			if b < 0x80 {
-				break
-			}
-		}
-		fieldNum := int32(wire >> 3)
-		wireType := int(wire & 0x7)
-		if wireType == 4 {
-			return fmt.Errorf("proto: QueryAllRateLimitsResponse: wiretype end group for non-group")
-		}
-		if fieldNum <= 0 {
-			return fmt.Errorf("proto: QueryAllRateLimitsResponse: illegal tag %d (wire type %d)", fieldNum, wire)
-		}
-		switch fieldNum {
-		case 1:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field RateLimits", wireType)
-			}
-			var msglen int
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowQuery
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				msglen |= int(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			if msglen < 0 {
-				return ErrInvalidLengthQuery
-			}
-			postIndex := iNdEx + msglen
-			if postIndex < 0 {
-				return ErrInvalidLengthQuery
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.RateLimits = append(m.RateLimits, RateLimit{})
-			if err := m.RateLimits[len(m.RateLimits)-1].Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
-				return err
-			}
-			iNdEx = postIndex
-		default:
-			iNdEx = preIndex
-			skippy, err := skipQuery(dAtA[iNdEx:])
-			if err != nil {
-				return err
-			}
-			if (skippy < 0) || (iNdEx+skippy) < 0 {
-				return ErrInvalidLengthQuery
-			}
-			if (iNdEx + skippy) > l {
-				return io.ErrUnexpectedEOF
-			}
-			iNdEx += skippy
-		}
-	}
-
-	if iNdEx > l {
-		return io.ErrUnexpectedEOF
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
-func (m *QueryRateLimitRequest) Unmarshal(dAtA []byte) error {
-	l := len(dAtA)
-	iNdEx := 0
-	for iNdEx < l {
-		preIndex := iNdEx
-		var wire uint64
-		for shift := uint(0); ; shift += 7 {
-			if shift >= 64 {
-				return ErrIntOverflowQuery
-			}
-			if iNdEx >= l {
-				return io.ErrUnexpectedEOF
-			}
-			b := dAtA[iNdEx]
-			iNdEx++
-			wire |= uint64(b&0x7F) << shift
-			if b < 0x80 {
-				break
-			}
-		}
-		fieldNum := int32(wire >> 3)
-		wireType := int(wire & 0x7)
-		if wireType == 4 {
-			return fmt.Errorf("proto: QueryRateLimitRequest: wiretype end group for non-group")
-		}
-		if fieldNum <= 0 {
-			return fmt.Errorf("proto: QueryRateLimitRequest: illegal tag %d (wire type %d)", fieldNum, wire)
-		}
-		switch fieldNum {
-		case 1:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Denom", wireType)
-			}
-			var stringLen uint64
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowQuery
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				stringLen |= uint64(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			intStringLen := int(stringLen)
-			if intStringLen < 0 {
-				return ErrInvalidLengthQuery
-			}
-			postIndex := iNdEx + intStringLen
-			if postIndex < 0 {
-				return ErrInvalidLengthQuery
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.Denom = string(dAtA[iNdEx:postIndex])
-			iNdEx = postIndex
-		case 2:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field ChannelOrClientId", wireType)
-			}
-			var stringLen uint64
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowQuery
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				stringLen |= uint64(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			intStringLen := int(stringLen)
-			if intStringLen < 0 {
-				return ErrInvalidLengthQuery
-			}
-			postIndex := iNdEx + intStringLen
-			if postIndex < 0 {
-				return ErrInvalidLengthQuery
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.ChannelOrClientId = string(dAtA[iNdEx:postIndex])
-			iNdEx = postIndex
-		default:
-			iNdEx = preIndex
-			skippy, err := skipQuery(dAtA[iNdEx:])
-			if err != nil {
-				return err
-			}
-			if (skippy < 0) || (iNdEx+skippy) < 0 {
-				return ErrInvalidLengthQuery
-			}
-			if (iNdEx + skippy) > l {
-				return io.ErrUnexpectedEOF
-			}
-			iNdEx += skippy
-		}
-	}
 
-	if iNdEx > l {
-		return io.ErrUnexpectedEOF
-	}
-	return nil
-}
+func (m *QueryRateLimitRequest) Unmarshal(dAtA []byte) error { _ = "STUB: not implemented"; return nil }
+
 func (m *QueryRateLimitResponse) Unmarshal(dAtA []byte) error {
-	l := len(dAtA)
-	iNdEx := 0
-	for iNdEx < l {
-		preIndex := iNdEx
-		var wire uint64
-		for shift := uint(0); ; shift += 7 {
-			if shift >= 64 {
-				return ErrIntOverflowQuery
-			}
-			if iNdEx >= l {
-				return io.ErrUnexpectedEOF
-			}
-			b := dAtA[iNdEx]
-			iNdEx++
-			wire |= uint64(b&0x7F) << shift
-			if b < 0x80 {
-				break
-			}
-		}
-		fieldNum := int32(wire >> 3)
-		wireType := int(wire & 0x7)
-		if wireType == 4 {
-			return fmt.Errorf("proto: QueryRateLimitResponse: wiretype end group for non-group")
-		}
-		if fieldNum <= 0 {
-			return fmt.Errorf("proto: QueryRateLimitResponse: illegal tag %d (wire type %d)", fieldNum, wire)
-		}
-		switch fieldNum {
-		case 1:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field RateLimit", wireType)
-			}
-			var msglen int
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowQuery
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				msglen |= int(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			if msglen < 0 {
-				return ErrInvalidLengthQuery
-			}
-			postIndex := iNdEx + msglen
-			if postIndex < 0 {
-				return ErrInvalidLengthQuery
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			if m.RateLimit == nil {
-				m.RateLimit = &RateLimit{}
-			}
-			if err := m.RateLimit.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
-				return err
-			}
-			iNdEx = postIndex
-		default:
-			iNdEx = preIndex
-			skippy, err := skipQuery(dAtA[iNdEx:])
-			if err != nil {
-				return err
-			}
-			if (skippy < 0) || (iNdEx+skippy) < 0 {
-				return ErrInvalidLengthQuery
-			}
-			if (iNdEx + skippy) > l {
-				return io.ErrUnexpectedEOF
-			}
-			iNdEx += skippy
-		}
-	}
-
-	if iNdEx > l {
-		return io.ErrUnexpectedEOF
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
+
 func (m *QueryRateLimitsByChainIDRequest) Unmarshal(dAtA []byte) error {
-	l := len(dAtA)
-	iNdEx := 0
-	for iNdEx < l {
-		preIndex := iNdEx
-		var wire uint64
-		for shift := uint(0); ; shift += 7 {
-			if shift >= 64 {
-				return ErrIntOverflowQuery
-			}
-			if iNdEx >= l {
-				return io.ErrUnexpectedEOF
-			}
-			b := dAtA[iNdEx]
-			iNdEx++
-			wire |= uint64(b&0x7F) << shift
-			if b < 0x80 {
-				break
-			}
-		}
-		fieldNum := int32(wire >> 3)
-		wireType := int(wire & 0x7)
-		if wireType == 4 {
-			return fmt.Errorf("proto: QueryRateLimitsByChainIDRequest: wiretype end group for non-group")
-		}
-		if fieldNum <= 0 {
-			return fmt.Errorf("proto: QueryRateLimitsByChainIDRequest: illegal tag %d (wire type %d)", fieldNum, wire)
-		}
-		switch fieldNum {
-		case 1:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field ChainId", wireType)
-			}
-			var stringLen uint64
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowQuery
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				stringLen |= uint64(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			intStringLen := int(stringLen)
-			if intStringLen < 0 {
-				return ErrInvalidLengthQuery
-			}
-			postIndex := iNdEx + intStringLen
-			if postIndex < 0 {
-				return ErrInvalidLengthQuery
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.ChainId = string(dAtA[iNdEx:postIndex])
-			iNdEx = postIndex
-		default:
-			iNdEx = preIndex
-			skippy, err := skipQuery(dAtA[iNdEx:])
-			if err != nil {
-				return err
-			}
-			if (skippy < 0) || (iNdEx+skippy) < 0 {
-				return ErrInvalidLengthQuery
-			}
-			if (iNdEx + skippy) > l {
-				return io.ErrUnexpectedEOF
-			}
-			iNdEx += skippy
-		}
-	}
-
-	if iNdEx > l {
-		return io.ErrUnexpectedEOF
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
+
 func (m *QueryRateLimitsByChainIDResponse) Unmarshal(dAtA []byte) error {
-	l := len(dAtA)
-	iNdEx := 0
-	for iNdEx < l {
-		preIndex := iNdEx
-		var wire uint64
-		for shift := uint(0); ; shift += 7 {
-			if shift >= 64 {
-				return ErrIntOverflowQuery
-			}
-			if iNdEx >= l {
-				return io.ErrUnexpectedEOF
-			}
-			b := dAtA[iNdEx]
-			iNdEx++
-			wire |= uint64(b&0x7F) << shift
-			if b < 0x80 {
-				break
-			}
-		}
-		fieldNum := int32(wire >> 3)
-		wireType := int(wire & 0x7)
-		if wireType == 4 {
-			return fmt.Errorf("proto: QueryRateLimitsByChainIDResponse: wiretype end group for non-group")
-		}
-		if fieldNum <= 0 {
-			return fmt.Errorf("proto: QueryRateLimitsByChainIDResponse: illegal tag %d (wire type %d)", fieldNum, wire)
-		}
-		switch fieldNum {
-		case 1:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field RateLimits", wireType)
-			}
-			var msglen int
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowQuery
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				msglen |= int(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			if msglen < 0 {
-				return ErrInvalidLengthQuery
-			}
-			postIndex := iNdEx + msglen
-			if postIndex < 0 {
-				return ErrInvalidLengthQuery
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.RateLimits = append(m.RateLimits, RateLimit{})
-			if err := m.RateLimits[len(m.RateLimits)-1].Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
-				return err
-			}
-			iNdEx = postIndex
-		default:
-			iNdEx = preIndex
-			skippy, err := skipQuery(dAtA[iNdEx:])
-			if err != nil {
-				return err
-			}
-			if (skippy < 0) || (iNdEx+skippy) < 0 {
-				return ErrInvalidLengthQuery
-			}
-			if (iNdEx + skippy) > l {
-				return io.ErrUnexpectedEOF
-			}
-			iNdEx += skippy
-		}
-	}
-
-	if iNdEx > l {
-		return io.ErrUnexpectedEOF
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
+
 func (m *QueryRateLimitsByChannelOrClientIDRequest) Unmarshal(dAtA []byte) error {
-	l := len(dAtA)
-	iNdEx := 0
-	for iNdEx < l {
-		preIndex := iNdEx
-		var wire uint64
-		for shift := uint(0); ; shift += 7 {
-			if shift >= 64 {
-				return ErrIntOverflowQuery
-			}
-			if iNdEx >= l {
-				return io.ErrUnexpectedEOF
-			}
-			b := dAtA[iNdEx]
-			iNdEx++
-			wire |= uint64(b&0x7F) << shift
-			if b < 0x80 {
-				break
-			}
-		}
-		fieldNum := int32(wire >> 3)
-		wireType := int(wire & 0x7)
-		if wireType == 4 {
-			return fmt.Errorf("proto: QueryRateLimitsByChannelOrClientIDRequest: wiretype end group for non-group")
-		}
-		if fieldNum <= 0 {
-			return fmt.Errorf("proto: QueryRateLimitsByChannelOrClientIDRequest: illegal tag %d (wire type %d)", fieldNum, wire)
-		}
-		switch fieldNum {
-		case 1:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field ChannelOrClientId", wireType)
-			}
-			var stringLen uint64
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowQuery
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				stringLen |= uint64(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			intStringLen := int(stringLen)
-			if intStringLen < 0 {
-				return ErrInvalidLengthQuery
-			}
-			postIndex := iNdEx + intStringLen
-			if postIndex < 0 {
-				return ErrInvalidLengthQuery
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.ChannelOrClientId = string(dAtA[iNdEx:postIndex])
-			iNdEx = postIndex
-		default:
-			iNdEx = preIndex
-			skippy, err := skipQuery(dAtA[iNdEx:])
-			if err != nil {
-				return err
-			}
-			if (skippy < 0) || (iNdEx+skippy) < 0 {
-				return ErrInvalidLengthQuery
-			}
-			if (iNdEx + skippy) > l {
-				return io.ErrUnexpectedEOF
-			}
-			iNdEx += skippy
-		}
-	}
-
-	if iNdEx > l {
-		return io.ErrUnexpectedEOF
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
+
 func (m *QueryRateLimitsByChannelOrClientIDResponse) Unmarshal(dAtA []byte) error {
-	l := len(dAtA)
-	iNdEx := 0
-	for iNdEx < l {
-		preIndex := iNdEx
-		var wire uint64
-		for shift := uint(0); ; shift += 7 {
-			if shift >= 64 {
-				return ErrIntOverflowQuery
-			}
-			if iNdEx >= l {
-				return io.ErrUnexpectedEOF
-			}
-			b := dAtA[iNdEx]
-			iNdEx++
-			wire |= uint64(b&0x7F) << shift
-			if b < 0x80 {
-				break
-			}
-		}
-		fieldNum := int32(wire >> 3)
-		wireType := int(wire & 0x7)
-		if wireType == 4 {
-			return fmt.Errorf("proto: QueryRateLimitsByChannelOrClientIDResponse: wiretype end group for non-group")
-		}
-		if fieldNum <= 0 {
-			return fmt.Errorf("proto: QueryRateLimitsByChannelOrClientIDResponse: illegal tag %d (wire type %d)", fieldNum, wire)
-		}
-		switch fieldNum {
-		case 1:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field RateLimits", wireType)
-			}
-			var msglen int
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowQuery
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				msglen |= int(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			if msglen < 0 {
-				return ErrInvalidLengthQuery
-			}
-			postIndex := iNdEx + msglen
-			if postIndex < 0 {
-				return ErrInvalidLengthQuery
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.RateLimits = append(m.RateLimits, RateLimit{})
-			if err := m.RateLimits[len(m.RateLimits)-1].Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
-				return err
-			}
-			iNdEx = postIndex
-		default:
-			iNdEx = preIndex
-			skippy, err := skipQuery(dAtA[iNdEx:])
-			if err != nil {
-				return err
-			}
-			if (skippy < 0) || (iNdEx+skippy) < 0 {
-				return ErrInvalidLengthQuery
-			}
-			if (iNdEx + skippy) > l {
-				return io.ErrUnexpectedEOF
-			}
-			iNdEx += skippy
-		}
-	}
-
-	if iNdEx > l {
-		return io.ErrUnexpectedEOF
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
+
 func (m *QueryAllBlacklistedDenomsRequest) Unmarshal(dAtA []byte) error {
-	l := len(dAtA)
-	iNdEx := 0
-	for iNdEx < l {
-		preIndex := iNdEx
-		var wire uint64
-		for shift := uint(0); ; shift += 7 {
-			if shift >= 64 {
-				return ErrIntOverflowQuery
-			}
-			if iNdEx >= l {
-				return io.ErrUnexpectedEOF
-			}
-			b := dAtA[iNdEx]
-			iNdEx++
-			wire |= uint64(b&0x7F) << shift
-			if b < 0x80 {
-				break
-			}
-		}
-		fieldNum := int32(wire >> 3)
-		wireType := int(wire & 0x7)
-		if wireType == 4 {
-			return fmt.Errorf("proto: QueryAllBlacklistedDenomsRequest: wiretype end group for non-group")
-		}
-		if fieldNum <= 0 {
-			return fmt.Errorf("proto: QueryAllBlacklistedDenomsRequest: illegal tag %d (wire type %d)", fieldNum, wire)
-		}
-		switch fieldNum {
-		default:
-			iNdEx = preIndex
-			skippy, err := skipQuery(dAtA[iNdEx:])
-			if err != nil {
-				return err
-			}
-			if (skippy < 0) || (iNdEx+skippy) < 0 {
-				return ErrInvalidLengthQuery
-			}
-			if (iNdEx + skippy) > l {
-				return io.ErrUnexpectedEOF
-			}
-			iNdEx += skippy
-		}
-	}
-
-	if iNdEx > l {
-		return io.ErrUnexpectedEOF
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
+
 func (m *QueryAllBlacklistedDenomsResponse) Unmarshal(dAtA []byte) error {
-	l := len(dAtA)
-	iNdEx := 0
-	for iNdEx < l {
-		preIndex := iNdEx
-		var wire uint64
-		for shift := uint(0); ; shift += 7 {
-			if shift >= 64 {
-				return ErrIntOverflowQuery
-			}
-			if iNdEx >= l {
-				return io.ErrUnexpectedEOF
-			}
-			b := dAtA[iNdEx]
-			iNdEx++
-			wire |= uint64(b&0x7F) << shift
-			if b < 0x80 {
-				break
-			}
-		}
-		fieldNum := int32(wire >> 3)
-		wireType := int(wire & 0x7)
-		if wireType == 4 {
-			return fmt.Errorf("proto: QueryAllBlacklistedDenomsResponse: wiretype end group for non-group")
-		}
-		if fieldNum <= 0 {
-			return fmt.Errorf("proto: QueryAllBlacklistedDenomsResponse: illegal tag %d (wire type %d)", fieldNum, wire)
-		}
-		switch fieldNum {
-		case 1:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Denoms", wireType)
-			}
-			var stringLen uint64
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowQuery
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				stringLen |= uint64(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			intStringLen := int(stringLen)
-			if intStringLen < 0 {
-				return ErrInvalidLengthQuery
-			}
-			postIndex := iNdEx + intStringLen
-			if postIndex < 0 {
-				return ErrInvalidLengthQuery
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.Denoms = append(m.Denoms, string(dAtA[iNdEx:postIndex]))
-			iNdEx = postIndex
-		default:
-			iNdEx = preIndex
-			skippy, err := skipQuery(dAtA[iNdEx:])
-			if err != nil {
-				return err
-			}
-			if (skippy < 0) || (iNdEx+skippy) < 0 {
-				return ErrInvalidLengthQuery
-			}
-			if (iNdEx + skippy) > l {
-				return io.ErrUnexpectedEOF
-			}
-			iNdEx += skippy
-		}
-	}
-
-	if iNdEx > l {
-		return io.ErrUnexpectedEOF
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
+
 func (m *QueryAllWhitelistedAddressesRequest) Unmarshal(dAtA []byte) error {
-	l := len(dAtA)
-	iNdEx := 0
-	for iNdEx < l {
-		preIndex := iNdEx
-		var wire uint64
-		for shift := uint(0); ; shift += 7 {
-			if shift >= 64 {
-				return ErrIntOverflowQuery
-			}
-			if iNdEx >= l {
-				return io.ErrUnexpectedEOF
-			}
-			b := dAtA[iNdEx]
-			iNdEx++
-			wire |= uint64(b&0x7F) << shift
-			if b < 0x80 {
-				break
-			}
-		}
-		fieldNum := int32(wire >> 3)
-		wireType := int(wire & 0x7)
-		if wireType == 4 {
-			return fmt.Errorf("proto: QueryAllWhitelistedAddressesRequest: wiretype end group for non-group")
-		}
-		if fieldNum <= 0 {
-			return fmt.Errorf("proto: QueryAllWhitelistedAddressesRequest: illegal tag %d (wire type %d)", fieldNum, wire)
-		}
-		switch fieldNum {
-		default:
-			iNdEx = preIndex
-			skippy, err := skipQuery(dAtA[iNdEx:])
-			if err != nil {
-				return err
-			}
-			if (skippy < 0) || (iNdEx+skippy) < 0 {
-				return ErrInvalidLengthQuery
-			}
-			if (iNdEx + skippy) > l {
-				return io.ErrUnexpectedEOF
-			}
-			iNdEx += skippy
-		}
-	}
-
-	if iNdEx > l {
-		return io.ErrUnexpectedEOF
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
+
 func (m *QueryAllWhitelistedAddressesResponse) Unmarshal(dAtA []byte) error {
-	l := len(dAtA)
-	iNdEx := 0
-	for iNdEx < l {
-		preIndex := iNdEx
-		var wire uint64
-		for shift := uint(0); ; shift += 7 {
-			if shift >= 64 {
-				return ErrIntOverflowQuery
-			}
-			if iNdEx >= l {
-				return io.ErrUnexpectedEOF
-			}
-			b := dAtA[iNdEx]
-			iNdEx++
-			wire |= uint64(b&0x7F) << shift
-			if b < 0x80 {
-				break
-			}
-		}
-		fieldNum := int32(wire >> 3)
-		wireType := int(wire & 0x7)
-		if wireType == 4 {
-			return fmt.Errorf("proto: QueryAllWhitelistedAddressesResponse: wiretype end group for non-group")
-		}
-		if fieldNum <= 0 {
-			return fmt.Errorf("proto: QueryAllWhitelistedAddressesResponse: illegal tag %d (wire type %d)", fieldNum, wire)
-		}
-		switch fieldNum {
-		case 1:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field AddressPairs", wireType)
-			}
-			var msglen int
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowQuery
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				msglen |= int(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			if msglen < 0 {
-				return ErrInvalidLengthQuery
-			}
-			postIndex := iNdEx + msglen
-			if postIndex < 0 {
-				return ErrInvalidLengthQuery
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.AddressPairs = append(m.AddressPairs, WhitelistedAddressPair{})
-			if err := m.AddressPairs[len(m.AddressPairs)-1].Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
-				return err
-			}
-			iNdEx = postIndex
-		default:
-			iNdEx = preIndex
-			skippy, err := skipQuery(dAtA[iNdEx:])
-			if err != nil {
-				return err
-			}
-			if (skippy < 0) || (iNdEx+skippy) < 0 {
-				return ErrInvalidLengthQuery
-			}
-			if (iNdEx + skippy) > l {
-				return io.ErrUnexpectedEOF
-			}
-			iNdEx += skippy
-		}
-	}
-
-	if iNdEx > l {
-		return io.ErrUnexpectedEOF
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
-func skipQuery(dAtA []byte) (n int, err error) {
-	l := len(dAtA)
-	iNdEx := 0
-	depth := 0
-	for iNdEx < l {
-		var wire uint64
-		for shift := uint(0); ; shift += 7 {
-			if shift >= 64 {
-				return 0, ErrIntOverflowQuery
-			}
-			if iNdEx >= l {
-				return 0, io.ErrUnexpectedEOF
-			}
-			b := dAtA[iNdEx]
-			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
-			if b < 0x80 {
-				break
-			}
-		}
-		wireType := int(wire & 0x7)
-		switch wireType {
-		case 0:
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return 0, ErrIntOverflowQuery
-				}
-				if iNdEx >= l {
-					return 0, io.ErrUnexpectedEOF
-				}
-				iNdEx++
-				if dAtA[iNdEx-1] < 0x80 {
-					break
-				}
-			}
-		case 1:
-			iNdEx += 8
-		case 2:
-			var length int
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return 0, ErrIntOverflowQuery
-				}
-				if iNdEx >= l {
-					return 0, io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				length |= (int(b) & 0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			if length < 0 {
-				return 0, ErrInvalidLengthQuery
-			}
-			iNdEx += length
-		case 3:
-			depth++
-		case 4:
-			if depth == 0 {
-				return 0, ErrUnexpectedEndOfGroupQuery
-			}
-			depth--
-		case 5:
-			iNdEx += 4
-		default:
-			return 0, fmt.Errorf("proto: illegal wireType %d", wireType)
-		}
-		if iNdEx < 0 {
-			return 0, ErrInvalidLengthQuery
-		}
-		if depth == 0 {
-			return iNdEx, nil
-		}
-	}
-	return 0, io.ErrUnexpectedEOF
-}
+
+func skipQuery(dAtA []byte) (n int, err error) { _ = "STUB: not implemented"; return 0, nil }
 
 var (
 	ErrInvalidLengthQuery        = fmt.Errorf("proto: negative length found during unmarshaling")

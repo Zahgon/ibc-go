@@ -8,15 +8,6 @@ import (
 
 // ABCIToSDKEvents converts a list of ABCI events to Cosmos SDK events.
 func ABCIToSDKEvents(abciEvents []abci.Event) sdk.Events {
-	var events sdk.Events
-	for _, evt := range abciEvents {
-		var attributes []sdk.Attribute
-		for _, attr := range evt.GetAttributes() {
-			attributes = append(attributes, sdk.NewAttribute(attr.Key, attr.Value))
-		}
-
-		events = events.AppendEvent(sdk.NewEvent(evt.GetType(), attributes...))
-	}
-
-	return events
+	_ = "STUB: not implemented"
+	return *new(sdk.Events)
 }

@@ -5,9 +5,7 @@ import (
 
 	connectiontypes "github.com/cosmos/ibc-go/v11/modules/core/03-connection/types"
 	channeltypes "github.com/cosmos/ibc-go/v11/modules/core/04-channel/types"
-	"github.com/cosmos/ibc-go/v11/modules/core/exported"
 	ibctm "github.com/cosmos/ibc-go/v11/modules/light-clients/07-tendermint"
-	"github.com/cosmos/ibc-go/v11/testing/mock"
 )
 
 type ClientConfig interface {
@@ -21,30 +19,16 @@ type TendermintConfig struct {
 	MaxClockDrift   time.Duration
 }
 
-func NewTendermintConfig() *TendermintConfig {
-	return &TendermintConfig{
-		TrustLevel:      DefaultTrustLevel,
-		TrustingPeriod:  TrustingPeriod,
-		UnbondingPeriod: UnbondingPeriod,
-		MaxClockDrift:   MaxClockDrift,
-	}
-}
+func NewTendermintConfig() *TendermintConfig { _ = "STUB: not implemented"; return nil }
 
-func (*TendermintConfig) GetClientType() string {
-	return exported.Tendermint
-}
+func (*TendermintConfig) GetClientType() string { _ = "STUB: not implemented"; return "" }
 
 type ConnectionConfig struct {
 	DelayPeriod uint64
 	Version     *connectiontypes.Version
 }
 
-func NewConnectionConfig() *ConnectionConfig {
-	return &ConnectionConfig{
-		DelayPeriod: DefaultDelayPeriod,
-		Version:     ConnectionVersion,
-	}
-}
+func NewConnectionConfig() *ConnectionConfig { _ = "STUB: not implemented"; return nil }
 
 type ChannelConfig struct {
 	PortID  string
@@ -52,10 +36,4 @@ type ChannelConfig struct {
 	Order   channeltypes.Order
 }
 
-func NewChannelConfig() *ChannelConfig {
-	return &ChannelConfig{
-		PortID:  mock.PortID,
-		Version: DefaultChannelVersion,
-		Order:   channeltypes.UNORDERED,
-	}
-}
+func NewChannelConfig() *ChannelConfig { _ = "STUB: not implemented"; return nil }

@@ -2,38 +2,19 @@ package types
 
 import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
-
-	host "github.com/cosmos/ibc-go/v11/modules/core/24-host"
 )
 
 // NewGenesisState creates a new ibc-transfer GenesisState instance.
 func NewGenesisState(portID string, denoms Denoms, params Params, totalEscrowed sdk.Coins) *GenesisState {
-	return &GenesisState{
-		PortId:        portID,
-		Denoms:        denoms,
-		Params:        params,
-		TotalEscrowed: totalEscrowed,
-	}
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // DefaultGenesisState returns a GenesisState with "transfer" as the default PortID.
-func DefaultGenesisState() *GenesisState {
-	return &GenesisState{
-		PortId:        PortID,
-		Denoms:        Denoms{},
-		Params:        DefaultParams(),
-		TotalEscrowed: sdk.Coins{},
-	}
-}
+func DefaultGenesisState() *GenesisState { _ = "STUB: not implemented"; return nil }
 
 // Validate performs basic genesis state validation returning an error upon any
 // failure.
-func (gs GenesisState) Validate() error {
-	if err := host.PortIdentifierValidator(gs.PortId); err != nil {
-		return err
-	}
-	if err := gs.Denoms.Validate(); err != nil {
-		return err
-	}
-	return gs.TotalEscrowed.Validate() // will fail if there are duplicates for any denom
-}
+func (gs GenesisState) Validate() error { _ = "STUB: not implemented"; return nil }
+
+// will fail if there are duplicates for any denom

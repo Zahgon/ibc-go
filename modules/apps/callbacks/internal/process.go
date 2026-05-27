@@ -1,11 +1,6 @@
 package internal
 
 import (
-	"fmt"
-
-	errorsmod "cosmossdk.io/errors"
-
-	storetypes "github.com/cosmos/cosmos-sdk/store/v2/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
 	"github.com/cosmos/ibc-go/v11/modules/apps/callbacks/types"
@@ -26,36 +21,14 @@ func ProcessCallback(
 	ctx sdk.Context, callbackType types.CallbackType,
 	callbackData types.CallbackData, callbackExecutor func(sdk.Context) error,
 ) (err error) {
-	cachedCtx, writeFn := ctx.CacheContext()
-	cachedCtx = cachedCtx.WithGasMeter(storetypes.NewGasMeter(callbackData.ExecutionGasLimit))
-
-	defer func() {
-		// consume the minimum of g.consumed and g.limit
-		ctx.GasMeter().ConsumeGas(cachedCtx.GasMeter().GasConsumedToLimit(), fmt.Sprintf("ibc %s callback", callbackType))
-
-		// recover from all panics except during SendPacket callbacks
-		if r := recover(); r != nil {
-			if callbackType == types.CallbackTypeSendPacket {
-				panic(r)
-			}
-			err = errorsmod.Wrapf(types.ErrCallbackPanic, "ibc %s callback panicked with: %v", callbackType, r)
-		}
-
-		// if the callback ran out of gas and the relayer has not reserved enough gas, then revert the state
-		if cachedCtx.GasMeter().IsPastLimit() {
-			if callbackData.AllowRetry() {
-				panic(storetypes.ErrorOutOfGas{Descriptor: fmt.Sprintf("ibc %s callback out of gas; commitGasLimit: %d", callbackType, callbackData.CommitGasLimit)})
-			}
-			err = errorsmod.Wrapf(types.ErrCallbackOutOfGas, "ibc %s callback out of gas", callbackType)
-		}
-
-		// allow the transaction to be committed, continuing the packet lifecycle
-	}()
-
-	err = callbackExecutor(cachedCtx)
-	if err == nil {
-		writeFn()
-	}
-
-	return err
+	_ = "STUB: not implemented"
+	return nil
 }
+
+// consume the minimum of g.consumed and g.limit
+
+// recover from all panics except during SendPacket callbacks
+
+// if the callback ran out of gas and the relayer has not reserved enough gas, then revert the state
+
+// allow the transaction to be committed, continuing the packet lifecycle

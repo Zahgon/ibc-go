@@ -5,14 +5,12 @@ package types
 
 import (
 	fmt "fmt"
+	math "math"
+
 	_ "github.com/cosmos/cosmos-proto"
 	github_com_cosmos_cosmos_sdk_types "github.com/cosmos/cosmos-sdk/types"
-	types "github.com/cosmos/cosmos-sdk/types"
 	_ "github.com/cosmos/gogoproto/gogoproto"
 	proto "github.com/cosmos/gogoproto/proto"
-	io "io"
-	math "math"
-	math_bits "math/bits"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -41,73 +39,38 @@ type Allocation struct {
 	AllowedPacketData []string `protobuf:"bytes,5,rep,name=allowed_packet_data,json=allowedPacketData,proto3" json:"allowed_packet_data,omitempty"`
 }
 
-func (m *Allocation) Reset()         { *m = Allocation{} }
-func (m *Allocation) String() string { return proto.CompactTextString(m) }
-func (*Allocation) ProtoMessage()    {}
-func (*Allocation) Descriptor() ([]byte, []int) {
-	return fileDescriptor_b1a28b55d17325aa, []int{0}
-}
-func (m *Allocation) XXX_Unmarshal(b []byte) error {
-	return m.Unmarshal(b)
-}
+func (m *Allocation) Reset()                    { _ = "STUB: not implemented"; return }
+func (m *Allocation) String() string            { _ = "STUB: not implemented"; return "" }
+func (*Allocation) ProtoMessage()               { _ = "STUB: not implemented"; return }
+func (*Allocation) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
+
+func (m *Allocation) XXX_Unmarshal(b []byte) error { _ = "STUB: not implemented"; return nil }
+
 func (m *Allocation) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	if deterministic {
-		return xxx_messageInfo_Allocation.Marshal(b, m, deterministic)
-	} else {
-		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
-		if err != nil {
-			return nil, err
-		}
-		return b[:n], nil
-	}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
-func (m *Allocation) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_Allocation.Merge(m, src)
-}
-func (m *Allocation) XXX_Size() int {
-	return m.Size()
-}
-func (m *Allocation) XXX_DiscardUnknown() {
-	xxx_messageInfo_Allocation.DiscardUnknown(m)
-}
+
+func (m *Allocation) XXX_Merge(src proto.Message) { _ = "STUB: not implemented"; return }
+
+func (m *Allocation) XXX_Size() int { _ = "STUB: not implemented"; return 0 }
+
+func (m *Allocation) XXX_DiscardUnknown() { _ = "STUB: not implemented"; return }
 
 var xxx_messageInfo_Allocation proto.InternalMessageInfo
 
-func (m *Allocation) GetSourcePort() string {
-	if m != nil {
-		return m.SourcePort
-	}
-	return ""
-}
+func (m *Allocation) GetSourcePort() string { _ = "STUB: not implemented"; return "" }
 
-func (m *Allocation) GetSourceChannel() string {
-	if m != nil {
-		return m.SourceChannel
-	}
-	return ""
-}
+func (m *Allocation) GetSourceChannel() string { _ = "STUB: not implemented"; return "" }
 
 func (m *Allocation) GetSpendLimit() github_com_cosmos_cosmos_sdk_types.Coins {
-	if m != nil {
-		return m.SpendLimit
-	}
-	return nil
+	_ = "STUB: not implemented"
+	return *new(github_com_cosmos_cosmos_sdk_types.Coins)
 }
 
-func (m *Allocation) GetAllowList() []string {
-	if m != nil {
-		return m.AllowList
-	}
-	return nil
-}
+func (m *Allocation) GetAllowList() []string { _ = "STUB: not implemented"; return nil }
 
-func (m *Allocation) GetAllowedPacketData() []string {
-	if m != nil {
-		return m.AllowedPacketData
-	}
-	return nil
-}
+func (m *Allocation) GetAllowedPacketData() []string { _ = "STUB: not implemented"; return nil }
 
 // TransferAuthorization allows the grantee to spend up to spend_limit coins from
 // the granter's account for ibc transfer on a specific channel
@@ -116,43 +79,34 @@ type TransferAuthorization struct {
 	Allocations []Allocation `protobuf:"bytes,1,rep,name=allocations,proto3" json:"allocations"`
 }
 
-func (m *TransferAuthorization) Reset()         { *m = TransferAuthorization{} }
-func (m *TransferAuthorization) String() string { return proto.CompactTextString(m) }
-func (*TransferAuthorization) ProtoMessage()    {}
+func (m *TransferAuthorization) Reset()         { _ = "STUB: not implemented"; return }
+func (m *TransferAuthorization) String() string { _ = "STUB: not implemented"; return "" }
+func (*TransferAuthorization) ProtoMessage()    { _ = "STUB: not implemented"; return }
 func (*TransferAuthorization) Descriptor() ([]byte, []int) {
-	return fileDescriptor_b1a28b55d17325aa, []int{1}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
 func (m *TransferAuthorization) XXX_Unmarshal(b []byte) error {
-	return m.Unmarshal(b)
+	_ = "STUB: not implemented"
+	return nil
 }
+
 func (m *TransferAuthorization) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	if deterministic {
-		return xxx_messageInfo_TransferAuthorization.Marshal(b, m, deterministic)
-	} else {
-		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
-		if err != nil {
-			return nil, err
-		}
-		return b[:n], nil
-	}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
-func (m *TransferAuthorization) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_TransferAuthorization.Merge(m, src)
-}
-func (m *TransferAuthorization) XXX_Size() int {
-	return m.Size()
-}
-func (m *TransferAuthorization) XXX_DiscardUnknown() {
-	xxx_messageInfo_TransferAuthorization.DiscardUnknown(m)
-}
+
+func (m *TransferAuthorization) XXX_Merge(src proto.Message) { _ = "STUB: not implemented"; return }
+
+func (m *TransferAuthorization) XXX_Size() int { _ = "STUB: not implemented"; return 0 }
+
+func (m *TransferAuthorization) XXX_DiscardUnknown() { _ = "STUB: not implemented"; return }
 
 var xxx_messageInfo_TransferAuthorization proto.InternalMessageInfo
 
 func (m *TransferAuthorization) GetAllocations() []Allocation {
-	if m != nil {
-		return m.Allocations
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -197,553 +151,45 @@ var fileDescriptor_b1a28b55d17325aa = []byte{
 	0x02, 0x00, 0x00,
 }
 
-func (m *Allocation) Marshal() (dAtA []byte, err error) {
-	size := m.Size()
-	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
-	if err != nil {
-		return nil, err
-	}
-	return dAtA[:n], nil
-}
+func (m *Allocation) Marshal() (dAtA []byte, err error) { _ = "STUB: not implemented"; return nil, nil }
 
-func (m *Allocation) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
+func (m *Allocation) MarshalTo(dAtA []byte) (int, error) { _ = "STUB: not implemented"; return 0, nil }
 
 func (m *Allocation) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
-	_ = i
-	var l int
-	_ = l
-	if len(m.AllowedPacketData) > 0 {
-		for iNdEx := len(m.AllowedPacketData) - 1; iNdEx >= 0; iNdEx-- {
-			i -= len(m.AllowedPacketData[iNdEx])
-			copy(dAtA[i:], m.AllowedPacketData[iNdEx])
-			i = encodeVarintAuthz(dAtA, i, uint64(len(m.AllowedPacketData[iNdEx])))
-			i--
-			dAtA[i] = 0x2a
-		}
-	}
-	if len(m.AllowList) > 0 {
-		for iNdEx := len(m.AllowList) - 1; iNdEx >= 0; iNdEx-- {
-			i -= len(m.AllowList[iNdEx])
-			copy(dAtA[i:], m.AllowList[iNdEx])
-			i = encodeVarintAuthz(dAtA, i, uint64(len(m.AllowList[iNdEx])))
-			i--
-			dAtA[i] = 0x22
-		}
-	}
-	if len(m.SpendLimit) > 0 {
-		for iNdEx := len(m.SpendLimit) - 1; iNdEx >= 0; iNdEx-- {
-			{
-				size, err := m.SpendLimit[iNdEx].MarshalToSizedBuffer(dAtA[:i])
-				if err != nil {
-					return 0, err
-				}
-				i -= size
-				i = encodeVarintAuthz(dAtA, i, uint64(size))
-			}
-			i--
-			dAtA[i] = 0x1a
-		}
-	}
-	if len(m.SourceChannel) > 0 {
-		i -= len(m.SourceChannel)
-		copy(dAtA[i:], m.SourceChannel)
-		i = encodeVarintAuthz(dAtA, i, uint64(len(m.SourceChannel)))
-		i--
-		dAtA[i] = 0x12
-	}
-	if len(m.SourcePort) > 0 {
-		i -= len(m.SourcePort)
-		copy(dAtA[i:], m.SourcePort)
-		i = encodeVarintAuthz(dAtA, i, uint64(len(m.SourcePort)))
-		i--
-		dAtA[i] = 0xa
-	}
-	return len(dAtA) - i, nil
+	_ = "STUB: not implemented"
+	return 0, nil
 }
 
 func (m *TransferAuthorization) Marshal() (dAtA []byte, err error) {
-	size := m.Size()
-	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
-	if err != nil {
-		return nil, err
-	}
-	return dAtA[:n], nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (m *TransferAuthorization) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
+	_ = "STUB: not implemented"
+	return 0, nil
 }
 
 func (m *TransferAuthorization) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
-	_ = i
-	var l int
-	_ = l
-	if len(m.Allocations) > 0 {
-		for iNdEx := len(m.Allocations) - 1; iNdEx >= 0; iNdEx-- {
-			{
-				size, err := m.Allocations[iNdEx].MarshalToSizedBuffer(dAtA[:i])
-				if err != nil {
-					return 0, err
-				}
-				i -= size
-				i = encodeVarintAuthz(dAtA, i, uint64(size))
-			}
-			i--
-			dAtA[i] = 0xa
-		}
-	}
-	return len(dAtA) - i, nil
+	_ = "STUB: not implemented"
+	return 0, nil
 }
 
-func encodeVarintAuthz(dAtA []byte, offset int, v uint64) int {
-	offset -= sovAuthz(v)
-	base := offset
-	for v >= 1<<7 {
-		dAtA[offset] = uint8(v&0x7f | 0x80)
-		v >>= 7
-		offset++
-	}
-	dAtA[offset] = uint8(v)
-	return base
-}
-func (m *Allocation) Size() (n int) {
-	if m == nil {
-		return 0
-	}
-	var l int
-	_ = l
-	l = len(m.SourcePort)
-	if l > 0 {
-		n += 1 + l + sovAuthz(uint64(l))
-	}
-	l = len(m.SourceChannel)
-	if l > 0 {
-		n += 1 + l + sovAuthz(uint64(l))
-	}
-	if len(m.SpendLimit) > 0 {
-		for _, e := range m.SpendLimit {
-			l = e.Size()
-			n += 1 + l + sovAuthz(uint64(l))
-		}
-	}
-	if len(m.AllowList) > 0 {
-		for _, s := range m.AllowList {
-			l = len(s)
-			n += 1 + l + sovAuthz(uint64(l))
-		}
-	}
-	if len(m.AllowedPacketData) > 0 {
-		for _, s := range m.AllowedPacketData {
-			l = len(s)
-			n += 1 + l + sovAuthz(uint64(l))
-		}
-	}
-	return n
-}
+func encodeVarintAuthz(dAtA []byte, offset int, v uint64) int { _ = "STUB: not implemented"; return 0 }
 
-func (m *TransferAuthorization) Size() (n int) {
-	if m == nil {
-		return 0
-	}
-	var l int
-	_ = l
-	if len(m.Allocations) > 0 {
-		for _, e := range m.Allocations {
-			l = e.Size()
-			n += 1 + l + sovAuthz(uint64(l))
-		}
-	}
-	return n
-}
+func (m *Allocation) Size() (n int) { _ = "STUB: not implemented"; return 0 }
 
-func sovAuthz(x uint64) (n int) {
-	return (math_bits.Len64(x|1) + 6) / 7
-}
-func sozAuthz(x uint64) (n int) {
-	return sovAuthz(uint64((x << 1) ^ uint64((int64(x) >> 63))))
-}
-func (m *Allocation) Unmarshal(dAtA []byte) error {
-	l := len(dAtA)
-	iNdEx := 0
-	for iNdEx < l {
-		preIndex := iNdEx
-		var wire uint64
-		for shift := uint(0); ; shift += 7 {
-			if shift >= 64 {
-				return ErrIntOverflowAuthz
-			}
-			if iNdEx >= l {
-				return io.ErrUnexpectedEOF
-			}
-			b := dAtA[iNdEx]
-			iNdEx++
-			wire |= uint64(b&0x7F) << shift
-			if b < 0x80 {
-				break
-			}
-		}
-		fieldNum := int32(wire >> 3)
-		wireType := int(wire & 0x7)
-		if wireType == 4 {
-			return fmt.Errorf("proto: Allocation: wiretype end group for non-group")
-		}
-		if fieldNum <= 0 {
-			return fmt.Errorf("proto: Allocation: illegal tag %d (wire type %d)", fieldNum, wire)
-		}
-		switch fieldNum {
-		case 1:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field SourcePort", wireType)
-			}
-			var stringLen uint64
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowAuthz
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				stringLen |= uint64(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			intStringLen := int(stringLen)
-			if intStringLen < 0 {
-				return ErrInvalidLengthAuthz
-			}
-			postIndex := iNdEx + intStringLen
-			if postIndex < 0 {
-				return ErrInvalidLengthAuthz
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.SourcePort = string(dAtA[iNdEx:postIndex])
-			iNdEx = postIndex
-		case 2:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field SourceChannel", wireType)
-			}
-			var stringLen uint64
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowAuthz
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				stringLen |= uint64(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			intStringLen := int(stringLen)
-			if intStringLen < 0 {
-				return ErrInvalidLengthAuthz
-			}
-			postIndex := iNdEx + intStringLen
-			if postIndex < 0 {
-				return ErrInvalidLengthAuthz
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.SourceChannel = string(dAtA[iNdEx:postIndex])
-			iNdEx = postIndex
-		case 3:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field SpendLimit", wireType)
-			}
-			var msglen int
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowAuthz
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				msglen |= int(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			if msglen < 0 {
-				return ErrInvalidLengthAuthz
-			}
-			postIndex := iNdEx + msglen
-			if postIndex < 0 {
-				return ErrInvalidLengthAuthz
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.SpendLimit = append(m.SpendLimit, types.Coin{})
-			if err := m.SpendLimit[len(m.SpendLimit)-1].Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
-				return err
-			}
-			iNdEx = postIndex
-		case 4:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field AllowList", wireType)
-			}
-			var stringLen uint64
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowAuthz
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				stringLen |= uint64(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			intStringLen := int(stringLen)
-			if intStringLen < 0 {
-				return ErrInvalidLengthAuthz
-			}
-			postIndex := iNdEx + intStringLen
-			if postIndex < 0 {
-				return ErrInvalidLengthAuthz
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.AllowList = append(m.AllowList, string(dAtA[iNdEx:postIndex]))
-			iNdEx = postIndex
-		case 5:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field AllowedPacketData", wireType)
-			}
-			var stringLen uint64
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowAuthz
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				stringLen |= uint64(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			intStringLen := int(stringLen)
-			if intStringLen < 0 {
-				return ErrInvalidLengthAuthz
-			}
-			postIndex := iNdEx + intStringLen
-			if postIndex < 0 {
-				return ErrInvalidLengthAuthz
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.AllowedPacketData = append(m.AllowedPacketData, string(dAtA[iNdEx:postIndex]))
-			iNdEx = postIndex
-		default:
-			iNdEx = preIndex
-			skippy, err := skipAuthz(dAtA[iNdEx:])
-			if err != nil {
-				return err
-			}
-			if (skippy < 0) || (iNdEx+skippy) < 0 {
-				return ErrInvalidLengthAuthz
-			}
-			if (iNdEx + skippy) > l {
-				return io.ErrUnexpectedEOF
-			}
-			iNdEx += skippy
-		}
-	}
+func (m *TransferAuthorization) Size() (n int) { _ = "STUB: not implemented"; return 0 }
 
-	if iNdEx > l {
-		return io.ErrUnexpectedEOF
-	}
-	return nil
-}
-func (m *TransferAuthorization) Unmarshal(dAtA []byte) error {
-	l := len(dAtA)
-	iNdEx := 0
-	for iNdEx < l {
-		preIndex := iNdEx
-		var wire uint64
-		for shift := uint(0); ; shift += 7 {
-			if shift >= 64 {
-				return ErrIntOverflowAuthz
-			}
-			if iNdEx >= l {
-				return io.ErrUnexpectedEOF
-			}
-			b := dAtA[iNdEx]
-			iNdEx++
-			wire |= uint64(b&0x7F) << shift
-			if b < 0x80 {
-				break
-			}
-		}
-		fieldNum := int32(wire >> 3)
-		wireType := int(wire & 0x7)
-		if wireType == 4 {
-			return fmt.Errorf("proto: TransferAuthorization: wiretype end group for non-group")
-		}
-		if fieldNum <= 0 {
-			return fmt.Errorf("proto: TransferAuthorization: illegal tag %d (wire type %d)", fieldNum, wire)
-		}
-		switch fieldNum {
-		case 1:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Allocations", wireType)
-			}
-			var msglen int
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowAuthz
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				msglen |= int(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			if msglen < 0 {
-				return ErrInvalidLengthAuthz
-			}
-			postIndex := iNdEx + msglen
-			if postIndex < 0 {
-				return ErrInvalidLengthAuthz
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.Allocations = append(m.Allocations, Allocation{})
-			if err := m.Allocations[len(m.Allocations)-1].Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
-				return err
-			}
-			iNdEx = postIndex
-		default:
-			iNdEx = preIndex
-			skippy, err := skipAuthz(dAtA[iNdEx:])
-			if err != nil {
-				return err
-			}
-			if (skippy < 0) || (iNdEx+skippy) < 0 {
-				return ErrInvalidLengthAuthz
-			}
-			if (iNdEx + skippy) > l {
-				return io.ErrUnexpectedEOF
-			}
-			iNdEx += skippy
-		}
-	}
+func sovAuthz(x uint64) (n int) { _ = "STUB: not implemented"; return 0 }
 
-	if iNdEx > l {
-		return io.ErrUnexpectedEOF
-	}
-	return nil
-}
-func skipAuthz(dAtA []byte) (n int, err error) {
-	l := len(dAtA)
-	iNdEx := 0
-	depth := 0
-	for iNdEx < l {
-		var wire uint64
-		for shift := uint(0); ; shift += 7 {
-			if shift >= 64 {
-				return 0, ErrIntOverflowAuthz
-			}
-			if iNdEx >= l {
-				return 0, io.ErrUnexpectedEOF
-			}
-			b := dAtA[iNdEx]
-			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
-			if b < 0x80 {
-				break
-			}
-		}
-		wireType := int(wire & 0x7)
-		switch wireType {
-		case 0:
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return 0, ErrIntOverflowAuthz
-				}
-				if iNdEx >= l {
-					return 0, io.ErrUnexpectedEOF
-				}
-				iNdEx++
-				if dAtA[iNdEx-1] < 0x80 {
-					break
-				}
-			}
-		case 1:
-			iNdEx += 8
-		case 2:
-			var length int
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return 0, ErrIntOverflowAuthz
-				}
-				if iNdEx >= l {
-					return 0, io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				length |= (int(b) & 0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			if length < 0 {
-				return 0, ErrInvalidLengthAuthz
-			}
-			iNdEx += length
-		case 3:
-			depth++
-		case 4:
-			if depth == 0 {
-				return 0, ErrUnexpectedEndOfGroupAuthz
-			}
-			depth--
-		case 5:
-			iNdEx += 4
-		default:
-			return 0, fmt.Errorf("proto: illegal wireType %d", wireType)
-		}
-		if iNdEx < 0 {
-			return 0, ErrInvalidLengthAuthz
-		}
-		if depth == 0 {
-			return iNdEx, nil
-		}
-	}
-	return 0, io.ErrUnexpectedEOF
-}
+func sozAuthz(x uint64) (n int) { _ = "STUB: not implemented"; return 0 }
+
+func (m *Allocation) Unmarshal(dAtA []byte) error { _ = "STUB: not implemented"; return nil }
+
+func (m *TransferAuthorization) Unmarshal(dAtA []byte) error { _ = "STUB: not implemented"; return nil }
+
+func skipAuthz(dAtA []byte) (n int, err error) { _ = "STUB: not implemented"; return 0, nil }
 
 var (
 	ErrInvalidLengthAuthz        = fmt.Errorf("proto: negative length found during unmarshaling")

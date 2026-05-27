@@ -1,8 +1,6 @@
 package types
 
 import (
-	"slices"
-
 	sdk "github.com/cosmos/cosmos-sdk/types"
 )
 
@@ -29,10 +27,7 @@ var (
 
 // ContainsMsgType returns true if the sdk.Msg TypeURL is present in allowMsgs, otherwise false
 func ContainsMsgType(allowMsgs []string, msg sdk.Msg) bool {
+	_ = "STUB: not implemented"
 	// check that wildcard * option for allowing all message types is the only string in the array, if so, return true
-	if len(allowMsgs) == 1 && allowMsgs[0] == AllowAllHostMsgs {
-		return true
-	}
-
-	return slices.Contains(allowMsgs, sdk.MsgTypeURL(msg))
+	return false
 }

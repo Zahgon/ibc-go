@@ -5,10 +5,9 @@ package types
 
 import (
 	fmt "fmt"
-	proto "github.com/cosmos/gogoproto/proto"
-	io "io"
 	math "math"
-	math_bits "math/bits"
+
+	proto "github.com/cosmos/gogoproto/proto"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -30,52 +29,29 @@ type CounterpartyInfo struct {
 	ClientId string `protobuf:"bytes,2,opt,name=client_id,json=clientId,proto3" json:"client_id,omitempty"`
 }
 
-func (m *CounterpartyInfo) Reset()         { *m = CounterpartyInfo{} }
-func (m *CounterpartyInfo) String() string { return proto.CompactTextString(m) }
-func (*CounterpartyInfo) ProtoMessage()    {}
-func (*CounterpartyInfo) Descriptor() ([]byte, []int) {
-	return fileDescriptor_bc4a81c3d2196cf1, []int{0}
-}
-func (m *CounterpartyInfo) XXX_Unmarshal(b []byte) error {
-	return m.Unmarshal(b)
-}
+func (m *CounterpartyInfo) Reset()                    { _ = "STUB: not implemented"; return }
+func (m *CounterpartyInfo) String() string            { _ = "STUB: not implemented"; return "" }
+func (*CounterpartyInfo) ProtoMessage()               { _ = "STUB: not implemented"; return }
+func (*CounterpartyInfo) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
+
+func (m *CounterpartyInfo) XXX_Unmarshal(b []byte) error { _ = "STUB: not implemented"; return nil }
+
 func (m *CounterpartyInfo) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	if deterministic {
-		return xxx_messageInfo_CounterpartyInfo.Marshal(b, m, deterministic)
-	} else {
-		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
-		if err != nil {
-			return nil, err
-		}
-		return b[:n], nil
-	}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
-func (m *CounterpartyInfo) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_CounterpartyInfo.Merge(m, src)
-}
-func (m *CounterpartyInfo) XXX_Size() int {
-	return m.Size()
-}
-func (m *CounterpartyInfo) XXX_DiscardUnknown() {
-	xxx_messageInfo_CounterpartyInfo.DiscardUnknown(m)
-}
+
+func (m *CounterpartyInfo) XXX_Merge(src proto.Message) { _ = "STUB: not implemented"; return }
+
+func (m *CounterpartyInfo) XXX_Size() int { _ = "STUB: not implemented"; return 0 }
+
+func (m *CounterpartyInfo) XXX_DiscardUnknown() { _ = "STUB: not implemented"; return }
 
 var xxx_messageInfo_CounterpartyInfo proto.InternalMessageInfo
 
-func (m *CounterpartyInfo) GetMerklePrefix() [][]byte {
-	if m != nil {
-		return m.MerklePrefix
-	}
-	return nil
-}
+func (m *CounterpartyInfo) GetMerklePrefix() [][]byte { _ = "STUB: not implemented"; return nil }
 
-func (m *CounterpartyInfo) GetClientId() string {
-	if m != nil {
-		return m.ClientId
-	}
-	return ""
-}
+func (m *CounterpartyInfo) GetClientId() string { _ = "STUB: not implemented"; return "" }
 
 func init() {
 	proto.RegisterType((*CounterpartyInfo)(nil), "ibc.core.client.v2.CounterpartyInfo")
@@ -104,272 +80,34 @@ var fileDescriptor_bc4a81c3d2196cf1 = []byte{
 }
 
 func (m *CounterpartyInfo) Marshal() (dAtA []byte, err error) {
-	size := m.Size()
-	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
-	if err != nil {
-		return nil, err
-	}
-	return dAtA[:n], nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (m *CounterpartyInfo) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
+	_ = "STUB: not implemented"
+	return 0, nil
 }
 
 func (m *CounterpartyInfo) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
-	_ = i
-	var l int
-	_ = l
-	if len(m.ClientId) > 0 {
-		i -= len(m.ClientId)
-		copy(dAtA[i:], m.ClientId)
-		i = encodeVarintCounterparty(dAtA, i, uint64(len(m.ClientId)))
-		i--
-		dAtA[i] = 0x12
-	}
-	if len(m.MerklePrefix) > 0 {
-		for iNdEx := len(m.MerklePrefix) - 1; iNdEx >= 0; iNdEx-- {
-			i -= len(m.MerklePrefix[iNdEx])
-			copy(dAtA[i:], m.MerklePrefix[iNdEx])
-			i = encodeVarintCounterparty(dAtA, i, uint64(len(m.MerklePrefix[iNdEx])))
-			i--
-			dAtA[i] = 0xa
-		}
-	}
-	return len(dAtA) - i, nil
+	_ = "STUB: not implemented"
+	return 0, nil
 }
 
 func encodeVarintCounterparty(dAtA []byte, offset int, v uint64) int {
-	offset -= sovCounterparty(v)
-	base := offset
-	for v >= 1<<7 {
-		dAtA[offset] = uint8(v&0x7f | 0x80)
-		v >>= 7
-		offset++
-	}
-	dAtA[offset] = uint8(v)
-	return base
-}
-func (m *CounterpartyInfo) Size() (n int) {
-	if m == nil {
-		return 0
-	}
-	var l int
-	_ = l
-	if len(m.MerklePrefix) > 0 {
-		for _, b := range m.MerklePrefix {
-			l = len(b)
-			n += 1 + l + sovCounterparty(uint64(l))
-		}
-	}
-	l = len(m.ClientId)
-	if l > 0 {
-		n += 1 + l + sovCounterparty(uint64(l))
-	}
-	return n
+	_ = "STUB: not implemented"
+	return 0
 }
 
-func sovCounterparty(x uint64) (n int) {
-	return (math_bits.Len64(x|1) + 6) / 7
-}
-func sozCounterparty(x uint64) (n int) {
-	return sovCounterparty(uint64((x << 1) ^ uint64((int64(x) >> 63))))
-}
-func (m *CounterpartyInfo) Unmarshal(dAtA []byte) error {
-	l := len(dAtA)
-	iNdEx := 0
-	for iNdEx < l {
-		preIndex := iNdEx
-		var wire uint64
-		for shift := uint(0); ; shift += 7 {
-			if shift >= 64 {
-				return ErrIntOverflowCounterparty
-			}
-			if iNdEx >= l {
-				return io.ErrUnexpectedEOF
-			}
-			b := dAtA[iNdEx]
-			iNdEx++
-			wire |= uint64(b&0x7F) << shift
-			if b < 0x80 {
-				break
-			}
-		}
-		fieldNum := int32(wire >> 3)
-		wireType := int(wire & 0x7)
-		if wireType == 4 {
-			return fmt.Errorf("proto: CounterpartyInfo: wiretype end group for non-group")
-		}
-		if fieldNum <= 0 {
-			return fmt.Errorf("proto: CounterpartyInfo: illegal tag %d (wire type %d)", fieldNum, wire)
-		}
-		switch fieldNum {
-		case 1:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field MerklePrefix", wireType)
-			}
-			var byteLen int
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowCounterparty
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				byteLen |= int(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			if byteLen < 0 {
-				return ErrInvalidLengthCounterparty
-			}
-			postIndex := iNdEx + byteLen
-			if postIndex < 0 {
-				return ErrInvalidLengthCounterparty
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.MerklePrefix = append(m.MerklePrefix, make([]byte, postIndex-iNdEx))
-			copy(m.MerklePrefix[len(m.MerklePrefix)-1], dAtA[iNdEx:postIndex])
-			iNdEx = postIndex
-		case 2:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field ClientId", wireType)
-			}
-			var stringLen uint64
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowCounterparty
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				stringLen |= uint64(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			intStringLen := int(stringLen)
-			if intStringLen < 0 {
-				return ErrInvalidLengthCounterparty
-			}
-			postIndex := iNdEx + intStringLen
-			if postIndex < 0 {
-				return ErrInvalidLengthCounterparty
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.ClientId = string(dAtA[iNdEx:postIndex])
-			iNdEx = postIndex
-		default:
-			iNdEx = preIndex
-			skippy, err := skipCounterparty(dAtA[iNdEx:])
-			if err != nil {
-				return err
-			}
-			if (skippy < 0) || (iNdEx+skippy) < 0 {
-				return ErrInvalidLengthCounterparty
-			}
-			if (iNdEx + skippy) > l {
-				return io.ErrUnexpectedEOF
-			}
-			iNdEx += skippy
-		}
-	}
+func (m *CounterpartyInfo) Size() (n int) { _ = "STUB: not implemented"; return 0 }
 
-	if iNdEx > l {
-		return io.ErrUnexpectedEOF
-	}
-	return nil
-}
-func skipCounterparty(dAtA []byte) (n int, err error) {
-	l := len(dAtA)
-	iNdEx := 0
-	depth := 0
-	for iNdEx < l {
-		var wire uint64
-		for shift := uint(0); ; shift += 7 {
-			if shift >= 64 {
-				return 0, ErrIntOverflowCounterparty
-			}
-			if iNdEx >= l {
-				return 0, io.ErrUnexpectedEOF
-			}
-			b := dAtA[iNdEx]
-			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
-			if b < 0x80 {
-				break
-			}
-		}
-		wireType := int(wire & 0x7)
-		switch wireType {
-		case 0:
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return 0, ErrIntOverflowCounterparty
-				}
-				if iNdEx >= l {
-					return 0, io.ErrUnexpectedEOF
-				}
-				iNdEx++
-				if dAtA[iNdEx-1] < 0x80 {
-					break
-				}
-			}
-		case 1:
-			iNdEx += 8
-		case 2:
-			var length int
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return 0, ErrIntOverflowCounterparty
-				}
-				if iNdEx >= l {
-					return 0, io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				length |= (int(b) & 0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			if length < 0 {
-				return 0, ErrInvalidLengthCounterparty
-			}
-			iNdEx += length
-		case 3:
-			depth++
-		case 4:
-			if depth == 0 {
-				return 0, ErrUnexpectedEndOfGroupCounterparty
-			}
-			depth--
-		case 5:
-			iNdEx += 4
-		default:
-			return 0, fmt.Errorf("proto: illegal wireType %d", wireType)
-		}
-		if iNdEx < 0 {
-			return 0, ErrInvalidLengthCounterparty
-		}
-		if depth == 0 {
-			return iNdEx, nil
-		}
-	}
-	return 0, io.ErrUnexpectedEOF
-}
+func sovCounterparty(x uint64) (n int) { _ = "STUB: not implemented"; return 0 }
+
+func sozCounterparty(x uint64) (n int) { _ = "STUB: not implemented"; return 0 }
+
+func (m *CounterpartyInfo) Unmarshal(dAtA []byte) error { _ = "STUB: not implemented"; return nil }
+
+func skipCounterparty(dAtA []byte) (n int, err error) { _ = "STUB: not implemented"; return 0, nil }
 
 var (
 	ErrInvalidLengthCounterparty        = fmt.Errorf("proto: negative length found during unmarshaling")

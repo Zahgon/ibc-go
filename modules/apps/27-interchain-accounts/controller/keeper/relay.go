@@ -1,13 +1,9 @@
 package keeper
 
 import (
-	errorsmod "cosmossdk.io/errors"
-
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/cosmos/ibc-go/v11/modules/apps/27-interchain-accounts/controller/types"
 	icatypes "github.com/cosmos/ibc-go/v11/modules/apps/27-interchain-accounts/types"
-	clienttypes "github.com/cosmos/ibc-go/v11/modules/core/02-client/types"
 	channeltypes "github.com/cosmos/ibc-go/v11/modules/core/04-channel/types"
 )
 
@@ -23,38 +19,20 @@ import (
 func (k *Keeper) SendTx(ctx sdk.Context, connectionID, portID string,
 	icaPacketData icatypes.InterchainAccountPacketData, timeoutTimestamp uint64,
 ) (uint64, error) {
-	return k.sendTx(ctx, connectionID, portID, icaPacketData, timeoutTimestamp)
+	_ = "STUB: not implemented"
+	return 0, nil
 }
 
 func (k *Keeper) sendTx(ctx sdk.Context, connectionID, portID string,
 	icaPacketData icatypes.InterchainAccountPacketData, timeoutTimestamp uint64,
 ) (uint64, error) {
-	if !k.GetParams(ctx).ControllerEnabled {
-		return 0, types.ErrControllerSubModuleDisabled
-	}
-
-	activeChannelID, found := k.GetOpenActiveChannel(ctx, connectionID, portID)
-	if !found {
-		return 0, errorsmod.Wrapf(icatypes.ErrActiveChannelNotFound, "failed to retrieve active channel on connection %s for port %s", connectionID, portID)
-	}
-	if uint64(ctx.BlockTime().UnixNano()) >= timeoutTimestamp {
-		return 0, icatypes.ErrInvalidTimeoutTimestamp
-	}
-
-	if err := icaPacketData.ValidateBasic(); err != nil {
-		return 0, errorsmod.Wrap(err, "invalid interchain account packet data")
-	}
-
-	sequence, err := k.ics4Wrapper.SendPacket(ctx, portID, activeChannelID, clienttypes.ZeroHeight(), timeoutTimestamp, icaPacketData.GetBytes())
-	if err != nil {
-		return 0, err
-	}
-
-	return sequence, nil
+	_ = "STUB: not implemented"
+	return 0, nil
 }
 
 // OnTimeoutPacket removes the active channel associated with the provided packet, the underlying channel end is closed
 // due to the semantics of ORDERED channels
 func (*Keeper) OnTimeoutPacket(ctx sdk.Context, packet channeltypes.Packet) error {
+	_ = "STUB: not implemented"
 	return nil
 }

@@ -1,19 +1,12 @@
 package controller
 
 import (
-	"errors"
-
-	errorsmod "cosmossdk.io/errors"
-
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
 	"github.com/cosmos/ibc-go/v11/modules/apps/27-interchain-accounts/controller/keeper"
-	"github.com/cosmos/ibc-go/v11/modules/apps/27-interchain-accounts/controller/types"
-	icatypes "github.com/cosmos/ibc-go/v11/modules/apps/27-interchain-accounts/types"
 	clienttypes "github.com/cosmos/ibc-go/v11/modules/core/02-client/types"
 	channeltypes "github.com/cosmos/ibc-go/v11/modules/core/04-channel/types"
 	porttypes "github.com/cosmos/ibc-go/v11/modules/core/05-port/types"
-	ibcerrors "github.com/cosmos/ibc-go/v11/modules/core/errors"
 	ibcexported "github.com/cosmos/ibc-go/v11/modules/core/exported"
 )
 
@@ -32,38 +25,24 @@ type IBCMiddleware struct {
 // NewIBCMiddleware creates a new IBCMiddleware given the associated keeper.
 // The underlying application is set to nil and authentication is assumed to
 // be performed by a Cosmos SDK module that sends messages to controller message server.
-func NewIBCMiddleware(k *keeper.Keeper) *IBCMiddleware {
-	return &IBCMiddleware{
-		app:    nil,
-		keeper: k,
-	}
-}
+func NewIBCMiddleware(k *keeper.Keeper) *IBCMiddleware { _ = "STUB: not implemented"; return nil }
 
 // NewIBCMiddlewareWithAuth creates a new IBCMiddleware given the associated keeper and underlying application
 func NewIBCMiddlewareWithAuth(app porttypes.IBCModule, k *keeper.Keeper) *IBCMiddleware {
-	return &IBCMiddleware{
-		app:    app,
-		keeper: k,
-	}
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // SetUnderlyingApplication sets the underlying application for the middleware.
 func (im *IBCMiddleware) SetUnderlyingApplication(app porttypes.IBCModule) {
-	if app == nil {
-		panic(errors.New("underlying application cannot be nil"))
-	}
-	if im.app != nil {
-		panic(errors.New("underlying application already set"))
-	}
-	im.app = app
+	_ = "STUB: not implemented"
+	return
 }
 
 // SetICS4Wrapper sets the ICS4Wrapper for the middleware.
 func (im *IBCMiddleware) SetICS4Wrapper(ics4Wrapper porttypes.ICS4Wrapper) {
-	if ics4Wrapper == nil {
-		panic(errors.New("ICS4Wrapper cannot be nil"))
-	}
-	im.keeper.WithICS4Wrapper(ics4Wrapper)
+	_ = "STUB: not implemented"
+	return
 }
 
 // OnChanOpenInit implements the IBCMiddleware interface
@@ -81,26 +60,13 @@ func (im *IBCMiddleware) OnChanOpenInit(
 	counterparty channeltypes.Counterparty,
 	version string,
 ) (string, error) {
-	if !im.keeper.GetParams(ctx).ControllerEnabled {
-		return "", types.ErrControllerSubModuleDisabled
-	}
-
-	version, err := im.keeper.OnChanOpenInit(ctx, order, connectionHops, portID, channelID, counterparty, version)
-	if err != nil {
-		return "", err
-	}
-
-	// call underlying app's OnChanOpenInit callback with the passed in version
-	// the version returned is discarded as the ica-auth module does not have permission to edit the version string.
-	// ics27 will always return the version string containing the Metadata struct which is created during the `RegisterInterchainAccount` call.
-	if im.app != nil && im.keeper.IsMiddlewareEnabled(ctx, portID, connectionHops[0]) {
-		if _, err := im.app.OnChanOpenInit(ctx, order, connectionHops, portID, channelID, counterparty, version); err != nil {
-			return "", err
-		}
-	}
-
-	return version, nil
+	_ = "STUB: not implemented"
+	return "", nil
 }
+
+// call underlying app's OnChanOpenInit callback with the passed in version
+// the version returned is discarded as the ica-auth module does not have permission to edit the version string.
+// ics27 will always return the version string containing the Metadata struct which is created during the `RegisterInterchainAccount` call.
 
 // OnChanOpenTry implements the IBCMiddleware interface
 func (*IBCMiddleware) OnChanOpenTry(
@@ -112,7 +78,8 @@ func (*IBCMiddleware) OnChanOpenTry(
 	counterparty channeltypes.Counterparty,
 	counterpartyVersion string,
 ) (string, error) {
-	return "", errorsmod.Wrap(icatypes.ErrInvalidChannelFlow, "channel handshake must be initiated by controller chain")
+	_ = "STUB: not implemented"
+	return "", nil
 }
 
 // OnChanOpenAck implements the IBCMiddleware interface
@@ -128,26 +95,11 @@ func (im *IBCMiddleware) OnChanOpenAck(
 	counterpartyChannelID string,
 	counterpartyVersion string,
 ) error {
-	if !im.keeper.GetParams(ctx).ControllerEnabled {
-		return types.ErrControllerSubModuleDisabled
-	}
-
-	if err := im.keeper.OnChanOpenAck(ctx, portID, channelID, counterpartyVersion); err != nil {
-		return err
-	}
-
-	connectionID, err := im.keeper.GetConnectionID(ctx, portID, channelID)
-	if err != nil {
-		return err
-	}
-
-	// call underlying app's OnChanOpenAck callback with the counterparty app version.
-	if im.app != nil && im.keeper.IsMiddlewareEnabled(ctx, portID, connectionID) {
-		return im.app.OnChanOpenAck(ctx, portID, channelID, counterpartyChannelID, counterpartyVersion)
-	}
-
+	_ = "STUB: not implemented"
 	return nil
 }
+
+// call underlying app's OnChanOpenAck callback with the counterparty app version.
 
 // OnChanOpenConfirm implements the IBCMiddleware interface
 func (*IBCMiddleware) OnChanOpenConfirm(
@@ -155,7 +107,8 @@ func (*IBCMiddleware) OnChanOpenConfirm(
 	portID,
 	channelID string,
 ) error {
-	return errorsmod.Wrap(icatypes.ErrInvalidChannelFlow, "channel handshake must be initiated by controller chain")
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // OnChanCloseInit implements the IBCMiddleware interface
@@ -164,8 +117,9 @@ func (*IBCMiddleware) OnChanCloseInit(
 	portID,
 	channelID string,
 ) error {
+	_ = "STUB: not implemented"
 	// Disallow user-initiated channel closing for interchain account channels
-	return errorsmod.Wrap(ibcerrors.ErrInvalidRequest, "user cannot close channel")
+	return nil
 }
 
 // OnChanCloseConfirm implements the IBCMiddleware interface
@@ -174,19 +128,7 @@ func (im *IBCMiddleware) OnChanCloseConfirm(
 	portID,
 	channelID string,
 ) error {
-	if err := im.keeper.OnChanCloseConfirm(ctx, portID, channelID); err != nil {
-		return err
-	}
-
-	connectionID, err := im.keeper.GetConnectionID(ctx, portID, channelID)
-	if err != nil {
-		return err
-	}
-
-	if im.app != nil && im.keeper.IsMiddlewareEnabled(ctx, portID, connectionID) {
-		return im.app.OnChanCloseConfirm(ctx, portID, channelID)
-	}
-
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -197,10 +139,8 @@ func (*IBCMiddleware) OnRecvPacket(
 	packet channeltypes.Packet,
 	_ sdk.AccAddress,
 ) ibcexported.Acknowledgement {
-	err := errorsmod.Wrapf(icatypes.ErrInvalidChannelFlow, "cannot receive packet on controller chain")
-	ack := channeltypes.NewErrorAcknowledgement(err)
-	keeper.EmitAcknowledgementEvent(ctx, packet, ack, err)
-	return ack
+	_ = "STUB: not implemented"
+	return *new(ibcexported.Acknowledgement)
 }
 
 // OnAcknowledgementPacket implements the IBCMiddleware interface
@@ -211,22 +151,11 @@ func (im *IBCMiddleware) OnAcknowledgementPacket(
 	acknowledgement []byte,
 	relayer sdk.AccAddress,
 ) error {
-	if !im.keeper.GetParams(ctx).ControllerEnabled {
-		return types.ErrControllerSubModuleDisabled
-	}
-
-	connectionID, err := im.keeper.GetConnectionID(ctx, packet.GetSourcePort(), packet.GetSourceChannel())
-	if err != nil {
-		return err
-	}
-
-	// call underlying app's OnAcknowledgementPacket callback.
-	if im.app != nil && im.keeper.IsMiddlewareEnabled(ctx, packet.GetSourcePort(), connectionID) {
-		return im.app.OnAcknowledgementPacket(ctx, channelVersion, packet, acknowledgement, relayer)
-	}
-
+	_ = "STUB: not implemented"
 	return nil
 }
+
+// call underlying app's OnAcknowledgementPacket callback.
 
 // OnTimeoutPacket implements the IBCMiddleware interface
 func (im *IBCMiddleware) OnTimeoutPacket(
@@ -235,23 +164,7 @@ func (im *IBCMiddleware) OnTimeoutPacket(
 	packet channeltypes.Packet,
 	relayer sdk.AccAddress,
 ) error {
-	if !im.keeper.GetParams(ctx).ControllerEnabled {
-		return types.ErrControllerSubModuleDisabled
-	}
-
-	if err := im.keeper.OnTimeoutPacket(ctx, packet); err != nil {
-		return err
-	}
-
-	connectionID, err := im.keeper.GetConnectionID(ctx, packet.GetSourcePort(), packet.GetSourceChannel())
-	if err != nil {
-		return err
-	}
-
-	if im.app != nil && im.keeper.IsMiddlewareEnabled(ctx, packet.GetSourcePort(), connectionID) {
-		return im.app.OnTimeoutPacket(ctx, channelVersion, packet, relayer)
-	}
-
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -264,7 +177,8 @@ func (*IBCMiddleware) SendPacket(
 	timeoutTimestamp uint64,
 	data []byte,
 ) (uint64, error) {
-	panic(errors.New("SendPacket not supported for ICA controller module. Please use SendTx"))
+	_ = "STUB: not implemented"
+	return 0, nil
 }
 
 // WriteAcknowledgement implements the ICS4 Wrapper interface
@@ -273,28 +187,20 @@ func (*IBCMiddleware) WriteAcknowledgement(
 	packet ibcexported.PacketI,
 	ack ibcexported.Acknowledgement,
 ) error {
-	panic(errors.New("WriteAcknowledgement not supported for ICA controller module"))
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // GetAppVersion returns the interchain accounts metadata.
 func (im *IBCMiddleware) GetAppVersion(ctx sdk.Context, portID, channelID string) (string, bool) {
-	return im.keeper.GetAppVersion(ctx, portID, channelID)
+	_ = "STUB: not implemented"
+	return "", false
 }
 
 // UnmarshalPacketData attempts to unmarshal the provided packet data bytes
 // into an InterchainAccountPacketData. This function implements the optional
 // PacketDataUnmarshaler interface required for ADR 008 support.
 func (im *IBCMiddleware) UnmarshalPacketData(ctx sdk.Context, portID string, channelID string, bz []byte) (any, string, error) {
-	var data icatypes.InterchainAccountPacketData
-	err := data.UnmarshalJSON(bz)
-	if err != nil {
-		return nil, "", err
-	}
-
-	version, ok := im.GetAppVersion(ctx, portID, channelID)
-	if !ok {
-		return nil, "", errorsmod.Wrapf(ibcerrors.ErrNotFound, "app version not found for port %s and channel %s", portID, channelID)
-	}
-
-	return data, version, nil
+	_ = "STUB: not implemented"
+	return *new(any), "", nil
 }

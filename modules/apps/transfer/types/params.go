@@ -9,13 +9,9 @@ const (
 
 // NewParams creates a new parameter configuration for the ibc transfer module
 func NewParams(enableSend, enableReceive bool) Params {
-	return Params{
-		SendEnabled:    enableSend,
-		ReceiveEnabled: enableReceive,
-	}
+	_ = "STUB: not implemented"
+	return *new(Params)
 }
 
 // DefaultParams is the default parameter configuration for the ibc-transfer module
-func DefaultParams() Params {
-	return NewParams(DefaultSendEnabled, DefaultReceiveEnabled)
-}
+func DefaultParams() Params { _ = "STUB: not implemented"; return *new(Params) }

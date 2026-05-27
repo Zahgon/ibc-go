@@ -2,15 +2,8 @@ package keeper
 
 import (
 	"context"
-	"fmt"
-
-	"google.golang.org/grpc/codes"
-	"google.golang.org/grpc/status"
-
-	sdk "github.com/cosmos/cosmos-sdk/types"
 
 	"github.com/cosmos/ibc-go/v11/modules/core/02-client/v2/types"
-	host "github.com/cosmos/ibc-go/v11/modules/core/24-host"
 )
 
 var _ types.QueryServer = (*queryServer)(nil)
@@ -23,44 +16,18 @@ type queryServer struct {
 
 // NewQueryServer returns a new 02-client/v2 types.QueryServer implementation.
 func NewQueryServer(k *Keeper) types.QueryServer {
-	return &queryServer{
-		Keeper: k,
-	}
+	_ = "STUB: not implemented"
+	return *new(types.QueryServer)
 }
 
 // CounterpartyInfo gets the CounterpartyInfo from the store corresponding to the request client ID.
 func (q queryServer) CounterpartyInfo(goCtx context.Context, req *types.QueryCounterpartyInfoRequest) (*types.QueryCounterpartyInfoResponse, error) {
-	if req == nil {
-		return nil, status.Error(codes.InvalidArgument, "empty request")
-	}
-
-	if err := host.ClientIdentifierValidator(req.ClientId); err != nil {
-		return nil, status.Error(codes.InvalidArgument, err.Error())
-	}
-
-	ctx := sdk.UnwrapSDKContext(goCtx)
-
-	info, found := q.GetClientCounterparty(ctx, req.ClientId)
-	if !found {
-		return nil, status.Error(codes.NotFound, fmt.Sprintf("client %s counterparty not found", req.ClientId))
-	}
-
-	return &types.QueryCounterpartyInfoResponse{CounterpartyInfo: &info}, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // Config queries the configuration of the ibc client v2 module.
 func (q queryServer) Config(goCtx context.Context, req *types.QueryConfigRequest) (*types.QueryConfigResponse, error) {
-	if req == nil {
-		return nil, status.Error(codes.InvalidArgument, "empty request")
-	}
-
-	if err := host.ClientIdentifierValidator(req.ClientId); err != nil {
-		return nil, status.Error(codes.InvalidArgument, err.Error())
-	}
-
-	ctx := sdk.UnwrapSDKContext(goCtx)
-
-	config := q.GetConfig(ctx, req.ClientId)
-
-	return &types.QueryConfigResponse{Config: &config}, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }

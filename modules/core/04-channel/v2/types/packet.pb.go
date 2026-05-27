@@ -5,11 +5,10 @@ package types
 
 import (
 	fmt "fmt"
+	math "math"
+
 	_ "github.com/cosmos/gogoproto/gogoproto"
 	proto "github.com/cosmos/gogoproto/proto"
-	io "io"
-	math "math"
-	math_bits "math/bits"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -51,13 +50,9 @@ var PacketStatus_value = map[string]int32{
 	"PACKET_STATUS_ASYNC":       3,
 }
 
-func (x PacketStatus) String() string {
-	return proto.EnumName(PacketStatus_name, int32(x))
-}
+func (x PacketStatus) String() string { _ = "STUB: not implemented"; return "" }
 
-func (PacketStatus) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_2f814aba9ca97169, []int{0}
-}
+func (PacketStatus) EnumDescriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
 
 // Packet defines a type that carries data across different chains through IBC
 type Packet struct {
@@ -75,73 +70,35 @@ type Packet struct {
 	Payloads []Payload `protobuf:"bytes,5,rep,name=payloads,proto3" json:"payloads"`
 }
 
-func (m *Packet) Reset()         { *m = Packet{} }
-func (m *Packet) String() string { return proto.CompactTextString(m) }
-func (*Packet) ProtoMessage()    {}
-func (*Packet) Descriptor() ([]byte, []int) {
-	return fileDescriptor_2f814aba9ca97169, []int{0}
-}
-func (m *Packet) XXX_Unmarshal(b []byte) error {
-	return m.Unmarshal(b)
-}
+func (m *Packet) Reset()                    { _ = "STUB: not implemented"; return }
+func (m *Packet) String() string            { _ = "STUB: not implemented"; return "" }
+func (*Packet) ProtoMessage()               { _ = "STUB: not implemented"; return }
+func (*Packet) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
+
+func (m *Packet) XXX_Unmarshal(b []byte) error { _ = "STUB: not implemented"; return nil }
+
 func (m *Packet) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	if deterministic {
-		return xxx_messageInfo_Packet.Marshal(b, m, deterministic)
-	} else {
-		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
-		if err != nil {
-			return nil, err
-		}
-		return b[:n], nil
-	}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
-func (m *Packet) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_Packet.Merge(m, src)
-}
-func (m *Packet) XXX_Size() int {
-	return m.Size()
-}
-func (m *Packet) XXX_DiscardUnknown() {
-	xxx_messageInfo_Packet.DiscardUnknown(m)
-}
+
+func (m *Packet) XXX_Merge(src proto.Message) { _ = "STUB: not implemented"; return }
+
+func (m *Packet) XXX_Size() int { _ = "STUB: not implemented"; return 0 }
+
+func (m *Packet) XXX_DiscardUnknown() { _ = "STUB: not implemented"; return }
 
 var xxx_messageInfo_Packet proto.InternalMessageInfo
 
-func (m *Packet) GetSequence() uint64 {
-	if m != nil {
-		return m.Sequence
-	}
-	return 0
-}
+func (m *Packet) GetSequence() uint64 { _ = "STUB: not implemented"; return 0 }
 
-func (m *Packet) GetSourceClient() string {
-	if m != nil {
-		return m.SourceClient
-	}
-	return ""
-}
+func (m *Packet) GetSourceClient() string { _ = "STUB: not implemented"; return "" }
 
-func (m *Packet) GetDestinationClient() string {
-	if m != nil {
-		return m.DestinationClient
-	}
-	return ""
-}
+func (m *Packet) GetDestinationClient() string { _ = "STUB: not implemented"; return "" }
 
-func (m *Packet) GetTimeoutTimestamp() uint64 {
-	if m != nil {
-		return m.TimeoutTimestamp
-	}
-	return 0
-}
+func (m *Packet) GetTimeoutTimestamp() uint64 { _ = "STUB: not implemented"; return 0 }
 
-func (m *Packet) GetPayloads() []Payload {
-	if m != nil {
-		return m.Payloads
-	}
-	return nil
-}
+func (m *Packet) GetPayloads() []Payload { _ = "STUB: not implemented"; return nil }
 
 // Payload contains the source and destination ports and payload for the application (version, encoding, raw bytes)
 type Payload struct {
@@ -157,73 +114,35 @@ type Payload struct {
 	Value []byte `protobuf:"bytes,5,opt,name=value,proto3" json:"value,omitempty"`
 }
 
-func (m *Payload) Reset()         { *m = Payload{} }
-func (m *Payload) String() string { return proto.CompactTextString(m) }
-func (*Payload) ProtoMessage()    {}
-func (*Payload) Descriptor() ([]byte, []int) {
-	return fileDescriptor_2f814aba9ca97169, []int{1}
-}
-func (m *Payload) XXX_Unmarshal(b []byte) error {
-	return m.Unmarshal(b)
-}
+func (m *Payload) Reset()                    { _ = "STUB: not implemented"; return }
+func (m *Payload) String() string            { _ = "STUB: not implemented"; return "" }
+func (*Payload) ProtoMessage()               { _ = "STUB: not implemented"; return }
+func (*Payload) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
+
+func (m *Payload) XXX_Unmarshal(b []byte) error { _ = "STUB: not implemented"; return nil }
+
 func (m *Payload) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	if deterministic {
-		return xxx_messageInfo_Payload.Marshal(b, m, deterministic)
-	} else {
-		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
-		if err != nil {
-			return nil, err
-		}
-		return b[:n], nil
-	}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
-func (m *Payload) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_Payload.Merge(m, src)
-}
-func (m *Payload) XXX_Size() int {
-	return m.Size()
-}
-func (m *Payload) XXX_DiscardUnknown() {
-	xxx_messageInfo_Payload.DiscardUnknown(m)
-}
+
+func (m *Payload) XXX_Merge(src proto.Message) { _ = "STUB: not implemented"; return }
+
+func (m *Payload) XXX_Size() int { _ = "STUB: not implemented"; return 0 }
+
+func (m *Payload) XXX_DiscardUnknown() { _ = "STUB: not implemented"; return }
 
 var xxx_messageInfo_Payload proto.InternalMessageInfo
 
-func (m *Payload) GetSourcePort() string {
-	if m != nil {
-		return m.SourcePort
-	}
-	return ""
-}
+func (m *Payload) GetSourcePort() string { _ = "STUB: not implemented"; return "" }
 
-func (m *Payload) GetDestinationPort() string {
-	if m != nil {
-		return m.DestinationPort
-	}
-	return ""
-}
+func (m *Payload) GetDestinationPort() string { _ = "STUB: not implemented"; return "" }
 
-func (m *Payload) GetVersion() string {
-	if m != nil {
-		return m.Version
-	}
-	return ""
-}
+func (m *Payload) GetVersion() string { _ = "STUB: not implemented"; return "" }
 
-func (m *Payload) GetEncoding() string {
-	if m != nil {
-		return m.Encoding
-	}
-	return ""
-}
+func (m *Payload) GetEncoding() string { _ = "STUB: not implemented"; return "" }
 
-func (m *Payload) GetValue() []byte {
-	if m != nil {
-		return m.Value
-	}
-	return nil
-}
+func (m *Payload) GetValue() []byte { _ = "STUB: not implemented"; return nil }
 
 // Acknowledgement contains a list of all ack results associated with a single packet.
 // In the case of a successful receive, the acknowledgement will contain an app acknowledgement
@@ -235,45 +154,27 @@ type Acknowledgement struct {
 	AppAcknowledgements [][]byte `protobuf:"bytes,1,rep,name=app_acknowledgements,json=appAcknowledgements,proto3" json:"app_acknowledgements,omitempty"`
 }
 
-func (m *Acknowledgement) Reset()         { *m = Acknowledgement{} }
-func (m *Acknowledgement) String() string { return proto.CompactTextString(m) }
-func (*Acknowledgement) ProtoMessage()    {}
-func (*Acknowledgement) Descriptor() ([]byte, []int) {
-	return fileDescriptor_2f814aba9ca97169, []int{2}
-}
-func (m *Acknowledgement) XXX_Unmarshal(b []byte) error {
-	return m.Unmarshal(b)
-}
+func (m *Acknowledgement) Reset()                    { _ = "STUB: not implemented"; return }
+func (m *Acknowledgement) String() string            { _ = "STUB: not implemented"; return "" }
+func (*Acknowledgement) ProtoMessage()               { _ = "STUB: not implemented"; return }
+func (*Acknowledgement) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
+
+func (m *Acknowledgement) XXX_Unmarshal(b []byte) error { _ = "STUB: not implemented"; return nil }
+
 func (m *Acknowledgement) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	if deterministic {
-		return xxx_messageInfo_Acknowledgement.Marshal(b, m, deterministic)
-	} else {
-		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
-		if err != nil {
-			return nil, err
-		}
-		return b[:n], nil
-	}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
-func (m *Acknowledgement) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_Acknowledgement.Merge(m, src)
-}
-func (m *Acknowledgement) XXX_Size() int {
-	return m.Size()
-}
-func (m *Acknowledgement) XXX_DiscardUnknown() {
-	xxx_messageInfo_Acknowledgement.DiscardUnknown(m)
-}
+
+func (m *Acknowledgement) XXX_Merge(src proto.Message) { _ = "STUB: not implemented"; return }
+
+func (m *Acknowledgement) XXX_Size() int { _ = "STUB: not implemented"; return 0 }
+
+func (m *Acknowledgement) XXX_DiscardUnknown() { _ = "STUB: not implemented"; return }
 
 var xxx_messageInfo_Acknowledgement proto.InternalMessageInfo
 
-func (m *Acknowledgement) GetAppAcknowledgements() [][]byte {
-	if m != nil {
-		return m.AppAcknowledgements
-	}
-	return nil
-}
+func (m *Acknowledgement) GetAppAcknowledgements() [][]byte { _ = "STUB: not implemented"; return nil }
 
 // RecvPacketResult speecifies the status of a packet as well as the acknowledgement bytes.
 type RecvPacketResult struct {
@@ -283,52 +184,32 @@ type RecvPacketResult struct {
 	Acknowledgement []byte `protobuf:"bytes,2,opt,name=acknowledgement,proto3" json:"acknowledgement,omitempty"`
 }
 
-func (m *RecvPacketResult) Reset()         { *m = RecvPacketResult{} }
-func (m *RecvPacketResult) String() string { return proto.CompactTextString(m) }
-func (*RecvPacketResult) ProtoMessage()    {}
-func (*RecvPacketResult) Descriptor() ([]byte, []int) {
-	return fileDescriptor_2f814aba9ca97169, []int{3}
-}
-func (m *RecvPacketResult) XXX_Unmarshal(b []byte) error {
-	return m.Unmarshal(b)
-}
+func (m *RecvPacketResult) Reset()                    { _ = "STUB: not implemented"; return }
+func (m *RecvPacketResult) String() string            { _ = "STUB: not implemented"; return "" }
+func (*RecvPacketResult) ProtoMessage()               { _ = "STUB: not implemented"; return }
+func (*RecvPacketResult) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
+
+func (m *RecvPacketResult) XXX_Unmarshal(b []byte) error { _ = "STUB: not implemented"; return nil }
+
 func (m *RecvPacketResult) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	if deterministic {
-		return xxx_messageInfo_RecvPacketResult.Marshal(b, m, deterministic)
-	} else {
-		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
-		if err != nil {
-			return nil, err
-		}
-		return b[:n], nil
-	}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
-func (m *RecvPacketResult) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_RecvPacketResult.Merge(m, src)
-}
-func (m *RecvPacketResult) XXX_Size() int {
-	return m.Size()
-}
-func (m *RecvPacketResult) XXX_DiscardUnknown() {
-	xxx_messageInfo_RecvPacketResult.DiscardUnknown(m)
-}
+
+func (m *RecvPacketResult) XXX_Merge(src proto.Message) { _ = "STUB: not implemented"; return }
+
+func (m *RecvPacketResult) XXX_Size() int { _ = "STUB: not implemented"; return 0 }
+
+func (m *RecvPacketResult) XXX_DiscardUnknown() { _ = "STUB: not implemented"; return }
 
 var xxx_messageInfo_RecvPacketResult proto.InternalMessageInfo
 
 func (m *RecvPacketResult) GetStatus() PacketStatus {
-	if m != nil {
-		return m.Status
-	}
-	return PacketStatus_NONE
+	_ = "STUB: not implemented"
+	return *new(PacketStatus)
 }
 
-func (m *RecvPacketResult) GetAcknowledgement() []byte {
-	if m != nil {
-		return m.Acknowledgement
-	}
-	return nil
-}
+func (m *RecvPacketResult) GetAcknowledgement() []byte { _ = "STUB: not implemented"; return nil }
 
 func init() {
 	proto.RegisterEnum("ibc.core.channel.v2.PacketStatus", PacketStatus_name, PacketStatus_value)
@@ -381,959 +262,77 @@ var fileDescriptor_2f814aba9ca97169 = []byte{
 	0x04, 0x00, 0x00, 0xff, 0xff, 0xdf, 0x2f, 0x3b, 0x07, 0xa7, 0x03, 0x00, 0x00,
 }
 
-func (m *Packet) Marshal() (dAtA []byte, err error) {
-	size := m.Size()
-	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
-	if err != nil {
-		return nil, err
-	}
-	return dAtA[:n], nil
-}
+func (m *Packet) Marshal() (dAtA []byte, err error) { _ = "STUB: not implemented"; return nil, nil }
 
-func (m *Packet) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
+func (m *Packet) MarshalTo(dAtA []byte) (int, error) { _ = "STUB: not implemented"; return 0, nil }
 
 func (m *Packet) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
-	_ = i
-	var l int
-	_ = l
-	if len(m.Payloads) > 0 {
-		for iNdEx := len(m.Payloads) - 1; iNdEx >= 0; iNdEx-- {
-			{
-				size, err := m.Payloads[iNdEx].MarshalToSizedBuffer(dAtA[:i])
-				if err != nil {
-					return 0, err
-				}
-				i -= size
-				i = encodeVarintPacket(dAtA, i, uint64(size))
-			}
-			i--
-			dAtA[i] = 0x2a
-		}
-	}
-	if m.TimeoutTimestamp != 0 {
-		i = encodeVarintPacket(dAtA, i, uint64(m.TimeoutTimestamp))
-		i--
-		dAtA[i] = 0x20
-	}
-	if len(m.DestinationClient) > 0 {
-		i -= len(m.DestinationClient)
-		copy(dAtA[i:], m.DestinationClient)
-		i = encodeVarintPacket(dAtA, i, uint64(len(m.DestinationClient)))
-		i--
-		dAtA[i] = 0x1a
-	}
-	if len(m.SourceClient) > 0 {
-		i -= len(m.SourceClient)
-		copy(dAtA[i:], m.SourceClient)
-		i = encodeVarintPacket(dAtA, i, uint64(len(m.SourceClient)))
-		i--
-		dAtA[i] = 0x12
-	}
-	if m.Sequence != 0 {
-		i = encodeVarintPacket(dAtA, i, uint64(m.Sequence))
-		i--
-		dAtA[i] = 0x8
-	}
-	return len(dAtA) - i, nil
+	_ = "STUB: not implemented"
+	return 0, nil
 }
 
-func (m *Payload) Marshal() (dAtA []byte, err error) {
-	size := m.Size()
-	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
-	if err != nil {
-		return nil, err
-	}
-	return dAtA[:n], nil
-}
+func (m *Payload) Marshal() (dAtA []byte, err error) { _ = "STUB: not implemented"; return nil, nil }
 
-func (m *Payload) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
+func (m *Payload) MarshalTo(dAtA []byte) (int, error) { _ = "STUB: not implemented"; return 0, nil }
 
 func (m *Payload) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
-	_ = i
-	var l int
-	_ = l
-	if len(m.Value) > 0 {
-		i -= len(m.Value)
-		copy(dAtA[i:], m.Value)
-		i = encodeVarintPacket(dAtA, i, uint64(len(m.Value)))
-		i--
-		dAtA[i] = 0x2a
-	}
-	if len(m.Encoding) > 0 {
-		i -= len(m.Encoding)
-		copy(dAtA[i:], m.Encoding)
-		i = encodeVarintPacket(dAtA, i, uint64(len(m.Encoding)))
-		i--
-		dAtA[i] = 0x22
-	}
-	if len(m.Version) > 0 {
-		i -= len(m.Version)
-		copy(dAtA[i:], m.Version)
-		i = encodeVarintPacket(dAtA, i, uint64(len(m.Version)))
-		i--
-		dAtA[i] = 0x1a
-	}
-	if len(m.DestinationPort) > 0 {
-		i -= len(m.DestinationPort)
-		copy(dAtA[i:], m.DestinationPort)
-		i = encodeVarintPacket(dAtA, i, uint64(len(m.DestinationPort)))
-		i--
-		dAtA[i] = 0x12
-	}
-	if len(m.SourcePort) > 0 {
-		i -= len(m.SourcePort)
-		copy(dAtA[i:], m.SourcePort)
-		i = encodeVarintPacket(dAtA, i, uint64(len(m.SourcePort)))
-		i--
-		dAtA[i] = 0xa
-	}
-	return len(dAtA) - i, nil
+	_ = "STUB: not implemented"
+	return 0, nil
 }
 
 func (m *Acknowledgement) Marshal() (dAtA []byte, err error) {
-	size := m.Size()
-	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
-	if err != nil {
-		return nil, err
-	}
-	return dAtA[:n], nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (m *Acknowledgement) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
+	_ = "STUB: not implemented"
+	return 0, nil
 }
 
 func (m *Acknowledgement) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
-	_ = i
-	var l int
-	_ = l
-	if len(m.AppAcknowledgements) > 0 {
-		for iNdEx := len(m.AppAcknowledgements) - 1; iNdEx >= 0; iNdEx-- {
-			i -= len(m.AppAcknowledgements[iNdEx])
-			copy(dAtA[i:], m.AppAcknowledgements[iNdEx])
-			i = encodeVarintPacket(dAtA, i, uint64(len(m.AppAcknowledgements[iNdEx])))
-			i--
-			dAtA[i] = 0xa
-		}
-	}
-	return len(dAtA) - i, nil
+	_ = "STUB: not implemented"
+	return 0, nil
 }
 
 func (m *RecvPacketResult) Marshal() (dAtA []byte, err error) {
-	size := m.Size()
-	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
-	if err != nil {
-		return nil, err
-	}
-	return dAtA[:n], nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (m *RecvPacketResult) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
+	_ = "STUB: not implemented"
+	return 0, nil
 }
 
 func (m *RecvPacketResult) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
-	_ = i
-	var l int
-	_ = l
-	if len(m.Acknowledgement) > 0 {
-		i -= len(m.Acknowledgement)
-		copy(dAtA[i:], m.Acknowledgement)
-		i = encodeVarintPacket(dAtA, i, uint64(len(m.Acknowledgement)))
-		i--
-		dAtA[i] = 0x12
-	}
-	if m.Status != 0 {
-		i = encodeVarintPacket(dAtA, i, uint64(m.Status))
-		i--
-		dAtA[i] = 0x8
-	}
-	return len(dAtA) - i, nil
+	_ = "STUB: not implemented"
+	return 0, nil
 }
 
-func encodeVarintPacket(dAtA []byte, offset int, v uint64) int {
-	offset -= sovPacket(v)
-	base := offset
-	for v >= 1<<7 {
-		dAtA[offset] = uint8(v&0x7f | 0x80)
-		v >>= 7
-		offset++
-	}
-	dAtA[offset] = uint8(v)
-	return base
-}
-func (m *Packet) Size() (n int) {
-	if m == nil {
-		return 0
-	}
-	var l int
-	_ = l
-	if m.Sequence != 0 {
-		n += 1 + sovPacket(uint64(m.Sequence))
-	}
-	l = len(m.SourceClient)
-	if l > 0 {
-		n += 1 + l + sovPacket(uint64(l))
-	}
-	l = len(m.DestinationClient)
-	if l > 0 {
-		n += 1 + l + sovPacket(uint64(l))
-	}
-	if m.TimeoutTimestamp != 0 {
-		n += 1 + sovPacket(uint64(m.TimeoutTimestamp))
-	}
-	if len(m.Payloads) > 0 {
-		for _, e := range m.Payloads {
-			l = e.Size()
-			n += 1 + l + sovPacket(uint64(l))
-		}
-	}
-	return n
-}
+func encodeVarintPacket(dAtA []byte, offset int, v uint64) int { _ = "STUB: not implemented"; return 0 }
 
-func (m *Payload) Size() (n int) {
-	if m == nil {
-		return 0
-	}
-	var l int
-	_ = l
-	l = len(m.SourcePort)
-	if l > 0 {
-		n += 1 + l + sovPacket(uint64(l))
-	}
-	l = len(m.DestinationPort)
-	if l > 0 {
-		n += 1 + l + sovPacket(uint64(l))
-	}
-	l = len(m.Version)
-	if l > 0 {
-		n += 1 + l + sovPacket(uint64(l))
-	}
-	l = len(m.Encoding)
-	if l > 0 {
-		n += 1 + l + sovPacket(uint64(l))
-	}
-	l = len(m.Value)
-	if l > 0 {
-		n += 1 + l + sovPacket(uint64(l))
-	}
-	return n
-}
+func (m *Packet) Size() (n int) { _ = "STUB: not implemented"; return 0 }
 
-func (m *Acknowledgement) Size() (n int) {
-	if m == nil {
-		return 0
-	}
-	var l int
-	_ = l
-	if len(m.AppAcknowledgements) > 0 {
-		for _, b := range m.AppAcknowledgements {
-			l = len(b)
-			n += 1 + l + sovPacket(uint64(l))
-		}
-	}
-	return n
-}
+func (m *Payload) Size() (n int) { _ = "STUB: not implemented"; return 0 }
 
-func (m *RecvPacketResult) Size() (n int) {
-	if m == nil {
-		return 0
-	}
-	var l int
-	_ = l
-	if m.Status != 0 {
-		n += 1 + sovPacket(uint64(m.Status))
-	}
-	l = len(m.Acknowledgement)
-	if l > 0 {
-		n += 1 + l + sovPacket(uint64(l))
-	}
-	return n
-}
+func (m *Acknowledgement) Size() (n int) { _ = "STUB: not implemented"; return 0 }
 
-func sovPacket(x uint64) (n int) {
-	return (math_bits.Len64(x|1) + 6) / 7
-}
-func sozPacket(x uint64) (n int) {
-	return sovPacket(uint64((x << 1) ^ uint64((int64(x) >> 63))))
-}
-func (m *Packet) Unmarshal(dAtA []byte) error {
-	l := len(dAtA)
-	iNdEx := 0
-	for iNdEx < l {
-		preIndex := iNdEx
-		var wire uint64
-		for shift := uint(0); ; shift += 7 {
-			if shift >= 64 {
-				return ErrIntOverflowPacket
-			}
-			if iNdEx >= l {
-				return io.ErrUnexpectedEOF
-			}
-			b := dAtA[iNdEx]
-			iNdEx++
-			wire |= uint64(b&0x7F) << shift
-			if b < 0x80 {
-				break
-			}
-		}
-		fieldNum := int32(wire >> 3)
-		wireType := int(wire & 0x7)
-		if wireType == 4 {
-			return fmt.Errorf("proto: Packet: wiretype end group for non-group")
-		}
-		if fieldNum <= 0 {
-			return fmt.Errorf("proto: Packet: illegal tag %d (wire type %d)", fieldNum, wire)
-		}
-		switch fieldNum {
-		case 1:
-			if wireType != 0 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Sequence", wireType)
-			}
-			m.Sequence = 0
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowPacket
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				m.Sequence |= uint64(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-		case 2:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field SourceClient", wireType)
-			}
-			var stringLen uint64
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowPacket
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				stringLen |= uint64(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			intStringLen := int(stringLen)
-			if intStringLen < 0 {
-				return ErrInvalidLengthPacket
-			}
-			postIndex := iNdEx + intStringLen
-			if postIndex < 0 {
-				return ErrInvalidLengthPacket
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.SourceClient = string(dAtA[iNdEx:postIndex])
-			iNdEx = postIndex
-		case 3:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field DestinationClient", wireType)
-			}
-			var stringLen uint64
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowPacket
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				stringLen |= uint64(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			intStringLen := int(stringLen)
-			if intStringLen < 0 {
-				return ErrInvalidLengthPacket
-			}
-			postIndex := iNdEx + intStringLen
-			if postIndex < 0 {
-				return ErrInvalidLengthPacket
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.DestinationClient = string(dAtA[iNdEx:postIndex])
-			iNdEx = postIndex
-		case 4:
-			if wireType != 0 {
-				return fmt.Errorf("proto: wrong wireType = %d for field TimeoutTimestamp", wireType)
-			}
-			m.TimeoutTimestamp = 0
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowPacket
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				m.TimeoutTimestamp |= uint64(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-		case 5:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Payloads", wireType)
-			}
-			var msglen int
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowPacket
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				msglen |= int(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			if msglen < 0 {
-				return ErrInvalidLengthPacket
-			}
-			postIndex := iNdEx + msglen
-			if postIndex < 0 {
-				return ErrInvalidLengthPacket
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.Payloads = append(m.Payloads, Payload{})
-			if err := m.Payloads[len(m.Payloads)-1].Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
-				return err
-			}
-			iNdEx = postIndex
-		default:
-			iNdEx = preIndex
-			skippy, err := skipPacket(dAtA[iNdEx:])
-			if err != nil {
-				return err
-			}
-			if (skippy < 0) || (iNdEx+skippy) < 0 {
-				return ErrInvalidLengthPacket
-			}
-			if (iNdEx + skippy) > l {
-				return io.ErrUnexpectedEOF
-			}
-			iNdEx += skippy
-		}
-	}
+func (m *RecvPacketResult) Size() (n int) { _ = "STUB: not implemented"; return 0 }
 
-	if iNdEx > l {
-		return io.ErrUnexpectedEOF
-	}
-	return nil
-}
-func (m *Payload) Unmarshal(dAtA []byte) error {
-	l := len(dAtA)
-	iNdEx := 0
-	for iNdEx < l {
-		preIndex := iNdEx
-		var wire uint64
-		for shift := uint(0); ; shift += 7 {
-			if shift >= 64 {
-				return ErrIntOverflowPacket
-			}
-			if iNdEx >= l {
-				return io.ErrUnexpectedEOF
-			}
-			b := dAtA[iNdEx]
-			iNdEx++
-			wire |= uint64(b&0x7F) << shift
-			if b < 0x80 {
-				break
-			}
-		}
-		fieldNum := int32(wire >> 3)
-		wireType := int(wire & 0x7)
-		if wireType == 4 {
-			return fmt.Errorf("proto: Payload: wiretype end group for non-group")
-		}
-		if fieldNum <= 0 {
-			return fmt.Errorf("proto: Payload: illegal tag %d (wire type %d)", fieldNum, wire)
-		}
-		switch fieldNum {
-		case 1:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field SourcePort", wireType)
-			}
-			var stringLen uint64
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowPacket
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				stringLen |= uint64(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			intStringLen := int(stringLen)
-			if intStringLen < 0 {
-				return ErrInvalidLengthPacket
-			}
-			postIndex := iNdEx + intStringLen
-			if postIndex < 0 {
-				return ErrInvalidLengthPacket
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.SourcePort = string(dAtA[iNdEx:postIndex])
-			iNdEx = postIndex
-		case 2:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field DestinationPort", wireType)
-			}
-			var stringLen uint64
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowPacket
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				stringLen |= uint64(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			intStringLen := int(stringLen)
-			if intStringLen < 0 {
-				return ErrInvalidLengthPacket
-			}
-			postIndex := iNdEx + intStringLen
-			if postIndex < 0 {
-				return ErrInvalidLengthPacket
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.DestinationPort = string(dAtA[iNdEx:postIndex])
-			iNdEx = postIndex
-		case 3:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Version", wireType)
-			}
-			var stringLen uint64
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowPacket
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				stringLen |= uint64(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			intStringLen := int(stringLen)
-			if intStringLen < 0 {
-				return ErrInvalidLengthPacket
-			}
-			postIndex := iNdEx + intStringLen
-			if postIndex < 0 {
-				return ErrInvalidLengthPacket
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.Version = string(dAtA[iNdEx:postIndex])
-			iNdEx = postIndex
-		case 4:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Encoding", wireType)
-			}
-			var stringLen uint64
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowPacket
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				stringLen |= uint64(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			intStringLen := int(stringLen)
-			if intStringLen < 0 {
-				return ErrInvalidLengthPacket
-			}
-			postIndex := iNdEx + intStringLen
-			if postIndex < 0 {
-				return ErrInvalidLengthPacket
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.Encoding = string(dAtA[iNdEx:postIndex])
-			iNdEx = postIndex
-		case 5:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Value", wireType)
-			}
-			var byteLen int
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowPacket
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				byteLen |= int(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			if byteLen < 0 {
-				return ErrInvalidLengthPacket
-			}
-			postIndex := iNdEx + byteLen
-			if postIndex < 0 {
-				return ErrInvalidLengthPacket
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.Value = append(m.Value[:0], dAtA[iNdEx:postIndex]...)
-			if m.Value == nil {
-				m.Value = []byte{}
-			}
-			iNdEx = postIndex
-		default:
-			iNdEx = preIndex
-			skippy, err := skipPacket(dAtA[iNdEx:])
-			if err != nil {
-				return err
-			}
-			if (skippy < 0) || (iNdEx+skippy) < 0 {
-				return ErrInvalidLengthPacket
-			}
-			if (iNdEx + skippy) > l {
-				return io.ErrUnexpectedEOF
-			}
-			iNdEx += skippy
-		}
-	}
+func sovPacket(x uint64) (n int) { _ = "STUB: not implemented"; return 0 }
 
-	if iNdEx > l {
-		return io.ErrUnexpectedEOF
-	}
-	return nil
-}
-func (m *Acknowledgement) Unmarshal(dAtA []byte) error {
-	l := len(dAtA)
-	iNdEx := 0
-	for iNdEx < l {
-		preIndex := iNdEx
-		var wire uint64
-		for shift := uint(0); ; shift += 7 {
-			if shift >= 64 {
-				return ErrIntOverflowPacket
-			}
-			if iNdEx >= l {
-				return io.ErrUnexpectedEOF
-			}
-			b := dAtA[iNdEx]
-			iNdEx++
-			wire |= uint64(b&0x7F) << shift
-			if b < 0x80 {
-				break
-			}
-		}
-		fieldNum := int32(wire >> 3)
-		wireType := int(wire & 0x7)
-		if wireType == 4 {
-			return fmt.Errorf("proto: Acknowledgement: wiretype end group for non-group")
-		}
-		if fieldNum <= 0 {
-			return fmt.Errorf("proto: Acknowledgement: illegal tag %d (wire type %d)", fieldNum, wire)
-		}
-		switch fieldNum {
-		case 1:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field AppAcknowledgements", wireType)
-			}
-			var byteLen int
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowPacket
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				byteLen |= int(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			if byteLen < 0 {
-				return ErrInvalidLengthPacket
-			}
-			postIndex := iNdEx + byteLen
-			if postIndex < 0 {
-				return ErrInvalidLengthPacket
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.AppAcknowledgements = append(m.AppAcknowledgements, make([]byte, postIndex-iNdEx))
-			copy(m.AppAcknowledgements[len(m.AppAcknowledgements)-1], dAtA[iNdEx:postIndex])
-			iNdEx = postIndex
-		default:
-			iNdEx = preIndex
-			skippy, err := skipPacket(dAtA[iNdEx:])
-			if err != nil {
-				return err
-			}
-			if (skippy < 0) || (iNdEx+skippy) < 0 {
-				return ErrInvalidLengthPacket
-			}
-			if (iNdEx + skippy) > l {
-				return io.ErrUnexpectedEOF
-			}
-			iNdEx += skippy
-		}
-	}
+func sozPacket(x uint64) (n int) { _ = "STUB: not implemented"; return 0 }
 
-	if iNdEx > l {
-		return io.ErrUnexpectedEOF
-	}
-	return nil
-}
-func (m *RecvPacketResult) Unmarshal(dAtA []byte) error {
-	l := len(dAtA)
-	iNdEx := 0
-	for iNdEx < l {
-		preIndex := iNdEx
-		var wire uint64
-		for shift := uint(0); ; shift += 7 {
-			if shift >= 64 {
-				return ErrIntOverflowPacket
-			}
-			if iNdEx >= l {
-				return io.ErrUnexpectedEOF
-			}
-			b := dAtA[iNdEx]
-			iNdEx++
-			wire |= uint64(b&0x7F) << shift
-			if b < 0x80 {
-				break
-			}
-		}
-		fieldNum := int32(wire >> 3)
-		wireType := int(wire & 0x7)
-		if wireType == 4 {
-			return fmt.Errorf("proto: RecvPacketResult: wiretype end group for non-group")
-		}
-		if fieldNum <= 0 {
-			return fmt.Errorf("proto: RecvPacketResult: illegal tag %d (wire type %d)", fieldNum, wire)
-		}
-		switch fieldNum {
-		case 1:
-			if wireType != 0 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Status", wireType)
-			}
-			m.Status = 0
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowPacket
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				m.Status |= PacketStatus(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-		case 2:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Acknowledgement", wireType)
-			}
-			var byteLen int
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowPacket
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				byteLen |= int(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			if byteLen < 0 {
-				return ErrInvalidLengthPacket
-			}
-			postIndex := iNdEx + byteLen
-			if postIndex < 0 {
-				return ErrInvalidLengthPacket
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.Acknowledgement = append(m.Acknowledgement[:0], dAtA[iNdEx:postIndex]...)
-			if m.Acknowledgement == nil {
-				m.Acknowledgement = []byte{}
-			}
-			iNdEx = postIndex
-		default:
-			iNdEx = preIndex
-			skippy, err := skipPacket(dAtA[iNdEx:])
-			if err != nil {
-				return err
-			}
-			if (skippy < 0) || (iNdEx+skippy) < 0 {
-				return ErrInvalidLengthPacket
-			}
-			if (iNdEx + skippy) > l {
-				return io.ErrUnexpectedEOF
-			}
-			iNdEx += skippy
-		}
-	}
+func (m *Packet) Unmarshal(dAtA []byte) error { _ = "STUB: not implemented"; return nil }
 
-	if iNdEx > l {
-		return io.ErrUnexpectedEOF
-	}
-	return nil
-}
-func skipPacket(dAtA []byte) (n int, err error) {
-	l := len(dAtA)
-	iNdEx := 0
-	depth := 0
-	for iNdEx < l {
-		var wire uint64
-		for shift := uint(0); ; shift += 7 {
-			if shift >= 64 {
-				return 0, ErrIntOverflowPacket
-			}
-			if iNdEx >= l {
-				return 0, io.ErrUnexpectedEOF
-			}
-			b := dAtA[iNdEx]
-			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
-			if b < 0x80 {
-				break
-			}
-		}
-		wireType := int(wire & 0x7)
-		switch wireType {
-		case 0:
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return 0, ErrIntOverflowPacket
-				}
-				if iNdEx >= l {
-					return 0, io.ErrUnexpectedEOF
-				}
-				iNdEx++
-				if dAtA[iNdEx-1] < 0x80 {
-					break
-				}
-			}
-		case 1:
-			iNdEx += 8
-		case 2:
-			var length int
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return 0, ErrIntOverflowPacket
-				}
-				if iNdEx >= l {
-					return 0, io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				length |= (int(b) & 0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			if length < 0 {
-				return 0, ErrInvalidLengthPacket
-			}
-			iNdEx += length
-		case 3:
-			depth++
-		case 4:
-			if depth == 0 {
-				return 0, ErrUnexpectedEndOfGroupPacket
-			}
-			depth--
-		case 5:
-			iNdEx += 4
-		default:
-			return 0, fmt.Errorf("proto: illegal wireType %d", wireType)
-		}
-		if iNdEx < 0 {
-			return 0, ErrInvalidLengthPacket
-		}
-		if depth == 0 {
-			return iNdEx, nil
-		}
-	}
-	return 0, io.ErrUnexpectedEOF
-}
+func (m *Payload) Unmarshal(dAtA []byte) error { _ = "STUB: not implemented"; return nil }
+
+func (m *Acknowledgement) Unmarshal(dAtA []byte) error { _ = "STUB: not implemented"; return nil }
+
+func (m *RecvPacketResult) Unmarshal(dAtA []byte) error { _ = "STUB: not implemented"; return nil }
+
+func skipPacket(dAtA []byte) (n int, err error) { _ = "STUB: not implemented"; return 0, nil }
 
 var (
 	ErrInvalidLengthPacket        = fmt.Errorf("proto: negative length found during unmarshaling")

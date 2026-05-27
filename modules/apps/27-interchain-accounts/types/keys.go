@@ -1,9 +1,5 @@
 package types
 
-import (
-	"fmt"
-)
-
 const (
 	// ModuleName defines the interchain accounts module name
 	ModuleName = "interchainaccounts"
@@ -48,21 +44,16 @@ var (
 )
 
 // KeyActiveChannel creates and returns a new key used for active channels store operations
-func KeyActiveChannel(portID, connectionID string) []byte {
-	return fmt.Appendf(nil, "%s/%s/%s", ActiveChannelKeyPrefix, portID, connectionID)
-}
+func KeyActiveChannel(portID, connectionID string) []byte { _ = "STUB: not implemented"; return nil }
 
 // KeyOwnerAccount creates and returns a new key used for interchain account store operations
-func KeyOwnerAccount(portID, connectionID string) []byte {
-	return fmt.Appendf(nil, "%s/%s/%s", OwnerKeyPrefix, portID, connectionID)
-}
+func KeyOwnerAccount(portID, connectionID string) []byte { _ = "STUB: not implemented"; return nil }
 
 // KeyPort creates and returns a new key used for port store operations
-func KeyPort(portID string) []byte {
-	return fmt.Appendf(nil, "%s/%s", PortKeyPrefix, portID)
-}
+func KeyPort(portID string) []byte { _ = "STUB: not implemented"; return nil }
 
 // KeyIsMiddlewareEnabled creates and returns a new key used for signaling legacy API callback routing via ibc middleware
 func KeyIsMiddlewareEnabled(portID, connectionID string) []byte {
-	return fmt.Appendf(nil, "%s/%s/%s", IsMiddlewareEnabledPrefix, portID, connectionID)
+	_ = "STUB: not implemented"
+	return nil
 }

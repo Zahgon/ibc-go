@@ -1,11 +1,5 @@
 package types
 
-import (
-	"encoding/binary"
-
-	errorsmod "cosmossdk.io/errors"
-)
-
 const (
 	// ModuleName defines the IBC rate-limiting name
 	ModuleName = "ratelimiting"
@@ -20,9 +14,7 @@ const (
 	QuerierRoute = ModuleName
 )
 
-func bytes(p string) []byte {
-	return []byte(p)
-}
+func bytes(p string) []byte { _ = "STUB: not implemented"; return nil }
 
 var (
 	RateLimitKeyPrefix      = bytes("rate-limit")
@@ -36,28 +28,15 @@ var (
 )
 
 // Get the rate limit byte key built from the denom and channelId
-func RateLimitItemKey(denom string, channelID string) []byte {
-	return append(bytes(denom), bytes(channelID)...)
-}
+func RateLimitItemKey(denom string, channelID string) []byte { _ = "STUB: not implemented"; return nil }
 
 // Get the pending send packet key from the channel ID and sequence number
 // The channel ID must be fixed length to allow for extracting the underlying
 // values from a key
 func PendingSendPacketKey(channelID string, sequenceNumber uint64) ([]byte, error) {
-	if len(channelID) > PendingSendPacketChannelLength {
-		return nil, errorsmod.Wrapf(ErrInvalidChannelID, "channel %s with length %d is greater than the allowed length %d", channelID, len(channelID), PendingSendPacketChannelLength)
-	}
-
-	channelIDBz := make([]byte, PendingSendPacketChannelLength)
-	copy(channelIDBz, channelID)
-
-	sequenceNumberBz := make([]byte, 8)
-	binary.BigEndian.PutUint64(sequenceNumberBz, sequenceNumber)
-
-	return append(channelIDBz, sequenceNumberBz...), nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // Get the whitelist path key from a sender and receiver address
-func AddressWhitelistKey(sender, receiver string) []byte {
-	return append(bytes(sender), bytes(receiver)...)
-}
+func AddressWhitelistKey(sender, receiver string) []byte { _ = "STUB: not implemented"; return nil }

@@ -61,52 +61,90 @@ var (
 type AppModuleBasic struct{}
 
 // IsOnePerModuleType implements the depinject.OnePerModuleType interface.
-func (AppModuleBasic) IsOnePerModuleType() {}
+func (AppModuleBasic) IsOnePerModuleType() {
+	_ = "STUB: not implemented"
 
-// IsAppModule implements the appmodule.AppModule interface.
-func (AppModuleBasic) IsAppModule() {}
+	// IsAppModule implements the appmodule.AppModule interface.
+	return
+}
 
-// Name implements AppModuleBasic interface.
+func (AppModuleBasic) IsAppModule() {
+	_ = "STUB: not implemented"
+
+	// Name implements AppModuleBasic interface.
+	return
+}
+
 func (AppModuleBasic) Name() string {
-	return ModuleName
+	_ = "STUB: not implemented"
+
+	// IsOnePerModuleType implements the depinject.OnePerModuleType interface.
+	return ""
 }
 
-// IsOnePerModuleType implements the depinject.OnePerModuleType interface.
-func (AppModule) IsOnePerModuleType() {}
+func (AppModule) IsOnePerModuleType() {
+	_ = "STUB: not implemented"
 
-// IsAppModule implements the appmodule.AppModule interface.
-func (AppModule) IsAppModule() {}
+	// IsAppModule implements the appmodule.AppModule interface.
+	return
+}
 
-// RegisterLegacyAminoCodec implements AppModuleBasic interface.
-func (AppModuleBasic) RegisterLegacyAminoCodec(*codec.LegacyAmino) {}
+func (AppModule) IsAppModule() {
+	_ = "STUB: not implemented"
 
-// RegisterInterfaces implements AppModuleBasic interface.
-func (AppModuleBasic) RegisterInterfaces(registry codectypes.InterfaceRegistry) {}
+	// RegisterLegacyAminoCodec implements AppModuleBasic interface.
+	return
+}
 
-// DefaultGenesis implements AppModuleBasic interface.
+func (AppModuleBasic) RegisterLegacyAminoCodec(*codec.LegacyAmino) {
+	_ = "STUB: not implemented"
+
+	// RegisterInterfaces implements AppModuleBasic interface.
+	return
+}
+
+func (AppModuleBasic) RegisterInterfaces(registry codectypes.InterfaceRegistry) {
+	_ = "STUB: not implemented"
+
+	// DefaultGenesis implements AppModuleBasic interface.
+	return
+}
+
 func (AppModuleBasic) DefaultGenesis(cdc codec.JSONCodec) json.RawMessage {
-	return nil
+	_ = "STUB: not implemented"
+
+	// ValidateGenesis implements the AppModuleBasic interface.
+	return *new(json.RawMessage)
 }
 
-// ValidateGenesis implements the AppModuleBasic interface.
 func (AppModuleBasic) ValidateGenesis(codec.JSONCodec, client.TxEncodingConfig, json.RawMessage) error {
+	_ = "STUB: not implemented"
+
+	// RegisterGRPCGatewayRoutes implements AppModuleBasic interface.
 	return nil
 }
 
-// RegisterGRPCGatewayRoutes implements AppModuleBasic interface.
-func (AppModuleBasic) RegisterGRPCGatewayRoutes(_ client.Context, _ *runtime.ServeMux) {}
+func (AppModuleBasic) RegisterGRPCGatewayRoutes(_ client.Context, _ *runtime.ServeMux) {
+	_ = "STUB: not implemented"
 
-// GetTxCmd implements AppModuleBasic interface.
+	// GetTxCmd implements AppModuleBasic interface.
+	return
+}
+
 func (AppModuleBasic) GetTxCmd() *cobra.Command {
+	_ = "STUB: not implemented"
+
+	// GetQueryCmd implements AppModuleBasic interface.
 	return nil
 }
 
-// GetQueryCmd implements AppModuleBasic interface.
 func (AppModuleBasic) GetQueryCmd() *cobra.Command {
+	_ = "STUB: not implemented"
+
+	// AppModule represents the AppModule for the mock module.
 	return nil
 }
 
-// AppModule represents the AppModule for the mock module.
 type AppModule struct {
 	AppModuleBasic
 	ibcApps []*IBCApp
@@ -114,27 +152,40 @@ type AppModule struct {
 
 // NewAppModule returns a mock AppModule instance.
 func NewAppModule() AppModule {
-	return AppModule{}
+	_ = "STUB: not implemented"
+
+	// RegisterInvariants implements the AppModule interface.
+	return *new(AppModule)
 }
 
-// RegisterInvariants implements the AppModule interface.
-func (AppModule) RegisterInvariants(ir sdk.InvariantRegistry) {}
+func (AppModule) RegisterInvariants(ir sdk.InvariantRegistry) {
+	_ = "STUB: not implemented"
 
-// RegisterServices implements the AppModule interface.
-func (AppModule) RegisterServices(module.Configurator) {}
+	// RegisterServices implements the AppModule interface.
+	return
+}
 
-// InitGenesis implements the AppModule interface.
+func (AppModule) RegisterServices(module.Configurator) {
+	_ = "STUB: not implemented"
+
+	// InitGenesis implements the AppModule interface.
+	return
+}
+
 func (AppModule) InitGenesis(ctx sdk.Context, cdc codec.JSONCodec, data json.RawMessage) []abci.ValidatorUpdate {
-	return []abci.ValidatorUpdate{}
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // ExportGenesis implements the AppModule interface.
 func (AppModule) ExportGenesis(ctx sdk.Context, cdc codec.JSONCodec) json.RawMessage {
-	return nil
+	_ = "STUB: not implemented"
+
+	// ConsensusVersion implements AppModule/ConsensusVersion.
+	return *new(json.RawMessage)
 }
 
-// ConsensusVersion implements AppModule/ConsensusVersion.
-func (AppModule) ConsensusVersion() uint64 { return 1 }
+func (AppModule) ConsensusVersion() uint64 { _ = "STUB: not implemented"; return 0 }
 
 var _ exported.Path = KeyPath{}
 
@@ -143,13 +194,13 @@ type KeyPath struct{}
 
 // String implements the exported.Path interface
 func (KeyPath) String() string {
+	_ = "STUB: not implemented"
+
+	// Empty implements the exported.Path interface
 	return ""
 }
 
-// Empty implements the exported.Path interface
-func (KeyPath) Empty() bool {
-	return false
-}
+func (KeyPath) Empty() bool { _ = "STUB: not implemented"; return false }
 
 var _ exported.Height = Height{}
 

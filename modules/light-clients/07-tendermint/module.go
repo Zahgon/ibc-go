@@ -25,55 +25,90 @@ var (
 type AppModuleBasic struct{}
 
 // IsOnePerModuleType implements the depinject.OnePerModuleType interface.
-func (AppModuleBasic) IsOnePerModuleType() {}
+func (AppModuleBasic) IsOnePerModuleType() {
+	_ = "STUB: not implemented"
 
-// IsAppModule implements the appmodule.AppModule interface.
-func (AppModuleBasic) IsAppModule() {}
-
-// Name returns the tendermint module name.
-func (AppModuleBasic) Name() string {
-	return ModuleName
+	// IsAppModule implements the appmodule.AppModule interface.
+	return
 }
 
-// IsOnePerModuleType implements the depinject.OnePerModuleType interface.
-func (AppModule) IsOnePerModuleType() {}
+func (AppModuleBasic) IsAppModule() {
+	_ = "STUB: not implemented"
 
-// IsAppModule implements the appmodule.AppModule interface.
-func (AppModule) IsAppModule() {}
+	// Name returns the tendermint module name.
+	return
+}
 
-// RegisterLegacyAminoCodec performs a no-op. The Tendermint client does not support amino.
-func (AppModuleBasic) RegisterLegacyAminoCodec(*codec.LegacyAmino) {}
+func (AppModuleBasic) Name() string {
+	_ = "STUB: not implemented"
 
-// RegisterInterfaces registers module concrete types into protobuf Any. This allows core IBC
-// to unmarshal tendermint light client types.
+	// IsOnePerModuleType implements the depinject.OnePerModuleType interface.
+	return ""
+}
+
+func (AppModule) IsOnePerModuleType() {
+	_ = "STUB: not implemented"
+
+	// IsAppModule implements the appmodule.AppModule interface.
+	return
+}
+
+func (AppModule) IsAppModule() {
+	_ = "STUB: not implemented"
+
+	// RegisterLegacyAminoCodec performs a no-op. The Tendermint client does not support amino.
+	return
+}
+
+func (AppModuleBasic) RegisterLegacyAminoCodec(*codec.LegacyAmino) {
+	_ = "STUB: not implemented"
+
+	// RegisterInterfaces registers module concrete types into protobuf Any. This allows core IBC
+	// to unmarshal tendermint light client types.
+	return
+}
+
 func (AppModuleBasic) RegisterInterfaces(registry codectypes.InterfaceRegistry) {
-	RegisterInterfaces(registry)
+	_ = "STUB: not implemented"
+	return
 }
 
 // DefaultGenesis performs a no-op. Genesis is not supported for the tendermint light client.
 func (AppModuleBasic) DefaultGenesis(cdc codec.JSONCodec) json.RawMessage {
-	return nil
+	_ = "STUB: not implemented"
+
+	// ValidateGenesis performs a no-op. Genesis is not supported for the tendermint light client.
+	return *new(json.RawMessage)
 }
 
-// ValidateGenesis performs a no-op. Genesis is not supported for the tendermint light client.
 func (AppModuleBasic) ValidateGenesis(cdc codec.JSONCodec, config client.TxEncodingConfig, bz json.RawMessage) error {
+	_ = "STUB: not implemented"
+
+	// RegisterGRPCGatewayRoutes performs a no-op.
 	return nil
 }
 
-// RegisterGRPCGatewayRoutes performs a no-op.
-func (AppModuleBasic) RegisterGRPCGatewayRoutes(clientCtx client.Context, mux *runtime.ServeMux) {}
+func (AppModuleBasic) RegisterGRPCGatewayRoutes(clientCtx client.Context, mux *runtime.ServeMux) {
+	_ = "STUB: not implemented"
 
-// GetTxCmd performs a no-op. Please see the 02-client cli commands.
+	// GetTxCmd performs a no-op. Please see the 02-client cli commands.
+	return
+}
+
 func (AppModuleBasic) GetTxCmd() *cobra.Command {
+	_ = "STUB: not implemented"
+
+	// GetQueryCmd performs a no-op. Please see the 02-client cli commands.
 	return nil
 }
 
-// GetQueryCmd performs a no-op. Please see the 02-client cli commands.
 func (AppModuleBasic) GetQueryCmd() *cobra.Command {
+	_ = "STUB: not implemented"
+
+	// AppModule is the application module for the Tendermint client module
 	return nil
 }
 
-// AppModule is the application module for the Tendermint client module
 type AppModule struct {
 	AppModuleBasic
 	lightClientModule LightClientModule
@@ -81,7 +116,6 @@ type AppModule struct {
 
 // NewAppModule creates a new Tendermint client module
 func NewAppModule(lightClientModule LightClientModule) AppModule {
-	return AppModule{
-		lightClientModule: lightClientModule,
-	}
+	_ = "STUB: not implemented"
+	return *new(AppModule)
 }

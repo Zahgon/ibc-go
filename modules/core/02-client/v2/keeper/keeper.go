@@ -18,47 +18,30 @@ func NewKeeper(
 	cdc codec.BinaryCodec,
 	clientV1Keeper *clientv1keeper.Keeper,
 ) *Keeper {
-	return &Keeper{
-		cdc:            cdc,
-		ClientV1Keeper: clientV1Keeper,
-	}
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // SetClientCounterparty sets counterpartyInfo for a given clientID
 func (k *Keeper) SetClientCounterparty(ctx sdk.Context, clientID string, counterparty types.CounterpartyInfo) {
-	store := k.ClientV1Keeper.ClientStore(ctx, clientID)
-	store.Set(types.CounterpartyKey(), k.cdc.MustMarshal(&counterparty))
+	_ = "STUB: not implemented"
+	return
 }
 
 // GetClientCounterparty gets counterpartyInfo for a given clientID
 func (k *Keeper) GetClientCounterparty(ctx sdk.Context, clientID string) (types.CounterpartyInfo, bool) {
-	store := k.ClientV1Keeper.ClientStore(ctx, clientID)
-	bz := store.Get(types.CounterpartyKey())
-	if len(bz) == 0 {
-		return types.CounterpartyInfo{}, false
-	}
-
-	var counterparty types.CounterpartyInfo
-	k.cdc.MustUnmarshal(bz, &counterparty)
-	return counterparty, true
+	_ = "STUB: not implemented"
+	return *new(types.CounterpartyInfo), false
 }
 
 // GetConfig returns the ibc-client v2 configuration for the given clientID.
 func (k *Keeper) GetConfig(ctx sdk.Context, clientID string) types.Config {
-	store := k.ClientV1Keeper.ClientStore(ctx, clientID)
-	bz := store.Get(types.ConfigKey())
-	if len(bz) == 0 {
-		return types.NewConfig()
-	}
-
-	var config types.Config
-	k.cdc.MustUnmarshal(bz, &config)
-	return config
+	_ = "STUB: not implemented"
+	return *new(types.Config)
 }
 
 // SetConfig sets ibc-client v2 configuration for the given clientID.
 func (k *Keeper) SetConfig(ctx sdk.Context, clientID string, config types.Config) {
-	store := k.ClientV1Keeper.ClientStore(ctx, clientID)
-	bz := k.cdc.MustMarshal(&config)
-	store.Set(types.ConfigKey(), bz)
+	_ = "STUB: not implemented"
+	return
 }

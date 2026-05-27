@@ -21,8 +21,6 @@ func init() {
 }
 
 // RegisterLegacyAminoCodec registers concrete types on the LegacyAmino codec
-func RegisterLegacyAminoCodec(cdc *codec.LegacyAmino) {
-}
+func RegisterLegacyAminoCodec(cdc *codec.LegacyAmino) { _ = "STUB: not implemented"; return }
 
-func RegisterInterfaces(registry types.InterfaceRegistry) {
-}
+func RegisterInterfaces(registry types.InterfaceRegistry) { _ = "STUB: not implemented"; return }

@@ -1,7 +1,5 @@
 package types
 
-import "fmt"
-
 const (
 	// ModuleName defines the module name
 	// NOTE: There is a spelling mistake in the module name that came from the original implementation
@@ -24,5 +22,6 @@ const (
 )
 
 func RefundPacketKey(channelID, portID string, sequence uint64) []byte {
-	return fmt.Appendf(nil, "%s/%s/%d", channelID, portID, sequence)
+	_ = "STUB: not implemented"
+	return nil
 }

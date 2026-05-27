@@ -1,8 +1,6 @@
 package simapp
 
 import (
-	"github.com/cosmos/cosmos-sdk/std"
-
 	simappparams "github.com/cosmos/ibc-go/modules/light-clients/08-wasm/v11/testing/simapp/params"
 )
 
@@ -11,8 +9,6 @@ import (
 // App user shouldn't create new codecs - use the app.AppCodec instead.
 // [DEPRECATED]
 func MakeTestEncodingConfig() simappparams.EncodingConfig {
-	encodingConfig := simappparams.MakeTestEncodingConfig()
-	std.RegisterLegacyAminoCodec(encodingConfig.Amino)
-	std.RegisterInterfaces(encodingConfig.InterfaceRegistry)
-	return encodingConfig
+	_ = "STUB: not implemented"
+	return *new(simappparams.EncodingConfig)
 }

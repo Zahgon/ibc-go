@@ -1,9 +1,6 @@
 package mock
 
 import (
-	"bytes"
-	"strings"
-
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
 	clienttypes "github.com/cosmos/ibc-go/v11/modules/core/02-client/types"
@@ -26,11 +23,8 @@ type BlockUpgradeMiddleware struct {
 
 // NewIBCModule creates a new IBCModule given the underlying mock IBC application and scopedKeeper.
 func NewBlockUpgradeMiddleware(appModule *AppModule, app *IBCApp) BlockUpgradeMiddleware {
-	appModule.ibcApps = append(appModule.ibcApps, app)
-	return BlockUpgradeMiddleware{
-		appModule: appModule,
-		IBCApp:    app,
-	}
+	_ = "STUB: not implemented"
+	return *new(BlockUpgradeMiddleware)
 }
 
 // OnChanOpenInit implements the IBCModule interface.
@@ -38,15 +32,8 @@ func (im BlockUpgradeMiddleware) OnChanOpenInit(
 	ctx sdk.Context, order channeltypes.Order, connectionHops []string, portID string,
 	channelID string, counterparty channeltypes.Counterparty, version string,
 ) (string, error) {
-	if strings.TrimSpace(version) == "" {
-		version = Version
-	}
-
-	if im.IBCApp.OnChanOpenInit != nil {
-		return im.IBCApp.OnChanOpenInit(ctx, order, connectionHops, portID, channelID, counterparty, version)
-	}
-
-	return version, nil
+	_ = "STUB: not implemented"
+	return "", nil
 }
 
 // OnChanOpenTry implements the IBCModule interface.
@@ -54,79 +41,49 @@ func (im BlockUpgradeMiddleware) OnChanOpenTry(
 	ctx sdk.Context, order channeltypes.Order, connectionHops []string, portID string,
 	channelID string, counterparty channeltypes.Counterparty, counterpartyVersion string,
 ) (version string, err error) {
-	if im.IBCApp.OnChanOpenTry != nil {
-		return im.IBCApp.OnChanOpenTry(ctx, order, connectionHops, portID, channelID, counterparty, counterpartyVersion)
-	}
-
-	return Version, nil
+	_ = "STUB: not implemented"
+	return "", nil
 }
 
 // OnChanOpenAck implements the IBCModule interface.
 func (im BlockUpgradeMiddleware) OnChanOpenAck(ctx sdk.Context, portID string, channelID string, counterpartyChannelID string, counterpartyVersion string) error {
-	if im.IBCApp.OnChanOpenAck != nil {
-		return im.IBCApp.OnChanOpenAck(ctx, portID, channelID, counterpartyChannelID, counterpartyVersion)
-	}
-
+	_ = "STUB: not implemented"
 	return nil
 }
 
 // OnChanOpenConfirm implements the IBCModule interface.
 func (im BlockUpgradeMiddleware) OnChanOpenConfirm(ctx sdk.Context, portID, channelID string) error {
-	if im.IBCApp.OnChanOpenConfirm != nil {
-		return im.IBCApp.OnChanOpenConfirm(ctx, portID, channelID)
-	}
-
+	_ = "STUB: not implemented"
 	return nil
 }
 
 // OnChanCloseInit implements the IBCModule interface.
 func (im BlockUpgradeMiddleware) OnChanCloseInit(ctx sdk.Context, portID, channelID string) error {
-	if im.IBCApp.OnChanCloseInit != nil {
-		return im.IBCApp.OnChanCloseInit(ctx, portID, channelID)
-	}
-
+	_ = "STUB: not implemented"
 	return nil
 }
 
 // OnChanCloseConfirm implements the IBCModule interface.
 func (im BlockUpgradeMiddleware) OnChanCloseConfirm(ctx sdk.Context, portID, channelID string) error {
-	if im.IBCApp.OnChanCloseConfirm != nil {
-		return im.IBCApp.OnChanCloseConfirm(ctx, portID, channelID)
-	}
-
+	_ = "STUB: not implemented"
 	return nil
 }
 
 // OnRecvPacket implements the IBCModule interface.
 func (im BlockUpgradeMiddleware) OnRecvPacket(ctx sdk.Context, channelVersion string, packet channeltypes.Packet, relayer sdk.AccAddress) exported.Acknowledgement {
-	if im.IBCApp.OnRecvPacket != nil {
-		return im.IBCApp.OnRecvPacket(ctx, channelVersion, packet, relayer)
-	}
-
-	if bytes.Equal(MockPacketData, packet.GetData()) {
-		return MockAcknowledgement
-	} else if bytes.Equal(MockAsyncPacketData, packet.GetData()) {
-		return nil
-	}
-
-	return MockFailAcknowledgement
+	_ = "STUB: not implemented"
+	return *new(exported.Acknowledgement)
 }
 
 // OnAcknowledgementPacket implements the IBCModule interface.
 func (im BlockUpgradeMiddleware) OnAcknowledgementPacket(ctx sdk.Context, channelVersion string, packet channeltypes.Packet, acknowledgement []byte, relayer sdk.AccAddress) error {
-	if im.IBCApp.OnAcknowledgementPacket != nil {
-		return im.IBCApp.OnAcknowledgementPacket(ctx, channelVersion, packet, acknowledgement, relayer)
-	}
-
+	_ = "STUB: not implemented"
 	return nil
 }
 
 // OnTimeoutPacket implements the IBCModule interface.
 func (im BlockUpgradeMiddleware) OnTimeoutPacket(ctx sdk.Context, channelVersion string, packet channeltypes.Packet, relayer sdk.AccAddress) error {
-	if im.IBCApp.OnTimeoutPacket != nil {
-		return im.IBCApp.OnTimeoutPacket(ctx, channelVersion, packet, relayer)
-	}
-
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -139,31 +96,41 @@ func (BlockUpgradeMiddleware) SendPacket(
 	timeoutTimestamp uint64,
 	data []byte,
 ) (uint64, error) {
+	_ = "STUB: not implemented"
+
+	// WriteAcknowledgement implements the ICS4 Wrapper interface
 	return 0, nil
 }
 
-// WriteAcknowledgement implements the ICS4 Wrapper interface
 func (BlockUpgradeMiddleware) WriteAcknowledgement(
 	ctx sdk.Context,
 	packet exported.PacketI,
 	ack exported.Acknowledgement,
 ) error {
+	_ = "STUB: not implemented"
+
+	// GetAppVersion returns the application version of the underlying application
 	return nil
 }
 
-// GetAppVersion returns the application version of the underlying application
 func (BlockUpgradeMiddleware) GetAppVersion(ctx sdk.Context, portID, channelID string) (string, bool) {
-	return Version, true
+	_ = "STUB: not implemented"
+	return "",
+
+		// SetICS4Wrapper sets the ICS4Wrapper. This function may be used after
+		// the module's initialization to set the middleware which is above this
+		// module in the IBC application stack.
+		false
 }
 
-// SetICS4Wrapper sets the ICS4Wrapper. This function may be used after
-// the module's initialization to set the middleware which is above this
-// module in the IBC application stack.
 func (BlockUpgradeMiddleware) SetICS4Wrapper(wrapper porttypes.ICS4Wrapper) {
-	panic("unused")
+	_ = "STUB: not implemented"
+
+	// SetUnderlyingApplication sets the underlying application of the middleware.
+	return
 }
 
-// SetUnderlyingApplication sets the underlying application of the middleware.
 func (BlockUpgradeMiddleware) SetUnderlyingApplication(app porttypes.IBCModule) {
-	panic("unused")
+	_ = "STUB: not implemented"
+	return
 }

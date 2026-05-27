@@ -1,8 +1,6 @@
 package keeper
 
 import (
-	errorsmod "cosmossdk.io/errors"
-
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
 	"github.com/cosmos/ibc-go/v11/modules/core/04-channel/types"
@@ -11,10 +9,6 @@ import (
 // RecvPacketReCheckTx applies replay protection ensuring that when relay messages are
 // re-executed in ReCheckTx, we can appropriately filter out redundant relay transactions.
 func (k *Keeper) RecvPacketReCheckTx(ctx sdk.Context, packet types.Packet) error {
-	channel, found := k.GetChannel(ctx, packet.GetDestPort(), packet.GetDestChannel())
-	if !found {
-		return errorsmod.Wrap(types.ErrChannelNotFound, packet.GetDestChannel())
-	}
-
-	return k.applyReplayProtection(ctx, packet, channel)
+	_ = "STUB: not implemented"
+	return nil
 }

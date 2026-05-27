@@ -1,9 +1,7 @@
 package gmp
 
 import (
-	"context"
 	"encoding/json"
-	"fmt"
 
 	"github.com/grpc-ecosystem/grpc-gateway/runtime"
 
@@ -17,7 +15,6 @@ import (
 	"github.com/cosmos/cosmos-sdk/types/module"
 
 	"github.com/cosmos/ibc-go/v11/modules/apps/27-gmp/keeper"
-	"github.com/cosmos/ibc-go/v11/modules/apps/27-gmp/types"
 )
 
 var (
@@ -38,87 +35,84 @@ type AppModule struct {
 }
 
 // NewAppModule creates a new 27-gmp module
-func NewAppModule(k *keeper.Keeper) AppModule {
-	return AppModule{
-		keeper: k,
-	}
-}
+func NewAppModule(k *keeper.Keeper) AppModule { _ = "STUB: not implemented"; return *new(AppModule) }
 
 func NewAppModuleBasic(m AppModule) module.AppModuleBasic {
-	return module.CoreAppModuleBasicAdaptor(m.Name(), m)
+	_ = "STUB: not implemented"
+	return *new(module.AppModuleBasic)
 }
 
 // Name implements AppModuleBasic interface
-func (AppModule) Name() string { return types.ModuleName }
+func (AppModule) Name() string { _ = "STUB: not implemented"; return "" }
 
 // IsOnePerModuleType implements the depinject.OnePerModuleType interface.
-func (AppModule) IsOnePerModuleType() {}
+func (AppModule) IsOnePerModuleType() {
+	_ = "STUB: not implemented"
 
-// IsAppModule implements the appmodule.AppModule interface.
-func (AppModule) IsAppModule() {}
+	// IsAppModule implements the appmodule.AppModule interface.
+	return
+}
 
-// RegisterLegacyAminoCodec implements AppModuleBasic interface
-func (AppModule) RegisterLegacyAminoCodec(cdc *codec.LegacyAmino) {}
+func (AppModule) IsAppModule() {
+	_ = "STUB: not implemented"
 
-// RegisterGRPCGatewayRoutes registers the gRPC Gateway routes for the ics27 module.
+	// RegisterLegacyAminoCodec implements AppModuleBasic interface
+	return
+}
+
+func (AppModule) RegisterLegacyAminoCodec(cdc *codec.LegacyAmino) {
+	_ = "STUB: not implemented"
+
+	// RegisterGRPCGatewayRoutes registers the gRPC Gateway routes for the ics27 module.
+	return
+}
+
 func (AppModule) RegisterGRPCGatewayRoutes(clientCtx client.Context, mux *runtime.ServeMux) {
-	if err := types.RegisterQueryHandlerClient(context.Background(), mux, types.NewQueryClient(clientCtx)); err != nil {
-		panic(err)
-	}
+	_ = "STUB: not implemented"
+	return
 }
 
 // RegisterInterfaces registers module concrete types into protobuf Any.
 func (AppModule) RegisterInterfaces(registry codectypes.InterfaceRegistry) {
-	types.RegisterInterfaces(registry)
+	_ = "STUB: not implemented"
+	return
 }
 
 // ConsensusVersion implements AppModule/ConsensusVersion defining the current version of gmp.
-func (AppModule) ConsensusVersion() uint64 { return 1 }
+func (AppModule) ConsensusVersion() uint64 {
+	_ = "STUB: not implemented"
 
-// DefaultGenesis returns default genesis state as raw bytes for the gmp module.
+	// DefaultGenesis returns default genesis state as raw bytes for the gmp module.
+	return 0
+}
+
 func (AppModule) DefaultGenesis(cdc codec.JSONCodec) json.RawMessage {
-	return cdc.MustMarshalJSON(types.DefaultGenesisState())
+	_ = "STUB: not implemented"
+	return *new(json.RawMessage)
 }
 
 // RegisterServices registers module services.
-func (am AppModule) RegisterServices(cfg module.Configurator) {
-	types.RegisterMsgServer(cfg.MsgServer(), am.keeper)
-	types.RegisterQueryServer(cfg.QueryServer(), am.keeper)
-}
+func (am AppModule) RegisterServices(cfg module.Configurator) { _ = "STUB: not implemented"; return }
 
 // ValidateGenesis performs genesis state validation for the ibc gmp module.
 func (AppModule) ValidateGenesis(cdc codec.JSONCodec, config client.TxEncodingConfig, bz json.RawMessage) error {
-	var gs types.GenesisState
-	if err := cdc.UnmarshalJSON(bz, &gs); err != nil {
-		return fmt.Errorf("failed to unmarshal %s genesis state: %w", types.ModuleName, err)
-	}
-
-	return gs.Validate()
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // AutoCLIOptions implements the autocli.HasAutoCLIConfig interface.
-func (AppModule) AutoCLIOptions() *autocliv1.ModuleOptions {
-	return types.AutoCLIOptions()
-}
+func (AppModule) AutoCLIOptions() *autocliv1.ModuleOptions { _ = "STUB: not implemented"; return nil }
 
 // InitGenesis performs genesis initialization for the gmp module. It returns no validator updates.
 func (am AppModule) InitGenesis(ctx sdk.Context, cdc codec.JSONCodec, data json.RawMessage) {
-	var genesisState types.GenesisState
-	cdc.MustUnmarshalJSON(data, &genesisState)
-	err := am.keeper.InitGenesis(ctx, &genesisState)
-	if err != nil {
-		panic(fmt.Errorf("failed to initialize %s genesis state: %w", types.ModuleName, err))
-	}
+	_ = "STUB: not implemented"
+	return
 }
 
 // ExportGenesis returns the exported genesis state as raw bytes for the gmp module.
 func (am AppModule) ExportGenesis(ctx sdk.Context, cdc codec.JSONCodec) json.RawMessage {
-	gs, err := am.keeper.ExportGenesis(ctx)
-	if err != nil {
-		panic(fmt.Errorf("failed to export %s genesis state: %w", types.ModuleName, err))
-	}
-
-	return cdc.MustMarshalJSON(gs)
+	_ = "STUB: not implemented"
+	return *new(json.RawMessage)
 }
 
 /*
